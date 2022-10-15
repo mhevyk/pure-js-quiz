@@ -34,7 +34,7 @@ body {
     font-family: roboto;
 }
 
-*:disabled {
+button:disabled {
     pointer-events: none;
 }
 
@@ -46,6 +46,7 @@ body {
     margin: var(--main-container-margin-y) auto;
     background-color: var(--white-color);
     border-radius: 15px;
+    box-shadow: 0 0 3px 1px var(--primary-opposite-color);
 }
 
 @media (min-width: 570px) {

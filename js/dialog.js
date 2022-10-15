@@ -1,4 +1,5 @@
 class Dialog {
+    static #eventListenersList = [];
     //dialog custom events
     static events = {
       open: new CustomEvent("open"),
@@ -12,6 +13,9 @@ class Dialog {
       }
     }
     constructor(selector, openOnCreate = true) {
+      if (Dialog._instance) {
+          return Dialog._instance;
+      }
       this.container = document.querySelector(selector);
 
       openOnCreate && this.open();
@@ -26,11 +30,24 @@ class Dialog {
       this.closeButton.addEventListener("click", this.close.bind(this));
       this.cancelButton.addEventListener("click", this.close.bind(this));
       this.submitButton.addEventListener("click", Dialog.dispatchCustomEvent.bind(this, this.container, "submit"));
+
+      Dialog._instance = this;
     }
   
     //syntactic sugar to simplify adding event listeners directly to dialog window
     addEventListener(...props) {
+      Dialog.#eventListenersList.push({
+        name: props[0],
+        fn: props[1]
+      });
       this.container.addEventListener(...props);
+    }
+
+    resetEventListeners() {
+      Dialog.#eventListenersList.forEach(listener => {
+        this.container.removeEventListener(listener.name, listener.fn);
+      });
+      Dialog.#eventListenersList = [];
     }
   
     //setters to change innerHTML or textContent of some part of dialog
@@ -45,6 +62,13 @@ class Dialog {
     }
     cancelBtn(text) {
       this.cancelButton.textContent = text;
+    }
+
+    content(props) {
+      props.header && this.header(props.header);
+      props.body && this.body(props.body);
+      props.submitBtn && this.submitBtn(props.submitBtn);
+      props.cancelBtn && this.cancelBtn(props.cancelBtn);
     }
   
     //methods to disable or enable dialog buttons
@@ -66,6 +90,7 @@ class Dialog {
       body.classList.add("dialog-open");
   
       if (!this.isOpen()) {
+        this.container.parentElement.classList.add("open");
         this.container.classList.add("open");
       }
     }
@@ -75,6 +100,7 @@ class Dialog {
       body.classList.remove("dialog-open");
   
       if (this.isOpen()) {
+        this.container.parentElement.classList.remove("open");
         this.container.classList.remove("open");
       }
     }
@@ -94,11 +120,5 @@ class Dialog {
     }
   }
 
-  (function () {
-    const dialog = new Dialog(".dialog", false);
-
-    const openDialogButton = document.querySelector("#dialog-open");
-    openDialogButton.addEventListener("click", () => {
-      dialog.open();
-    });
-  })();
+  const d = new Dialog(".dialog", false);
+  document.querySelectorAll(".nav__item")[4].addEventListener("click", () => d.open());

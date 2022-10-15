@@ -1,9 +1,15 @@
 .footer {
     border-top: 1px dashed var(--primary-opposite-color);
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
     padding: 8px 0;
     letter-spacing: 0.5px;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+}
+
+@media (min-width: 570px) {
+    .footer {
+        font-size: 15px;
+    }
 }

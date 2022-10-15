@@ -1,7 +1,7 @@
 :root {
     --dialog-overlay-opacity: 0.55;
     --dialog-overlay-bg: rgba(0, 0, 0, var(--dialog-overlay-opacity));
-    --dialog-animation-duration: 500ms;
+    --dialog-animation-duration: 400ms;
     --dialog-animation-scale-start: 0.65;
 }
 
@@ -33,12 +33,17 @@ body.highlight-success .modal-overlay {
 }
 
 .dialog-container {
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
     width: 90%;
+}
+
+.dialog-container.open {
+    visibility: visible;
 }
 
 @media (min-width: 570px) {
@@ -50,9 +55,23 @@ body.highlight-success .modal-overlay {
 }
 
 .dialog {
+    border: 1px solid var(--primary-light-color);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 200px;
     opacity: 0;
     transform: scale(var(--dialog-animation-scale-start));
     transition: var(--dialog-animation-duration);
+}
+
+@media (min-width: 570px) {
+    .dialog {
+        min-height: 250px;
+    }
 }
 
 .dialog.open {
@@ -66,23 +85,6 @@ body.highlight-success .modal-overlay {
 
 .dialog.highlight-success {
     border: 1px solid var(--highlight-success-color);
-}
-
-.dialog {
-    border: 1px solid var(--primary-light-color);
-    border-radius: 8px;
-    padding: 10px;
-    background-color: var(--white-color);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 200px;
-}
-
-@media (min-width: 570px) {
-    .dialog {
-        min-height: 250px;
-    }
 }
 
 .dialog .dialog__section:not(:last-child) {
