@@ -35,7 +35,9 @@ body {
     pointer-events: none;
 }
 
-.container {
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
     max-width: 95%;
     min-height: calc(100vh - 3 * var(--main-container-margin-y));
     margin: var(--main-container-margin-y) auto;
@@ -44,25 +46,25 @@ body {
 }
 
 @media (min-width: 570px) {
-    .container {
+    .app-wrapper {
         max-width: 85%;
     }
 }
 
 @media (min-width: 767px) {
-    .container {
+    .app-wrapper {
         max-width: 75%;
     }
 }
 
 @media (min-width: 991px) {
-    .container {
+    .app-wrapper {
         max-width: 65%;
     }
 }
 
 @media (min-width: 1250px) {
-    .container {
+    .app-wrapper {
         max-width: 50%;
     }
 }
