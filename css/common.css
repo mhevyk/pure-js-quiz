@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-container-margin-y: 20px;
+    --background-image: url(../img/diagmonds.png);
+
+    --primary-color: rgb(26, 66, 87);
+    --secondary-color: black;
+    --primary-light-color: silver;
+    --secondary-light-color: gray;
+    --white-color: white;
+
+    --button-disabled-color: rgba(0, 0, 0, 0.2);
+
+    --highlight-success-color: rgb(0, 128, 0);
+    --highlight-fail-color: rgb(255, 0, 0);
+    --highlight-success-bg: rgb(0, 128, 0, 0.5);
+    --highlight-fail-bg: rgb(255, 0, 0, 0.5);
+}
+
+body {
+    scroll-behavior: smooth;
+    background-image: var(--background-image);
+    background-color: var(--primary-color);
+    font-family: roboto;
+}
+
+*:disabled {
+    pointer-events: none;
+}
+
+.container {
+    max-width: 60%;
+    min-height: calc(100vh - 3 * var(--main-container-margin-y));
+    margin: var(--main-container-margin-y) auto;
+    background-color: var(--white-color);
+}
