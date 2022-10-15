@@ -1,12 +1,15 @@
 .main {
     flex-grow: 1;
+}
+
+[data-role='main'] {
     display: flex;
     justify-content: center;
     align-items: start;
     margin-top: 6vh;
 }
 
-.main .nav {
+[data-role='main'] .nav {
     min-width: 90%;
     display: flex;
     flex-direction: column;
@@ -14,18 +17,18 @@
 }
 
 @media (min-width: 570px) {
-    .main .nav {
+    [data-role='main'] .nav {
         min-width: 70%;
     }
 }
 
 @media (min-width: 767px) {
-    .main .nav {
+    [data-role='main'] .nav {
         min-width: 50%;
     }
 }
 
-.main .nav__item {
+[data-role='main'] .nav__item {
     border-radius: 5px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -40,7 +43,7 @@
     transition: 200ms;
 }
 
-.main .nav__item:hover {
+[data-role='main'] .nav__item:hover {
     cursor: pointer;
     border: 1px solid var(--primary-color);
     background-color: transparent;

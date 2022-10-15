@@ -17,13 +17,27 @@
             <h1>Перевірка слів</h1>
         </header>
         <main class="main">
-            <nav class="nav main__nav">
-                <button class="nav__item">Тестування</button>
-                <button class="nav__item">Словник</button>
-                <button class="nav__item">Результати</button>
-                <button class="nav__item">Налаштування</button>
-                <button class="nav__item exit">Вихід</button>
-            </nav>
+            <div class="page open" data-role="main" data-title="Перевірка слів">
+                <nav class="nav main__nav">
+                    <button class="page-open-button nav__item" data-role="quiz">Тестування</button>
+                    <button class="page-open-button nav__item" data-role="vocabulary">Словник</button>
+                    <button class="page-open-button nav__item" data-role="results">Результати</button>
+                    <button class="page-open-button nav__item" data-role="options">Налаштування</button>
+                    <button class="nav__item exit">Вихід</button>
+                </nav>
+            </div>
+            <div class="page" data-role="quiz" data-title="Тестування">
+                <button class="page-open-button" data-role="main">Назад</button>
+            </div>
+            <div class="page" data-role="vocabulary" data-title="Словник">
+                <button class="page-open-button" data-role="main">Назад</button>
+            </div>
+            <div class="page" data-role="results" data-title="Результати">
+                <button class="page-open-button" data-role="main">Назад</button>
+            </div>
+            <div class="page" data-role="options" data-title="Налаштування">
+                <button class="page-open-button" data-role="main">Назад</button>
+            </div>
         </main>
         <footer class="footer">
             <span>Copyright &copy; <a href="https://github.com/mhevyk" target="blank" class="link">Max Hevyk</a></span>
@@ -51,6 +65,7 @@
     <script src="js/dialog.js"></script>
     <script src="js/exit.js"></script>
     <script src="js/current-year.js"></script>
+    <script src="js/page-navigation.js"></script>
 </body>
 
 </html>
