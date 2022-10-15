@@ -10,7 +10,10 @@
     --main-container-margin-y: 20px;
     --background-image: url(../img/diagmonds.png);
 
-    --primary-color: rgb(26, 66, 87);
+    --primary-color: #1a4257;
+    --primary-opposite-color: #50B4EB;
+    --primary-opposite-hover-color: #98D0EE;
+    --primary-hover-color: #0a58ca;
     --secondary-color: black;
     --primary-light-color: silver;
     --secondary-light-color: gray;

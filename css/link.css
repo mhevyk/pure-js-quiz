@@ -1,0 +1,9 @@
+.link {
+    color: var(--primary-opposite-color);
+    transition: 250ms;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--primary-opposite-hover-color);
+}
