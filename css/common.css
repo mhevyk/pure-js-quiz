@@ -61,13 +61,19 @@ button:disabled {
     }
 }
 
-@media (min-width: 991px) {
+@media (min-width: 1100px) {
     .app-wrapper {
         max-width: 65%;
     }
 }
 
 @media (min-width: 1250px) {
+    .app-wrapper {
+        max-width: 55%;
+    }
+}
+
+@media (min-width: 1300px) {
     .app-wrapper {
         max-width: 50%;
     }

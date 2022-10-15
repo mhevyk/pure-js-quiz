@@ -1,7 +1,12 @@
 .page {
     display: none;
+    margin-top: 6vh;
 }
 
 .page.open {
     display: flex;
+}
+
+.page:not(.page-main) {
+    padding: 0 20px;
 }

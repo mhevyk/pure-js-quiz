@@ -1,19 +1,43 @@
 .header {
     text-align: center;
-    position: relative;
 }
 
-.header h1 {
+.header .title {
     background-color: var(--button-disabled-color);
     text-transform: uppercase;
     margin-top: 55px;
     font-size: 30px;
     letter-spacing: 2px;
     padding: 12px 0;
+    position: relative;
+}
+
+.header .back {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: var(--primary-color);
+    opacity: 1;
+    transition: 300ms;
+}
+
+.header .back:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.header .title h1 {
+    font-size: 30px;
+}
+
+.header .back.open {
+    display: block;
 }
 
 @media (min-width: 570px) {
-    .header h1 {
+    .header .title h1 {
         font-size: 40px;
     }
 }
