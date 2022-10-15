@@ -95,7 +95,7 @@ class Dialog {
   }
 
   (function () {
-    const dialog = new Dialog(".dialog");
+    const dialog = new Dialog(".dialog", false);
 
     const openDialogButton = document.querySelector("#dialog-open");
     openDialogButton.addEventListener("click", () => {
