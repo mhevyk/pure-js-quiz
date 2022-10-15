@@ -1,12 +1,11 @@
 (function () {
     const exit = document.querySelector(".exit");
-    exit.addEventListener("click", dialog.open);
+    const dialog = new Dialog();
 
     function exitApp() {
         window.open(location, '_self').close();
     }
 
-    const dialog = new Dialog();
     dialog.content({
         header: "Вихід з програми",
         body: "Справді вийти із програми?",
@@ -14,5 +13,6 @@
         cancelBtn: "Скасувати"
     });
 
+    exit.addEventListener("click", dialog.open.bind(dialog));
     dialog.addEventListener("submit", exitApp);
 })();
