@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <link rel="stylesheet" href="libs/fontawesome/all.min.css">
+    <script src="js/utils.js"></script>
+    <script src="js/vocabulary.js"></script>
 </head>
 
 <body>
@@ -16,31 +18,31 @@
         <header class="header">
             <div class="title">
                 <div class="back">
-                    <i class="page-open-button fa-solid fa-circle-arrow-left" data-role="main"></i>
+                    <i class="page-open-button fa-solid fa-circle-arrow-left" data-href="main"></i>
                 </div>
                 <h1>Перевірка слів</h1>
             </div>
         </header>
         <main class="main">
-            <div class="page-main page open" data-role="main" data-title="Перевірка слів">
+            <div class="page-main page open" data-href="main" data-title="Перевірка слів">
                 <nav class="nav main__nav">
-                    <button class="page-open-button nav__item" data-role="quiz">Тестування</button>
-                    <button class="page-open-button nav__item" data-role="vocabulary">Словник</button>
-                    <button class="page-open-button nav__item" data-role="results">Результати</button>
-                    <button class="page-open-button nav__item" data-role="options">Налаштування</button>
+                    <button class="page-open-button nav__item" data-href="quiz">Тестування</button>
+                    <button class="page-open-button nav__item" data-href="vocabulary">Словник</button>
+                    <button class="page-open-button nav__item" data-href="results">Результати</button>
+                    <button class="page-open-button nav__item" data-href="options">Налаштування</button>
                     <button class="nav__item exit">Вихід</button>
                 </nav>
             </div>
-            <div class="page" data-role="quiz" data-title="Тестування">
+            <div class="page" data-href="quiz" data-title="Тестування">
                 Quiz
             </div>
-            <div class="page" data-role="vocabulary" data-title="Словник">
-                Vocabulary
+            <div class="page" data-href="vocabulary" data-title="Словник">
+                <div class="vocabulary"></div>
             </div>
-            <div class="page" data-role="results" data-title="Результати">
+            <div class="page" data-href="results" data-title="Результати">
                 Results
             </div>
-            <div class="page" data-role="options" data-title="Налаштування">
+            <div class="page" data-href="options" data-title="Налаштування">
                 Options
             </div>
         </main>
@@ -71,6 +73,18 @@
     <script src="js/exit.js"></script>
     <script src="js/current-year.js"></script>
     <script src="js/page-navigation.js"></script>
+    <script>
+        const voc = new Vocabulary();
+        voc.add({ word: "cat", translates: ["кіт"], group: "Тварини" });
+        voc.add({ word: "cat", translates: ["кіт"], group: "Риби" });
+        voc.add({ word: "cat", translates: ["кішка"], group: "Риби" });
+        voc.add({ word: "dog", translates: ["пес"], group: "Тварини" });
+        voc.add({ word: "fish", translates: ["риба"], group: "Щось" });
+        voc.add({ word: "dino", translates: ["дино"], group: "Щось" });
+        voc.add({ word: "tiger", translates: ["тигр"], group: "Щось" });
+        voc.add({ word: "lion", translates: ["лев"], group: "Щось" });
+        voc.printTo(document.querySelector(".vocabulary"));
+    </script>
 </body>
 
 </html>

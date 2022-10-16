@@ -7,19 +7,19 @@
         titleContainer.textContent = title;
     }
 
-    function showBackButton(pageRole) {
+    function showBackButton(pageHref) {
         const backButton = document.querySelector(".header .back");
-        if (pageRole !== "main") {
+        if (pageHref !== "main") {
             backButton.classList.add("open");
         } else {
             backButton.classList.remove("open");
         }
     }
 
-    function hideAllPagesExcept(pageRole) {
-        showBackButton(pageRole);
+    function hideAllPagesExcept(pageHref) {
+        showBackButton(pageHref);
         pages.forEach(page => {
-            if(page.dataset.role === pageRole){
+            if(page.dataset.href === pageHref){
                 page.classList.add("open");
                 setPageTitle(page.dataset.title);
             } else {
@@ -29,8 +29,6 @@
     }
 
     buttons.forEach(button => {
-        button.addEventListener("click", function () {
-            hideAllPagesExcept(this.dataset.role);
-        });
+        button.addEventListener("click", () => hideAllPagesExcept(button.dataset.href));
     });
 })();
