@@ -4,6 +4,10 @@
 }
 
 .page.open {
+    display: block;
+}
+
+.page.open.page-main {
     display: flex;
 }
 
