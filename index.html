@@ -45,11 +45,65 @@
                 </div>
                 <div class="vocabulary"></div>
                 <div class="button-container">
-                    <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-actions">Редагувати</button>
+                    <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-actions">
+                        Редагувати
+                    </button>
                 </div>
             </div>
             <div class="page-vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
-
+                <form class="form" autocomplete="off">
+                    <div class="form__group">
+                        <label class="group__label">
+                            <p>Слово</p>
+                            <div class="input-wrapper">
+                                <input type="text" name="word" placeholder="Слово" required>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form__group translates">
+                        <label class="group__label">
+                            <p>Переклади (2)</p>
+                            <div class="input-wrapper">
+                                <input type="text" name="translate1" placeholder="Переклад №1" required>
+                            </div>
+                        </label>
+                        <label class="group__label">
+                            <div class="input-wrapper">
+                                <input type="text" name="translate1" placeholder="Переклад №2" required>
+                                <div class="input-delete" title="Видалити переклад">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <div class="group__buttons">
+                            <button type="button" class="button vocabulary__button-primary">
+                                Додати переклад
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="group__label">
+                            <p>Розділ</p>
+                            <div class="input-wrapper">
+                                <select name="groups" class="select" required>
+                                    <option value="" selected disabled>Виберіть розділ зі списку</option>
+                                    <option value="group1">Розділ1</option>
+                                    <option value="group2">Розділ2</option>
+                                </select>
+                            </div>
+                        </label>
+                        <div class="group__buttons">
+                            <button type="button" class="button vocabulary__button-primary">
+                                Додати розділ
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form__submit-group button-container">
+                        <label>
+                            <input type="submit" class="button vocabulary__button-secondary" value="Додати">
+                        </label> 
+                    </div>
+                </form>
             </div>
             <div class="page" data-page="results" data-title="Результати">
                 Results
@@ -75,8 +129,7 @@
                 <p>Hello world!</p>
             </div>
             <div class="dialog__section dialog__footer">
-                <button class="button dialog__button-dark dialog__button dialog__close"
-                    role="cancel">Cancel</button>
+                <button class="button dialog__button-dark dialog__button dialog__close" role="cancel">Cancel</button>
                 <button class="button dialog__button-primary dialog__button" role="submit">ОК</button>
             </div>
         </div>
@@ -86,6 +139,7 @@
     <script src="js/current-year.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/page-navigation.js"></script>
+    <script src="js/form.js"></script>
     <script>
         const voc = new Vocabulary();
         voc.add({ word: "cat", translates: ["кіт"], group: "Тварини" });

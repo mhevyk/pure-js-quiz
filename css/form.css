@@ -1,0 +1,67 @@
+.form__group {
+    margin: 20px 0;
+    border-left: 2px solid var(--primary-opposite-color);
+}
+
+.select {
+    appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 8px);
+    background-position-y: 5px;
+}
+
+.form__group input,
+.select {
+    padding: 7px 0 7px 15px;
+    font-size: 16px;
+    border: 1px solid var(--button-disabled-color);
+    border-radius: 4px;
+    transition: 350ms;
+    color: var(--primary-color);
+    width: 100%;
+}
+
+.form__group .group__label p {
+    padding: 8px 0 12px 16px;
+}
+
+.form__group .group__label p.input-required::after {
+    content: "*";
+}
+
+.group__buttons {
+    padding-left: 16px;
+    margin: 16px 0;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-left: 16px;
+}
+
+.input-wrapper .input-delete {
+    padding: 0 15px;
+    color: var(--highlight-fail-color);
+}
+
+.input-wrapper .input-delete i {
+    transform: scale(1);
+    transition: 300ms;
+}
+
+.input-wrapper .input-delete i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.form__group input:focus,
+.select:focus {
+    outline: none;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 5px 1px var(--button-disabled-color);
+}

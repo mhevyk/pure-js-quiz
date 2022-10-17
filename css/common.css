@@ -26,9 +26,9 @@
     --button-disabled-color: rgba(0, 0, 0, 0.2);
 
     --highlight-success-color: rgb(0, 128, 0);
-    --highlight-fail-color: rgb(167, 0, 0);
+    --highlight-fail-color: rgb(255, 0, 0);
     --highlight-success-bg: rgb(0, 128, 0, 0.5);
-    --highlight-fail-bg: rgb(167, 0, 0, 0.5);
+    --highlight-fail-bg: rgb(255, 0, 0, 0.5);
 
     --record-padding-x: 7px;
     --record-value-padding-left: 25px;
