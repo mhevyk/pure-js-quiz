@@ -6,13 +6,14 @@
         window.open(location, '_self').close();
     }
 
-    dialog.content({
-        header: "Вихід з програми",
-        body: "Справді вийти із програми?",
-        submitBtn: "Так",
-        cancelBtn: "Скасувати"
+    exit.addEventListener("click", () => {
+        dialog.open();
+        dialog.content({
+            header: "Вихід з програми",
+            body: "Справді вийти із програми?",
+            submitBtn: "Так",
+            cancelBtn: "Скасувати"
+        });
+        dialog.addEventListener("submit", exitApp);
     });
-
-    exit.addEventListener("click", () => dialog.open());
-    dialog.addEventListener("submit", exitApp);
 })();

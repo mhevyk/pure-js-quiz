@@ -66,10 +66,18 @@ class Dialog {
   }
 
   content(props) {
-      props.header && this.header(props.header);
-      props.body && this.body(props.body);
-      props.submitBtn && this.submitBtn(props.submitBtn);
-      props.cancelBtn && this.cancelBtn(props.cancelBtn);
+      if (props.header != null) {
+        this.header(props.header);
+      }
+      if (props.body != null) {
+        this.body(props.body);
+      }
+      if (props.submitBtn != null) {
+        this.submitBtn(props.submitBtn);
+      }
+      if (props.cancelBtn != null) {
+        this.cancelBtn(props.cancelBtn);
+      }
   }
 
   //methods to disable or enable dialog buttons
@@ -103,6 +111,8 @@ class Dialog {
       Dialog.dispatchCustomEvent(this.container, "close");
       const body = document.body;
       body.classList.remove("dialog-open");
+
+      this.resetEventListeners();
 
       if (this.isOpen()) {
           this.container.parentElement.classList.remove("open");

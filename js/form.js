@@ -1,22 +1,31 @@
 (function () {
-    const clearFormButtons = document.querySelectorAll(".input__clear");
+    const deleteInputButtonList = document.querySelectorAll(".input-delete");
 
-    function clearInput(event) {
-        const clickedElement = event.target;
-        const input = clickedElement.parentElement.previousElementSibling;
-        input.value = "";
+    const dialog = new Dialog();
+
+    function deleteTranslateContainer(clickedElementContainer) {
+        const inputWrapper = clickedElementContainer.parentElement;
+        const labelWithInputWrapper = inputWrapper.parentElement;
+        labelWithInputWrapper.remove();
     }
 
-    function markRequired() {
-        const inputs = document.querySelectorAll(".form__group [required]");
-        inputs.forEach(input => {
-            input.parentElement.previousElementSibling?.classList.add("input-required");
+    deleteInputButtonList.forEach(button => {
+        button.addEventListener("click", event => {
+            const clickedElementContainer = event.target.parentElement;
+            const inputValue = clickedElementContainer.previousElementSibling.value;
+
+            dialog.content({
+                header: "Видалення перекладу",
+                submitBtn: "Так",
+                body: `Справді видалити переклад<b>${inputValue ? ` ${inputValue}` : ``}</b>?`,
+                cancelBtn: "Скасувати"
+            });
+
+            dialog.open();
+            dialog.addEventListener("submit", () => {
+                deleteTranslateContainer(clickedElementContainer);
+                dialog.close();
+            });
         });
-    }
-
-    markRequired();
-
-    clearFormButtons.forEach(button => {
-        button.addEventListener("click", clearInput);
     });
 })();

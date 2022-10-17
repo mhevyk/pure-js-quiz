@@ -44,17 +44,17 @@
     padding-left: 16px;
 }
 
-.input-wrapper .input-delete {
+.input-wrapper .input-delete__container {
     padding: 0 15px;
     color: var(--highlight-fail-color);
 }
 
-.input-wrapper .input-delete i {
+.input-wrapper .input-delete {
     transform: scale(1);
     transition: 300ms;
 }
 
-.input-wrapper .input-delete i:hover {
+.input-wrapper .input-delete:hover {
     cursor: pointer;
     transform: scale(1.2);
 }
