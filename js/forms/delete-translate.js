@@ -1,8 +1,6 @@
 (function () {
     const deleteInputButtonList = document.querySelectorAll(".input-delete");
 
-    const dialog = new Dialog();
-
     function deleteTranslateContainer(clickedElementContainer) {
         const inputWrapper = clickedElementContainer.parentElement;
         const labelWithInputWrapper = inputWrapper.parentElement;
@@ -13,6 +11,8 @@
         button.addEventListener("click", event => {
             const clickedElementContainer = event.target.parentElement;
             const inputValue = clickedElementContainer.previousElementSibling.value;
+
+            const dialog = new Dialog();
 
             dialog.content({
                 header: "Видалення перекладу",
