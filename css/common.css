@@ -10,11 +10,15 @@
     --main-container-margin-y: 20px;
     --background-image: url(../img/diagmonds.png);
 
-    --primary-color: rgb(26, 66, 87);
+    --primary-color: #1a4257;
     --primary-opposite-color: #50B4EB;
+    --dark-color: black;
     --primary-opposite-hover-color: rgb(152, 208, 238);
     --primary-hover-color: #0a58ca;
-    --secondary-color: black;
+    --secondary-color: #A35C00;
+    --secondary-color-rgb: 163, 92, 0;
+    --secondary-hover-color: rgba(var(--secondary-color-rgb), 0.5);
+    --secondary-bg-color: rgba(var(--secondary-color-rgb), 0.1);
     --primary-light-color: silver;
     --secondary-light-color: gray;
     --white-color: white;
@@ -22,9 +26,9 @@
     --button-disabled-color: rgba(0, 0, 0, 0.2);
 
     --highlight-success-color: rgb(0, 128, 0);
-    --highlight-fail-color: rgb(255, 0, 0);
+    --highlight-fail-color: rgb(167, 0, 0);
     --highlight-success-bg: rgb(0, 128, 0, 0.5);
-    --highlight-fail-bg: rgb(255, 0, 0, 0.5);
+    --highlight-fail-bg: rgb(167, 0, 0, 0.5);
 
     --record-padding-x: 7px;
     --record-value-padding-left: 25px;

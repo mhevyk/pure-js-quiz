@@ -6,6 +6,7 @@
     letter-spacing: 0.5px;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+    margin-top: 40px;
 }
 
 @media (min-width: 570px) {

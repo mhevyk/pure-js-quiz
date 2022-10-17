@@ -13,6 +13,6 @@
         cancelBtn: "Скасувати"
     });
 
-    exit.addEventListener("click", dialog.open.bind(dialog));
+    exit.addEventListener("click", () => dialog.open());
     dialog.addEventListener("submit", exitApp);
 })();

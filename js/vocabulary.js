@@ -56,12 +56,17 @@ class Vocabulary {
     #addTranslatesByWordIndex(wordIndex, translates) {
         translates = Array.isArray(translates) ? translates : [translates];
         this.data[wordIndex].translates.push(...translates);
-        this.data[wordIndex].translates = this.data[wordIndex].translates.unique();
+        this.data[wordIndex].translates =
+            this.data[wordIndex].translates.unique();
     }
 
     print() {
         this.data.forEach(record => {
-            console.log(`${record.word} => ${record.translates.join(", ")} (${record.group})`);
+            console.log(
+                `${record.word} => ${record.translates.join(", ")} (${
+                    record.group
+                })`
+            );
         });
     }
 
@@ -71,9 +76,13 @@ class Vocabulary {
         this.data.forEach((record, recordIndex) => {
             container.innerHTML += `
                 <div class="vocabulary__record">
-                    <div class="record__item record__index">${recordIndex + 1}</div>
+                    <div class="record__item record__index">${
+                        recordIndex + 1
+                    }</div>
                     <div class="record__item record__word">${record.word}</div>
-                    <div class="record__item record__translates">${record.translates.join(", ")}</div>
+                    <div class="record__item record__translates">${record.translates.join(
+                        ", "
+                    )}</div>
                 </div>
             `;
         });

@@ -18,37 +18,43 @@
         <header class="header">
             <div class="title">
                 <div class="back">
-                    <i class="page-open-button fa-solid fa-circle-arrow-left" data-href="main"></i>
+                    <i class="fa-solid fa-circle-arrow-left"></i>
                 </div>
                 <h1>Перевірка слів</h1>
                 <h3>Найкраща програма для якісного вивчення слів</h3>
             </div>
         </header>
         <main class="main">
-            <div class="page-main page open" data-href="main" data-title="Перевірка слів">
+            <div class="page-main page open" data-page="main" data-title="Перевірка слів">
                 <nav class="nav main__nav">
-                    <button class="page-open-button nav__item" data-href="quiz">Тестування</button>
-                    <button class="page-open-button nav__item" data-href="vocabulary">Словник</button>
-                    <button class="page-open-button nav__item" data-href="results">Результати</button>
-                    <button class="page-open-button nav__item" data-href="options">Налаштування</button>
+                    <button class="page-open-button nav__item" data-page="quiz">Тестування</button>
+                    <button class="page-open-button nav__item" data-page="vocabulary">Словник</button>
+                    <button class="page-open-button nav__item" data-page="results">Результати</button>
+                    <button class="page-open-button nav__item" data-page="options">Налаштування</button>
                     <button class="nav__item exit">Вихід</button>
                 </nav>
             </div>
-            <div class="page" data-href="quiz" data-title="Тестування">
+            <div class="page" data-page="quiz" data-title="Тестування">
                 Quiz
             </div>
-            <div class="page-header page" data-href="vocabulary" data-title="Словник">
+            <div class="page-vocabulary-list page" data-page="vocabulary" data-title="Словник">
                 <div class="vocabulary__header vocabulary__record">
                     <div class="record__item record__index">№</div>
                     <div class="record__item record__word">Слово</div>
-                    <div class="record__item record__translates">Переклади</div>
+                    <div class="record__item record__translates">Переклад(и)</div>
                 </div>
                 <div class="vocabulary"></div>
+                <div class="button-container">
+                    <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-actions">Редагувати</button>
+                </div>
             </div>
-            <div class="page" data-href="results" data-title="Результати">
+            <div class="page-vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
+
+            </div>
+            <div class="page" data-page="results" data-title="Результати">
                 Results
             </div>
-            <div class="page" data-href="options" data-title="Налаштування">
+            <div class="page" data-page="options" data-title="Налаштування">
                 Options
             </div>
         </main>
@@ -69,7 +75,7 @@
                 <p>Hello world!</p>
             </div>
             <div class="dialog__section dialog__footer">
-                <button class="button dialog__button-secondary dialog__button dialog__close"
+                <button class="button dialog__button-dark dialog__button dialog__close"
                     role="cancel">Cancel</button>
                 <button class="button dialog__button-primary dialog__button" role="submit">ОК</button>
             </div>
@@ -78,6 +84,7 @@
     <script src="js/dialog.js"></script>
     <script src="js/exit.js"></script>
     <script src="js/current-year.js"></script>
+    <script src="js/stack.js"></script>
     <script src="js/page-navigation.js"></script>
     <script>
         const voc = new Vocabulary();

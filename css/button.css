@@ -17,6 +17,14 @@
     color: var(--secondary-light-color);
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    padding: 14px 0;
+}
+
 [class*='button-primary'] {
     border: 1px solid transparent;
     background-color: var(--primary-color);
@@ -25,7 +33,7 @@
 
 [class*='button-primary']:hover {
     border: 1px solid var(--primary-color);
-    background-color: var(--white-color);
+    background-color: transparent;
     color: var(--primary-color);
 }
 
@@ -37,6 +45,19 @@
 
 [class*='button-secondary']:hover {
     border: 1px solid var(--secondary-color);
-    background-color: var(--white-color);
+    background-color: transparent;
     color: var(--secondary-color);
+}
+
+
+[class*='button-dark'] {
+    border: 1px solid transparent;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+[class*='button-dark']:hover {
+    border: 1px solid var(--dark-color);
+    background-color: transparent;
+    color: var(--dark-color);
 }
