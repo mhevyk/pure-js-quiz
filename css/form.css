@@ -52,7 +52,14 @@
 }
 
 .form__group .group__button-container>button:not(:last-child) {
-    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 570px) {
+    .form__group .group__button-container>button:not(:last-child) {
+        margin-right: 5px;
+        margin-bottom: 0;
+    }
 }
 
 .form__group .input-delete__container {
