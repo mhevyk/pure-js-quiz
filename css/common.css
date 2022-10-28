@@ -46,6 +46,13 @@ button:disabled {
     pointer-events: none;
 }
 
+.small-description {
+    font-size: 12px;
+    line-height: 17px;
+    padding: 10px 0 5px;
+    color: var(--secondary-light-color);
+}
+
 .app-wrapper {
     display: flex;
     flex-direction: column;
