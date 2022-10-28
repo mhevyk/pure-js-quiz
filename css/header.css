@@ -3,9 +3,11 @@
 }
 
 .header .title {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     background-color: var(--button-disabled-color);
-    margin-top: 55px;
-    padding: 12px 20px;
+    color: var(--secondary-color);
+    padding: 30px 20px 35px;
     position: relative;
 }
 
@@ -33,6 +35,7 @@
 }
 
 .header .title h3 {
+    letter-spacing: 2px;
     max-width: 60%;
     margin: 5px auto 0;
     font-size: 13px;

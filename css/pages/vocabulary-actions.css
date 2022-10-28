@@ -1,0 +1,21 @@
+.page__vocabulary-actions .vocabulary__actions-group {
+    background-color: var(--button-disabled-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-left: 4px solid var(--primary-color);
+    font-size: 17px;
+    color: var(--primary-color);
+}
+
+.page__vocabulary-actions .vocabulary__action {
+    display: flex;
+    justify-content: space-between;
+    gap: 1px;
+    border-bottom: 1px solid var(--button-disabled-color);
+    margin-top: 3px;
+}
+
+.page__vocabulary-actions .vocabulary__actions-group,
+.page__vocabulary-actions .action__name {
+    padding: 8px 0 8px 25px;
+}

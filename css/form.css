@@ -1,6 +1,7 @@
 .form__group {
-    margin: 20px 0;
-    border-left: 2px solid var(--primary-opposite-color);
+    margin-bottom: 20px;
+    padding: 10px 0 10px 16px;
+    border-left: 2px solid var(--secondary-color);
 }
 
 .select {
@@ -23,16 +24,13 @@
     width: 100%;
 }
 
-.form__group .group__label p {
-    padding: 8px 0 12px 16px;
-}
-
-.form__group .group__label p.input-required::after {
-    content: "*";
+.form__group .group__label-text {
+    display: block;
+    padding: 8px 0 12px;
+    color: var(--primary-color);
 }
 
 .group__buttons {
-    padding-left: 16px;
     margin: 16px 0;
 }
 
@@ -41,7 +39,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 8px;
-    padding-left: 16px;
 }
 
 .input-wrapper .input-delete__container {
@@ -62,6 +59,6 @@
 .form__group input:focus,
 .select:focus {
     outline: none;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-opposite-color);
     box-shadow: 0 0 5px 1px var(--button-disabled-color);
 }

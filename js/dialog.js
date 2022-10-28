@@ -18,9 +18,9 @@ class Dialog {
       }
       this.container = document.querySelector(selector);
  
-      this.closeButton = this.container.querySelector("[role='close']");
-      this.cancelButton = this.container.querySelector("[role='cancel']");
-      this.submitButton = this.container.querySelector("[role='submit']");
+      this.closeButton = this.container.querySelector("[data-role='close']");
+      this.cancelButton = this.container.querySelector("[data-role='cancel']");
+      this.submitButton = this.container.querySelector("[data-role='submit']");
 
       this.headerSection = this.container.querySelector(".dialog__header h2");
       this.bodySection = this.container.querySelector(".dialog__body");
@@ -65,19 +65,11 @@ class Dialog {
       this.cancelButton.textContent = text;
   }
 
-  content(props) {
-      if (props.header != null) {
-        this.header(props.header);
-      }
-      if (props.body != null) {
-        this.body(props.body);
-      }
-      if (props.submitBtn != null) {
-        this.submitBtn(props.submitBtn);
-      }
-      if (props.cancelBtn != null) {
-        this.cancelBtn(props.cancelBtn);
-      }
+  content({header: headerContent, body: bodyContent, submitBtn: submitBtnContent, cancelBtn: cancelBtnContent}) {
+      this.header(headerContent ?? "");
+      this.body(bodyContent ?? "");
+      this.submitBtn(submitBtnContent ?? "");
+      this.cancelBtn(cancelBtnContent ?? "");
   }
 
   //methods to disable or enable dialog buttons

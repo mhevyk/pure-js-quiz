@@ -5,6 +5,7 @@
     font-size: 13px;
     transition: 300ms;
     text-transform: uppercase;
+    position: relative;
 }
 
 .button:hover {
@@ -21,8 +22,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-bg-color);
     padding: 14px 0;
+}
+
+.button-container .button::before,
+.button-container .button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 1px;
+    background-color: var(--secondary-light-color);
+    transition: 400ms;
+}
+
+.button-container .button::before {
+    left: -55px;
+}
+
+.button-container .button:hover::before {
+    transform: rotate(90deg);
+    width: 15px;
+    left: -36px;
+}
+
+.button-container .button::after {
+    right: -55px;
+}
+
+.button-container .button:hover::after {
+    transform: rotate(-90deg);
+    width: 15px;
+    right: -36px;
 }
 
 [class*='button-primary'] {

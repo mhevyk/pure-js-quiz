@@ -15,15 +15,15 @@
     --dark-color: black;
     --primary-opposite-hover-color: rgb(152, 208, 238);
     --primary-hover-color: #0a58ca;
-    --secondary-color: #A35C00;
-    --secondary-color-rgb: 163, 92, 0;
+    --secondary-color: rgb(72, 104, 121);
+    --secondary-color-rgb: 16, 105, 154;
     --secondary-hover-color: rgba(var(--secondary-color-rgb), 0.5);
     --secondary-bg-color: rgba(var(--secondary-color-rgb), 0.1);
     --primary-light-color: silver;
     --secondary-light-color: gray;
     --white-color: white;
 
-    --button-disabled-color: rgba(0, 0, 0, 0.2);
+    --button-disabled-color: rgba(0, 0, 0, 0.13);
 
     --highlight-success-color: rgb(0, 128, 0);
     --highlight-fail-color: rgb(255, 0, 0);

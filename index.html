@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,11 @@
                     <i class="fa-solid fa-circle-arrow-left"></i>
                 </div>
                 <h1>Перевірка слів</h1>
-                <h3>Найкраща програма для якісного вивчення слів</h3>
+                <h3>найкраща програма для якісного вивчення слів</h3>
             </div>
         </header>
         <main class="main">
-            <div class="page-main page open" data-page="main" data-title="Перевірка слів">
+            <div class="page__main page open" data-page="main" data-title="Перевірка слів">
                 <nav class="nav main__nav">
                     <button class="page-open-button nav__item" data-page="quiz">Тестування</button>
                     <button class="page-open-button nav__item" data-page="vocabulary">Словник</button>
@@ -37,44 +37,56 @@
             <div class="page" data-page="quiz" data-title="Тестування">
                 Quiz
             </div>
-            <div class="page-vocabulary-list page" data-page="vocabulary" data-title="Словник">
+            <div class="page__vocabulary-list page" data-page="vocabulary" data-title="Словник">
                 <div class="vocabulary__header vocabulary__record">
                     <div class="record__item record__index">№</div>
                     <div class="record__item record__word">Слово</div>
                     <div class="record__item record__translates">Переклад(и)</div>
                 </div>
                 <div class="vocabulary"></div>
-                <div class="button-container">
+                <div class="button-container vocabulary__button-container">
                     <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-actions">
                         Редагувати
                     </button>
                 </div>
             </div>
-            <div class="page-vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
+            <div class="page__vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
+                <div class="vocabulary-actions__container">
+                    <div class="vocabulary__actions-group">Додавання</div>
+                    <div class="vocabulary__action">
+                        <div class="action__name">Через форму</div>
+                        <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-add">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="vocabulary__action">
+                        <div class="action__name">Через імпорт з файлу</div>
+                        <button class="button vocabulary__button-secondary page-open-button"
+                            data-page="vocabulary-group-import">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
                 <form class="form" autocomplete="off">
                     <div class="form__group">
-                        <label class="group__label">
-                            <p>Слово</p>
-                            <div class="input-wrapper">
-                                <input type="text" name="word" placeholder="Слово" required>
-                            </div>
+                        <label>
+                            <span class="group__label-text">Слово</span>
+                            <input type="text" name="word" placeholder="Слово" required>
                         </label>
                     </div>
                     <div class="form__group translates">
-                        <label class="group__label">
-                            <p>Переклади (2)</p>
-                            <div class="input-wrapper">
-                                <input type="text" name="translate1" placeholder="Переклад №1" required>
-                            </div>
+                        <label>
+                            <span class="group__label-text">Переклади (2)</span>
+                            <input type="text" name="translate1" placeholder="Переклад" required>
                         </label>
-                        <label class="group__label">
-                            <div class="input-wrapper">
-                                <input type="text" name="translate1" placeholder="Переклад №2" required>
-                                <div class="input-delete__container">
-                                    <i class="input-delete fa fa-trash" aria-hidden="true" title="Видалити переклад"></i>
-                                </div>
+                        <div class="input-wrapper">
+                            <input type="text" name="translate1" placeholder="Переклад" required>
+                            <div class="input-delete__container">
+                                <i class="input-delete fa fa-trash" aria-hidden="true" title="Видалити переклад"></i>
                             </div>
-                        </label>
+                        </div>
                         <div class="group__buttons">
                             <button type="button" class="button vocabulary__button-primary">
                                 Додати переклад
@@ -82,16 +94,14 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <label class="group__label">
-                            <p>Розділ</p>
-                            <div class="input-wrapper">
-                                <select name="groups" class="select" required>
-                                    <option value="" selected disabled>Виберіть розділ зі списку</option>
-                                    <option value="group1">Розділ1</option>
-                                    <option value="group2">Розділ2</option>
-                                </select>
-                            </div>
-                        </label>
+                        <div class="input-wrapper">
+                            <span class="group__label-text">Розділ</span>
+                            <select name="groups" class="select" required>
+                                <option value="" selected disabled>Виберіть розділ</option>
+                                <option value="group1">Розділ1</option>
+                                <option value="group2">Розділ2</option>
+                            </select>
+                        </div>
                         <div class="group__buttons">
                             <button type="button" class="button vocabulary__button-primary">
                                 Додати розділ
@@ -99,11 +109,13 @@
                         </div>
                     </div>
                     <div class="form__submit-group button-container">
-                        <label>
-                            <input type="submit" class="button vocabulary__button-secondary" value="Додати">
-                        </label> 
+                        <button type="submit" class="button vocabulary__button-secondary">
+                            Додати
+                        </button>
                     </div>
                 </form>
+            </div>
+            <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import" data-title="Імпорт">
             </div>
             <div class="page" data-page="results" data-title="Результати">
                 Results
@@ -113,15 +125,16 @@
             </div>
         </main>
         <footer class="footer">
-            <span>Copyright &copy; <a href="https://github.com/mhevyk" target="blank" class="link">Max Hevyk</a></span>
-            <span>2019-<span class="current-year-container"></span>
+            Copyright &copy;
+            <a href="https://github.com/mhevyk" target="blank" class="link">Max Hevyk</a>
+            2019-<span class="current-year-container"></span>
         </footer>
     </div>
     <div class="dialog-container">
         <div class="dialog">
             <div class="dialog__section dialog__header">
                 <h2>Modal window title</h2>
-                <button class="dialog__close dialog__cross" role="close">
+                <button class="dialog__close dialog__cross" data-role="close">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
             </div>
@@ -129,8 +142,9 @@
                 <p>Hello world!</p>
             </div>
             <div class="dialog__section dialog__footer">
-                <button class="button dialog__button-dark dialog__button dialog__close" role="cancel">Cancel</button>
-                <button class="button dialog__button-primary dialog__button" role="submit">ОК</button>
+                <button class="button dialog__button-dark dialog__button dialog__close"
+                    data-role="cancel">Cancel</button>
+                <button class="button dialog__button-primary dialog__button" data-role="submit">ОК</button>
             </div>
         </div>
     </div>
