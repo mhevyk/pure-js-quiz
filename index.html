@@ -69,51 +69,47 @@
                 </div>
             </div>
             <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
-                <form class="form" autocomplete="off">
+                <form class="form form__add-single-word" autocomplete="off">
                     <div class="form__group">
-                        <label>
-                            <span class="group__label-text">Слово</span>
+                        <label class="label">
+                            <span class="label__text">Слово</span>
                             <input type="text" name="word" placeholder="Слово" required>
                         </label>
                     </div>
                     <div class="form__group translates">
-                        <label>
-                            <span class="group__label-text">Переклади (2)</span>
-                            <input type="text" name="translate1" placeholder="Переклад" required>
+                        <label class="label">
+                            <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
+                            <input type="text" name="translate" placeholder="Переклад" required>
                         </label>
-                        <div class="input-wrapper">
-                            <input type="text" name="translate1" placeholder="Переклад" required>
-                            <div class="input-delete__container">
-                                <i class="input-delete fa fa-trash" aria-hidden="true" title="Видалити переклад"></i>
-                            </div>
-                        </div>
-                        <div class="group__buttons">
-                            <button type="button" class="button vocabulary__button-primary">
-                                Додати переклад
-                            </button>
+                        <div class="translates__additional"></div>
+                        <div class="group__button-container">
+                            <button id="add-translate" type="button" class="button group__button-primary">Додати</button>
+                            <button id="add-translate-reset" type="button" class="button group__button-dark">Скинути</button>
                         </div>
                     </div>
                     <div class="form__group">
-                        <div class="input-wrapper">
-                            <span class="group__label-text">Розділ</span>
+                        <label class="label">
+                            <span class="label__text">Розділ</span>
                             <select name="groups" class="select" required>
                                 <option value="" selected disabled>Виберіть розділ</option>
                                 <option value="group1">Розділ1</option>
                                 <option value="group2">Розділ2</option>
                             </select>
-                        </div>
-                        <div class="group__buttons">
-                            <button type="button" class="button vocabulary__button-primary">
-                                Додати розділ
-                            </button>
+                        </label>
+                        <div class="group__button-container">
+                            <button type="button" class="button group__button-primary page-open-button"
+                                data-page="vocabulary-group-add">Додати</button>
                         </div>
                     </div>
                     <div class="form__submit-group button-container">
                         <button type="submit" class="button vocabulary__button-secondary">
-                            Додати
+                            Додати слово
                         </button>
                     </div>
                 </form>
+            </div>
+            <div class="page" data-page="vocabulary-group-add" data-title="Новий розділ">
+                Тут буде додавання нового розділу...
             </div>
             <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import" data-title="Імпорт">
             </div>
@@ -153,6 +149,7 @@
     <script src="js/current-year.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/page-navigation.js"></script>
+    <script src="js/forms/add-reset-translate.js"></script>
     <script src="js/forms/delete-translate.js"></script>
 </body>
 

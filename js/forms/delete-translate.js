@@ -1,31 +1,31 @@
 (function () {
-    const deleteInputButtonList = document.querySelectorAll(".input-delete");
-
-    function deleteTranslateContainer(clickedElementContainer) {
-        const inputWrapper = clickedElementContainer.parentElement;
-        const labelWithInputWrapper = inputWrapper.parentElement;
-        labelWithInputWrapper.remove();
+    function deleteTranslate(deleteIndex) {
+        const translateContainerToDelete = document.querySelector(
+            `[data-delete-index='${deleteIndex}']`
+        );
+        translateContainerToDelete.remove();
+        updateTranslatesCount();
     }
 
-    deleteInputButtonList.forEach(button => {
-        button.addEventListener("click", event => {
-            const clickedElementContainer = event.target.parentElement;
-            const inputValue = clickedElementContainer.previousElementSibling.value;
+    document.querySelector(".translates").addEventListener("click", (event) => {
+        const clicked = event.target;
+        if (!clicked.classList.contains("input-delete")) return;
 
-            const dialog = new Dialog();
+        const dialog = new Dialog();
 
-            dialog.content({
-                header: "Видалення перекладу",
-                submitBtn: "Так",
-                body: `Справді видалити переклад<b>${inputValue ? ` ${inputValue}` : ``}</b>?`,
-                cancelBtn: "Скасувати"
-            });
+        const deletedTranslateIndex = +clicked.dataset.deleteIndex;
 
-            dialog.open();
-            dialog.addEventListener("submit", () => {
-                deleteTranslateContainer(clickedElementContainer);
-                dialog.close();
-            });
+        dialog.content({
+            header: "Видалення перекладу",
+            submitBtn: "Так",
+            body: `Справді видалити переклад?`,
+            cancelBtn: "Скасувати"
+        });
+
+        dialog.open();
+        dialog.addEventListener("submit", () => {
+            deleteTranslate(deletedTranslateIndex);
+            dialog.close();
         });
     });
 })();
