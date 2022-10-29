@@ -1,9 +1,5 @@
 (function () {
     const form = document.querySelector(".form__add-single-word");
-    const submitButton = form.querySelector("[type='submit']");
-
-
-    submitButton.addEventListener("click", markFormValidated.bind(null, form));
 
     function countValueOccurence(inputsArray) {
         return inputsArray.reduce((obj, current) => {
@@ -26,7 +22,7 @@
         const valueOccurence = countValueOccurence(allInputs);
 
         for (const input of allInputs) {
-            if (!input.value) {
+            if (!input.value.trim()) {
                 setInvalidFeedback(input, "Введіть " + ((input.name === "word") ? "слово!" : "переклад!"));
             }
             else if (valueOccurence[input.value] > 1) {
@@ -44,9 +40,9 @@
         const translateInputs = form.querySelectorAll("[name='translate']");
         const groupSelect = form.groups;
 
-        const word = wordInput.value;
-        const translates = Array.from(translateInputs, translateInput => translateInput.value);
-        const group = getValueFromSelect(groupSelect);
+        const word = wordInput.value.trim();
+        const translates = Array.from(translateInputs, translateInput => translateInput.value.trim());
+        const group = getValueFromSelect(groupSelect).trim();
 
         const voc = new Vocabulary();
         voc.add({word, translates, group});
@@ -73,9 +69,7 @@
             dialog.setOpenState(dialog.cancelButton, true);
         });
 
-        form.classList.remove("validated");
-        form.reset();
-        resetFeedbacks(form);
+        resetForm(form);
     }
 
     form.addEventListener("input", validateInputsWithSameValue);

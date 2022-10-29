@@ -42,10 +42,13 @@
 
         dialog.open();
         dialog.addEventListener("submit", () => {
-            const firstTranslateInput = document.querySelector(
-                ".form__add-single-word [name='translate']"
+            const form = document.querySelector(".form__add-single-word");
+            const firstTranslateInput = form.querySelector(
+                "[name='translate']"
             );
             resetTextInput(firstTranslateInput);
+
+            resetFeedbacks(form, "[data-reset]");
 
             translateId = 0;
             removeContainerChildren(translatesContainer);

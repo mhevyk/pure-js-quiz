@@ -54,15 +54,22 @@
                 <div class="vocabulary-actions__container">
                     <div class="vocabulary__actions-group">Додавання</div>
                     <div class="vocabulary__action">
-                        <div class="action__name">Через форму</div>
+                        <div class="action__name">Слова через форму</div>
                         <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-add">
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
                     <div class="vocabulary__action">
-                        <div class="action__name">Через імпорт з файлу</div>
+                        <div class="action__name">Слів через імпорт з файлу</div>
                         <button class="button vocabulary__button-secondary page-open-button"
                             data-page="vocabulary-group-import">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="vocabulary__action">
+                        <div class="action__name">Розділу</div>
+                        <button class="button vocabulary__button-secondary page-open-button"
+                            data-page="vocabulary-group-add">
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
@@ -86,7 +93,7 @@
                             <input type="text" name="translate" placeholder="Переклад" required>
                             <div class="feedbacks small-description">
                                 <div class="feedback valid">Переклад введено правильно!</div>
-                                <div class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</div>
+                                <div class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>Введіть переклад!</div>
                             </div>
                         </label>
                         <div class="translates__additional"></div>
@@ -114,14 +121,30 @@
                         </div>
                     </div>
                     <div class="form__submit-group button-container">
-                        <button type="submit" class="button vocabulary__button-secondary">
+                        <button type="submit" class="button form__button-secondary">
                             Додати слово
                         </button>
                     </div>
                 </form>
             </div>
             <div class="page" data-page="vocabulary-group-add" data-title="Новий розділ">
-                Тут буде додавання нового розділу...
+                <form class="form form__add-group" autocomplete="off">
+                    <div class="form__group">
+                        <label class="label">
+                            <span class="label__text">Назва розділу</span>
+                            <input type="text" name="group" placeholder="Назва розділу" required>
+                            <div class="feedbacks small-description">
+                                <div class="feedback valid">Розділ введений правильно!</div>
+                                <div class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть назву розділу!</div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form__submit-group button-container">
+                        <button type="submit" class="button form__button-secondary">
+                            Додати розділ
+                        </button>
+                    </div>
+                </form>
             </div>
             <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import" data-title="Імпорт">
             </div>
@@ -161,9 +184,11 @@
     <script src="js/current-year.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/page-navigation.js"></script>
+    <script src="js/forms/form.js"></script>
     <script src="js/forms/add-reset-translate.js"></script>
     <script src="js/forms/delete-translate.js"></script>
     <script src="js/forms/form-add-single-word-validate.js"></script>
+    <script src="js/forms/form-add-group-validate.js"></script>
 </body>
 
 </html>

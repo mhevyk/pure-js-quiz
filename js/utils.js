@@ -26,14 +26,21 @@ function getValueFromSelect(select) {
 
 function setInvalidFeedback(input, feedback) {
     input.setCustomValidity(feedback);
-    input.nextElementSibling.querySelector(".invalid").textContent = feedback;
+    input.nextElementSibling.querySelector(".invalid").innerHTML = feedback;
 }
 
-function resetFeedbacks(form) {
-    const feedbacks = form.querySelectorAll("[data-default-feedback]");
+function resetFeedbacks(form, feedbackSelector = "[data-default-feedback]") {
+    const feedbacks = form.querySelectorAll(feedbackSelector);
+    console.log(feedbacks);
     feedbacks.forEach(feedback => feedback.textContent = feedback.dataset.defaultFeedback);
 }
 
 function markFormValidated(form) {
     form.classList.add("validated");
+}
+
+function resetForm(form) {
+    form.classList.remove("validated");
+    form.reset();
+    resetFeedbacks(form);
 }
