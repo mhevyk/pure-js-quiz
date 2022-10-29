@@ -74,12 +74,20 @@
                         <label class="label">
                             <span class="label__text">Слово</span>
                             <input type="text" name="word" placeholder="Слово" required>
+                            <div class="feedbacks small-description">
+                                <div class="feedback valid">Слово введено правильно!</div>
+                                <div class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!</div>
+                            </div>
                         </label>
                     </div>
                     <div class="form__group translates">
                         <label class="label">
                             <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
                             <input type="text" name="translate" placeholder="Переклад" required>
+                            <div class="feedbacks small-description">
+                                <div class="feedback valid">Переклад введено правильно!</div>
+                                <div class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</div>
+                            </div>
                         </label>
                         <div class="translates__additional"></div>
                         <div class="group__button-container">
@@ -95,6 +103,10 @@
                                 <option value="group1">Розділ1</option>
                                 <option value="group2">Розділ2</option>
                             </select>
+                            <div class="feedbacks small-description">
+                                <div class="feedback valid">Розділ вибрано!</div>
+                                <div class="feedback invalid">Виберіть розділ зі списку!</div>
+                            </div>
                         </label>
                         <div class="group__button-container">
                             <button type="button" class="button group__button-primary page-open-button"
@@ -151,6 +163,7 @@
     <script src="js/page-navigation.js"></script>
     <script src="js/forms/add-reset-translate.js"></script>
     <script src="js/forms/delete-translate.js"></script>
+    <script src="js/forms/form-add-single-word-validate.js"></script>
 </body>
 
 </html>

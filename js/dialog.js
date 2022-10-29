@@ -84,6 +84,17 @@ class Dialog {
       }
   }
 
+  setOpenState(button, state = false) {
+    const buttons = [
+        this.closeButton,
+        this.cancelButton,
+        this.submitButton,
+    ];
+    if (buttons.includes(button)) {
+        !state ? button.setAttribute("hidden", true) : button.removeAttribute("hidden");
+    }
+}
+
   //methods to operate the state of modal
   isOpen() {
       return this.container.classList.contains("open");

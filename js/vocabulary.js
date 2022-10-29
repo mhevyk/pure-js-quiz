@@ -1,24 +1,30 @@
 class Vocabulary {
     constructor() {
+        if (Vocabulary._instance) {
+            return Vocabulary._instance;
+        }
+
         this.groups = [];
         this.data = [];
         this.props = [];
+
+        Vocabulary._instance = this;
     }
 
     indexOf(word) {
         return this.data.findIndex(record => record.word === word);
     }
 
-    add(record) {
-        const wordIndex = this.indexOf(record.word);
+    add({word, translates, group}) {
+        const wordIndex = this.indexOf(word);
 
         if (wordIndex !== -1) {
-            this.#addTranslatesByWordIndex(wordIndex, record.translates);
+            this.#addTranslatesByWordIndex(wordIndex, translates);
             return;
         }
 
-        this.data.push(record);
-        this.addGroup(record.group);
+        this.data.push({word, translates, group});
+        this.addGroup(group);
     }
 
     remove(word) {

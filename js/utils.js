@@ -19,3 +19,21 @@ function resetTextInput(input) {
 function removeContainerChildren(container) {
     container.innerHTML = "";
 }
+
+function getValueFromSelect(select) {
+    return select.options[select.selectedIndex].textContent;
+}
+
+function setInvalidFeedback(input, feedback) {
+    input.setCustomValidity(feedback);
+    input.nextElementSibling.querySelector(".invalid").textContent = feedback;
+}
+
+function resetFeedbacks(form) {
+    const feedbacks = form.querySelectorAll("[data-default-feedback]");
+    feedbacks.forEach(feedback => feedback.textContent = feedback.dataset.defaultFeedback);
+}
+
+function markFormValidated(form) {
+    form.classList.add("validated");
+}

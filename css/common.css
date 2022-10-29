@@ -47,10 +47,18 @@ button:disabled {
 }
 
 .small-description {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 17px;
     padding: 10px 0 5px;
     color: var(--secondary-light-color);
+}
+
+.text-success {
+    color: var(--highlight-success-color);
+}
+
+.text-fail {
+    color: var(--highlight-fail-color);
 }
 
 .app-wrapper {
