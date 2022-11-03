@@ -87,14 +87,13 @@ body.highlight-success .modal-overlay {
     border: 1px solid var(--highlight-success-color);
 }
 
-.dialog .dialog__section:not(:last-child) {
-    border-bottom: 1px solid var(--primary-light-color);
-}
-
 .dialog .dialog__header {
+    text-transform: uppercase;
     padding: 20px 15px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .dialog .dialog__header h2 {
@@ -111,6 +110,7 @@ body.highlight-success .modal-overlay {
 
 .dialog .dialog__body {
     text-align: justify;
+    word-wrap: break-word;
     line-height: 25px;
     flex-grow: 1;
     padding: 5px 15px 20px;

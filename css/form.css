@@ -15,7 +15,7 @@
 
 .form__group input,
 .form__group .select {
-    padding: 7px 0 7px 15px;
+    padding: 7px 15px;
     font-size: 16px;
     border: 1px solid var(--button-disabled-color);
     border-radius: 4px;

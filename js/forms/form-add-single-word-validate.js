@@ -44,32 +44,26 @@
         const translates = Array.from(translateInputs, translateInput => translateInput.value.trim());
         const group = getValueFromSelect(groupSelect).trim();
 
-        const voc = new Vocabulary();
-        voc.add({word, translates, group});
-        voc.printTo(document.querySelector(".vocabulary"));
-
         const dialog = new Dialog();
         dialog.content({
-            header: `<span class="text-success">Слово успішно додано!`,
-            submitBtn: "ОК",
+            header: `Додавання слова`,
+            submitBtn: "Додати",
+            cancelBtn: "Скасувати",
             body: `
-                <p><b>Слово: </b>${word}</p>
-                <p><b>Переклади: </b>${translates.join(", ")}</p>
-                <p><b>Розділ: </b>${group}</p>
+                <p><span class="text-primary">Слово:</span> ${word}</p>
+                <p><span class="text-primary">Переклади:</span> ${translates.join(", ")}</p>
+                <p><span class="text-primary">Розділ:</span> ${group}</p>
             `,
         });
 
-        dialog.setOpenState(dialog.cancelButton, false);
-        dialog.highlight(true);
-
         dialog.open();
-        dialog.addEventListener("submit", dialog.close.bind(dialog));
-        dialog.addEventListener("close", () => {
-            dialog.removeHighlight();
-            dialog.setOpenState(dialog.cancelButton, true);
+        dialog.addEventListener("submit", () => {
+            const voc = new Vocabulary();
+            voc.add({word, translates, group});
+            voc.print();
+            resetForm(form);
+            dialog.close();
         });
-
-        resetForm(form);
     }
 
     form.addEventListener("input", validateInputsWithSameValue);

@@ -31,7 +31,6 @@ function setInvalidFeedback(input, feedback) {
 
 function resetFeedbacks(form, feedbackSelector = "[data-default-feedback]") {
     const feedbacks = form.querySelectorAll(feedbackSelector);
-    console.log(feedbacks);
     feedbacks.forEach(feedback => feedback.textContent = feedback.dataset.defaultFeedback);
 }
 

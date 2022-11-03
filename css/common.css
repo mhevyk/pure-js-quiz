@@ -53,6 +53,10 @@ button:disabled {
     color: var(--secondary-light-color);
 }
 
+.text-primary {
+    color: var(--primary-color);
+}
+
 .text-success {
     color: var(--highlight-success-color);
 }

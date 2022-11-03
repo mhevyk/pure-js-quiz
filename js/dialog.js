@@ -110,6 +110,7 @@ class Dialog {
           this.container.classList.add("open");
       }
   }
+
   close() {
       Dialog.dispatchCustomEvent(this.container, "close");
       const body = document.body;

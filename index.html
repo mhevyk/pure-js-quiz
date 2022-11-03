@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="libs/fontawesome/all.min.css">
     <script src="js/utils.js"></script>
     <script src="js/vocabulary.js"></script>
+    <script src="js/init.js"></script>
 </head>
 
 <body>
@@ -80,7 +81,7 @@
                     <div class="form__group">
                         <label class="label">
                             <span class="label__text">Слово</span>
-                            <input type="text" name="word" placeholder="Слово" required>
+                            <input type="text" name="word" placeholder="Слово" maxlength="40" required>
                             <div class="feedbacks small-description">
                                 <div class="feedback valid">Слово введено правильно!</div>
                                 <div class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!</div>
@@ -90,7 +91,7 @@
                     <div class="form__group translates">
                         <label class="label">
                             <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
-                            <input type="text" name="translate" placeholder="Переклад" required>
+                            <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
                             <div class="feedbacks small-description">
                                 <div class="feedback valid">Переклад введено правильно!</div>
                                 <div class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>Введіть переклад!</div>
@@ -105,7 +106,7 @@
                     <div class="form__group">
                         <label class="label">
                             <span class="label__text">Розділ</span>
-                            <select name="groups" class="select" required>
+                            <select name="groups" class="select" data-content="groups" required>
                                 <option value="" selected disabled>Виберіть розділ</option>
                                 <option value="group1">Розділ1</option>
                                 <option value="group2">Розділ2</option>
@@ -132,7 +133,7 @@
                     <div class="form__group">
                         <label class="label">
                             <span class="label__text">Назва розділу</span>
-                            <input type="text" name="group" placeholder="Назва розділу" required>
+                            <input type="text" name="group" placeholder="Назва розділу" maxlength="40" required>
                             <div class="feedbacks small-description">
                                 <div class="feedback valid">Розділ введений правильно!</div>
                                 <div class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть назву розділу!</div>
@@ -173,9 +174,9 @@
                 <p>Hello world!</p>
             </div>
             <div class="dialog__section dialog__footer">
+                <button class="button dialog__button-primary dialog__button" data-role="submit">ОК</button>
                 <button class="button dialog__button-dark dialog__button dialog__close"
                     data-role="cancel">Cancel</button>
-                <button class="button dialog__button-primary dialog__button" data-role="submit">ОК</button>
             </div>
         </div>
     </div>
@@ -189,6 +190,7 @@
     <script src="js/forms/delete-translate.js"></script>
     <script src="js/forms/form-add-single-word-validate.js"></script>
     <script src="js/forms/form-add-group-validate.js"></script>
+    <script src="js/updateSelect.js"></script>
 </body>
 
 </html>

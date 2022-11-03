@@ -18,15 +18,22 @@
     grid-template-rows: 1fr 1fr;
 }
 
-.vocabulary__record:not(:last-child) {
-    border-bottom: 1px dashed var(--primary-opposite-color);
+.vocabulary__group {
+    border-top: 1px solid var(--primary-opposite-color);
+    border-bottom: 1px solid var(--primary-opposite-color);
+    display: flex;
+    background-color: var(--secondary-bg-color);
+}
+
+.vocabulary__record:not(:last-child) + .vocabulary__record {
+    border-top: 1px dashed var(--primary-opposite-color);
 }
 
 .vocabulary__header.vocabulary__record {
     border-bottom: none;
 }
 
-.vocabulary__record:nth-child(even) {
+.vocabulary .strip {
     background-color: var(--strip-color);
 }
 
@@ -41,13 +48,28 @@
     border-bottom: 1px solid var(--white-color);
 }
 
-.record__item {
-    padding-top: var(--record-padding-x);
-    padding-bottom: var(--record-padding-x);
+.vocabulary__group .record__index {
+    flex-basis: 60px;
+    display: none;
 }
 
 .record__item:not(:first-child) {
     padding-left: var(--record-value-padding-left);
+    padding-right: var(--record-value-padding-left);
+}
+
+.record__item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: var(--record-padding-x);
+    padding-bottom: var(--record-padding-x);
+}
+
+.vocabulary__group .record__item {
+    text-align: center;
+    flex-grow: 1;
+    letter-spacing: 0.3px;
+    color: var(--primary-color);
 }
 
 .record__word {
@@ -109,5 +131,9 @@
     .vocabulary__header .record__word {
         border-right: 1px solid var(--white-color);
         border-bottom: none;
+    }
+
+    .vocabulary__group .record__index {
+        display: block;
     }
 }

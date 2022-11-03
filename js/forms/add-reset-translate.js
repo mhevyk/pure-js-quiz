@@ -16,7 +16,7 @@
                 <div class="input-delete__container">
                     <i class="input-delete fa fa-trash" aria-hidden="true" title="Видалити переклад" data-delete-index="${translateId}"></i>
                 </div>
-                <input type="text" name="translate" placeholder="Переклад" required>
+                <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
                 <div class="feedbacks small-description">
                     <div class="feedback valid" aria-live="polite">Переклад введено правильно!</div>
                     <div class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</div>

@@ -1,14 +1,25 @@
 class Vocabulary {
-    constructor() {
+    constructor(container = document.querySelector(".vocabulary")) {
         if (Vocabulary._instance) {
             return Vocabulary._instance;
         }
 
+        this.container = container;
         this.groups = [];
         this.data = [];
-        this.props = [];
+        this.props = {
+            groups: true
+        };
 
         Vocabulary._instance = this;
+    }
+
+    getProp(prop) {
+        return this.props[prop];
+    }
+
+    setProp(prop, value) {
+        this.props[prop] = value;
     }
 
     indexOf(word) {
@@ -34,6 +45,10 @@ class Vocabulary {
             return true;
         }
         return false;
+    }
+
+    getGroupContent(group) {
+        return this.data.filter(record => record.group === group);
     }
 
     addGroup(group) {
@@ -66,7 +81,7 @@ class Vocabulary {
             this.data[wordIndex].translates.unique();
     }
 
-    print() {
+    printf() {
         this.data.forEach(record => {
             console.log(
                 `${record.word} => ${record.translates.join(", ")} (${
@@ -76,22 +91,48 @@ class Vocabulary {
         });
     }
 
-    printTo(container) {
-        container.innerHTML = "";
+    #printGroup(group) {
+        this.container.innerHTML += `
+            <div class="vocabulary__group">
+                <div class="record__index"></div>
+                <div class="record__item">${group}</div>
+            </div>
+        `;
+    }
 
-        this.data.forEach((record, recordIndex) => {
-            container.innerHTML += `
-                <div class="vocabulary__record">
-                    <div class="record__item record__index">${
-                        recordIndex + 1
-                    }</div>
-                    <div class="record__item record__word">${record.word}</div>
-                    <div class="record__item record__translates">${record.translates.join(
-                        ", "
-                    )}</div>
-                </div>
-            `;
+    #printRecord(index, record) {
+        const position = index.split(".").at(-1);
+        this.container.innerHTML += `
+            <div class="vocabulary__record${position % 2 ? ` strip` : ``}">
+                <div class="record__item record__index">${index}</div>
+                <div class="record__item record__word">${record.word}</div>
+                <div class="record__item record__translates">${record.translates.join(", ")}</div>
+            </div>
+        `;
+    }
+
+    #printRecordsList(list, groupIndex = ``) {
+        list.forEach((record, recordIndex) => {
+            this.#printRecord(`${groupIndex}${recordIndex + 1}`, record);
         });
+    }
+
+    print() {
+        this.container.innerHTML = "";
+
+        if (this.props.groups) {
+            let groupIndex = 1;
+            this.groups.forEach(group => {
+                const groupData = this.getGroupContent(group);
+                if (groupData.length) {
+                    this.#printGroup(group);
+                    this.#printRecordsList(groupData, `${groupIndex}.`);
+                    groupIndex++;
+                }
+            });
+        } else {
+            this.#printRecordsList(this.data);
+        }
     }
 }
 
@@ -106,6 +147,6 @@ class Vocabulary {
         voc.add({ word: "dino", translates: ["дино"], group: "Щось" });
         voc.add({ word: "tiger", translates: ["тигр"], group: "Щось" });
         voc.add({ word: "lion", translates: ["лев"], group: "Щось" });
-        voc.printTo(document.querySelector(".vocabulary"));
+        voc.print();
     });
 })();
