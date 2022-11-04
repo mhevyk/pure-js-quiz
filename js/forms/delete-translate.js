@@ -1,4 +1,7 @@
 (function () {
+    const form = document.querySelector(".form__add-single-word");
+    const additionalTranslatesContainer = document.querySelector(".translates");
+
     function deleteTranslate(deleteIndex) {
         const translateContainerToDelete = document.querySelector(
             `[data-delete-index='${deleteIndex}']`
@@ -7,25 +10,24 @@
         updateTranslatesCount();
     }
 
-    document.querySelector(".translates").addEventListener("click", (event) => {
-        const clicked = event.target;
-        if (!clicked.classList.contains("input-delete")) return;
-
-        const dialog = new Dialog();
-
-        const deletedTranslateIndex = +clicked.dataset.deleteIndex;
-
-        dialog.content({
+    function showDeleteConfirm(event) {
+        const dialogContent = {
             header: "Видалення перекладу",
             submitBtn: "Так",
             body: `Справді видалити переклад?`,
             cancelBtn: "Скасувати"
-        });
+        };
 
-        dialog.open();
-        dialog.addEventListener("submit", () => {
-            deleteTranslate(deletedTranslateIndex);
-            dialog.close();
+        confirmDecorator(dialogContent, () => {
+            deleteTranslate(event.target.dataset.deleteIndex);
+            validateFormAddInputs(form);
         });
-    });
+    }
+
+    function handleOnlyDeleteButtons(event) {
+        if (!event.target.classList.contains("input-delete")) return;
+        showDeleteConfirm(event);
+    }
+
+    additionalTranslatesContainer.addEventListener("click", handleOnlyDeleteButtons);
 })();

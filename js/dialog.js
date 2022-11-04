@@ -1,20 +1,21 @@
 class Dialog {
+  static #instance;
   static #eventListenersList = [];
   //dialog custom events
-  static events = {
+  static #events = {
       open: new CustomEvent("open"),
       close: new CustomEvent("close"),
       submit: new CustomEvent("submit"),
   };
   //method to invoke custom event
-  static dispatchCustomEvent(container, customEventName) {
-      if (customEventName in Dialog.events) {
-          container.dispatchEvent(Dialog.events[customEventName]);
+  static #dispatchCustomEvent(container, customEventName) {
+      if (customEventName in Dialog.#events) {
+          container.dispatchEvent(Dialog.#events[customEventName]);
       }
   }
   constructor(selector = ".dialog") {
-      if (Dialog._instance) {
-          return Dialog._instance;
+      if (Dialog.#instance) {
+          return Dialog.#instance;
       }
       this.container = document.querySelector(selector);
  
@@ -29,10 +30,10 @@ class Dialog {
       this.cancelButton.addEventListener("click", this.close.bind(this));
       this.submitButton.addEventListener(
           "click",
-          Dialog.dispatchCustomEvent.bind(this, this.container, "submit")
+          Dialog.#dispatchCustomEvent.bind(this, this.container, "submit")
       );
 
-      Dialog._instance = this;
+      Dialog.#instance = this;
   }
 
   //syntactic sugar to simplify adding event listeners directly to dialog window
@@ -45,8 +46,8 @@ class Dialog {
   }
 
   resetEventListeners() {
-      Dialog.#eventListenersList.forEach(listener => {
-          this.container.removeEventListener(listener.name, listener.fn);
+      Dialog.#eventListenersList.forEach(({name, fn}) => {
+          this.container.removeEventListener(name, fn);
       });
       Dialog.#eventListenersList = [];
   }
@@ -63,13 +64,6 @@ class Dialog {
   }
   cancelBtn(text) {
       this.cancelButton.textContent = text;
-  }
-
-  content({header: headerContent, body: bodyContent, submitBtn: submitBtnContent, cancelBtn: cancelBtnContent}) {
-      this.header(headerContent ?? "");
-      this.body(bodyContent ?? "");
-      this.submitBtn(submitBtnContent ?? "");
-      this.cancelBtn(cancelBtnContent ?? "");
   }
 
   //methods to disable or enable dialog buttons
@@ -91,7 +85,7 @@ class Dialog {
         this.submitButton,
     ];
     if (buttons.includes(button)) {
-        !state ? button.setAttribute("hidden", true) : button.removeAttribute("hidden");
+        state ? button.removeAttribute("hidden") : button.setAttribute("hidden", true);
     }
 }
 
@@ -100,7 +94,7 @@ class Dialog {
       return this.container.classList.contains("open");
   }
   open() {
-      Dialog.dispatchCustomEvent(this.container, "open");
+      Dialog.#dispatchCustomEvent(this.container, "open");
 
       const body = document.body;
       body.classList.add("dialog-open");
@@ -112,7 +106,7 @@ class Dialog {
   }
 
   close() {
-      Dialog.dispatchCustomEvent(this.container, "close");
+      Dialog.#dispatchCustomEvent(this.container, "close");
       const body = document.body;
       body.classList.remove("dialog-open");
 
@@ -122,19 +116,5 @@ class Dialog {
           this.container.parentElement.classList.remove("open");
           this.container.classList.remove("open");
       }
-  }
-
-  //methods to highlight modal using green and red colors
-  highlight(success = true) {
-      const highlightClass = `highlight-${success ? "success" : "fail"}`;
-      const body = document.body;
-
-      body.classList.toggle(highlightClass);
-      this.container.classList.toggle(highlightClass);
-  }
-
-  removeHighlight() {
-      document.body.classList.remove("highlight-success", "highlight-fail");
-      this.container.classList.remove("highlight-success", "highlight-fail");
   }
 }

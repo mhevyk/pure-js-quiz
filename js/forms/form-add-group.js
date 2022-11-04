@@ -18,22 +18,17 @@
         event.preventDefault();
         const group = groupInput.value.trim();
 
-        const dialog = new Dialog();
-        dialog.content({
+        const dialogContent = {
             header: `Додавання розділу`,
             submitBtn: "Додати",
             cancelBtn: "Скасувати",
-            body: `
-                <span class="text-primary">Назва розділу:</span> ${group}
-            `,
-        });
+            body: `<span class="text-primary">Назва розділу:</span> ${group}`,
+        };
 
-        dialog.open();
-        dialog.addEventListener("submit", () => {
+        confirmDecorator(dialogContent, () => {
             voc.addGroup(group);
             resetForm(form);
             updateSelectsWithGroups();
-            dialog.close();
         });
     }
 

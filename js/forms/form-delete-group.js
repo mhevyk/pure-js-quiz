@@ -3,29 +3,21 @@
 
     function deleteGroup(event) {
         event.preventDefault();
-        const groupSelect = form.groups;
-        const group = getValueFromSelect(groupSelect).trim();
-        
-        if (!group) return;
+        const group = getValueFromSelect(form.groups);
 
-        const dialog = new Dialog();
-        dialog.content({
+        const dialogContent = {
             header: `Видалення розділу`,
             submitBtn: "Видалити",
             cancelBtn: "Скасувати",
-            body: `
-                <span class="text-primary">Назва розділу:</span> ${group}
-            `,
-        });
+            body: `<span class="text-primary">Назва розділу:</span> ${group}`,
+        };
 
-        dialog.open();
-        dialog.addEventListener("submit", () => {
+        confirmDecorator(dialogContent, () => {
             const voc = new Vocabulary();
             voc.removeGroup(group);
             voc.print();
             resetForm(form);
             updateSelectsWithGroups();
-            dialog.close();
         });
     }
 

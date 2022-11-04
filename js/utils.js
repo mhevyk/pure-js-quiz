@@ -34,12 +34,22 @@ function resetFeedbacks(form, feedbackSelector = "[data-default-feedback]") {
     feedbacks.forEach(feedback => feedback.textContent = feedback.dataset.defaultFeedback);
 }
 
-function markFormValidated(form) {
-    form.classList.add("validated");
-}
-
 function resetForm(form) {
     form.classList.remove("validated");
     form.reset();
     resetFeedbacks(form);
+}
+
+function confirmDecorator({header = "", body = "", submitBtn = "ОК", cancelBtn = "Скасувати"}, onDialogSubmitClick) {
+    const dialog = new Dialog();
+    dialog.header(header);
+    dialog.body(body);
+    dialog.submitBtn(submitBtn);
+    dialog.cancelBtn(cancelBtn);
+
+    dialog.open();
+    dialog.addEventListener("submit", () => {
+        onDialogSubmitClick();
+        dialog.close();
+    });
 }
