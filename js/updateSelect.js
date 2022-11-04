@@ -1,9 +1,12 @@
+function createOptions(array, defaultOptionText) {
+    const defaultOption = `<option value="" selected disabled>${defaultOptionText}</option>`;
+    const optionsWithValue = array.map(item => `<option value="${item}">${item}</option>`);
+    return defaultOption + optionsWithValue;
+}
+
 function updateSelectsWithGroups() {
     const selects = document.querySelectorAll(".select[data-content='groups']");
     const voc = new Vocabulary();
-    const groups = voc.groups;
-    const defaultOption = `<option value="" selected disabled>Виберіть розділ</option>`;
-    const optionsList = groups.map(group => `<option value="${group}">${group}</option>`);
-    const selectContent = defaultOption + optionsList;
+    const selectContent = createOptions(voc.groups, "Виберіть розділ");
     selects.forEach(select => select.innerHTML = selectContent);
 }

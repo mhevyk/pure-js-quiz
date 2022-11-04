@@ -75,6 +75,13 @@
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
+                    <div class="vocabulary__action">
+                        <div class="action__name">Видалити розділ</div>
+                        <button class="button vocabulary__button-secondary page-open-button"
+                            data-page="vocabulary-group-delete">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
@@ -109,8 +116,6 @@
                             <span class="label__text">Розділ</span>
                             <select name="groups" class="select" data-content="groups" required>
                                 <option value="" selected disabled>Виберіть розділ</option>
-                                <option value="group1">Розділ1</option>
-                                <option value="group2">Розділ2</option>
                             </select>
                             <div class="feedbacks small-description">
                                 <div class="feedback valid">Розділ вибрано!</div>
@@ -144,6 +149,27 @@
                     <div class="form__submit-group button-container">
                         <button type="submit" class="button form__button-secondary">
                             Додати розділ
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="page" data-page="vocabulary-group-delete" data-title="Видалити розділ">
+                <form class="form form__delete-group" autocomplete="off">
+                    <div class="form__group">
+                        <label class="label">
+                            <span class="label__text">Розділ</span>
+                            <select name="groups" class="select" data-content="groups" required>
+                                <option value="" selected disabled>Виберіть розділ</option>
+                            </select>
+                            <div class="feedbacks small-description">
+                                <div class="feedback valid">Розділ вибрано!</div>
+                                <div class="feedback invalid">Виберіть розділ зі списку!</div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form__submit-group button-container">
+                        <button type="submit" class="button form__button-secondary">
+                            Видалити розділ
                         </button>
                     </div>
                 </form>
@@ -191,6 +217,7 @@
     <script src="js/forms/delete-translate.js"></script>
     <script src="js/forms/form-add-single-word-validate.js"></script>
     <script src="js/forms/form-add-group-validate.js"></script>
+    <script src="js/forms/form-delete-group-validate.js"></script>
     <script src="js/updateSelect.js"></script>
 </body>
 
