@@ -3,6 +3,7 @@
 
     function addRecord(event) {
         event.preventDefault();
+        if (!form.checkValidity()) return;
 
         const wordInput = form.word;
         const translateInputs = form.querySelectorAll("[name='translate']");

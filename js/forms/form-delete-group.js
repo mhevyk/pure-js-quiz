@@ -3,6 +3,8 @@
 
     function deleteGroup(event) {
         event.preventDefault();
+        if (!form.checkValidity()) return;
+        
         const group = getValueFromSelect(form.groups);
 
         const dialogContent = {

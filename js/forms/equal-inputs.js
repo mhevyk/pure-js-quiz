@@ -17,11 +17,15 @@ function validateFormAddInputs(form) {
     const valueOccurence = countValueOccurence(allInputs);
 
     for (const input of allInputs) {
-        if (!input.value.trim()) {
+        const value = input.value.trim();
+        if (!value) {
             setInvalidFeedback(input, "Введіть " + ((input.name === "word") ? "слово!" : "переклад!"));
-        }
-        else if (valueOccurence[input.value] > 1) {
-            setInvalidFeedback(input, ((wordInput.value === input.value) ? "Слово та переклад" : "Переклади") + " співпадають!");
+        } else if(value.includes(",")) {
+            setInvalidFeedback(input, (input.name === "word")
+                ? "Слово не може містити кому!"
+                : "Переклад не може містити кому. Записуйте кожен переклад в окремому полі!");
+        } else if (valueOccurence[value] > 1) {
+            setInvalidFeedback(input, ((wordInput.value === value) ? "Слово та переклад" : "Переклади") + " співпадають!");
         } else {
             input.setCustomValidity("");
         }

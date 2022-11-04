@@ -16,6 +16,8 @@
 
     function addGroup(event) {
         event.preventDefault();
+        if (!form.checkValidity()) return;
+        
         const group = groupInput.value.trim();
 
         const dialogContent = {
