@@ -1,0 +1,11 @@
+.placeholder {
+    padding: 16px 10px;
+    color: var(--secondary-color);
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    border-top: 1px solid var(--primary-color);
+}
+
+.vocabulary__placeholder {
+    border-top: none;
+}

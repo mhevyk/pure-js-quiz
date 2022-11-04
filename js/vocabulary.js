@@ -12,6 +12,7 @@ class Vocabulary {
         };
 
         Vocabulary._instance = this;
+        this.print();
     }
 
     getProp(prop) {
@@ -117,10 +118,21 @@ class Vocabulary {
         });
     }
 
+    #printEmptyVocabularyPlaceholder() {
+        this.container.innerHTML = `
+            <div class="placeholder vocabulary__placeholder">
+                Додайте слова до словника, щоб почати їх вивчення!
+            </div>
+        `;
+    }
+
     print() {
         this.container.innerHTML = "";
 
-        if (this.props.groups) {
+        if (!this.data.length) {
+            this.#printEmptyVocabularyPlaceholder();
+        }
+        else if (this.props.groups) {
             let groupIndex = 1;
             this.groups.forEach(group => {
                 const groupData = this.getGroupContent(group);
@@ -135,18 +147,3 @@ class Vocabulary {
         }
     }
 }
-
-(function () {
-    document.addEventListener("DOMContentLoaded", () => {
-        const voc = new Vocabulary();
-        voc.add({ word: "cat", translates: ["кіт"], group: "Тварини" });
-        voc.add({ word: "cat", translates: ["кіт"], group: "Риби" });
-        voc.add({ word: "cat", translates: ["кішка"], group: "Риби" });
-        voc.add({ word: "dog", translates: ["пес"], group: "Тварини" });
-        voc.add({ word: "fish", translates: ["риба"], group: "Щось" });
-        voc.add({ word: "dino", translates: ["дино"], group: "Щось" });
-        voc.add({ word: "tiger", translates: ["тигр"], group: "Щось" });
-        voc.add({ word: "lion", translates: ["лев"], group: "Щось" });
-        voc.print();
-    });
-})();
