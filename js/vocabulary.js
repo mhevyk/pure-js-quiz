@@ -1,7 +1,8 @@
 class Vocabulary {
+    static #instance;
     constructor(container = document.querySelector(".vocabulary")) {
-        if (Vocabulary._instance) {
-            return Vocabulary._instance;
+        if (Vocabulary.#instance) {
+            return Vocabulary.#instance;
         }
 
         this.container = container;
@@ -11,23 +12,23 @@ class Vocabulary {
             groups: true
         };
 
-        Vocabulary._instance = this;
+        Vocabulary.#instance = this;
         this.print();
     }
 
-    getProp(prop) {
+    getProp = (prop) => {
         return this.props[prop];
     }
 
-    setProp(prop, value) {
+    setProp = (prop, value) => {
         this.props[prop] = value;
     }
 
-    indexOf(word) {
+    indexOf = (word) => {
         return this.data.findIndex(record => record.word === word);
     }
 
-    add({word, translates, group}) {
+    addOne = ({word, translates, group}) => {
         const wordIndex = this.indexOf(word);
 
         if (wordIndex !== -1) {
@@ -39,7 +40,15 @@ class Vocabulary {
         this.addGroup(group);
     }
 
-    remove(word) {
+    addMany = (recordsList) => {
+        recordsList.forEach(record => this.addOne(record));
+    }
+
+    addManyAsync = (recordsList) => {
+        return Promise.resolve(this.addMany(recordsList));
+    }
+
+    remove = (word) => {
         const wordIndex = this.indexOf(word);
         if (wordIndex !== -1) {
             this.data.splice(wordIndex, 1);
@@ -48,17 +57,17 @@ class Vocabulary {
         return false;
     }
 
-    getGroupContent(group) {
+    getGroupContent = (group) => {
         return this.data.filter(record => record.group === group);
     }
 
-    addGroup(group) {
+    addGroup = (group) => {
         if (!this.groups.includes(group)) {
             this.groups.push(group);
         }
     }
 
-    removeGroup(group) {
+    removeGroup = (group) => {
         const groupIndex = this.groups.indexOf(group);
         if (groupIndex !== -1) {
             this.groups.splice(groupIndex, 1);
@@ -68,21 +77,21 @@ class Vocabulary {
         return false;
     }
 
-    addTranslates(word, translates) {
+    addTranslates = (word, translates) => {
         const wordIndex = this.indexOf(word);
         if (wordIndex !== -1) {
             this.#addTranslatesByWordIndex(wordIndex, translates);
         }
     }
 
-    #addTranslatesByWordIndex(wordIndex, translates) {
+    #addTranslatesByWordIndex = (wordIndex, translates) => {
         translates = Array.isArray(translates) ? translates : [translates];
         this.data[wordIndex].translates.push(...translates);
         this.data[wordIndex].translates =
             this.data[wordIndex].translates.unique();
     }
 
-    printf() {
+    printf = () => {
         this.data.forEach(record => {
             console.log(
                 `${record.word} => ${record.translates.join(", ")} (${
@@ -92,7 +101,7 @@ class Vocabulary {
         });
     }
 
-    #printGroup(group) {
+    #printGroup = (group) => {
         this.container.innerHTML += `
             <div class="vocabulary__group">
                 <div class="record__index"></div>
@@ -101,7 +110,7 @@ class Vocabulary {
         `;
     }
 
-    #printRecord(index, record) {
+    #printRecord = (index, record) => {
         const position = index.split(".").at(-1);
         this.container.innerHTML += `
             <div class="vocabulary__record${position % 2 ? ` strip` : ``}">
@@ -112,13 +121,13 @@ class Vocabulary {
         `;
     }
 
-    #printRecordsList(list, groupIndex = ``) {
+    #printRecordsList = (list, groupIndex = ``) => {
         list.forEach((record, recordIndex) => {
             this.#printRecord(`${groupIndex}${recordIndex + 1}`, record);
         });
     }
 
-    #printEmptyVocabularyPlaceholder() {
+    #printEmptyVocabularyPlaceholder = () => {
         this.container.innerHTML = `
             <div class="placeholder vocabulary__placeholder">
                 Додайте слова до словника, щоб почати їх вивчення!
@@ -126,7 +135,7 @@ class Vocabulary {
         `;
     }
 
-    print() {
+    print = () => {
         this.container.innerHTML = "";
 
         if (!this.data.length) {
@@ -145,5 +154,11 @@ class Vocabulary {
         } else {
             this.#printRecordsList(this.data);
         }
+    }
+
+    clear = () => {
+        this.data = [];
+        this.groups = [];
+        this.print();
     }
 }

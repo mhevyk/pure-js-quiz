@@ -11,10 +11,10 @@
                     <i class="input-delete fa fa-trash" aria-hidden="true" title="Видалити переклад" data-delete-index="${COUNTERS.translateIdCounter}"></i>
                 </div>
                 <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
-                <div class="feedbacks small-description">
-                    <div class="feedback valid" aria-live="polite">Переклад введено правильно!</div>
-                    <div class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</div>
-                </div>
+                <span class="feedbacks small-description">
+                    <span class="feedback valid" aria-live="polite">Переклад введено правильно!</span>
+                    <span class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</span>
+                </span>
             </label>
         `;
         translatesContainer.insertAdjacentHTML("beforeend", translateHTML);

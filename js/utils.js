@@ -21,12 +21,17 @@ function removeContainerChildren(container) {
 }
 
 function getValueFromSelect(select) {
-    return select.options[select.selectedIndex].textContent;
+    return select.options[select.selectedIndex].value;
 }
 
-function setInvalidFeedback(input, feedback) {
+function setValidFeedback(input, feedback, containerThatIncludesFeedback = input.parentElement) {
+    input.setCustomValidity("");
+    containerThatIncludesFeedback.querySelector(".valid").innerHTML = feedback;
+}
+
+function setInvalidFeedback(input, feedback, containerThatIncludesFeedback = input.parentElement) {
     input.setCustomValidity(feedback);
-    input.nextElementSibling.querySelector(".invalid").innerHTML = feedback;
+    containerThatIncludesFeedback.querySelector(".invalid").innerHTML = feedback;
 }
 
 function resetFeedbacks(form, feedbackSelector = "[data-default-feedback]") {
@@ -51,5 +56,14 @@ function confirmDecorator({header = "", body = "", submitBtn = "ОК", cancelBtn
     dialog.addEventListener("submit", () => {
         onDialogSubmitClick();
         dialog.close();
+    });
+}
+
+function readFileAsync(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsText(file);
     });
 }

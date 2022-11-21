@@ -61,9 +61,9 @@
                         </button>
                     </div>
                     <div class="vocabulary__action">
-                        <div class="action__name">Через імпорт з файлу</div>
+                        <div class="action__name">З текстового файлу</div>
                         <button class="button vocabulary__button-secondary page-open-button"
-                            data-page="vocabulary-group-import">
+                            data-page="vocabulary-group-import-txt">
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
@@ -90,25 +90,29 @@
                         <label class="label">
                             <span class="label__text">Слово</span>
                             <input type="text" name="word" placeholder="Слово" maxlength="40" required>
-                            <div class="feedbacks small-description">
-                                <div class="feedback valid">Слово введено правильно!</div>
-                                <div class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!</div>
-                            </div>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Слово введено правильно!</span>
+                                <span class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!
+                                </span>
+                            </span>
                         </label>
                     </div>
                     <div class="form__group translates">
                         <label class="label">
                             <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
                             <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
-                            <div class="feedbacks small-description">
-                                <div class="feedback valid">Переклад введено правильно!</div>
-                                <div class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>Введіть переклад!</div>
-                            </div>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Переклад введено правильно!</span>
+                                <span class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>
+                                    Введіть переклад!</span>
+                            </span>
                         </label>
                         <div class="translates__additional"></div>
                         <div class="group__button-container">
-                            <button id="add-translate" type="button" class="button group__button-primary">Додати</button>
-                            <button id="add-translate-reset" type="button" class="button group__button-dark">Скинути</button>
+                            <button id="add-translate" type="button"
+                                class="button group__button-primary">Додати</button>
+                            <button id="add-translate-reset" type="button"
+                                class="button group__button-dark">Скинути</button>
                         </div>
                     </div>
                     <div class="form__group">
@@ -117,10 +121,10 @@
                             <select name="groups" class="select" data-content="groups" required>
                                 <option value="" selected disabled>Виберіть розділ</option>
                             </select>
-                            <div class="feedbacks small-description">
-                                <div class="feedback valid">Розділ вибрано!</div>
-                                <div class="feedback invalid">Виберіть розділ зі списку!</div>
-                            </div>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Розділ вибрано!</span>
+                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                            </span>
                         </label>
                         <div class="group__button-container">
                             <button type="button" class="button group__button-primary page-open-button"
@@ -140,10 +144,11 @@
                         <label class="label">
                             <span class="label__text">Назва розділу</span>
                             <input type="text" name="group" placeholder="Назва розділу" maxlength="40" required>
-                            <div class="feedbacks small-description">
-                                <div class="feedback valid">Розділ введений правильно!</div>
-                                <div class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть назву розділу!</div>
-                            </div>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Розділ введений правильно!</span>
+                                <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть
+                                    назву розділу!</span>
+                            </span>
                         </label>
                     </div>
                     <div class="form__submit-group button-container">
@@ -157,14 +162,14 @@
                 <form class="form form__delete-group" autocomplete="off" novalidate>
                     <div class="form__group">
                         <label class="label">
-                            <span class="label__text">Розділ</span>
+                            <span class="label__text">Назва розділу</span>
                             <select name="groups" class="select" data-content="groups" required>
                                 <option value="" selected disabled>Виберіть розділ</option>
                             </select>
-                            <div class="feedbacks small-description">
-                                <div class="feedback valid">Розділ вибрано!</div>
-                                <div class="feedback invalid">Виберіть розділ зі списку!</div>
-                            </div>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Розділ вибрано!</span>
+                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                            </span>
                         </label>
                     </div>
                     <div class="form__submit-group button-container">
@@ -174,7 +179,85 @@
                     </div>
                 </form>
             </div>
-            <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import" data-title="Імпорт">
+            <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt" data-title="Імпорт">
+                <form class="form form__import-txt" autocomplete="off" novalidate>
+                    <div class="form__group">
+                        <label class="label">
+                            <span class="label__text">
+                                Розділ
+                                <span class="small-description">У цей розділ будуть додані всі слова, які завантажаться
+                                    з
+                                    файлу</span>
+                            </span>
+                            <select name="groups" class="select" data-content="groups" required>
+                                <option value="" selected disabled>Виберіть розділ</option>
+                            </select>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Слова буде додано у вибраний розділ!</span>
+                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                            </span>
+                        </label>
+                        <div class="group__button-container">
+                            <button type="button" class="button group__button-primary page-open-button"
+                                data-page="vocabulary-group-add">Додати</button>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="label">
+                            <span class="label__text">
+                                Роздільник слова та перекладу
+                            </span>
+                            <select name="separators" class="select" required>
+                                <option value=":" selected>Двокрапка (:)</option>
+                                <option value=">">Знак більше (>)</option>
+                                <option value="=">Знак дорівнює (=)</option>
+                            </select>
+                            <span class="feedbacks small-description">
+                                <span class="feedback valid">Роздільник вибрано!</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form__group">
+                        <span class="label__text">
+                            Текстовий файл зі словами
+                            <span class="small-description">
+                                Текстовий файл обов'язково повинен відповідати
+                                <span class="page-open-button link" data-page="vocabulary-group-import-template">шаблону</span>
+                            </span>
+                        </span>
+                        <label for="import-txt-file" class="label file-input-label">
+                            <span class="file-input__label-text">Виберіть або перетягніть файл(и)...</span>
+                            <input type="file" id="import-txt-file" class="file-input" name="fileInput" accept=".txt" multiple required>
+                        </label>
+                        <div class="feedbacks small-description">
+                            <span class="feedback valid">Файл успішно завантажений!</span>
+                            <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Завантажте
+                                текстовий
+                                файл!</span>
+                        </div>
+                        <div class="uploaded-files toggler">
+                            <button type="button" class="title uploaded-files__title">
+                                Завантажені файли
+                                (<span class="uploaded-files__count">0</span>)
+                                <i class="caret fas fa-angle-down"></i>
+                            </button>
+                            <div class="content uploaded-files__info">
+                            </div>
+                        </div>
+                        <div class="group__button-container">
+                            <button id="import-txt-file-reset" type="button"
+                                class="button group__button-dark">Скинути</button>
+                        </div>
+                    </div>
+                    <div class="form__submit-group button-container">
+                        <button type="submit" class="button form__button-secondary">
+                            Додати слова у розділ
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="page" data-page="vocabulary-group-import-template" data-title="Шаблон">
+                <button id="download-txt-template" class="button template-download__button-primary">Завантажити шаблон</button>
             </div>
             <div class="page" data-page="results" data-title="Результати">
                 Results
@@ -189,10 +272,15 @@
             2019-<span class="current-year-container"></span>
         </footer>
     </div>
-    <div class="dialog-container">
+    <div class="fixed-center loader-container">
+        <div class="loader">
+            <i class="spinner fa fa-spinner fa-spin fa-pulse"></i>
+        </div>
+    </div>
+    <div class="fixed-center dialog-container">
         <div class="dialog">
             <div class="dialog__section dialog__header">
-                <h2></h2>
+                <h2>Повідомлення з цієї сторінки</h2>
                 <button class="dialog__close dialog__cross" data-role="close">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
@@ -202,15 +290,16 @@
             </div>
             <div class="dialog__section dialog__footer">
                 <button class="button dialog__button-primary dialog__button" data-role="submit"></button>
-                <button class="button dialog__button-dark dialog__button dialog__close"
-                    data-role="cancel"></button>
+                <button class="button dialog__button-dark dialog__button dialog__close" data-role="cancel"></button>
             </div>
         </div>
     </div>
-    <script src="js/counters.js"></script>
-    <script src="js/forms/equal-inputs.js"></script>
-    <script src="js/dialog.js"></script>
-    <script src="js/exit.js"></script>
+    <script src="js/popups/popup.js"></script>
+    <script src="js/counters.js" async></script>
+    <script src="js/forms/equal-inputs.js" async></script>
+    <script src="js/popups/dialog.js"></script>
+    <script src="js/popups/loader.js"></script>
+    <script src="js/exit.js" async></script>
     <script src="js/current-year.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/page-navigation.js"></script>
@@ -221,7 +310,11 @@
     <script src="js/forms/form-add-single-word.js"></script>
     <script src="js/forms/form-add-group.js"></script>
     <script src="js/forms/form-delete-group.js"></script>
+    <script src="js/forms/form-import-txt.js"></script>
     <script src="js/update-select.js"></script>
+    <script src="js/popups/toggler.js"></script>
+    <script src="js/forms/dragndrop.js"></script>
+    <script src="js/templates/text.js"></script>
 </body>
 
 </html>

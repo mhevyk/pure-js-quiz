@@ -33,12 +33,6 @@ body.highlight-success .modal-overlay {
 }
 
 .dialog-container {
-    visibility: hidden;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
     width: 90%;
 }
 

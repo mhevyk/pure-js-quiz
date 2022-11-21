@@ -1,0 +1,17 @@
+.loader-container.open {
+    visibility: visible;
+    transition: 500ms;
+}
+
+.loader .spinner {
+    color: white;
+    font-size: 50pt;
+}
+
+body.loader-open {
+    overflow: hidden;
+}
+
+body.loader-open .modal-overlay {
+    display: block;
+}

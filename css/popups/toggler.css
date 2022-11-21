@@ -1,0 +1,35 @@
+.toggler:hover {
+    cursor: pointer;
+}
+
+.toggler .caret {
+    padding-left: 5px;
+}
+
+.toggler.open .caret {
+    transform: rotate(180deg);
+    padding-right: 5px;
+}
+
+.toggler>.title {
+    background-color: var(--white-color);
+    user-select: none;
+    border-radius: 4px;
+    color: var(--primary-opposite-color);
+    padding: 7px 16px;
+    border: 1px dashed var(--primary-opposite-color);
+}
+
+.toggler>.title:hover {
+    cursor: pointer;
+}
+
+.toggler>.content {
+    transition: 300ms;
+}
+
+.toggler.open>.content {
+    max-height: 270px;
+    overflow-y: scroll;
+    transition: 300ms;
+}

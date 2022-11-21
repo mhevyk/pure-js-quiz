@@ -1,0 +1,29 @@
+.uploaded-files {
+    margin: 15px 0;
+}
+
+.uploaded-files .uploaded-files__info {
+    max-height: 110px;
+    overflow-y: scroll;
+}
+
+.uploaded-files .icon {
+    margin-right: 10px;
+}
+
+.uploaded-files .success {
+    border-bottom: 1px solid var(--highlight-success-bg);
+    color: var(--highlight-success-color);
+}
+
+.uploaded-files .fail {
+    border-bottom: 1px solid var(--highlight-fail-bg);
+    color: var(--highlight-fail-color);
+}
+
+.uploaded__file {
+    padding: 10px 20px;
+    margin: 5px 0;
+    color: var(--primary-color);
+}
+

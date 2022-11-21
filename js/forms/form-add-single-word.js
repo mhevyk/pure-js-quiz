@@ -26,7 +26,7 @@
 
         confirmDecorator(dialogContent, () => {
             const voc = new Vocabulary();
-            voc.add({word, translates, group});
+            voc.addOne({word, translates, group});
             voc.print();
             resetForm(form);
         });

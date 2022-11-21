@@ -41,7 +41,7 @@ body {
     scroll-behavior: smooth;
     background-image: var(--background-image);
     background-color: var(--primary-color);
-    font-family: roboto;
+    font-family: roboto, sans-serif;
 }
 
 button:disabled {
@@ -65,6 +65,15 @@ button:disabled {
 
 .text-fail {
     color: var(--highlight-fail-color);
+}
+
+.fixed-center {
+    visibility: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .app-wrapper {

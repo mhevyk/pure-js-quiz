@@ -13,6 +13,11 @@
     background-position-y: 5px;
 }
 
+input[type='file'] {
+    display: none;
+}
+
+.form__group .file-input-label,
 .form__group input,
 .form__group .select {
     padding: 7px 15px;
@@ -37,28 +42,33 @@
 
 .form.validated .feedbacks {
     display: block;
+    margin-bottom: 5px;
 }
 
 .form__group .feedback {
     display: none;
 }
 
+.form.validated .file-input-label.invalid,
 .form.validated .form__group input:invalid,
 .form.validated .form__group .select:invalid {
     border: 1px solid var(--highlight-fail-bg);
 }
 
+.form.validated .file-input-label.invalid + .feedbacks>.invalid,
 .form.validated .form__group input:invalid + .feedbacks>.invalid,
 .form.validated .form__group .select:invalid + .feedbacks>.invalid {
     color: var(--highlight-fail-color);
     display: block;
 }
 
+.form.validated .file-input-label.valid,
 .form.validated .form__group input:valid,
 .form.validated .form__group .select:valid {
     border: 1px solid var(--highlight-success-bg);
-} 
+}
 
+.form.validated .file-input-label.valid + .feedbacks>.valid,
 .form.validated .form__group input:valid + .feedbacks>.valid,
 .form.validated .form__group .select:valid + .feedbacks>.valid {
     color: var(--highlight-success-color);
@@ -67,12 +77,19 @@
 
 .form__group .label {
     display: block;
-    margin-bottom: 5px;
 }
 
-.form .form__group .label.row {
+.form .form__group .row {
     display: flex;
     align-items: center;
+}
+
+.form .translates__additional {
+    margin-top: 6px;
+}
+
+.form .form__group .row:not(:last-child) {
+    margin-bottom: 6px;
 }
 
 .form .form__group .label.row [name='translate'] {
@@ -135,4 +152,8 @@
 .form__group .input-delete:hover {
     cursor: pointer;
     transform: scale(1.2);
+}
+
+.form__group .label__text>.small-description {
+    display: block;
 }
