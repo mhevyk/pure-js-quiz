@@ -29,6 +29,7 @@
 
         confirmDecorator(dialogContent, () => {
             voc.addGroup(group);
+            voc.save();
             resetForm(form);
             updateSelectsWithGroups();
         });

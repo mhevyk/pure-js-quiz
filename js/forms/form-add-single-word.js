@@ -28,6 +28,7 @@
             const voc = new Vocabulary();
             voc.addOne({word, translates, group});
             voc.print();
+            voc.save();
             resetForm(form);
         });
     }

@@ -66,7 +66,10 @@
 
                 voc.addManyAsync(records)
                     .then(() => voc.print())
-                    .finally(() => loader.close());
+                    .finally(() => {
+                        voc.save();
+                        loader.close();
+                    });
                 resetForm(form);
                 resetFileInput();
             }, 500);

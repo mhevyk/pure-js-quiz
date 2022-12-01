@@ -42,6 +42,7 @@ class Vocabulary {
 
     addMany = (recordsList) => {
         recordsList.forEach(record => this.addOne(record));
+        this.save();
     }
 
     addManyAsync = (recordsList) => {
@@ -156,10 +157,32 @@ class Vocabulary {
         }
     }
 
+    load() {
+        const vocabularyData = localStorage.getItem("vocabularyAppData");
+        if (!vocabularyData) {
+            return;
+        }
+        const {data, props, groups} = JSON.parse(vocabularyData);
+        this.data = data;
+        this.props = props;
+        this.groups = groups;
+    }
+
+    save() {
+        const vocabularyDataToSave = {
+            data: this.data,
+            props: this.props,
+            groups: this.groups
+        };
+
+        localStorage.setItem("vocabularyAppData", JSON.stringify(vocabularyDataToSave));
+    }
+
     clear = () => {
         this.data = [];
         this.groups = [];
         this.print();
+        localStorage.removeItem("vocabularyAppData");
         updateSelectsWithGroups();
     }
 }

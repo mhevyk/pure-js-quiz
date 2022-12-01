@@ -18,6 +18,7 @@
             const voc = new Vocabulary();
             voc.removeGroup(group);
             voc.print();
+            voc.save();
             resetForm(form);
             updateSelectsWithGroups();
         });

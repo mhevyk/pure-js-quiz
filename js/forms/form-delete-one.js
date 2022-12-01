@@ -116,6 +116,7 @@
         confirmDecorator(dialogContent, () => {
             voc.delete(wordToDelete);
             voc.print();
+            voc.save();
             resetForm(form);
         });
     }
