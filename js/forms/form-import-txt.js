@@ -1,33 +1,31 @@
 (function () {
     const form = document.querySelector(".form__import-txt");
-    const resetButton = form.querySelector("#import-txt-file-reset");
+
     const fileInput = form.fileInput;
     const fileInputLabel = form.querySelector(".file-input-label");
-    const uploadedFilesContainer = form.querySelector(".uploaded-files__info");
-    const uploadedFilesCountContainer = document.querySelector(".uploaded-files__count");
+    const fileInputWrapper = new TogglerFileInput(fileInput, fileInputLabel);
+
+    const uploading_errors = {
+        TEMPLATE_LOAD: `Завантаження шаблону! Видаліть рядки із символами "***"!`,
+        NO_SEPARATOR_IN_ROW: (separator, row) => `Немає роздільника "${separator}" в рядку ${row}`,
+        NO_WORD_IN_ROW: (row) => `Відсутнє слово в рядку ${row}!`,
+        NO_TRANSLATES_IN_ROW: (row) => `Відсутні переклади в рядку ${row}`,
+        WORD_AND_TRANSLATE_ARE_SAME: (row) => `Слово та один з перекладів співпадають в рядку ${row}`,
+        TRANSLATES_ARE_SAME: (row) => `Переклади співпадають в рядку ${row}`,
+        WRONG_FILE_EXTENSION: `Файл не має розширення <b>.txt</b>!`,
+    };
+
+    const feedbacks = {
+        LOAD_CANCELED: `Завантаження файлів відмінено!`,
+        SUCCESSFULL_LOAD: (validFilesCount, generalFilesCount) => `Успішно завантажено ${validFilesCount} з ${generalFilesCount} файлів! Перегляньте деталі у випадаючому списку нижче!`,
+        TEMPLATE_MISMATCH_ERROR: `Жоден із завантажених файлів не відповідає <span class="page-open-button link" data-page="vocabulary-group-import-template">шаблону</span>!`
+    }
+
     const validRecords = [];
 
-    function markFileSectionValid(message = "Все добре!") {
-        setValidFeedback(fileInput, message, fileInputLabel.nextElementSibling);
-        fileInputLabel.classList.add("valid");
-        fileInputLabel.classList.remove("invalid");
-    }
-
-    function markFileSectionInvalid(errorMessage = "Завантажте текстовий файл!") {
-        setInvalidFeedback(fileInput, errorMessage, fileInputLabel.nextElementSibling);
-        fileInputLabel.classList.remove("valid");
-        fileInputLabel.classList.add("invalid");
-    }
-
-    markFileSectionInvalid();
-
     function resetFileInput(errorText) {
-        uploadedFilesCountContainer.textContent = 0;
-        new Toggler(form.querySelector(".toggler")).hide();
-        fileInput.value = null;
-        uploadedFilesContainer.innerHTML = "";
         validRecords.length = 0;
-        markFileSectionInvalid(errorText);
+        fileInputWrapper.reset(errorText);
     }
 
     function resetFileInputConfirm() {
@@ -67,12 +65,8 @@
                 const records = validRecords.map(record => ({ ...record, group }));
 
                 voc.addManyAsync(records)
-                    .then(() => {
-                        voc.print();
-                    })
-                    .finally(() => {
-                        loader.close();
-                    });
+                    .then(() => voc.print())
+                    .finally(() => loader.close());
                 resetForm(form);
                 resetFileInput();
             }, 500);
@@ -95,29 +89,30 @@
     function createRecordsFromLines(lines, separator = ":") {
         return new Promise((resolve, reject) => {
             const records = lines.map((line, lineIndex) => {
+                const row = lineIndex + 1;
                 if (!line.includes(separator)) {
-                    reject(`Немає роздільника "${separator}" у рядку ${lineIndex + 1}`);
+                    reject(uploading_errors.NO_SEPARATOR_IN_ROW(separator, row));
                 }
                 const [wordText, translatesText] = line.split(separator);
 
                 const word = wordText.trim().replaceAll(",", "");
                 if (!word) {
-                    reject(`Відсутнє слово у рядку ${lineIndex + 1}!`);
+                    reject(uploading_errors.NO_WORD_IN_ROW(row));
                 }
 
                 const trimmedTranslatesText = translatesText.trim();
                 if (!trimmedTranslatesText) {
-                    reject(`Відсутні переклади у рядку ${lineIndex + 1}`);
+                    reject(uploading_errors.NO_TRANSLATES_IN_ROW(row));
                 }
 
                 const translates = executeTranslatesFromString(trimmedTranslatesText);
 
                 if (translates.includes(word)) {
-                    reject(`Слово та один з перекладів співпадають у рядку ${lineIndex + 1}`);
+                    reject(uploading_errors.WORD_AND_TRANSLATE_ARE_SAME(row));
                 }
 
                 if (translates.unique().length !== translates.length) {
-                    reject(`Переклади співпадають у рядку ${lineIndex + 1}`);
+                    reject(uploading_errors.TRANSLATES_ARE_SAME(row));
                 }
 
                 return { word, translates };
@@ -126,69 +121,55 @@
         });
     }
 
-    function closeBeforeLoading() {
-        new Toggler(form.querySelector(".toggler")).hide();
-    }
-
-    function showSuccesfullyLoadedFileToUser(file, count) {
-        uploadedFilesContainer.innerHTML += `
-            <div class="uploaded__file success small-description">
-                <i class="icon fa-solid fa-file"></i>
-                Слова з файлу <b>${file.name}</b> готові до додавання у розділ! (Кількість слів: <b>${count}</b>)
-            </div>`;
-    }
-
-    function showFileLoadingError(file, error) {
-        uploadedFilesContainer.innerHTML += `
-            <div class="uploaded__file fail small-description">
-                <i class="icon fa fa-times" aria-hidden="true"></i>
-                Файл <b>${file.name}</b> не був завантажений через помилку: ${error}
-            </div>`;
-    }
-
     async function readFilesAsync(files) {
         let validFilesCount = 0;
         const separator = getValueFromSelect(form.separators);
         for (const file of files) {
             try {
+                const fileExtension = file.name.split(".").pop();
+                if (fileExtension !== "txt") {
+                    throw uploading_errors.WRONG_FILE_EXTENSION;
+                }
+
                 const data = await readFileAsync(file);
+                if (data.includes("***")) {
+                    throw uploading_errors.TEMPLATE_LOAD;
+                }
+
                 const lines = splitToLinesWithText(data);
                 const records = await createRecordsFromLines(lines, separator);
                 validRecords.push(...records);
-                showSuccesfullyLoadedFileToUser(file, records.length);
+                fileInputWrapper.appendValidFile(file, records.length);
                 validFilesCount++;
             } catch (error) {
-                showFileLoadingError(file, error);
-            } finally {
-                const prevFilesCount = Number(uploadedFilesCountContainer.textContent);
-                uploadedFilesCountContainer.textContent = prevFilesCount + 1;
+                fileInputWrapper.appendInvalidFile(file, error);
             }
         }
         return validFilesCount;
     }
 
     fileInput.addEventListener("change", event => {
-        console.log("change")
         const files = [...event.target.files];
         //cancel was clicked and no files were uploaded
         if (!files.length) {
-            resetFileInput("Завантаження файлів відмінено!");
+            resetFileInput(feedbacks.LOAD_CANCELED);
             return;
         }
         readFilesAsync(files)
             .then(validFilesCount => {
-                closeBeforeLoading();
+                fileInputWrapper.toggler.hide();
                 if (validRecords.length > 0) {
-                    markFileSectionValid(`Успішно завантажено ${validFilesCount} з ${files.length} файлів! Перегляньте деталі у випадаючому списку нижче!`);
+                    fileInputWrapper.setValid(feedbacks.SUCCESSFULL_LOAD(validFilesCount, files.length));
                 } else {
-                    markFileSectionInvalid(`Жоден із завантажених файлів не відповідає
-                        <span class="page-open-button link" data-page="vocabulary-group-import-template">шаблону</span>!`
-                    );
+                    fileInputWrapper.setInvalid(feedbacks.TEMPLATE_MISMATCH_ERROR);
                     new PageNavigator().update();
                 }
-            });
+            })
+            .finally(() => fileInputWrapper.toggler.show());
     });
 
+    const resetButton = form.querySelector("#import-txt-file-reset");
     resetButton.addEventListener("click", resetFileInputConfirm);
+
     form.addEventListener("submit", loadWordsFromTextFile);
 })();
