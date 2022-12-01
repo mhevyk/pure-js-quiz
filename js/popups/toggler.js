@@ -7,8 +7,12 @@ class Toggler {
     }
 
     hide() {
-        this.container.classList.remove("open");
-        this.content.style.height = 0;
+        this.container.classList.add("hidden");
+        this.slideUp();
+    }
+
+    show() {
+        this.container.classList.remove("hidden");
     }
 
     isOpen() {
@@ -62,10 +66,3 @@ class Toggler {
         });
     }
 }
-
-const togglers = document.querySelectorAll(".toggler");
-
-togglers.forEach(toggler => {
-    const t = new Toggler(toggler);
-    t.title.addEventListener("click", () => t.slideToggle());
-});

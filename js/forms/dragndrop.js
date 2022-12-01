@@ -2,7 +2,6 @@
     const fileInputLabels = document.querySelectorAll(".file-input-label");
 
     ["dragenter", "dragover"].forEach(eventName => {
-        console.log(eventName);
         fileInputLabels.forEach(label => label.addEventListener(eventName, () => highlight(label)));
     });
 

@@ -51,213 +51,255 @@
                     </button>
                 </div>
             </div>
-            <div class="page__vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
-                <div class="vocabulary-actions__container">
-                    <div class="vocabulary__actions-group">Додавання слів</div>
-                    <div class="vocabulary__action">
-                        <div class="action__name">Через форму</div>
-                        <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-add">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="vocabulary__action">
-                        <div class="action__name">З текстового файлу</div>
-                        <button class="button vocabulary__button-secondary page-open-button"
-                            data-page="vocabulary-group-import-txt">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="vocabulary__actions-group">Редагування розділів</div>
-                    <div class="vocabulary__action">
-                        <div class="action__name">Додати розділ</div>
-                        <button class="button vocabulary__button-secondary page-open-button"
-                            data-page="vocabulary-group-add">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="vocabulary__action">
-                        <div class="action__name">Видалити розділ</div>
-                        <button class="button vocabulary__button-secondary page-open-button"
-                            data-page="vocabulary-group-delete">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
+            <div class="vocabulary__pages">
+                <div class="page__vocabulary-actions page" data-page="vocabulary-actions" data-title="Редагування">
+                    <div class="vocabulary-actions__container">
+                        <div class="vocabulary__actions-group">Слова: додавання</div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">Через форму</div>
+                            <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-add">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">З текстового файлу</div>
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-group-import-txt">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="vocabulary__actions-group">Слова: видалення</div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">По одному</div>
+                            <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-delete-one">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="vocabulary__actions-group">Розділи</div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">Додати розділ</div>
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-group-add">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">Видалити розділ</div>
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-group-delete">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="vocabulary__actions-group">Словник</div>
+                        <div class="vocabulary__action">
+                            <div class="action__name">Очистити</div>
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-clear">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
-                <form class="form form__add-single-word" autocomplete="off" novalidate>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">Слово</span>
-                            <input type="text" name="word" placeholder="Слово" maxlength="40" required>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Слово введено правильно!</span>
-                                <span class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!
+                <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
+                    <form class="form form__add-single-word" autocomplete="off" novalidate>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">Слово</span>
+                                <input type="text" name="word" placeholder="Слово" maxlength="40" required>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Слово введено правильно!</span>
+                                    <span class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!
+                                    </span>
                                 </span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="form__group translates">
-                        <label class="label">
-                            <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
-                            <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Переклад введено правильно!</span>
-                                <span class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>
-                                    Введіть переклад!</span>
-                            </span>
-                        </label>
-                        <div class="translates__additional"></div>
-                        <div class="group__button-container">
-                            <button id="add-translate" type="button"
-                                class="button group__button-primary">Додати</button>
-                            <button id="add-translate-reset" type="button"
-                                class="button group__button-dark">Скинути</button>
+                            </label>
                         </div>
-                    </div>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">Розділ</span>
-                            <select name="groups" class="select" data-content="groups" required>
-                                <option value="" selected disabled>Виберіть розділ</option>
-                            </select>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Розділ вибрано!</span>
-                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
-                            </span>
-                        </label>
-                        <div class="group__button-container">
-                            <button type="button" class="button group__button-primary page-open-button"
-                                data-page="vocabulary-group-add">Додати</button>
-                        </div>
-                    </div>
-                    <div class="form__submit-group button-container">
-                        <button type="submit" class="button form__button-secondary">
-                            Додати слово
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="page" data-page="vocabulary-group-add" data-title="Новий розділ">
-                <form class="form form__add-group" autocomplete="off" novalidate>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">Назва розділу</span>
-                            <input type="text" name="group" placeholder="Назва розділу" maxlength="40" required>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Розділ введений правильно!</span>
-                                <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть
-                                    назву розділу!</span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="form__submit-group button-container">
-                        <button type="submit" class="button form__button-secondary">
-                            Додати розділ
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="page" data-page="vocabulary-group-delete" data-title="Видалити розділ">
-                <form class="form form__delete-group" autocomplete="off" novalidate>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">Назва розділу</span>
-                            <select name="groups" class="select" data-content="groups" required>
-                                <option value="" selected disabled>Виберіть розділ</option>
-                            </select>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Розділ вибрано!</span>
-                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="form__submit-group button-container">
-                        <button type="submit" class="button form__button-secondary">
-                            Видалити розділ
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt" data-title="Імпорт">
-                <form class="form form__import-txt" autocomplete="off" novalidate>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">
-                                Розділ
-                                <span class="small-description">У цей розділ будуть додані всі слова, які завантажаться
-                                    з
-                                    файлу</span>
-                            </span>
-                            <select name="groups" class="select" data-content="groups" required>
-                                <option value="" selected disabled>Виберіть розділ</option>
-                            </select>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Слова буде додано у вибраний розділ!</span>
-                                <span class="feedback invalid">Виберіть розділ зі списку!</span>
-                            </span>
-                        </label>
-                        <div class="group__button-container">
-                            <button type="button" class="button group__button-primary page-open-button"
-                                data-page="vocabulary-group-add">Додати</button>
-                        </div>
-                    </div>
-                    <div class="form__group">
-                        <label class="label">
-                            <span class="label__text">
-                                Роздільник слова та перекладу
-                            </span>
-                            <select name="separators" class="select" required>
-                                <option value=":" selected>Двокрапка (:)</option>
-                                <option value=">">Знак більше (>)</option>
-                                <option value="=">Знак дорівнює (=)</option>
-                            </select>
-                            <span class="feedbacks small-description">
-                                <span class="feedback valid">Роздільник вибрано!</span>
-                            </span>
-                        </label>
-                    </div>
-                    <div class="form__group">
-                        <span class="label__text">
-                            Текстовий файл зі словами
-                            <span class="small-description">
-                                Текстовий файл обов'язково повинен відповідати
-                                <span class="page-open-button link" data-page="vocabulary-group-import-template">шаблону</span>
-                            </span>
-                        </span>
-                        <label for="import-txt-file" class="label file-input-label">
-                            <span class="file-input__label-text">Виберіть або перетягніть файл(и)...</span>
-                            <input type="file" id="import-txt-file" class="file-input" name="fileInput" accept=".txt" multiple required>
-                        </label>
-                        <div class="feedbacks small-description">
-                            <span class="feedback valid">Файл успішно завантажений!</span>
-                            <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Завантажте
-                                текстовий
-                                файл!</span>
-                        </div>
-                        <div class="uploaded-files toggler">
-                            <button type="button" class="title uploaded-files__title">
-                                Завантажені файли
-                                (<span class="uploaded-files__count">0</span>)
-                                <i class="caret fas fa-angle-down"></i>
-                            </button>
-                            <div class="content uploaded-files__info">
+                        <div class="form__group translates">
+                            <label class="label">
+                                <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
+                                <input type="text" name="translate" placeholder="Переклад" maxlength="40" required>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Переклад введено правильно!</span>
+                                    <span class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>
+                                        Введіть переклад!</span>
+                                </span>
+                            </label>
+                            <div class="translates__additional"></div>
+                            <div class="group__button-container">
+                                <button id="add-translate" type="button"
+                                    class="button group__button-primary">Додати</button>
+                                <button id="add-translate-reset" type="button"
+                                    class="button group__button-dark">Скинути</button>
                             </div>
                         </div>
-                        <div class="group__button-container">
-                            <button id="import-txt-file-reset" type="button"
-                                class="button group__button-dark">Скинути</button>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">Розділ</span>
+                                <select name="groups" class="select" data-content="groups" required>
+                                    <option value="" selected disabled>Виберіть розділ</option>
+                                </select>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Розділ вибрано!</span>
+                                    <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                                </span>
+                            </label>
+                            <div class="group__button-container">
+                                <button type="button" class="button group__button-primary page-open-button"
+                                    data-page="vocabulary-group-add">Додати</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form__submit-group button-container">
-                        <button type="submit" class="button form__button-secondary">
-                            Додати слова у розділ
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="page" data-page="vocabulary-group-import-template" data-title="Шаблон">
-                <button id="download-txt-template" class="button template-download__button-primary">Завантажити шаблон</button>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Додати слово
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page" data-page="vocabulary-group-add" data-title="Новий розділ">
+                    <form class="form form__add-group" autocomplete="off" novalidate>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">Назва розділу</span>
+                                <input type="text" name="group" placeholder="Назва розділу" maxlength="40" required>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Розділ введений правильно!</span>
+                                    <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть
+                                        назву розділу!</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Додати розділ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page" data-page="vocabulary-group-delete" data-title="Видалити розділ">
+                    <form class="form form__delete-group" autocomplete="off" novalidate>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">Назва розділу</span>
+                                <select name="groups" class="select" data-content="groups" required>
+                                    <option value="" selected disabled>Виберіть розділ</option>
+                                </select>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Розділ вибрано!</span>
+                                    <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Видалити розділ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt" data-title="Імпорт">
+                    <form class="form form__import-txt" autocomplete="off" novalidate>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">
+                                    Розділ
+                                    <span class="small-description">У цей розділ будуть додані всі слова, які завантажаться
+                                        з
+                                        файлу</span>
+                                </span>
+                                <select name="groups" class="select" data-content="groups" required>
+                                    <option value="" selected disabled>Виберіть розділ</option>
+                                </select>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Слова буде додано у вибраний розділ!</span>
+                                    <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                                </span>
+                            </label>
+                            <div class="group__button-container">
+                                <button type="button" class="button group__button-primary page-open-button"
+                                    data-page="vocabulary-group-add">Додати</button>
+                            </div>
+                        </div>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">
+                                    Роздільник слова та перекладу
+                                </span>
+                                <select name="separators" class="select" required>
+                                    <option value=":" selected>Символ двокрапка, :</option>
+                                    <option value=">">Символ більше, ></option>
+                                    <option value="=">Сивол дорівнює, =</option>
+                                </select>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Роздільник вибрано!</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form__group">
+                            <span class="label__text">
+                                Текстовий файл зі словами
+                                <span class="small-description">
+                                    Текстовий файл обов'язково повинен відповідати
+                                    <span class="page-open-button link"
+                                        data-page="vocabulary-group-import-template">шаблону</span>
+                                </span>
+                            </span>
+                            <label for="import-txt-file" class="label file-input-label">
+                                <span class="file-input__label-text">Виберіть або перетягніть файл(и)...</span>
+                                <input type="file" id="import-txt-file" class="file-input" name="fileInput" accept=".txt"
+                                    multiple required>
+                            </label>
+                            <div class="feedbacks small-description">
+                                <span class="feedback valid">Файл успішно завантажений!</span>
+                                <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Завантажте
+                                    текстовий
+                                    файл!</span>
+                            </div>
+                            <div class="group__button-container">
+                                <button id="import-txt-file-reset" type="button"
+                                    class="button group__button-dark">Скинути</button>
+                            </div>
+                        </div>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Додати слова в розділ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page" data-page="vocabulary-group-import-template" data-title="Шаблон">
+                    <button id="download-txt-template" class="button template-download__button-primary">Завантажити
+                        шаблон</button>
+                </div>
+                <div class="page" data-page="vocabulary-delete-one" data-title="Видалити слово">
+                    <form class="form form__delete-one" autocomplete="off" novalidate>
+                        <div class="form__group">
+                            <label class="label">
+                                <span class="label__text">
+                                    Слово або його порядковий номер у словнику
+                                    <span class="small-description">Коректний ввід: <b>cat</b>, <b>1</b> або <b>1.4</b></span>
+                                </span>
+                                <input type="text" name="searchToken" placeholder="Слово або порядковий номер" maxlength="40" required>
+                                <span class="feedbacks small-description">
+                                    <span class="feedback valid">Слово знайдено!</span>
+                                    <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть критерій для пошуку!</span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Видалити слово
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page" data-page="vocabulary-clear" data-title="Очистити словник">
+                    <form class="form form__vocabulary-clear" autocomplete="off" novalidate>
+                        <div class="form__submit-group button-container">
+                            <button type="submit" class="button form__button-secondary">
+                                Очистити словник
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="page" data-page="results" data-title="Результати">
                 Results
@@ -310,9 +352,13 @@
     <script src="js/forms/form-add-single-word.js"></script>
     <script src="js/forms/form-add-group.js"></script>
     <script src="js/forms/form-delete-group.js"></script>
-    <script src="js/forms/form-import-txt.js"></script>
-    <script src="js/update-select.js"></script>
+    <script src="js/forms/form-delete-one.js"></script>
     <script src="js/popups/toggler.js"></script>
+    <script src="js/components/file-input.js"></script>
+    <script src="js/components/toggler-file-input.js"></script>
+    <script src="js/forms/form-import-txt.js"></script>
+    <script src="js/forms/form-vocabulary-clear.js"></script>
+    <script src="js/update-select.js"></script>
     <script src="js/forms/dragndrop.js"></script>
     <script src="js/templates/text.js"></script>
 </body>

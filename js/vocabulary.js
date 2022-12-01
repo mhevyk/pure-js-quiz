@@ -48,7 +48,7 @@ class Vocabulary {
         return Promise.resolve(this.addMany(recordsList));
     }
 
-    remove = (word) => {
+    delete = (word) => {
         const wordIndex = this.indexOf(word);
         if (wordIndex !== -1) {
             this.data.splice(wordIndex, 1);
@@ -160,5 +160,6 @@ class Vocabulary {
         this.data = [];
         this.groups = [];
         this.print();
+        updateSelectsWithGroups();
     }
 }
