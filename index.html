@@ -14,11 +14,14 @@
 </head>
 
 <body>
+    <div class="arrow up hide">
+        <i class="fa-solid fa-circle-arrow-up"></i>
+    </div>
     <div class="modal-overlay"></div>
     <div class="app-wrapper">
         <header class="header">
             <div class="title">
-                <div class="back">
+                <div class="arrow back">
                     <i class="fa-solid fa-circle-arrow-left"></i>
                 </div>
                 <h1>Перевірка слів</h1>
@@ -57,7 +60,8 @@
                         <div class="vocabulary__actions-group">Слова: додавання</div>
                         <div class="vocabulary__action">
                             <div class="action__name">Через форму</div>
-                            <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-add">
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-add">
                                 <i class="fa fa-arrow-right"></i>
                             </button>
                         </div>
@@ -71,7 +75,8 @@
                         <div class="vocabulary__actions-group">Слова: видалення</div>
                         <div class="vocabulary__action">
                             <div class="action__name">По одному</div>
-                            <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-delete-one">
+                            <button class="button vocabulary__button-secondary page-open-button"
+                                data-page="vocabulary-delete-one">
                                 <i class="fa fa-arrow-right"></i>
                             </button>
                         </div>
@@ -162,7 +167,8 @@
                                 <input type="text" name="group" placeholder="Назва розділу" maxlength="40" required>
                                 <span class="feedbacks small-description">
                                     <span class="feedback valid">Розділ введений правильно!</span>
-                                    <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть
+                                    <span class="feedback invalid"
+                                        data-default-feedback="Введіть назву розділу!">Введіть
                                         назву розділу!</span>
                                 </span>
                             </label>
@@ -195,13 +201,15 @@
                         </div>
                     </form>
                 </div>
-                <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt" data-title="Імпорт">
+                <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt"
+                    data-title="Імпорт">
                     <form class="form form__import-txt" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">
                                     Розділ
-                                    <span class="small-description">У цей розділ будуть додані всі слова, які завантажаться
+                                    <span class="small-description">У цей розділ будуть додані всі слова, які
+                                        завантажаться
                                         з
                                         файлу</span>
                                 </span>
@@ -244,8 +252,8 @@
                             </span>
                             <label for="import-txt-file" class="label file-input-label">
                                 <span class="file-input__label-text">Виберіть або перетягніть файл(и)...</span>
-                                <input type="file" id="import-txt-file" class="file-input" name="fileInput" accept=".txt"
-                                    multiple required>
+                                <input type="file" id="import-txt-file" class="file-input" name="fileInput"
+                                    accept=".txt" multiple required>
                             </label>
                             <div class="feedbacks small-description">
                                 <span class="feedback valid">Файл успішно завантажений!</span>
@@ -275,12 +283,16 @@
                             <label class="label">
                                 <span class="label__text">
                                     Слово або його порядковий номер у словнику
-                                    <span class="small-description">Коректний ввід: <b>cat</b>, <b>1</b> або <b>1.4</b></span>
+                                    <span class="small-description">Коректний ввід: <b>cat</b>, <b>1</b> або
+                                        <b>1.4</b></span>
                                 </span>
-                                <input type="text" name="searchToken" placeholder="Слово або порядковий номер" maxlength="40" required>
+                                <input type="text" name="searchToken" placeholder="Слово або порядковий номер"
+                                    maxlength="40" required>
                                 <span class="feedbacks small-description">
                                     <span class="feedback valid">Слово знайдено!</span>
-                                    <span class="feedback invalid" data-default-feedback="Введіть назву розділу!">Введіть критерій для пошуку!</span>
+                                    <span class="feedback invalid"
+                                        data-default-feedback="Введіть назву розділу!">Введіть критерій для
+                                        пошуку!</span>
                                 </span>
                             </label>
                         </div>
@@ -319,6 +331,11 @@
             <i class="spinner fa fa-spinner fa-spin fa-pulse"></i>
         </div>
     </div>
+    <div class="fixed-right-bottom notice-container success open">
+        <div class="notice">
+            Операція виконана успішно!
+        </div>
+    </div>
     <div class="fixed-center dialog-container">
         <div class="dialog">
             <div class="dialog__section dialog__header">
@@ -354,6 +371,7 @@
     <script src="js/forms/form-delete-group.js"></script>
     <script src="js/forms/form-delete-one.js"></script>
     <script src="js/popups/toggler.js"></script>
+    <script src="js/popups/notice.js"></script>
     <script src="js/components/file-input.js"></script>
     <script src="js/components/toggler-file-input.js"></script>
     <script src="js/forms/form-import-txt.js"></script>
@@ -361,6 +379,7 @@
     <script src="js/update-select.js"></script>
     <script src="js/forms/dragndrop.js"></script>
     <script src="js/templates/text.js"></script>
+    <script src="js/arrows.js"></script>
 </body>
 
 </html>
