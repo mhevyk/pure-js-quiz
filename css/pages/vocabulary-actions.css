@@ -1,4 +1,4 @@
-.page__vocabulary-actions .vocabulary__actions-group {
+.page-navigation__container .page-navigation__group {
     background-color: var(--button-disabled-color);
     font-weight: bold;
     text-transform: uppercase;
@@ -7,7 +7,7 @@
     color: var(--primary-color);
 }
 
-.page__vocabulary-actions .vocabulary__action {
+.page-navigation__container .page-navigation__item {
     display: flex;
     justify-content: space-between;
     gap: 1px;
@@ -15,7 +15,7 @@
     margin-top: 3px;
 }
 
-.page__vocabulary-actions .vocabulary__actions-group,
-.page__vocabulary-actions .action__name {
+.page-navigation__container .page-navigation__group,
+.page-navigation__container .page-navigation__name {
     padding: 8px 0 8px 25px;
 }

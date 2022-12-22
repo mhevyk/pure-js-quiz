@@ -22,4 +22,16 @@ class FileInput {
         this.input.value = null;
         this.setInvalid(errorMessage);
     }
+
+    resetConfirm(callback) {
+        const dialogContent = {
+            header: "Видалення завантажених файлів",
+            submitBtn: "Так",
+            body: `
+                Справді видалити всі завантажені файли?
+            `,
+            cancelBtn: "Скасувати"
+        };
+        confirmDecorator(dialogContent, callback);
+    }
 }

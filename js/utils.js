@@ -67,3 +67,11 @@ function readFileAsync(file) {
         reader.readAsText(file);
     });
 }
+
+function parseFileName(filename) {
+    const dotIndex = filename.lastIndexOf(".");
+    return {
+        rawName: filename.substring(0, dotIndex),
+        extension: filename.substring(dotIndex + 1, filename.length)
+    };
+}
