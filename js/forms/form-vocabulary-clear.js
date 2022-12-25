@@ -1,8 +1,7 @@
 (function () {
     const form = document.querySelector(".form__vocabulary-clear");
 
-    function clearVocabulary(event) {
-        event.preventDefault();
+    function clearVocabulary() {
         if (!form.checkValidity()) return;
 
         const dialogContent = {

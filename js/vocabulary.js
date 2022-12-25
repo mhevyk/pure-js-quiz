@@ -128,7 +128,7 @@ class Vocabulary {
         });
     }
 
-    #printEmptyVocabularyPlaceholder = () => {
+    #printPlaceholders = () => {
         this.container.innerHTML = `
             <div class="placeholder vocabulary__placeholder">
                 Додайте слова до словника, щоб почати їх вивчення!
@@ -139,8 +139,12 @@ class Vocabulary {
     print = () => {
         this.container.innerHTML = "";
 
-        if (!this.data.length) {
-            this.#printEmptyVocabularyPlaceholder();
+        const isEmpty = !this.data.length;
+
+        updatePlaceholders(isEmpty ? "show" : "hide");
+
+        if (isEmpty) {
+            this.#printPlaceholders();
         }
         else if (this.props.groups) {
             let groupIndex = 1;

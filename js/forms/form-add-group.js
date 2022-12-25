@@ -14,8 +14,7 @@
         }
     }
 
-    function addGroup(event) {
-        event.preventDefault();
+    function addGroup() {
         if (!form.checkValidity()) return;
         
         const group = groupInput.value.trim();

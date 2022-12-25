@@ -2,6 +2,10 @@ Array.prototype.unique = function () {
     return [...new Set(this)];
 };
 
+function shuffle(array) {
+	return [...array].sort(() => 0.5 - Math.random());
+};
+
 function updateTranslatesCount(value) {
     const translatesCountContainer = document.querySelector(
         ".form__add-single-word .translates__count"

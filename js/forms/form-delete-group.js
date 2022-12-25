@@ -1,8 +1,7 @@
 (function() {
     const form = document.querySelector(".form__delete-group");
 
-    function deleteGroup(event) {
-        event.preventDefault();
+    function deleteGroup() {
         if (!form.checkValidity()) return;
         
         const group = getValueFromSelect(form.groups);

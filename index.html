@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <link rel="stylesheet" href="libs/fontawesome/all.min.css">
-    <script src="libs/jszip/index.js"></script>
     <script src="js/utils.js"></script>
-    <script src="js/vocabulary.js"></script>
+    <script src="js/Vocabulary.js"></script>
+    <script src="js/quiz/Quiz.js"></script>
     <script src="js/init.js"></script>
 </head>
 
@@ -44,7 +44,8 @@
                     <div class="page-navigation__group">Режими опитування</div>
                     <div class="page-navigation__item">
                         <div class="page-navigation__name">Введення слова/перекладу</div>
-                        <button class="button vocabulary__button-secondary page-open-button" data-page="quiz-input-answer">
+                        <button class="button vocabulary__button-secondary page-open-button"
+                            data-page="quiz-input-answer">
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
@@ -53,11 +54,14 @@
             <div class="quiz__pages">
                 <div class="page" data-page="quiz-input-answer" data-title="Гра">
                     <div class="game-container">
+                        <div class="placeholder quiz__placeholder">
+                            Додайте слова до словника, щоб почати їх вивчення!
+                        </div>
                         <form class="form form__quiz-input-answer" autocomplete="off" novalidate>
                             <div class="question__text-container">
-                                <div class="question__text">Введіть переклад слова <b>cat</b>:</div>
+                                <div class="question__text">Питання:</div>
                             </div>
-                            <progress class="progress" value="0" min="0" max="10"></progress>
+                            <progress class="progress" value="1" min="0"></progress>
                             <div class="form__group">
                                 <label class="label">
                                     <span class="label__text">Ваша відповідь: <span class="small-description">Введіть
@@ -67,7 +71,7 @@
                                 </label>
                                 <div class="group__button-container">
                                     <button id="quiz-input-answer-next" type="submit"
-                                        class="button group__button-primary">Наступне питання</button>
+                                        class="button group__button-secondary">Наступне питання</button>
                                 </div>
                             </div>
                         </form>
@@ -82,7 +86,7 @@
                 </div>
                 <div class="vocabulary"></div>
                 <div class="button-container vocabulary__button-container">
-                    <button class="button vocabulary__button-secondary page-open-button" data-page="vocabulary-actions">
+                    <button class="button vocabulary__button-primary page-open-button" data-page="vocabulary-actions">
                         Редагувати
                     </button>
                 </div>
@@ -139,7 +143,7 @@
                     </div>
                 </div>
                 <div class="page__vocabulary-add page" data-page="vocabulary-add" data-title="Додавання">
-                    <form class="form form__add-single-word" autocomplete="off" novalidate>
+                    <form class="form to-validate form__add-single-word" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">Слово</span>
@@ -164,7 +168,7 @@
                             <div class="translates__additional"></div>
                             <div class="group__button-container">
                                 <button id="add-translate" type="button"
-                                    class="button group__button-primary">Додати</button>
+                                    class="button group__button-secondary">Додати</button>
                                 <button id="add-translate-reset" type="button"
                                     class="button group__button-dark">Скинути</button>
                             </div>
@@ -181,19 +185,19 @@
                                 </span>
                             </label>
                             <div class="group__button-container">
-                                <button type="button" class="button group__button-primary page-open-button"
+                                <button type="button" class="button group__button-secondary page-open-button"
                                     data-page="vocabulary-group-add">Додати</button>
                             </div>
                         </div>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Додати слово
                             </button>
                         </div>
                     </form>
                 </div>
                 <div class="page" data-page="vocabulary-group-add" data-title="Новий розділ">
-                    <form class="form form__add-group" autocomplete="off" novalidate>
+                    <form class="form to-validate form__add-group" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">Назва розділу</span>
@@ -207,14 +211,14 @@
                             </label>
                         </div>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Додати розділ
                             </button>
                         </div>
                     </form>
                 </div>
                 <div class="page" data-page="vocabulary-group-delete" data-title="Видалити розділ">
-                    <form class="form form__delete-group" autocomplete="off" novalidate>
+                    <form class="form to-validate form__delete-group" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">Назва розділу</span>
@@ -228,7 +232,7 @@
                             </label>
                         </div>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Видалити розділ
                             </button>
                         </div>
@@ -236,7 +240,7 @@
                 </div>
                 <div class="page__vocabulary-group-import page" data-page="vocabulary-group-import-txt"
                     data-title="Імпорт">
-                    <form class="form form__import-txt" autocomplete="off" novalidate>
+                    <form class="form to-validate form__import-txt" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">
@@ -255,7 +259,7 @@
                                 </span>
                             </label>
                             <div class="group__button-container">
-                                <button type="button" class="button group__button-primary page-open-button"
+                                <button type="button" class="button group__button-secondary page-open-button"
                                     data-page="vocabulary-group-add">Додати</button>
                             </div>
                         </div>
@@ -301,7 +305,7 @@
                             </div>
                         </div>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Додати слова в розділ
                             </button>
                         </div>
@@ -312,7 +316,7 @@
                         шаблон</button>
                 </div>
                 <div class="page" data-page="vocabulary-delete-one" data-title="Видалити слово">
-                    <form class="form form__delete-one" autocomplete="off" novalidate>
+                    <form class="form to-validate form__delete-one" autocomplete="off" novalidate>
                         <div class="form__group">
                             <label class="label">
                                 <span class="label__text">
@@ -331,7 +335,7 @@
                             </label>
                         </div>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Видалити слово
                             </button>
                         </div>
@@ -340,7 +344,7 @@
                 <div class="page" data-page="vocabulary-clear" data-title="Очистити словник">
                     <form class="form form__vocabulary-clear" autocomplete="off" novalidate>
                         <div class="form__submit-group button-container">
-                            <button type="submit" class="button form__button-secondary">
+                            <button type="submit" class="button form__button-primary">
                                 Очистити словник
                             </button>
                         </div>
@@ -382,15 +386,16 @@
             </div>
         </div>
     </div>
-    <script src="js/popups/popup.js"></script>
+    <script src="js/placeholders.js"></script>
+    <script src="js/popups/Popup.js"></script>
     <script async src="js/counters.js"></script>
     <script async src="js/forms/equal-inputs.js"></script>
-    <script src="js/popups/dialog.js"></script>
-    <script src="js/popups/loader.js"></script>
+    <script src="js/popups/Dialog.js"></script>
+    <script src="js/popups/Loader.js"></script>
     <script async src="js/exit.js"></script>
     <script src="js/current-year.js"></script>
-    <script src="js/stack.js"></script>
-    <script src="js/page-navigation.js"></script>
+    <script src="js/Stack.js"></script>
+    <script src="js/PageNavigator.js"></script>
     <script src="js/forms/form.js"></script>
     <script src="js/forms/add-translate.js"></script>
     <script src="js/forms/reset-translates.js"></script>
@@ -399,9 +404,9 @@
     <script src="js/forms/form-add-group.js"></script>
     <script src="js/forms/form-delete-group.js"></script>
     <script src="js/forms/form-delete-one.js"></script>
-    <script src="js/popups/toggler.js"></script>
-    <script src="js/components/file-input.js"></script>
-    <script src="js/components/toggler-file-input.js"></script>
+    <script src="js/popups/Toggler.js"></script>
+    <script src="js/components/FileInput.js"></script>
+    <script src="js/components/TogglerFileInput.js"></script>
     <script src="js/forms/parse-file-data.js"></script>
     <script src="js/forms/form-import-txt.js"></script>
     <script src="js/forms/form-vocabulary-clear.js"></script>
