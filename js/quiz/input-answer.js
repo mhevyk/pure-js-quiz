@@ -30,7 +30,6 @@
         if (voc.data.length) {
             initProgressBar(questionsCount);
             question = quiz.nextQuestion();
-            console.log(question);
             questionContainer.innerHTML = question.text;
             initNextButton();
         }
