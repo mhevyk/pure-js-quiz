@@ -32,28 +32,28 @@ function createRecordsFromLines(lines, separator = ":") {
         const records = lines.map((line, lineIndex) => {
             const row = lineIndex + 1;
             if (!line.includes(separator)) {
-                reject(uploading_errors.NO_SEPARATOR_IN_ROW(separator, row));
+                reject(fileUploadingErrors.NO_SEPARATOR_IN_ROW(separator, row));
             }
             const [wordText, translatesText] = line.split(separator);
 
             const word = wordText.trim().replaceAll(",", "");
             if (!word) {
-                reject(uploading_errors.NO_WORD_IN_ROW(row));
+                reject(fileUploadingErrors.NO_WORD_IN_ROW(row));
             }
 
             const trimmedTranslatesText = translatesText.trim();
             if (!trimmedTranslatesText) {
-                reject(uploading_errors.NO_TRANSLATES_IN_ROW(row));
+                reject(fileUploadingErrors.NO_TRANSLATES_IN_ROW(row));
             }
 
             const translates = executeTranslatesFromString(trimmedTranslatesText);
 
             if (translates.includes(word)) {
-                reject(uploading_errors.WORD_AND_TRANSLATE_ARE_SAME(row));
+                reject(fileUploadingErrors.WORD_AND_TRANSLATE_ARE_SAME(row));
             }
 
             if (translates.unique().length !== translates.length) {
-                reject(uploading_errors.TRANSLATES_ARE_SAME(row));
+                reject(fileUploadingErrors.TRANSLATES_ARE_SAME(row));
             }
 
             return { word, translates };

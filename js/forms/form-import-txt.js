@@ -68,6 +68,7 @@
                 fileInputWrapper.appendValidFile(file, records.length);
                 validFilesCount++;
             } catch (error) {
+                console.log(error)
                 fileInputWrapper.appendInvalidFile(file, error);
             }
         }
