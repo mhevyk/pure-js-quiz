@@ -102,8 +102,7 @@
         }
     }
 
-    function deleteRecord(event) {
-        event.preventDefault();
+    function deleteRecord() {
         if (!form.checkValidity()) return;
 
         const dialogContent = {

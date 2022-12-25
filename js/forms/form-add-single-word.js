@@ -1,8 +1,7 @@
 (function () {
     const form = document.querySelector(".form__add-single-word");
 
-    function addRecord(event) {
-        event.preventDefault();
+    function addRecord() {
         if (!form.checkValidity()) return;
 
         const wordInput = form.word;

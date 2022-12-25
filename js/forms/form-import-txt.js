@@ -12,8 +12,7 @@
         fileInputWrapper.reset(errorText);
     }
 
-    async function loadWordsFromTextFile(event) {
-        event.preventDefault();
+    async function loadWordsFromTextFile() {
         if (!form.checkValidity()) return;
 
         const group = getValueFromSelect(form.groups);
