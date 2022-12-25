@@ -26,7 +26,6 @@
 
     function initQuiz(questionsCount) {
         quiz = new Quiz(questionsCount, form);
-        Quiz.printForm(form);
         const voc = new Vocabulary();
         if (voc.data.length) {
             initProgressBar(questionsCount);

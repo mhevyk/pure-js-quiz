@@ -9,3 +9,7 @@
 .vocabulary__placeholder {
     border-top: none;
 }
+
+.placeholder.hide {
+    display: none;
+}

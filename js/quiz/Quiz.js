@@ -34,29 +34,6 @@ class Quiz {
         };
     }
 
-    static #printQuizPlaceholder = (form) => {
-        const wrapper = form.parentElement;
-        wrapper.parentElement.insertAdjacentHTML("afterbegin", `
-            <div class="placeholder quiz__placeholder">
-                Додайте слова до словника, щоб почати їх вивчення!
-            </div>
-        `);
-    }
-
-    static printForm(form) {
-        const voc = new Vocabulary();
-        if (!voc.data.length) {
-            Quiz.#printQuizPlaceholder(form);
-            form.classList.remove("open");
-        } else {
-            const placeholder = form.querySelector(".placeholder");
-            if (placeholder) {
-                placeholder.remove();
-            }
-            form.classList.add("open");
-        }
-    }
-
     nextQuestion() {
         const next = this.questions.next();
         if (next.done) {

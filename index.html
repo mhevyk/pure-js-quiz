@@ -44,7 +44,8 @@
                     <div class="page-navigation__group">Режими опитування</div>
                     <div class="page-navigation__item">
                         <div class="page-navigation__name">Введення слова/перекладу</div>
-                        <button class="button vocabulary__button-secondary page-open-button" data-page="quiz-input-answer">
+                        <button class="button vocabulary__button-secondary page-open-button"
+                            data-page="quiz-input-answer">
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
@@ -53,6 +54,9 @@
             <div class="quiz__pages">
                 <div class="page" data-page="quiz-input-answer" data-title="Гра">
                     <div class="game-container">
+                        <div class="placeholder quiz__placeholder">
+                            Додайте слова до словника, щоб почати їх вивчення!
+                        </div>
                         <form class="form form__quiz-input-answer" autocomplete="off" novalidate>
                             <div class="question__text-container">
                                 <div class="question__text">Питання:</div>
@@ -382,6 +386,7 @@
             </div>
         </div>
     </div>
+    <script src="js/placeholders.js"></script>
     <script src="js/popups/Popup.js"></script>
     <script async src="js/counters.js"></script>
     <script async src="js/forms/equal-inputs.js"></script>
