@@ -7,6 +7,7 @@ const fileUploadingErrors = {
     WORD_AND_TRANSLATE_ARE_SAME: (row) => `Слово та один з перекладів співпадають в рядку ${row}`,
     TRANSLATES_ARE_SAME: (row) => `Переклади співпадають в рядку ${row}`,
     WRONG_FILE_EXTENSION: 'Файл не має розширення <b>.txt</b>!',
+    EMPTY_FILE: 'Вміст файлу порожній!'
 };
 
 const fileUploadingFeedbacks = {

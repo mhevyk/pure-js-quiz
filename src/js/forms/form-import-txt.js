@@ -62,6 +62,9 @@
                 }
 
                 const data = await readFileAsync(file);
+                if (!data.trim()) {
+                    throw fileUploadingErrors.EMPTY_FILE;
+                }
                 if (data.includes('***')) {
                     throw fileUploadingErrors.TEMPLATE_LOAD;
                 }
