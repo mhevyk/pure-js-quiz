@@ -1,0 +1,23 @@
+{
+  "name": "quiz-game-new",
+  "version": "1.0.0",
+  "description": "Simple app in pure js to study foreign languages",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhevyk/pure-js-quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhevyk/pure-js-quiz/issues"
+  },
+  "homepage": "https://github.com/mhevyk/pure-js-quiz#readme",
+  "dependencies": {
+    "eslint": "^8.31.0"
+  }
+}

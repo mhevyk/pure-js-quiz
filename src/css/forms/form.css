@@ -1,0 +1,71 @@
+.form__group {
+    margin-bottom: 20px;
+    padding: 10px 0 10px 16px;
+    border-left: 2px solid var(--secondary-color);
+}
+
+.form__group .file-input-label,
+.form__group input[type='text'],
+.form__group .select {
+    padding: 7px 15px;
+    font-size: 16px;
+    border: 1px solid var(--button-disabled-color);
+    border-radius: 4px;
+    transition: 350ms;
+    color: var(--secondary-color);
+    width: 100%;
+}
+
+.form__group input[type='text']:focus,
+.form__group .select:focus {
+    outline: none;
+    border: 1px solid var(--primary-opposite-color);
+    box-shadow: 0 0 5px 1px var(--button-disabled-color);
+}
+
+.form__group .label {
+    display: block;
+}
+
+.form .form__group .row {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.form.validated .form__group .label.row {
+    display: grid;
+    grid-template-columns: 20fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.form.validated .form__group .label.row .input-delete__container {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+}
+
+.form__group .label__text {
+    display: block;
+    padding: 8px 0 12px;
+    color: var(--primary-color);
+}
+
+.form__group .group__button-container {
+    margin-top: 20px;
+}
+
+.form__group .input-delete__container {
+    padding: 0 15px;
+}
+
+.form__group .input-delete {
+    color: var(--highlight-fail-color);
+    transform: scale(1);
+    transition: 300ms;
+}
+
+.form__group .input-delete:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}

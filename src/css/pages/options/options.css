@@ -1,0 +1,70 @@
+.options__container .page-navigation__item {
+    align-items: center;
+}
+
+.options__container .page-navigation__item.column__item {
+    flex-direction: column;
+}
+
+@media (min-width: 767px) {
+    .options__container .page-navigation__item.column__item {
+        flex-direction: row;
+    }
+}
+
+.options__container .page-navigation__action.checkbox__container {
+    border-left: 1px solid var(--button-disabled-color);
+    padding-left: 20px;
+}
+
+.options__container .page-navigation__action {
+    display: flex;
+    align-items: center;
+}
+
+.option-checkbox-label,
+.option-radio-label {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--button-disabled-color);
+    background-color: var(--strip-color);
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-checkbox-label {
+    border-radius: 5px;
+}
+
+.option-radio-label {
+    border-radius: 50%;
+}
+
+.option-checkbox-label:hover,
+.option-radio-label:hover {
+    cursor: pointer;
+}
+
+.option-checkbox-label.active,
+.option-radio-label.active {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--white-color);
+}
+
+.option-checkbox-label i {
+    display: none;
+    font-size: 15px;
+}
+
+.option-checkbox-label.active i {
+    display: block;
+}
+
+.option-radio-label i {
+    font-size: 12px;
+    margin-top: -1px;
+}
+

@@ -1,0 +1,21 @@
+.form__quiz-input-answer {
+    display: none;
+}
+
+.form__quiz-input-answer.open {
+    display: block;
+}
+
+.question__text-container {
+    padding: 2px 0;
+}
+
+.question__text {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.question__text b {
+    color: var(--primary-opposite-color);
+}

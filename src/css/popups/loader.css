@@ -1,0 +1,9 @@
+.loader-container.open {
+    visibility: visible;
+    transition: 500ms;
+}
+
+.loader .spinner {
+    color: white;
+    font-size: 50pt;
+}

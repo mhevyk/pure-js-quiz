@@ -1,0 +1,19 @@
+.select:not([multiple]) {
+    appearance: none;
+    background: transparent;
+    background: var(--select-caret-down-image);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 0.75rem) center;
+}
+
+.select[multiple] {
+    max-height: 110px;
+}
+
+.select[multiple]>option {
+    padding: 7px 0 7px 15px;
+}
+
+.select[multiple]>option:not(:last-child) {
+    margin-bottom: 1px;
+}

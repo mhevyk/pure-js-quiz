@@ -1,0 +1,28 @@
+.app__header {
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: var(--button-disabled-color);
+    color: var(--secondary-color);
+    padding: 30px 20px 35px;
+    position: relative;
+}
+
+.app__header .header__title,
+.app__header .arrow__back {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.app__header .header__title {
+    font-size: min(8vw, 40px);
+}
+
+.app__header .header__subtitle {
+    letter-spacing: 2px;
+    margin: 5px auto 0;
+    max-width: 70%;
+    font-weight: 300;
+    color: var(--primary-color);
+    font-size: 13px;
+}

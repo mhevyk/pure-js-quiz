@@ -1,0 +1,124 @@
+.button {
+    border-radius: 5px;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+    font-size: 13px;
+    transition: 300ms;
+    text-transform: uppercase;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.button + .button {
+    margin-left: 0;
+    margin-top: 5px;
+}
+
+@media (min-width: 350px) {
+    .button + .button {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.button:disabled {
+    background-color: var(--button-disabled-color);
+    border: 1px dashed var(--secondary-light-color);
+    color: var(--secondary-light-color);
+}
+
+.button__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__container,
+.group-button__container {
+    padding-top: 16px;
+}
+
+.button__container .button::before,
+.button__container .button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(40px, 8vw);
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: 400ms;
+}
+
+.button__container .button:disabled::before,
+.button__container .button:disabled::after {
+    background-color: var(--secondary-light-color);
+}
+
+.button__container .button::before {
+    left: -11vw;
+}
+
+@media (min-width: 570px) {
+    .button__container .button::before {
+        left: -55px;
+    }
+}
+
+.button__container .button:hover::before {
+    transform: rotate(90deg);
+    width: 15px;
+    left: -36px;
+}
+
+.button__container .button::after {
+    right: -11vw;
+}
+
+@media (min-width: 570px) {
+    .button__container .button::after {
+        right: -55px;
+    }
+}
+
+.button__container .button:hover::after {
+    transform: rotate(-90deg);
+    width: 15px;
+    right: -36px;
+}
+
+.button__primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.button__primary:hover {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.button__secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.button__secondary:hover {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.button__dark {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+.button__dark:hover {
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+}
