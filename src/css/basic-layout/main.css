@@ -1,3 +1,45 @@
 .app__main {
     flex-grow: 1;
 }
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 95%;
+    min-height: calc(100vh - 3 * var(--main-container-margin-y));
+    margin: var(--main-container-margin-y) auto;
+    background-color: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 0 3px 1px var(--primary-opposite-color);
+    overflow: hidden;
+}
+
+@media (min-width: 570px) {
+    .app-wrapper {
+        max-width: 85%;
+    }
+}
+
+@media (min-width: 767px) {
+    .app-wrapper {
+        max-width: 75%;
+    }
+}
+
+@media (min-width: 1100px) {
+    .app-wrapper {
+        max-width: 65%;
+    }
+}
+
+@media (min-width: 1250px) {
+    .app-wrapper {
+        max-width: 55%;
+    }
+}
+
+@media (min-width: 1300px) {
+    .app-wrapper {
+        max-width: 50%;
+    }
+}

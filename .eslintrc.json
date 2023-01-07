@@ -1,17 +1,19 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": "eslint:recommended",
     "overrides": [
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "script"
+        "sourceType": "module"
     },
+    "ignorePatterns": ["bundle.js"],
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         "space-infix-ops": ["error", {
             "int32Hint": false
         }],
@@ -28,6 +30,10 @@
         "no-inline-comments": "error",
         "no-else-return": ["error", {"allowElseIf": true}],
         "curly": "error",
-        "prefer-arrow-callback": ["error"]
+        "prefer-arrow-callback": "error",
+        "semi": "error",
+        "no-duplicate-imports": ["error", { "includeExports": true }],
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "error"
     }
 }

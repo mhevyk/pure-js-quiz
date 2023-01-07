@@ -1,6 +1,9 @@
 .loader-container.open {
     visibility: visible;
-    transition: 500ms;
+}
+
+.loader.open {
+    opacity: 1;
 }
 
 .loader .spinner {

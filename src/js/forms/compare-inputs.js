@@ -1,34 +1,43 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-const countValueOccurence = (inputsArray) => {
-    return inputsArray
-        .filter(a => a.value)
-        .reduce((obj, current) => {
-            const value = current.value;
-            obj[value] = (obj?.[value] + 1) || 1;
-            return obj;
-        }, {});
+import {
+    setInvalidFeedback,
+    setValidFeedback,
+    FEEDBACKS_COMPARE_INPUTS_ADD_ONE
+} from './feedback';
+
+function countInputValuesOccurence(inputsArray) {
+    const inputValuesList = inputsArray.map(input => input.value);
+    const nonEmptyInputs = inputValuesList.filter(Boolean);
+    return nonEmptyInputs.reduce((occurenceTable, current) => {
+        occurenceTable[current] = (occurenceTable[current] + 1) || 1;
+        return occurenceTable;
+    }, {});
 }
 
-const validateFormAddInputs = (form) => {
+const { EMPTY_INPUT, CONTAINS_COMMA, SAME_INPUT_VALUES } = FEEDBACKS_COMPARE_INPUTS_ADD_ONE;
+
+function validateInput(input, occurence) {
+    const value = input.value.trim();
+    const wordInput = input.form.word;
+    const isWord = input.name === 'word';
+
+    if (!value) {
+        setInvalidFeedback(input, EMPTY_INPUT(isWord));
+    } else if (value.includes(',')) {
+        setInvalidFeedback(input, CONTAINS_COMMA(isWord));
+    } else if (occurence > 1) {
+        setInvalidFeedback(input, SAME_INPUT_VALUES(wordInput.value === value));
+    } else {
+        setValidFeedback(input);
+    }
+}
+
+function validateFormAddInputs(form) {
     const wordInput = form.word;
     const translateInputs = form.querySelectorAll('[name="translate"]');
     const allInputs = [wordInput, ...translateInputs];
 
-    const valueOccurence = countValueOccurence(allInputs);
-
-    for (const input of allInputs) {
-        const value = input.value.trim();
-        if (!value) {
-            setInvalidFeedback(input, 'Введіть ' + ((input.name === 'word') ? 'слово!' : 'переклад!'));
-        } else if(value.includes(',')) {
-            setInvalidFeedback(input, (input.name === 'word')
-                ? 'Слово не може містити кому!'
-                : 'Переклад не може містити кому. Записуйте кожен переклад в окремому полі!');
-        } else if (valueOccurence[value] > 1) {
-            setInvalidFeedback(input, ((wordInput.value === value) ? 'Слово та переклад' : 'Переклади') + ' співпадають!');
-        } else {
-            input.setCustomValidity('');
-        }
-    }
+    const valueOccurence = countInputValuesOccurence(allInputs);
+    allInputs.forEach(input => validateInput(input, valueOccurence[input.value]));
 }
+
+export { validateFormAddInputs };

@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+import { vocabularyContainer } from '../vocabulary';
+
 const placeholders = [
     //quiz-input-answer placeholder
     {
@@ -21,20 +21,22 @@ const placeholders = [
     //vocabulary placeholder
     {
         show: () => {
-            const voc = new Vocabulary();
-            voc.container.innerHTML = `<div class='placeholder vocabulary__placeholder'>
-                Додайте слова до словника, щоб почати їх вивчення!
-            </div>`
+            vocabularyContainer.innerHTML = `
+                <div class='placeholder vocabulary__placeholder'>
+                    Додайте слова до словника, щоб почати їх вивчення!
+                </div>
+            `;
         },
         hide: () => {
-            const voc = new Vocabulary();
-            voc.container.innerHTML = '';
+            vocabularyContainer.innerHTML = '';
         }
     }
 ];
 
-const updatePlaceholders = (status) => {
+function updatePlaceholders(status) {
     for (const placeholder of placeholders) {
         placeholder[status]();
     }
 }
+
+export { updatePlaceholders };

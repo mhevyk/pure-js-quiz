@@ -1,22 +1,23 @@
-(() => {
-    const scrollUpArrow = document.querySelector('.arrow__up');
+import { debounce } from '../utils';
 
-    const scrollConfig = {
-        top: 0,
-        behavior: 'smooth'
-    };
+const scrollUpArrow = document.querySelector('.arrow__up');
 
-    const handleClick = () => window.scrollTo(scrollConfig);
+function arrowUpClickHandler() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    const handleScroll = () => {
-        const currentScroll = window.scrollY;
-        if (currentScroll >= 300) {
-            scrollUpArrow.classList.add('open');
-        } else {
-            scrollUpArrow.classList.remove('open');
-        }
+function scrollHandler() {
+    const currentScroll = window.scrollY;
+    if (currentScroll >= 300) {
+        scrollUpArrow.classList.add('open');
+    } else {
+        scrollUpArrow.classList.remove('open');
     }
+}
 
-    scrollUpArrow.addEventListener('click', handleClick);
-    document.addEventListener('scroll', handleScroll);
-})();
+function initScrollTopArrow() {
+    scrollUpArrow.addEventListener('click', arrowUpClickHandler);
+    document.addEventListener('scroll', debounce(scrollHandler, 150));
+}
+
+export { initScrollTopArrow };

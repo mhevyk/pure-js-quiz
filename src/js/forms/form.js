@@ -1,15 +1,13 @@
-(() => {
+function addColorValidateHandler(form) {
+    form.addEventListener('submit', event => event.target.classList.add('validated'));
+}
+
+function addPreventDefaultHandler(form) {
+    form.addEventListener('submit', event => event.preventDefault());
+}
+
+function initForms() {
     const forms = document.querySelectorAll('.form');
-
-    const addColorValidateHandler = (form) => {
-        form.addEventListener('submit', event => event.target.classList.add('validated'));
-    }
-
-    const addPreventDefaultHandler = (form) => {
-        form.addEventListener('submit', event => event.preventDefault());
-    }
-
-
     forms.forEach(form => {
         const { colorValidate } = form.dataset;
         if (colorValidate !== undefined) {
@@ -17,4 +15,6 @@
         }
         addPreventDefaultHandler(form);
     });
-})();
+}
+
+export { initForms };

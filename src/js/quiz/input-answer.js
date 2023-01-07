@@ -1,59 +1,53 @@
-/* eslint-disable no-undef */
-(() => {
+import { vocabulary } from '../vocabulary';
+import Quiz from './quiz';
+import { resetInput } from '../utils';
+import { options } from '../options';
+import {
+    initProgressBar,
+    incrementProgressBarValue
+} from '../components/progress-bar';
+import { changeButtonStyle } from '../components/button';
+import { CSS_CLASSES } from '../storage';
+
+const initQuizInputAnswer = () => {
     const form = document.querySelector('.form__quiz-input-answer');
     const progressBar = form.querySelector('.progress');
     const answerInput = form.answer;
     const questionContainer = form.querySelector('.question__text');
-    const submitButton = form.querySelector('button[type="submit"]');
     const quizStartButton = document.querySelector('#quiz-input-answer-start');
+    const submitButton = form.querySelector('[type=submit]');
+
+    const prapareToGameOver = changeButtonStyle.bind(null, submitButton, {
+        text: 'Завершити спробу',
+        replaceClasses: { from: CSS_CLASSES.buttonSecondary, to: CSS_CLASSES.buttonPrimary }
+    });
 
     let quiz, question;
 
-    const incrementProgressValue = () => {
-        const { value, max } = progressBar;
-        const newValue = value + 1;
-        const percentage = (newValue / max) * 100;
-        progressBar.value = newValue;
-        progressBar.style.setProperty('--value', `${percentage}%`);
-    }
-
-    const initProgressBar = (questionsCount) => {
-        progressBar.value = 0;
-        progressBar.style.setProperty('--value', '0%');
-        progressBar.max = questionsCount;
-    }
-
-    const initNextButton = () => {
-        submitButton.classList.add('button__secondary');
-        submitButton.classList.remove('button__primary');
-        submitButton.textContent = 'Наступне питання';
-    }
-
-    const convertNextButtonToFinishButton = () => {
-        submitButton.classList.remove('button__secondary');
-        submitButton.classList.add('button__primary');
-        submitButton.textContent = 'Завершити спробу';
-    }
-
-    const initQuiz = (questionsCount) => {
-        quiz = new Quiz(questionsCount, form);
+    const initQuiz = (questionsCount, options) => {
+        quiz = new Quiz(questionsCount, options);
         question = quiz.nextQuestion();
         questionContainer.innerHTML = question.text;
-        initNextButton();
-    }
+        changeButtonStyle(submitButton, {
+            text: 'Наступне питання',
+            replaceClasses: { from: CSS_CLASSES.buttonPrimary, to: CSS_CLASSES.buttonSecondary }
+        });
+        if (questionsCount === 1) {
+            prapareToGameOver();
+        }
+    };
 
     quizStartButton.addEventListener('click', () => {
-        const voc = new Vocabulary();
-        if (voc.data.length) {
+        if (vocabulary.data.length) {
             resetInput(answerInput);
-            const range = document.querySelector('#quiz-input-answer-words-count');
-            const questionsCount = Number(range.value);
-            initQuiz(questionsCount);
-            form.addEventListener('submit', goToNextQuestion);
-            setTimeout(() => answerInput.focus());
+            const { questionsCount, mixQuestionType } = options;
+            initQuiz(questionsCount, { mixQuestionType });
 
-            initProgressBar(questionsCount);
-            setTimeout(incrementProgressValue, 100);
+            form.addEventListener('submit', goToNextQuestion);
+            initProgressBar(progressBar, questionsCount);
+
+            setTimeout(() => answerInput.focus());
+            setTimeout(() => incrementProgressBarValue(progressBar), 100);
         }
     });
 
@@ -67,15 +61,11 @@
         if (isAnswerRight) {
             quiz.rightAnswersCount++;
         }
-    }
+    };
 
     const goToNextQuestion = () => {
-        if (!question) {
-            return;
-        }
-
         if (progressBar.value + 1 === progressBar.max) {
-            convertNextButtonToFinishButton();
+            prapareToGameOver();
         }
 
         checkAnswer(question);
@@ -90,6 +80,8 @@
             return quiz.showResult();
         }
 
-        incrementProgressValue();
-    }
-})();
+        incrementProgressBarValue(progressBar);
+    };
+};
+
+export { initQuizInputAnswer };

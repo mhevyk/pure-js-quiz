@@ -1,47 +1,52 @@
-/* eslint-disable no-undef */
-(() => {
-    const form = document.querySelector('.form__add-single-word');
+import { vocabulary } from '../vocabulary';
+import { validateFormAddInputs } from './compare-inputs';
+import { resetTranslates as resetHandler } from './reset-translates';
+import { updateUserInterface } from '../update-user-interface';
+import { DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD } from '../storage';
+import { 
+    getValueFromSelect,
+    submitAfterDialogConfirm,
+    resetForm,
+    handleSubmitIfFormValid,
+    debounce
+} from '../utils';
 
-    const addRecord = () => {
-        const wordInput = form.word;
-        const translateInputs = form.querySelectorAll('[name="translate"]');
-        const groupSelect = form.groups;
+const form = document.querySelector('.form__add-single-word');
 
-        const word = wordInput.value.trim();
-        const translates = Array.from(translateInputs, translateInput => translateInput.value.trim());
-        const group = getValueFromSelect(groupSelect).trim();
+function addRecord() {
+    const wordInput = form.word;
+    const translateInputs = form.querySelectorAll('[name="translate"]');
+    const groupSelect = form.groups;
 
-        const dialogContent = {
-            header: 'Додавання слова',
-            submitBtn: 'Додати',
-            cancelBtn: 'Скасувати',
-            body: `
-                <p><span class='text-primary'>Слово:</span> ${word}</p>
-                <p><span class='text-primary'>Переклади:</span> ${translates.join(', ')}</p>
-                <p><span class='text-primary'>Розділ:</span> ${group}</p>
-            `,
-        };
+    const word = wordInput.value.trim();
+    const translates = Array.from(translateInputs, translateInput => translateInput.value.trim());
+    const group = getValueFromSelect(groupSelect).trim();
 
-        confirmDecorator(dialogContent, () => {
-            const voc = new Vocabulary();
-            voc.addOne({word, translates, group});
-            voc.print();
-            voc.save();
-            resetForm(form);
-        });
+    const dialogContent = DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD(word, translates, group);
+
+    submitAfterDialogConfirm(dialogContent, () => {
+        vocabulary.addOne({word, translates, group});
+        vocabulary.print();
+        vocabulary.save();
+        resetForm(form);
+        updateUserInterface();
+    });
+}
+
+function textInputsHandler(event) {
+    if (event.target.type === 'text') {
+        validateFormAddInputs(form);
     }
+}
 
-    const handleOnlyInputs = (event) => {
-        if (event.target.tagName === 'INPUT') {
-            validateFormAddInputs(form);
-        }
-    }
+function submitHandler(event) {
+    handleSubmitIfFormValid(event.target, addRecord);
+}
 
-    const handleFormSubmit = (event) => {
-        const form = event.target;
-        handleSubmitIfFormValid(form, addRecord);
-    }
+function initFormAddSingleWord() {
+    form.addEventListener('input', debounce(textInputsHandler, 100));
+    form.addEventListener('submit', submitHandler);  
+    form.addEventListener('reset', resetHandler);
+}
 
-    form.addEventListener('input', handleOnlyInputs);
-    form.addEventListener('submit', handleFormSubmit);  
-})();
+export { initFormAddSingleWord };

@@ -1,35 +1,32 @@
-/* eslint-disable no-undef */
-(() => {
-    const resetTranslatesButton = document.querySelector(
-        '#add-translate-reset'
-    );
-    const translatesContainer = document.querySelector(
-        '.form__add-single-word .additional__translates-container'
-    );
+import { resetFeedbacks } from './feedback';
+import { formAddOneTranslates, DIALOG_CONTENT_RESET_TRANSLATES } from '../storage';
+import {
+    submitAfterDialogConfirm,
+    resetInput,
+    removeContainerChildren,
+    updateTranslatesCount
+} from '../utils';
 
-    const resetTranslates = () => {
-        const dialogContent = {
-            header: 'Скидання перекладів',
-            submitBtn: 'Так',
-            body: `
-                Справді скинути переклади?
-                <small>Всі переклади крім першого будуть видалені, а вміст першого буде очищено</small>
-            `,
-            cancelBtn: 'Скасувати'
-        };
-        confirmDecorator(dialogContent, () => {
-            const form = document.querySelector('.form__add-single-word');
-            const firstTranslateInput = form.querySelector(
-                '[name="translate"]'
-            );
-            resetInput(firstTranslateInput);
-            resetFeedbacks(form, '[data-reset]');
+const resetTranslatesButton = document.querySelector('#add-translate-reset');
+const translatesContainer = document.querySelector('.additional__translates-container');
 
-            COUNTERS.translateIdCounter = 0;
-            removeContainerChildren(translatesContainer);
-            updateTranslatesCount(1);
-        });
-    }
+function resetTranslates() {
+    const form = document.querySelector('.form__add-single-word');
+    const firstTranslateInput = form.querySelector('[name="translate"]');
 
-    resetTranslatesButton.addEventListener('click', resetTranslates);
-})();
+    formAddOneTranslates.id = 1;
+    formAddOneTranslates.count = 1;
+
+    resetInput(firstTranslateInput);
+    resetFeedbacks(form, '[data-reset]');
+    removeContainerChildren(translatesContainer);
+    updateTranslatesCount(formAddOneTranslates.count);
+}
+
+function confirmResetTranslates() {
+    submitAfterDialogConfirm(DIALOG_CONTENT_RESET_TRANSLATES, resetTranslates);
+}
+
+resetTranslatesButton.addEventListener('click', confirmResetTranslates);
+
+export { resetTranslates };

@@ -1,8 +1,8 @@
-body.show-overlay {
+body[class$='overlay-open'] {
     overflow: hidden;
 }
 
-body.show-overlay .overlay {
+body[class$='overlay-open'] .overlay {
     display: block;
 }
 

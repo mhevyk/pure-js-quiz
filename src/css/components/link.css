@@ -4,6 +4,10 @@
     text-decoration: none;
 }
 
+.link__light {
+    color: var(--primary-opposite-color);
+}
+
 .link:hover {
     cursor: pointer;
     color: var(--secondary-hover-color);

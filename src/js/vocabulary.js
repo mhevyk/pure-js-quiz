@@ -1,34 +1,29 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-class Vocabulary {
-    static #instance;
-    constructor(container = document.querySelector('.vocabulary')) {
-        if (Vocabulary.#instance) {
-            return Vocabulary.#instance;
-        }
+import { options } from './options';
+import { updatePlaceholders } from './components/placeholder';
+import { updateUserInterface } from './update-user-interface';
+import { filterUnique } from './utils';
 
+const vocabularyContainer = document.querySelector('.vocabulary');
+
+class Vocabulary {
+    constructor(container = vocabularyContainer) {
         this.container = container;
         this.groups = [];
         this.data = [];
-        this.props = {
-            groups: true
-        };
-
-        Vocabulary.#instance = this;
         this.print();
     }
 
-    getProp = (prop) => {
-        return this.props[prop];
+    get recordsCount() {
+        return this.data.length;
     }
 
-    setProp = (prop, value) => {
-        this.props[prop] = value;
-    }
+    isEmpty = () => {
+        return this.data.length === 0;
+    };
 
     indexOf = (word) => {
         return this.data.findIndex(record => record.word === word);
-    }
+    };
 
     addOne = ({word, translates, group}) => {
         const wordIndex = this.indexOf(word);
@@ -40,16 +35,16 @@ class Vocabulary {
 
         this.data.push({word, translates, group});
         this.addGroup(group);
-    }
+    };
 
     addMany = (recordsList) => {
         recordsList.forEach(record => this.addOne(record));
         this.save();
-    }
+    };
 
     addManyAsync = (recordsList) => {
         return Promise.resolve(this.addMany(recordsList));
-    }
+    };
 
     delete = (word) => {
         const wordIndex = this.indexOf(word);
@@ -58,17 +53,17 @@ class Vocabulary {
             return true;
         }
         return false;
-    }
+    };
 
     getGroupContent = (group) => {
         return this.data.filter(record => record.group === group);
-    }
+    };
 
     addGroup = (group) => {
         if (!this.groups.includes(group)) {
             this.groups.push(group);
         }
-    }
+    };
 
     removeGroup = (group) => {
         const groupIndex = this.groups.indexOf(group);
@@ -78,54 +73,22 @@ class Vocabulary {
             return true;
         }
         return false;
-    }
+    };
 
     addTranslates = (word, translates) => {
         const wordIndex = this.indexOf(word);
         if (wordIndex !== -1) {
             this.#addTranslatesByWordIndex(wordIndex, translates);
         }
-    }
-
-    #addTranslatesByWordIndex = (wordIndex, translates) => {
-        translates = Array.isArray(translates) ? translates : [translates];
-        this.data[wordIndex].translates.push(...translates);
-        this.data[wordIndex].translates =
-            filterUnique(this.data[wordIndex].translates);
-    }
-
-    #printGroup = (group) => {
-        this.container.innerHTML += `
-            <div class='vocabulary__group'>
-                <div class='record__index'></div>
-                <div class='record__item'>${group}</div>
-            </div>
-        `;
-    }
-
-    #printRecord = (index, record) => {
-        const position = index.split('.').at(-1);
-        this.container.innerHTML += `
-            <div class="vocabulary__record${position % 2 ? ' strip' : ''}">
-                <div class='record__item record__index'>${index}</div>
-                <div class='record__item record__word'>${record.word}</div>
-                <div class='record__item record__translates'>${record.translates.join(', ')}</div>
-            </div>
-        `;
-    }
-
-    #printRecordsList = (list, groupIndex = '') => {
-        list.forEach((record, recordIndex) => {
-            this.#printRecord(`${groupIndex}${recordIndex + 1}`, record);
-        });
-    }
+    };
 
     print = () => {
         const isEmpty = !this.data.length;
+        const { showGroups } = options;
 
         updatePlaceholders(isEmpty ? 'show' : 'hide');
 
-        if (this.props.groups) {
+        if (showGroups) {
             let groupIndex = 1;
             this.groups.forEach(group => {
                 const groupData = this.getGroupContent(group);
@@ -138,27 +101,25 @@ class Vocabulary {
         } else {
             this.#printRecordsList(this.data);
         }
-    }
+    };
 
     load = () => {
         const vocabularyData = localStorage.getItem('vocabularyAppData');
         if (vocabularyData) {
-            const { data, props, groups } = JSON.parse(vocabularyData);
+            const { data, groups } = JSON.parse(vocabularyData);
             this.data = data;
-            this.props = props;
             this.groups = groups;
         }
-    }
+    };
 
     save = () => {
         const vocabularyDataToSave = {
             data: this.data,
-            props: this.props,
             groups: this.groups
         };
 
         localStorage.setItem('vocabularyAppData', JSON.stringify(vocabularyDataToSave));
-    }
+    };
 
     clear = () => {
         this.data = [];
@@ -166,5 +127,41 @@ class Vocabulary {
         this.print();
         localStorage.removeItem('vocabularyAppData');
         updateUserInterface();
-    }
+    };
+
+    #addTranslatesByWordIndex = (wordIndex, translates) => {
+        translates = Array.isArray(translates) ? translates : [translates];
+        this.data[wordIndex].translates.push(...translates);
+        this.data[wordIndex].translates =
+            filterUnique(this.data[wordIndex].translates);
+    };
+
+    #printGroup = (group) => {
+        this.container.innerHTML += `
+            <div class='vocabulary__group'>
+                <div class='record__index'></div>
+                <div class='record__item'>${group}</div>
+            </div>
+        `;
+    };
+
+    #printRecord = (index, record) => {
+        const position = index.split('.').at(-1);
+        this.container.innerHTML += `
+            <div class="vocabulary__record${position % 2 ? ' strip' : ''}">
+                <div class='record__item record__index'>${index}</div>
+                <div class='record__item record__word'>${record.word}</div>
+                <div class='record__item record__translates'>${record.translates.join(', ')}</div>
+            </div>
+        `;
+    };
+
+    #printRecordsList = (list, groupIndex = '') => {
+        list.forEach((record, recordIndex) => {
+            this.#printRecord(`${groupIndex}${recordIndex + 1}`, record);
+        });
+    };
 }
+
+export const vocabulary = new Vocabulary();
+export { vocabularyContainer };

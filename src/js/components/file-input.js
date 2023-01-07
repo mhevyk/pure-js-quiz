@@ -1,6 +1,8 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-class FileInput {
+import { setValidFeedback, setInvalidFeedback } from '../forms/feedback';
+import { resetInput, submitAfterDialogConfirm } from '../utils';
+import { DIALOG_CONTENT_RESET_FILE_INPUT } from '../storage';
+
+export default class FileInput {
     constructor(input, label) {
         this.input = input;
         this.label = label;
@@ -8,32 +10,22 @@ class FileInput {
         this.setInvalid();
     }
 
-    setValid = (message = 'Все добре!') => {
-        setValidFeedback(this.input, message, this.label.nextElementSibling);
-        this.label.classList.add('valid');
-        this.label.classList.remove('invalid');
+    setValid(feedback = 'Все добре!') {
+        setValidFeedback(this.input, feedback, this.label.nextElementSibling);
+        this.label.classList.replace('invalid', 'valid');
     }
     
-    setInvalid = (errorMessage = 'Завантажте текстовий файл!') => {
-        setInvalidFeedback(this.input, errorMessage, this.label.nextElementSibling);
-        this.label.classList.remove('valid');
-        this.label.classList.add('invalid');
+    setInvalid(feedback = 'Завантажте текстовий файл!') {
+        setInvalidFeedback(this.input, feedback, this.label.nextElementSibling);
+        this.label.classList.replace('valid', 'invalid');
     }
 
-    reset = (errorMessage) => {
+    reset(feedback) {
         resetInput(this.input);
-        this.setInvalid(errorMessage);
+        this.setInvalid(feedback);
     }
 
-    resetConfirm = (callback) => {
-        const dialogContent = {
-            header: 'Видалення завантажених файлів',
-            submitBtn: 'Так',
-            body: `
-                Справді видалити всі завантажені файли?
-            `,
-            cancelBtn: 'Скасувати'
-        };
-        confirmDecorator(dialogContent, callback);
+    resetConfirm(callback) {
+        submitAfterDialogConfirm(DIALOG_CONTENT_RESET_FILE_INPUT, callback);
     }
 }

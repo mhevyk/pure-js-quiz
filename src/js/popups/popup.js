@@ -1,17 +1,16 @@
-/* eslint-disable no-unused-vars */
-class Popup {
+export default class Popup {
     constructor(container, type) {
         this.container = container;
         this.type = type;
     }
 
-    isOpen = () => {
+    isOpen () {
         return this.container.classList.contains('open');
     }
 
     open() {
         const body = document.body;
-        body.classList.add('show-overlay', `${this.type}-open`);
+        body.classList.add(`${this.type}-overlay-open`);
   
         if (!this.isOpen()) {
             this.container.parentElement.classList.add('open');
@@ -21,7 +20,7 @@ class Popup {
   
     close() {
         const body = document.body;
-        body.classList.remove('show-overlay', `${this.type}-open`);
+        body.classList.remove(`${this.type}-overlay-open`);
   
         if (this.isOpen()) {
             this.container.parentElement.classList.remove('open');
@@ -29,7 +28,7 @@ class Popup {
         }
     }
 
-    toggle = () => {
+    toggle() {
         this.isOpen() ? this.close() : this.open();
     }
 }

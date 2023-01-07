@@ -1,7 +1,5 @@
 .app__header {
     text-align: center;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
     background-color: var(--button-disabled-color);
     color: var(--secondary-color);
     padding: 30px 20px 35px;

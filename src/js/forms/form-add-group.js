@@ -1,43 +1,47 @@
-/* eslint-disable no-undef */
-(() => {
-    const form = document.querySelector('.form__add-group');
-    const groupInput = form.group;
-    const voc = new Vocabulary();
+import { vocabulary } from '../vocabulary';
+import { submitAfterDialogConfirm, handleSubmitIfFormValid, resetForm, debounce } from '../utils';
+import { updateUserInterface } from '../update-user-interface';
+import { DIALOG_CONTENT_TEMPLATE_ADD_GROUP } from '../storage';
+import {
+    setValidFeedback,
+    setInvalidFeedback,
+    FEEDBACKS_ADD_GROUP
+} from './feedback';
 
-    const validateExistingGroup = () => {
-        const group = groupInput.value.trim();
-        if (!group) {
-            setInvalidFeedback(groupInput, 'Введіть назву розділу!');
-        } else if (voc.groups.includes(group)) {
-            setInvalidFeedback(groupInput, `Розділ <b>${group}</b> вже існує!`);
-        } else {
-            groupInput.setCustomValidity('');
-        }
+const form = document.querySelector('.form__add-group');
+const groupInput = form.group;
+
+function validateHandler() {
+    const group = groupInput.value.trim();
+    const { EMPTY_INPUT, GROUP_ALREADY_EXISTS } = FEEDBACKS_ADD_GROUP;
+
+    if (!group) {
+        setInvalidFeedback(groupInput, EMPTY_INPUT);
+    } else if (vocabulary.groups.includes(group)) {
+        setInvalidFeedback(groupInput, GROUP_ALREADY_EXISTS(group));
+    } else {
+        setValidFeedback(groupInput);
     }
+}
 
-    const addGroup = () => {
-        const group = groupInput.value.trim();
+function addGroup() {
+    const group = groupInput.value.trim();
 
-        const dialogContent = {
-            header: 'Додавання розділу',
-            submitBtn: 'Додати',
-            cancelBtn: 'Скасувати',
-            body: `<span class='text-primary'>Назва розділу:</span> ${group}`,
-        };
+    submitAfterDialogConfirm(DIALOG_CONTENT_TEMPLATE_ADD_GROUP(group), () => {
+        vocabulary.addGroup(group);
+        vocabulary.save();
+        resetForm(form);
+        updateUserInterface();
+    });
+}
 
-        confirmDecorator(dialogContent, () => {
-            voc.addGroup(group);
-            voc.save();
-            resetForm(form);
-            updateUserInterface();
-        });
-    }
+function formSubmitHandler(event) {
+    handleSubmitIfFormValid(event.target, addGroup);
+}
 
-    const formSubmitHandler = (event) => {
-        const form = event.target;
-        handleSubmitIfFormValid(form, addGroup);
-    }
-
-    form.addEventListener('input', validateExistingGroup);
+function initAddGroupForm() {
+    form.addEventListener('input', debounce(validateHandler, 100));
     form.addEventListener('submit', formSubmitHandler);
-})();
+}
+
+export { initAddGroupForm };

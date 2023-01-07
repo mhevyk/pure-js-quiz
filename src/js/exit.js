@@ -1,19 +1,17 @@
-/* eslint-disable no-undef */
-(() => {
+import { submitAfterDialogConfirm } from './utils';
+import { DIALOG_CONTENT_EXIT_APP } from './storage';
+
+function exitApp() {
+    window.open(location, '_self').close();
+}
+
+function confirmExitApp() {
+    submitAfterDialogConfirm(DIALOG_CONTENT_EXIT_APP, exitApp);
+}
+
+function initExitButton() {
     const exit = document.querySelector('.exit');
+    exit.addEventListener('click', confirmExitApp);
+}
 
-    const exitApp = () => {
-        const dialogContent = {
-            header: 'Вихід з програми',
-            body: 'Справді вийти із програми?',
-            submitBtn: 'Так',
-            cancelBtn: 'Скасувати'
-        };
-
-        confirmDecorator(dialogContent, () => {
-            window.open(location, '_self').close();
-        });
-    }
-
-    exit.addEventListener('click', exitApp);
-})();
+export { initExitButton };

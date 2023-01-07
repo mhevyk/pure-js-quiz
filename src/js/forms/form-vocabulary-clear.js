@@ -1,25 +1,24 @@
-/* eslint-disable no-undef */
-(() => {
+import { vocabulary } from '../vocabulary';
+import { submitAfterDialogConfirm, handleSubmitIfFormValid } from '../utils';
+import { DIALOG_CONTENT_CLEAR_VOCABULARY } from '../storage';
+
+function clearVocabulary() {
+    if (!vocabulary.isEmpty()) {
+        vocabulary.clear();
+    }
+}
+
+function confirmClearVocabulary() {
+    submitAfterDialogConfirm(DIALOG_CONTENT_CLEAR_VOCABULARY, clearVocabulary);
+}
+
+function formSubmitHandler(event) {
+    handleSubmitIfFormValid(event.target, confirmClearVocabulary);
+}
+
+function initVocabularyClear() {
     const form = document.querySelector('.form__vocabulary-clear');
-
-    const clearVocabulary = () => {
-        const dialogContent = {
-            header: 'Очищення вмісту словника',
-            submitBtn: 'Очистити',
-            cancelBtn: 'Скасувати',
-            body: 'Справді очистити словник?',
-        };
-
-        confirmDecorator(dialogContent, () => {
-            const voc = new Vocabulary();
-            voc.data.length && voc.clear();
-        });
-    }
-
-    const formSubmitHandler = (event) => {
-        const form = event.target;
-        handleSubmitIfFormValid(form, clearVocabulary);
-    }
-
     form.addEventListener('submit', formSubmitHandler);
-})();
+}
+
+export { initVocabularyClear };

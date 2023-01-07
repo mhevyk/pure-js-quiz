@@ -1,31 +1,36 @@
-/* eslint-disable no-undef */
-(() => {
-    const form = document.querySelector('.form__delete-group');
+import { vocabulary } from '../vocabulary';
+import { updateUserInterface } from '../update-user-interface';
+import { DIALOG_CONTENT_TEMPLATE_DELETE_GROUP } from '../storage';
+import {
+    getValueFromSelect,
+    submitAfterDialogConfirm,
+    resetForm,
+    handleSubmitIfFormValid
+} from '../utils';
 
-    const deleteGroup = () => {
-        const group = getValueFromSelect(form.groups);
+const form = document.querySelector('.form__delete-group');
 
-        const dialogContent = {
-            header: 'Видалення розділу',
-            submitBtn: 'Видалити',
-            cancelBtn: 'Скасувати',
-            body: `<span class='text-primary'>Назва розділу:</span> ${group}`,
-        };
+function deleteGroup(group) {
+    vocabulary.removeGroup(group);
+    vocabulary.print();
+    vocabulary.save();
+    resetForm(form);
+    updateUserInterface();
+}
 
-        confirmDecorator(dialogContent, () => {
-            const voc = new Vocabulary();
-            voc.removeGroup(group);
-            voc.print();
-            voc.save();
-            resetForm(form);
-            updateUserInterface();
-        });
-    }
+function confirmDeleteGroup() {
+    const group = getValueFromSelect(form.groups);
+    const dialogContent = DIALOG_CONTENT_TEMPLATE_DELETE_GROUP(group);
 
-    const formSubmitHandler = (event) => {
-        const form = event.target;
-        handleSubmitIfFormValid(form, deleteGroup);
-    }
+    submitAfterDialogConfirm(dialogContent, () => deleteGroup(group));
+}
 
+function formSubmitHandler(event) {
+    handleSubmitIfFormValid(event.target, confirmDeleteGroup);
+}
+
+function initFormDeleteGroup() {
     form.addEventListener('submit', formSubmitHandler);
-})();
+}
+
+export { initFormDeleteGroup };

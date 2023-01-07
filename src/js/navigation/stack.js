@@ -1,18 +1,19 @@
-/* eslint-disable no-unused-vars */
-class Stack {
-    constructor() {
-        this.data = [];
+export default class Stack {
+    #data = [];
+    
+    constructor(initialValue) {
+        this.#data.push(initialValue);
+    }
+    
+    push(value) {
+        this.#data.push(value);
     }
 
-    push = (value) => {
-        this.data.push(value);
+    pop() {
+        return this.#data.pop();
     }
 
-    pop = () => {
-        return this.data.pop();
-    }
-
-    top = () => {
-        return this.data.at(-1);
+    top() {
+        return this.#data.at(-1);
     }
 }

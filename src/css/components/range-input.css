@@ -55,6 +55,11 @@
 }
 
 .range-output {
-    width: 65px;
+    font-size: 13px;
+    margin-left: 10px;
+    width: 58px;
     text-align: center;
+    padding: 6.5px 0;
+    background-color: var(--strip-color);
+    border-radius: 5px;
 }

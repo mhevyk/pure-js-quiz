@@ -1,6 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-class Dialog extends Popup {
+import Popup from './popup';
+
+const dialogContainer = document.querySelector('.dialog');
+
+export default class Dialog extends Popup {
     static #instance;
     static #eventListenersList = [];
     //dialog custom events
@@ -9,13 +11,15 @@ class Dialog extends Popup {
         close: new CustomEvent('close'),
         submit: new CustomEvent('submit'),
     };
+
     //method to invoke custom event
     static #dispatchCustomEvent(container, customEventName) {
         if (customEventName in Dialog.#events) {
             container.dispatchEvent(Dialog.#events[customEventName]);
         }
     }
-    constructor(container = document.querySelector('.dialog')) {
+    
+    constructor(container = dialogContainer) {
         super(container, 'dialog');
         if (Dialog.#instance) {
             return Dialog.#instance;
@@ -44,7 +48,7 @@ class Dialog extends Popup {
     }
 
     //syntactic sugar to simplify adding event listeners directly to dialog window
-    addEventListener = (...props) => {
+    addEventListener(...props) {
         Dialog.#eventListenersList.push({
             name: props[0],
             fn: props[1],
@@ -52,11 +56,11 @@ class Dialog extends Popup {
         this.container.addEventListener(...props);
     }
 
-    removeEventListener = (...props) => {
+    removeEventListener(...props) {
         this.container.removeEventListener(...props);
     }
 
-    resetEventListeners = () => {
+    resetEventListeners() {
         Dialog.#eventListenersList.forEach(({ name, fn }) => {
             this.container.removeEventListener(name, fn);
         });
@@ -64,31 +68,41 @@ class Dialog extends Popup {
     }
 
     //setters to change innerHTML or textContent of some part of dialog
-    header = (text) => {
+    header(text) {
         const { headerSection } = this.dialogItems;
         headerSection.innerHTML = text;
+        return this;
     }
-    body = (text) => {
+
+    body(text) {
         const { bodySection } = this.dialogItems;
         bodySection.innerHTML = text;
+        return this;
     }
-    submitBtn = (text) => {
+
+    submitBtn(text) {
         const { submitButton } = this.dialogItems.buttons;
         submitButton.textContent = text;
+        return this;
     }
-    cancelBtn = (text) => {
+
+    cancelBtn(text) {
         const { cancelButton } = this.dialogItems.buttons;
         cancelButton.textContent = text;
+        return this;
     }
 
     //methods to operate the state of modal
-    open = () => {
+    open() {
         Dialog.#dispatchCustomEvent(this.container, 'open');
         super.open();
     }
-    close = () => {
+    
+    close() {
         Dialog.#dispatchCustomEvent(this.container, 'close');
         this.resetEventListeners();
         super.close();
     }
 }
+
+export const dialog = new Dialog();

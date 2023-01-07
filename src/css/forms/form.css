@@ -4,19 +4,26 @@
     border-left: 2px solid var(--secondary-color);
 }
 
+.form__group .checkbox__container .label__text {
+    padding: 0;
+}
+
+.form__group .text-input {
+    color: var(--secondary-color);
+}
+
 .form__group .file-input-label,
-.form__group input[type='text'],
+.form__group .text-input,
 .form__group .select {
     padding: 7px 15px;
     font-size: 16px;
     border: 1px solid var(--button-disabled-color);
     border-radius: 4px;
     transition: 350ms;
-    color: var(--secondary-color);
     width: 100%;
 }
 
-.form__group input[type='text']:focus,
+.form__group .text-input:focus,
 .form__group .select:focus {
     outline: none;
     border: 1px solid var(--primary-opposite-color);

@@ -1,17 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-*,
-*::before,
-*::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 :root {
     --main-container-margin-y: 20px;
-    --background-image: url(../../public/img/diagmonds.png);
+    --background-image: url(../assets/diagmonds.png);
     --select-caret-down-image: url("data:image/svg+xml;utf8,<svg fill='black' height='34' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+
+    --font-primary: roboto, sans-serif;
 
     --primary-color: #1a4257;
     --primary-opposite-color: #50B4EB;
@@ -43,15 +37,36 @@
     --dialog-animation-scale-start: 0.65;
 }
 
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--primary-opposite-color);
+    color: var(--white-color);
+}
+
+:disabled {
+    pointer-events: none;
+}
+
 body {
     scroll-behavior: smooth;
     background-image: var(--background-image);
     background-color: var(--primary-color);
-    font-family: roboto, sans-serif;
+    font-family: var(--font-primary);
 }
 
-button:disabled {
-    pointer-events: none;
+input::placeholder,
+select,
+.file-input-label {
+    font-weight: 300;
+    color: var(--secondary-light-color);
+    font-family: var(--font-primary);
 }
 
 input[type='file'],
@@ -95,45 +110,4 @@ small {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-}
-
-.app-wrapper {
-    display: flex;
-    flex-direction: column;
-    max-width: 95%;
-    min-height: calc(100vh - 3 * var(--main-container-margin-y));
-    margin: var(--main-container-margin-y) auto;
-    background-color: var(--white-color);
-    border-radius: 15px;
-    box-shadow: 0 0 3px 1px var(--primary-opposite-color);
-}
-
-@media (min-width: 570px) {
-    .app-wrapper {
-        max-width: 85%;
-    }
-}
-
-@media (min-width: 767px) {
-    .app-wrapper {
-        max-width: 75%;
-    }
-}
-
-@media (min-width: 1100px) {
-    .app-wrapper {
-        max-width: 65%;
-    }
-}
-
-@media (min-width: 1250px) {
-    .app-wrapper {
-        max-width: 55%;
-    }
-}
-
-@media (min-width: 1300px) {
-    .app-wrapper {
-        max-width: 50%;
-    }
 }

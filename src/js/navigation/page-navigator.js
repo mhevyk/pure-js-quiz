@@ -1,39 +1,25 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+import Stack from './stack';
+
 class PageNavigator {
-    static #instance;
-    constructor(startPage = 'main') {
-        if (PageNavigator.#instance) {
-            return PageNavigator.#instance;
-        }
+    constructor(startPage) {
+        this.pageStack = new Stack(startPage);
 
-        this.pageStack = new Stack();
-        this.pageStack.push(startPage);
-
-        this.navigateHandler = event => this.goToPage(event.dataset.page);
+        const navigateHandler = (event) => {
+            const navigationButton = event.target.closest('[data-page]');
+            if (navigationButton) {
+                this.goToPage(navigationButton.dataset.page);
+            }
+        };
+        document.addEventListener('click', navigateHandler);
 
         this.backButton = document.querySelector('.app__header .arrow__back');
-        this.update();
-
-        PageNavigator.#instance = this;
-    }
-
-    update = () => {
-        this.linkButtons = document.querySelectorAll('.page-open-button');
         this.backButton.addEventListener('click', this.goToPreviousPage);
-
-        this.linkButtons.forEach(button => {
-            button.addEventListener(
-                'click',
-                () => this.goToPage(button.dataset.page)
-            );
-        });
     }
 
     setPageTitle = (title) => {
         const titleContainer = document.querySelector('.app__header .header__title');
         titleContainer.textContent = title;
-    }
+    };
 
     showBackButton = (page) => {
         if (page !== 'main') {
@@ -45,7 +31,7 @@ class PageNavigator {
         if (this.pageStack.top() !== page) {
             this.pageStack.push(page);
         }
-    }
+    };
 
     showOnlyPage = (newPage) => {
         const pages = document.querySelectorAll('.page');
@@ -57,15 +43,17 @@ class PageNavigator {
                 page.classList.remove('open');
             }
         });
-    }
+    };
 
     goToPage = (page) => {
         this.showBackButton(page);
         this.showOnlyPage(page);
-    }
+    };
 
     goToPreviousPage = () => {
         this.pageStack.pop();
         this.goToPage(this.pageStack.top());
-    }
+    };
 }
+
+export const pageNavigator = new PageNavigator('main');

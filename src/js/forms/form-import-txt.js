@@ -1,5 +1,20 @@
-/* eslint-disable no-undef */
-(() => {
+import TogglerFileInput from '../components/toggler-file-input';
+import Loader from '../popups/loader';
+import { vocabulary } from '../vocabulary';
+import { createRecordsFromLines, splitToLinesWithText } from './parse-file-data';
+import { ERRORS_FILE_UPLOADING, DIALOG_CONTENT_TEMPLATE_IMPORT } from '../storage';
+import { FEEDBACKS_FILE_UPLOADING } from './feedback';
+import { updateUserInterface } from '../update-user-interface';
+import {
+    getValueFromSelect,
+    submitAfterDialogConfirm,
+    resetForm,
+    handleSubmitIfFormValid,
+    parseFileName,
+    readFileAsync
+} from '../utils';
+
+const initFormImportTxt = () => {
     const form = document.querySelector('.form__import-txt');
 
     const fileInput = form.fileInput;
@@ -11,45 +26,36 @@
     const resetFileInput = (errorText) => {
         validRecords.length = 0;
         fileInputWrapper.reset(errorText);
-    }
+    };
 
     const loadWordsFromTextFile = async () => {
         const group = getValueFromSelect(form.groups);
+        const dialogContent = DIALOG_CONTENT_TEMPLATE_IMPORT(group, validRecords.length);
 
-        const dialogContent = {
-            header: 'Додавання слів до розділу',
-            submitBtn: 'Додати',
-            cancelBtn: 'Скасувати',
-            body: `
-                <p><span class='text-primary'>Розділ:</span> ${group}</p>
-                <p><span class='text-primary'>Кількість слів:</span> ${validRecords.length}</p>
-            `,
-        };
-
-        confirmDecorator(dialogContent, () => {
+        submitAfterDialogConfirm(dialogContent, () => {
             const loader = new Loader();
             loader.open();
 
             setTimeout(() => {
-                const voc = new Vocabulary();
                 const records = validRecords.map(record => ({ ...record, group }));
 
-                voc.addManyAsync(records)
-                    .then(() => voc.print())
+                vocabulary.addManyAsync(records)
+                    .then(() => vocabulary.print())
                     .finally(() => {
-                        voc.save();
+                        vocabulary.save();
                         loader.close();
                     });
                 resetForm(form);
                 resetFileInput();
+                updateUserInterface();
             }, 500);
         });
-    }
+    };
 
     const formSubmitHandler = (event) => {
         const form = event.target;
-        handleSubmitIfValid(form, loadWordsFromTextFile);
-    }
+        handleSubmitIfFormValid(form, loadWordsFromTextFile);
+    };
 
     const readFilesAsync = async (files) => {
         let validFilesCount = 0;
@@ -58,15 +64,15 @@
             try {
                 const {extension} = parseFileName(file.name);
                 if (extension !== 'txt') {
-                    throw fileUploadingErrors.WRONG_FILE_EXTENSION;
+                    throw ERRORS_FILE_UPLOADING.WRONG_FILE_EXTENSION;
                 }
 
                 const data = await readFileAsync(file);
                 if (!data.trim()) {
-                    throw fileUploadingErrors.EMPTY_FILE;
+                    throw ERRORS_FILE_UPLOADING.EMPTY_FILE;
                 }
                 if (data.includes('***')) {
-                    throw fileUploadingErrors.TEMPLATE_LOAD;
+                    throw ERRORS_FILE_UPLOADING.TEMPLATE_LOAD;
                 }
 
                 const lines = splitToLinesWithText(data);
@@ -79,23 +85,22 @@
             }
         }
         return validFilesCount;
-    }
+    };
 
     fileInput.addEventListener('change', event => {
         const files = [...event.target.files];
         //cancel was clicked and no files were uploaded
         if (!files.length) {
-            resetFileInput(fileUploadingFeedbacks.LOAD_CANCELED);
+            resetFileInput(FEEDBACKS_FILE_UPLOADING.LOAD_CANCELED);
             return;
         }
         readFilesAsync(files)
             .then(validFilesCount => {
                 fileInputWrapper.toggler.hide();
                 if (validRecords.length > 0) {
-                    fileInputWrapper.setValid(fileUploadingFeedbacks.SUCCESSFULL_LOAD(validFilesCount, files.length));
+                    fileInputWrapper.setValid(FEEDBACKS_FILE_UPLOADING.SUCCESSFULL_LOAD(validFilesCount, files.length));
                 } else {
-                    fileInputWrapper.setInvalid(fileUploadingFeedbacks.TEMPLATE_MISMATCH_ERROR);
-                    new PageNavigator().update();
+                    fileInputWrapper.setInvalid(FEEDBACKS_FILE_UPLOADING.TEMPLATE_MISMATCH_ERROR);
                 }
             })
             .finally(() => fileInputWrapper.toggler.show());
@@ -105,4 +110,6 @@
     resetButton.addEventListener('click', () => fileInputWrapper.resetConfirm(resetFileInput));
 
     form.addEventListener('submit', formSubmitHandler);
-})();
+};
+
+export { initFormImportTxt };

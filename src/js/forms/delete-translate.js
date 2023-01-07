@@ -1,35 +1,33 @@
-/* eslint-disable no-undef */
-(() => {
-    const form = document.querySelector('.form__add-single-word');
-    const additionalTranslatesContainer = document.querySelector('.translates__container');
+import { validateFormAddInputs } from './compare-inputs';
+import { submitAfterDialogConfirm, updateTranslatesCount } from '../utils';
+import { DIALOG_CONTENT_DELETE_TRANSLATE, formAddOneTranslates } from '../storage';
 
-    const deleteTranslate = (deleteIndex) => {
-        const translateContainerToDelete = document.querySelector(
-            `[data-delete-index='${deleteIndex}']`
-        );
-        translateContainerToDelete.remove();
-        updateTranslatesCount();
+const form = document.querySelector('.form__add-single-word');
+const additionalTranslatesContainer = document.querySelector('.translates__container');
+
+function deleteTranslate(deleteIndex) {
+    const translateContainerToDelete = form.querySelector(`[data-delete-id='${deleteIndex}']`);
+    translateContainerToDelete.remove();
+
+    formAddOneTranslates.count--;
+    updateTranslatesCount(formAddOneTranslates.count);
+}
+
+function showDeleteConfirm(event) {
+    submitAfterDialogConfirm(DIALOG_CONTENT_DELETE_TRANSLATE, () => {
+        deleteTranslate(event.target.dataset.deleteId);
+        validateFormAddInputs(form);
+    });
+}
+
+function deleteTranslateHandler(event) {
+    if (event.target.classList.contains('input-delete')) {
+        showDeleteConfirm(event);
     }
+}
 
-    const showDeleteConfirm = (event) => {
-        const dialogContent = {
-            header: 'Видалення перекладу',
-            submitBtn: 'Так',
-            body: 'Справді видалити переклад?',
-            cancelBtn: 'Скасувати'
-        };
-
-        confirmDecorator(dialogContent, () => {
-            deleteTranslate(event.target.dataset.deleteIndex);
-            validateFormAddInputs(form);
-        });
-    }
-
-    const deleteTranslateHandler = (event) => {
-        if (event.target.classList.contains('input-delete')) {
-            showDeleteConfirm(event);
-        }
-    }
-
+function initDeleteTranslate() {
     additionalTranslatesContainer.addEventListener('click', deleteTranslateHandler);
-})();
+}
+
+export { initDeleteTranslate };
