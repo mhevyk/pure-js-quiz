@@ -2,7 +2,6 @@
     border-radius: 5px;
     padding: 8px 20px;
     letter-spacing: 1px;
-    font-size: 13px;
     transition: 300ms;
     text-transform: uppercase;
     position: relative;
@@ -30,6 +29,10 @@
     background-color: var(--button-disabled-color);
     border: 1px dashed var(--secondary-light-color);
     color: var(--secondary-light-color);
+}
+
+.button:focus-visible {
+    outline: none;
 }
 
 .button__container {

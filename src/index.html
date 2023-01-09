@@ -91,7 +91,7 @@
                                             тільки одну з правильних відповідей, інакше вона може
                                             трактуватися як неправильна</small></span>
                                     <input type="text" class="text-input" name="answer" placeholder="Відповідь"
-                                        maxlength="40">
+                                        maxlength="40" autocapitalize="off">
                                 </label>
                                 <div class="group-button__container">
                                     <button id="quiz-input-answer-next" type="submit"
@@ -165,7 +165,7 @@
                             <label class="label">
                                 <span class="label__text">Слово</span>
                                 <input type="text" class="text-input" name="word" placeholder="Слово" maxlength="40"
-                                    required>
+                                    autocapitalize="off" required>
                                 <small class="feedbacks">
                                     <span class="feedback valid">Слово введено правильно!</span>
                                     <span class="feedback invalid" data-default-feedback="Введіть слово!">Введіть слово!
@@ -177,7 +177,7 @@
                             <label class="label">
                                 <span class="label__text">Переклади (<span class="translates__count">1</span>)</span>
                                 <input type="text" class="text-input" name="translate" placeholder="Переклад"
-                                    maxlength="40" required>
+                                    maxlength="40" autocapitalize="off" required>
                                 <small class="feedbacks">
                                     <span class="feedback valid">Переклад введено правильно!</span>
                                     <span class="feedback invalid" data-default-feedback="Введіть переклад!" data-reset>
@@ -242,8 +242,10 @@
                             <label class="label">
                                 <span class="label__text">
                                     Роздільник слова та перекладу
-                                    <i class="fa fa-info-circle" aria-hidden="true"
-                                        data-description="Оберіть один з роздільників, за яким ви відділяєте слово і переклад"></i>
+                                    <span class="info-icon"
+                                        data-description="Оберіть один з роздільників, за яким ви відділяєте слово і переклад">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    </span>
                                 </span>
                                 <select name="separators" class="select">
                                     <option value=":" selected>Символ двокрапка, :</option>
@@ -301,7 +303,8 @@
                                     <small>Коректний ввід: <b>cat</b>, <b>1</b> або <b>1.4</b></small>
                                 </span>
                                 <input type="text" class="text-input" name="searchToken"
-                                    placeholder="Слово або порядковий номер" maxlength="40" required>
+                                    placeholder="Слово або порядковий номер" maxlength="40" autocapitalize="off"
+                                    required>
                                 <small class="feedbacks">
                                     <span class="feedback valid">Слово знайдено!</span>
                                     <span class="feedback invalid"
