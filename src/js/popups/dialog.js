@@ -37,7 +37,7 @@ class Dialog extends Popup {
 
         const { closeButton, cancelButton, submitButton } = this.dialogItems;
 
-        [closeButton, cancelButton, submitButton].forEach(button => button.addEventListener('click', this.close.bind(this)));
+        [closeButton, cancelButton].forEach(button => button.addEventListener('click', this.close.bind(this)));
         submitButton.addEventListener(
             'click',
             Dialog.#dispatchCustomEvent.bind(this, this.container, 'submit')
@@ -56,8 +56,9 @@ class Dialog extends Popup {
     }
 
     clearEventListeners() {
-        Dialog.#eventListenersList.forEach(({ name, handler }) => {
-            this.container.removeEventListener(name, handler);
+        Dialog.#eventListenersList.forEach((item) => {
+            const { name, handler } = item;
+            this.removeEventListener(name, handler);
         });
         Dialog.#eventListenersList = [];
     }
