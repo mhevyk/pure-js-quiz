@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkquiz_game_new=self.webpackChunkquiz_game_new||[]).push([[310],{8310:(e,n,t)=>{t.r(n),t.d(n,{initExitButton:()=>a});var i=t(3658),c=t(6117);function u(){window.open(location,"_self").close()}function o(){(0,i.vX)(c.Jr,u)}function a(){document.querySelector("[data-exit]").addEventListener("click",o)}}}]);
