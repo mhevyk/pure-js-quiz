@@ -1,6 +1,7 @@
 import { vocabulary } from './vocabulary';
 import { updateVocabularyRange } from './components/range-input';
 import { filterWords } from './forms/form-delete-one';
+import { saveOptions } from './options';
 
 function createOptions(array, {isFirstOptionDisabled, defaultOptionText}) {
     const defaultOption = `<option value='' selected ${isFirstOptionDisabled ? 'disabled' : ''}>${defaultOptionText}</option>`;
@@ -34,8 +35,9 @@ function updateSelectsWithWords(group = '') {
 
 function updateUserInterface() {
     updateSelectsWithGroups();
-    updateVocabularyRange();
+    updateVocabularyRange(vocabulary.recordsCount);
     filterWords();
+    saveOptions();
 }
 
 export {

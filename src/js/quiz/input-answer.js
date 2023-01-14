@@ -43,7 +43,7 @@ const initQuizInputAnswer = () => {
         if (vocabulary.data.length) {
             resetInput(answerInput);
             const { range, mixQuestionType } = options;
-            const questionsCount = range.value;
+            const questionsCount = range.value || 1;
             
             const group = getValueFromSelect(groupSelect);
             initQuiz(group, questionsCount, { mixQuestionType });

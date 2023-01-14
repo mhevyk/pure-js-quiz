@@ -62,6 +62,10 @@ body {
     font-family: var(--font-primary);
 }
 
+button:focus-visible {
+    outline: none;
+}
+
 input::placeholder,
 select,
 .file-input-label {

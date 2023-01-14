@@ -49,10 +49,9 @@ export default class Quiz {
 
     showResult() {
         const { cancelButton } = dialog.dialogItems;
-        const closeHandler = () => pageNavigator.goToPreviousPage();
 
         dialog.clearEventListeners();
-        dialog.addEventListener('close', closeHandler);
+        dialog.addEventListener('close', pageNavigator.goToPreviousPage);
 
         cancelButton.style.display = 'none';
 

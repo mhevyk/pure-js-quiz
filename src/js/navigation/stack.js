@@ -4,6 +4,10 @@ export default class Stack {
     constructor(initialValue) {
         this.#data.push(initialValue);
     }
+
+    isEmpty() {
+        return this.#data.length === 0;
+    }
     
     push(value) {
         this.#data.push(value);

@@ -31,10 +31,6 @@
     color: var(--secondary-light-color);
 }
 
-.button:focus-visible {
-    outline: none;
-}
-
 .button__container {
     display: flex;
     justify-content: center;

@@ -56,8 +56,8 @@ class Dialog extends Popup {
     }
 
     clearEventListeners() {
-        Dialog.#eventListenersList.forEach(({ name, fn }) => {
-            this.container.removeEventListener(name, fn);
+        Dialog.#eventListenersList.forEach(({ name, handler }) => {
+            this.container.removeEventListener(name, handler);
         });
         Dialog.#eventListenersList = [];
     }

@@ -55,7 +55,9 @@ class PageNavigator {
 
     goToPreviousPage = () => {
         this.pageStack.pop();
-        this.goToPage(this.pageStack.top());
+        if (!this.pageStack.isEmpty()) {
+            this.goToPage(this.pageStack.top());
+        }
     };
 }
 
