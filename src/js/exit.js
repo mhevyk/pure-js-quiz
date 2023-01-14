@@ -10,7 +10,7 @@ function confirmExitApp() {
 }
 
 function initExitButton() {
-    const exit = document.querySelector('.exit');
+    const exit = document.querySelector('[data-exit]');
     exit.addEventListener('click', confirmExitApp);
 }
 

@@ -2,7 +2,7 @@
     flex-grow: 1;
 }
 
-.app-wrapper {
+.app {
     display: flex;
     flex-direction: column;
     max-width: 95%;
@@ -15,31 +15,31 @@
 }
 
 @media (min-width: 570px) {
-    .app-wrapper {
+    .app {
         max-width: 85%;
     }
 }
 
 @media (min-width: 767px) {
-    .app-wrapper {
+    .app {
         max-width: 75%;
     }
 }
 
 @media (min-width: 1100px) {
-    .app-wrapper {
+    .app {
         max-width: 65%;
     }
 }
 
 @media (min-width: 1250px) {
-    .app-wrapper {
+    .app {
         max-width: 55%;
     }
 }
 
 @media (min-width: 1300px) {
-    .app-wrapper {
+    .app {
         max-width: 50%;
     }
 }

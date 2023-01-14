@@ -1,14 +1,17 @@
 import Stack from './stack';
+import { dialog } from '../popups/dialog';
 
 class PageNavigator {
     constructor(startPage) {
         this.pageStack = new Stack(startPage);
 
         const navigateHandler = (event) => {
-            const navigationButton = event.target.closest('[data-page]');
-            if (navigationButton) {
-                this.goToPage(navigationButton.dataset.page);
+            const navigationButton = event.target.closest('[data-page-button]');
+            if (!navigationButton) {
+                return;
             }
+            dialog.isOpen() && dialog.close();
+            this.goToPage(navigationButton.dataset.pageButton);
         };
         document.addEventListener('click', navigateHandler);
 

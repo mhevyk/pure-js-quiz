@@ -12,7 +12,7 @@
     position: relative;
 }
 
-.file-input-label.dragged-over {
-    border: 1px solid;
-    background-color: var(--strip-color);
+.form__item .file-input-label.dragged-over {
+    border: 1px dashed var(--primary-opposite-color);
+    background-color: var(--secondary-bg-color);
 }

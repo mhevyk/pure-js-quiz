@@ -3,6 +3,56 @@ export const formAddOneTranslates = {
     count: 1
 };
 
+// export const quizNames = {
+//     inputAnswer: 1
+// };
+
+export const completedQuizesCount = {
+    inputAnswer: 0,
+};
+
+export const quizResultList = [
+    {
+        name: 'Опитування 1',
+        mode: 'mode1',
+        questions: [
+            { question: 'Питання 1', userAnswer: 'моя відповідь', isAnswerRight: true },
+            { question: 'Питання 2', userAnswer: 'моя відповідь 2', isAnswerRight: false }
+        ],
+        options: {
+            wordOrTranslate: true
+        }
+    },
+    {
+        name: 'Опитування 2',
+        mode: 'mode1',
+        questions: [
+            { question: 'Питання 1', userAnswer: 'моя відповідь 1', isAnswerRight: true },
+            { question: 'Питання 2', userAnswer: 'моя відповідь 2', isAnswerRight: false },
+            { question: 'Питання 3', userAnswer: 'моя відповідь 3', isAnswerRight: false },
+            { question: 'Питання 4', userAnswer: 'моя відповідь 4', isAnswerRight: false }
+        ],
+        options: {
+            wordOrTranslate: false
+        }
+    },
+    {
+        name: 'Опитування 3',
+        mode: 'mode1',
+        questions: [
+            { question: 'Питання 1', userAnswer: 'моя відповідь 1', isAnswerRight: true },
+            { question: 'Питання 2', userAnswer: 'моя відповідь 2', isAnswerRight: false },
+            { question: 'Питання 3', userAnswer: 'моя відповідь 3', isAnswerRight: true },
+            { question: 'Питання 4', userAnswer: 'моя відповідь 4', isAnswerRight: true },
+            { question: 'Питання 5', userAnswer: 'моя відповідь 3', isAnswerRight: true },
+            { question: 'Питання 6', userAnswer: 'моя відповідь 4', isAnswerRight: false }
+        ],
+        options: {
+            wordOrTranslate: false
+        }
+    },
+];
+
 // property for progress fill in firefox browser
 export const PROGRESS_BAR_VALUE = '--value';
 
@@ -111,7 +161,7 @@ export const DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH = (rightAnswersCount, questions
         body: `
             <p>Тестування завершено ${resultFeedback},
             результат: <span class='text-primary'>${rightAnswersCount}/${questionsCount}</span>!
-            <p><small class='link'>Переглянути результат тестування</small></p>
+            <p><small class='link' data-page-button="results">Переглянути результат тестування</small></p>
         `,
         submitBtn: 'Добре',
     };

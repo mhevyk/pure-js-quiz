@@ -14,7 +14,7 @@ export const FEEDBACKS_ADD_GROUP = {
 export const FEEDBACKS_FILE_UPLOADING = {
     LOAD_CANCELED: 'Завантаження файлів відмінено!',
     SUCCESSFULL_LOAD: (validFilesCount, generalFilesCount) => `Успішно завантажено ${validFilesCount} з ${generalFilesCount} файлів! Перегляньте деталі у випадаючому списку нижче!`,
-    TEMPLATE_MISMATCH_ERROR: 'Жоден із завантажених файлів не відповідає <span class="page-open-button link" data-page="vocabulary-group-import-template" onclick="goToPage(`main`)">шаблону</span>!'
+    TEMPLATE_MISMATCH_ERROR: 'Жоден із завантажених файлів не відповідає <span class="page-open-button link" data-page-button="vocabulary-group-import-template" onclick="goToPage(`main`)">шаблону</span>!'
 };
 
 export const FEEDBACKS_FORM_DELETE_ONE = {

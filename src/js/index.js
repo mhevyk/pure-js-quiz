@@ -1,28 +1,32 @@
-import '../css/index.css';
-
 import { vocabulary } from './vocabulary';
-import { updateUserInterface } from './update-user-interface';
-import { initExitButton } from './exit';
-import { initFooterYearRange } from './app-existance-date-range';
-import { initComponents } from './components';
-import { initFormComponents } from './forms';
+import { updateUserInterface, updateSelectsWithWords } from './update-user-interface';
 import { initQuiz } from './quiz';
-import { initTemplates } from './templates';
 import { initOptionInputs } from './options';
+import { initFormComponents } from './forms';
 
-function initApp() {
+async function initApp() {
+    const { initExitButton } = await import('./exit');
+    const { initTemplates } = await import('./templates');
+    const { initFooterYearRange } = await import('./app-existance-date-range');
+    const { initComponents } = await import('./components');
+    const { initCharts } = await import('./charts');
+
     vocabulary.load();
     vocabulary.print();
     updateUserInterface();
+    updateSelectsWithWords();
+
+    initFormComponents();
 
     initExitButton();
     initFooterYearRange();
     initComponents();
-    initFormComponents();
     initTemplates();
 
     initQuiz();
     initOptionInputs();
+
+    initCharts();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

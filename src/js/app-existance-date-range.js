@@ -1,5 +1,5 @@
 function initFooterYearRange() {
-    const yearContainerList = document.querySelectorAll('.app-existance-date-range');
+    const yearContainerList = document.querySelectorAll('[data-app-existance-date-range]');
     const currentYear = new Date().getFullYear();
     const yearOfDevelopmentStart = 2019;
 

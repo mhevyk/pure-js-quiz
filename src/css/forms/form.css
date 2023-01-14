@@ -1,20 +1,24 @@
-.form__group {
+.text-input[readonly] {
+    background-color: var(--strip-color);
+}
+
+.form__item {
     margin-bottom: 20px;
     padding: 10px 0 10px 16px;
     border-left: 2px solid var(--secondary-color);
 }
 
-.form__group .checkbox__container .label__text {
+.form__item .checkbox__container .label__text {
     padding: 0;
 }
 
-.form__group .text-input {
+.form__item .text-input {
     color: var(--secondary-color);
 }
 
-.form__group .file-input-label,
-.form__group .text-input,
-.form__group .select {
+.form__item .file-input-label,
+.form__item .text-input,
+.form__item .select {
     padding: 7px 15px;
     font-size: 16px;
     border: 1px solid var(--button-disabled-color);
@@ -23,56 +27,57 @@
     width: 100%;
 }
 
-.form__group .text-input:focus,
-.form__group .select:focus {
+.form__item .text-input:focus,
+.form__item .select:focus {
     outline: none;
     border: 1px solid var(--primary-opposite-color);
     box-shadow: 0 0 5px 1px var(--button-disabled-color);
 }
 
-.form__group .label {
+.form__item .form__label {
+    color: var(--primary-color);
     display: block;
 }
 
-.form .form__group .row {
+.form .form__item .row {
     display: flex;
     align-items: center;
     margin-top: 6px;
 }
 
-.form.validated .form__group .label.row {
+.form.validated .form__item .form__label.row {
     display: grid;
     grid-template-columns: 20fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
 
-.form.validated .form__group .label.row .input-delete__container {
+.form.validated .form__item .form__label.row .input-delete__container {
     grid-row: 1;
     grid-column: 2;
     align-self: center;
 }
 
-.form__group .label__text {
+.form__item .label__text {
     display: block;
     padding: 8px 0 12px;
     color: var(--primary-color);
 }
 
-.form__group .group__button-container {
+.form__item .group__button-container {
     margin-top: 20px;
 }
 
-.form__group .input-delete__container {
+.form__item .input-delete__container {
     padding: 0 15px;
 }
 
-.form__group .input-delete {
+.form__item .input-delete {
     color: var(--highlight-fail-color);
     transform: scale(1);
     transition: 300ms;
 }
 
-.form__group .input-delete:hover {
+.form__item .input-delete:hover {
     cursor: pointer;
     transform: scale(1.2);
 }

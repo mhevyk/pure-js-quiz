@@ -1,10 +1,12 @@
 import { vocabulary } from '../vocabulary';
 import { submitAfterDialogConfirm, handleSubmitIfFormValid } from '../utils';
 import { DIALOG_CONTENT_CLEAR_VOCABULARY } from '../storage';
+import { updateUserInterface } from '../update-user-interface';
 
 function clearVocabulary() {
     if (!vocabulary.isEmpty()) {
         vocabulary.clear();
+        updateUserInterface();
     }
 }
 

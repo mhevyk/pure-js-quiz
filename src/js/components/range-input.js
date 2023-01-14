@@ -21,8 +21,9 @@ function initAllRangeInputs () {
 const quizInputAnswerRange = document.querySelector('[data-range=vocabulary]');
 
 function vocabularyRangeChangeHandler(event) {
-    const value = Number(event.target.value);
-    options.questionsCount = value;
+    const range = event.target;
+    options.range.value = Number(range.value);
+    options.range.max = Number(range.max);
     saveOptions();
 }
 
@@ -30,12 +31,12 @@ function initVocabularyRange() {
     quizInputAnswerRange.addEventListener('input', vocabularyRangeChangeHandler);
 }
 
-function updateVocabularyRange(value) {
+function updateVocabularyRange(recordsCount, value) {
     const output = quizInputAnswerRange.nextElementSibling;
-    const { recordsCount } = vocabulary;
-    const rangeValue = value || Math.ceil(recordsCount / 5);
+    const max = recordsCount || vocabulary.recordsCount;
+    const rangeValue = value || Math.ceil(max / 5);
 
-    quizInputAnswerRange.max = recordsCount;
+    quizInputAnswerRange.max = max;
     quizInputAnswerRange.value = rangeValue;
     output.textContent = rangeValue;
 }

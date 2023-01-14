@@ -1,17 +1,25 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
+const sourceFolder = path.resolve(__dirname, 'src');
+const publicFolder = path.resolve(__dirname, 'public');
+
 module.exports = {
-    entry: ['./src/css/index.css', './src/js/index.js'],
+    entry: [
+        path.resolve(sourceFolder, 'js', 'index.js'),
+        path.resolve(sourceFolder, 'css', 'index.css')
+    ],
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: publicFolder,
         filename: 'bundle.js',
+        clean: true
     },
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(png|jpg|jpeg)$/i,
@@ -22,9 +30,17 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'src/index.html',
-            favicon: 'src/assets/favicon.png',
-            inject: true
-        })
-    ]
+            template: path.resolve(sourceFolder, 'index.html'),
+            favicon: path.resolve(sourceFolder, 'assets', 'favicon.png'),
+            inject: 'head'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(sourceFolder, 'templates'),
+                    to: path.resolve(publicFolder, 'templates')
+                },
+            ],
+        }),
+    ],
 };

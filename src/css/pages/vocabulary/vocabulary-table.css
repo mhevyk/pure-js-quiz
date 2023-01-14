@@ -1,107 +1,112 @@
-.vocabulary__header {
+.table__header {
     background-color: var(--secondary-color);
     color: var(--white-color);
 }
 
-.vocabulary,
-.vocabulary__header {
+.table__content,
+.table__header {
     border: 1px solid var(--button-disabled-color);
 }
 
-.vocabulary {
+.table__content {
     margin-bottom: 30px;
 }
 
-.vocabulary__record {
+.table .table__record {
     display: grid;
+}
+
+.table__vocabulary .table__record {
     grid-template-columns: 1fr 60px;
     grid-template-rows: 1fr 1fr;
 }
 
-.vocabulary__group {
+.table__group {
     border-top: 1px solid var(--primary-opposite-color);
     border-bottom: 1px solid var(--primary-opposite-color);
     display: flex;
     background-color: var(--secondary-bg-color);
 }
 
-.vocabulary__record:not(:last-child) + .vocabulary__record {
+.table__record:not(:last-child) + .table__record {
     border-top: 1px dashed var(--primary-opposite-color);
 }
 
-.vocabulary__header.vocabulary__record {
+.table__header.table__record {
     border-bottom: none;
 }
 
-.vocabulary .strip {
+.table__content .strip {
     background-color: var(--strip-color);
 }
 
-.record__index {
+.table__item-index {
     border-left: 1px dashed var(--primary-opposite-color);
     text-align: center;
     border-bottom: 1px dashed var(--primary-opposite-color);
 }
 
-.vocabulary__header .record__index {
+.table__header .table__item-index {
     border-left: 1px solid var(--white-color);
     border-bottom: 1px solid var(--white-color);
 }
 
-.vocabulary__group .record__index {
+.table__group .table__item-index {
     flex-basis: 60px;
     display: none;
 }
 
-.record__item:not(:first-child) {
+.table__item:not(:first-child) {
     padding-left: var(--record-value-padding-left);
     padding-right: var(--record-value-padding-left);
 }
 
-.record__item {
+.table__item {
     overflow: hidden;
     text-overflow: ellipsis;
     padding-top: var(--record-padding-x);
     padding-bottom: var(--record-padding-x);
 }
 
-.vocabulary__group .record__item {
+.table__group .table__item {
     text-align: center;
     flex-grow: 1;
     letter-spacing: 0.3px;
     color: var(--primary-color);
 }
 
-.record__word {
+/* .table__vocabulary-word */
+
+.table__record .table__item:nth-child(2) {
     order: -1;
     border-bottom: 1px dashed var(--primary-opposite-color);
 }
 
-.vocabulary__header .record__word {
+.table__header .table__item:nth-child(2) {
     border-right: none;
     border-bottom: 1px solid var(--white-color);
 }
 
-.record__translates {
+.table__record .table__item:nth-child(3) {
     grid-column: 1 / 3;
 }
 
 @media (min-width: 570px) {
-    .record__translates {
+    .table__record .table__item:nth-child(3) {
         grid-column: unset;
     }
 
-    .vocabulary__record {
+    .table__vocabulary .table__record {
         grid-template-columns: 50px 1fr;
         grid-template-rows: repeat(2, 1fr);
     }
 
-    .record__index,
-    .vocabulary__header .record__index {
+    .table__item-index,
+    .table__header .table__item-index {
         border: none;
     }
 
-    .record__index {
+    .table__item-index {
         border-right: 1px solid var(--button-disabled-color);
         padding-left: 0;
         display: flex;
@@ -111,29 +116,29 @@
         grid-row: 1 / 3;
     }
 
-    .vocabulary__header .record__index {
+    .table__header .table__item-index {
         border-right: 1px solid var(--white-color);
     }
 }
 
 @media (min-width: 900px) {
-    .vocabulary__record {
+    .table__vocabulary .table__record {
         grid-template-columns: 60px 1fr 1fr;
         grid-template-rows: 1fr;
         text-align: center;
     }
 
-    .record__word {
+    .table__record .table__item:nth-child(2) {
         border-right: 1px solid var(--button-disabled-color);
         border-bottom: none;
     }
 
-    .vocabulary__header .record__word {
+    .table__header .table__item:nth-child(2) {
         border-right: 1px solid var(--white-color);
         border-bottom: none;
     }
 
-    .vocabulary__group .record__index {
+    .table__group .table__item-index {
         display: block;
     }
 }

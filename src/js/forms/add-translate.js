@@ -6,7 +6,7 @@ const translatesContainer = document.querySelector('.additional__translates-cont
 function addTranslate() {
     const newId = formAddOneTranslates.id + 1;
     const translateHTML = `
-        <label class='label row' data-delete-id="${newId}">
+        <label class='form__label row' data-delete-id="${newId}">
             <div class='input-delete__container'>
                 <i class='input-delete fa fa-trash' aria-hidden='true' data-delete-id='${newId}'></i>
             </div>

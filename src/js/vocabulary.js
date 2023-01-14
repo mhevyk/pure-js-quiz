@@ -1,9 +1,8 @@
 import { options } from './options';
 import { updatePlaceholders } from './components/placeholder';
-import { updateUserInterface } from './update-user-interface';
 import { filterUnique } from './utils';
 
-const vocabularyContainer = document.querySelector('.vocabulary');
+const vocabularyContainer = document.querySelector('.table__vocabulary .table__content');
 
 class Vocabulary {
     constructor(container = vocabularyContainer) {
@@ -55,8 +54,14 @@ class Vocabulary {
         return false;
     };
 
-    getGroupContent = (group) => {
-        return this.data.filter(record => record.group === group);
+    hasGroup = (group) => {
+        return this.groups.includes(group);
+    };
+
+    getGroupContent = (group = '') => {
+        return this.hasGroup(group)
+            ? this.data.filter(record => record.group === group)
+            : this.data;
     };
 
     addGroup = (group) => {
@@ -126,7 +131,6 @@ class Vocabulary {
         this.groups = [];
         this.print();
         localStorage.removeItem('vocabularyAppData');
-        updateUserInterface();
     };
 
     #addTranslatesByWordIndex = (wordIndex, translates) => {
@@ -138,9 +142,9 @@ class Vocabulary {
 
     #printGroup = (group) => {
         this.container.innerHTML += `
-            <div class='vocabulary__group'>
-                <div class='record__index'></div>
-                <div class='record__item'>${group}</div>
+            <div class='table__group'>
+                <div class='table__item-index'></div>
+                <div class='table__item'>${group}</div>
             </div>
         `;
     };
@@ -148,10 +152,10 @@ class Vocabulary {
     #printRecord = (index, record) => {
         const position = index.split('.').at(-1);
         this.container.innerHTML += `
-            <div class="vocabulary__record${position % 2 ? ' strip' : ''}">
-                <div class='record__item record__index'>${index}</div>
-                <div class='record__item record__word'>${record.word}</div>
-                <div class='record__item record__translates'>${record.translates.join(', ')}</div>
+            <div class="table__record${position % 2 ? ' strip' : ''}">
+                <div class='table__item table__item-index'>${index}</div>
+                <div class='table__item'>${record.word}</div>
+                <div class='table__item'>${record.translates.join(', ')}</div>
             </div>
         `;
     };

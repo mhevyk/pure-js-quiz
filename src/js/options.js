@@ -1,19 +1,22 @@
 import { updateVocabularyRange } from './components/range-input';
 
 const defaultOptions = {
-    questionsCount: 1,
+    range: {
+        value: null,
+        max: null
+    },
     mixQuestionType: true,
     showGroups: true
 };
 
-const initOptions = () => {
+function initOptions() {
     const optionsData = localStorage.getItem('optionsAppData');
     return optionsData ? JSON.parse(optionsData) : defaultOptions;
-};
+}
 
 export const options = initOptions();
 
-export const initOptionInputs = () => {
+function initOptionInputs() {
     const optionsInputs = document.querySelectorAll('[data-option]');
     optionsInputs.forEach(input => {
         const optionName = input.dataset.option;
@@ -25,13 +28,18 @@ export const initOptionInputs = () => {
                 input.checked = optionValue;
                 break;
             case 'range':
-                updateVocabularyRange(optionValue);
+                updateVocabularyRange(optionValue.max, optionValue.value);
                 break;
         }
     });
-};
+}
 
-export const saveOptions = () => {
+function saveOptions() {
     const optionsDataToSave = JSON.stringify(options);
     localStorage.setItem('optionsAppData', optionsDataToSave);
+}
+
+export {
+    initOptionInputs,
+    saveOptions
 };

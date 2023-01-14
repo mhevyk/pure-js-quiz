@@ -1,20 +1,22 @@
+import { debounce } from '../utils';
 
 const draggableEvents = ['dragenter', 'dragover'];
 const droppableEvents = ['dragleave', 'drop'];
 
-function highlight(label) {
-    label.classList.add('dragged-over');
+function highlight() {
+    this.classList.add('dragged-over');
 }
 
-function unhighlight(label) {
-    label.classList.remove('dragged-over');
+function unhighlight() {
+    this.classList.remove('dragged-over');
 }
 
 function initLabels(eventName, highlightCallback) {
     const fileInputLabels = document.querySelectorAll('.file-input-label');
-    const eventHandler = (label) => highlightCallback(label);
     
-    fileInputLabels.forEach(label => label.addEventListener(eventName, eventHandler));
+    fileInputLabels.forEach(label => {
+        label.addEventListener(eventName, debounce(highlightCallback, 100));
+    });
 }
 
 function initDragndrop() {

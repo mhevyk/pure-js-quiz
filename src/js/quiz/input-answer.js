@@ -1,21 +1,22 @@
 import { vocabulary } from '../vocabulary';
 import Quiz from './quiz';
-import { resetInput } from '../utils';
+import { getValueFromSelect, resetInput } from '../utils';
 import { options } from '../options';
+import { changeButtonStyle } from '../components/button';
+import { CSS_CLASSES } from '../storage';
 import {
     initProgressBar,
     incrementProgressBarValue
 } from '../components/progress-bar';
-import { changeButtonStyle } from '../components/button';
-import { CSS_CLASSES } from '../storage';
 
 const initQuizInputAnswer = () => {
     const form = document.querySelector('.form__quiz-input-answer');
     const progressBar = form.querySelector('.progress');
     const answerInput = form.answer;
-    const questionContainer = form.querySelector('.question__text');
+    const questionContainer = form.querySelector('[data-question-text]');
     const quizStartButton = document.querySelector('#quiz-input-answer-start');
     const submitButton = form.querySelector('[type=submit]');
+    const groupSelect = document.querySelector('.form__quiz-input-answer-options').groups;
 
     const prapareToGameOver = changeButtonStyle.bind(null, submitButton, {
         text: 'Завершити спробу',
@@ -24,10 +25,11 @@ const initQuizInputAnswer = () => {
 
     let quiz, question;
 
-    const initQuiz = (questionsCount, options) => {
-        quiz = new Quiz(questionsCount, options);
+    const initQuiz = (group, questionsCount, options) => {
+        quiz = new Quiz(group, questionsCount, options);
         question = quiz.nextQuestion();
         questionContainer.innerHTML = question.text;
+
         changeButtonStyle(submitButton, {
             text: 'Наступне питання',
             replaceClasses: { from: CSS_CLASSES.buttonPrimary, to: CSS_CLASSES.buttonSecondary }
@@ -40,8 +42,11 @@ const initQuizInputAnswer = () => {
     quizStartButton.addEventListener('click', () => {
         if (vocabulary.data.length) {
             resetInput(answerInput);
-            const { questionsCount, mixQuestionType } = options;
-            initQuiz(questionsCount, { mixQuestionType });
+            const { range, mixQuestionType } = options;
+            const questionsCount = range.value;
+            
+            const group = getValueFromSelect(groupSelect);
+            initQuiz(group, questionsCount, { mixQuestionType });
 
             form.addEventListener('submit', goToNextQuestion);
             initProgressBar(progressBar, questionsCount);

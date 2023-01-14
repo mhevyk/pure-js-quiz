@@ -7,21 +7,21 @@ export const resetInput = (input) => input.value = null;
 export const removeContainerChildren = (container) => container.innerHTML = '';
 export const getValueFromSelect = (select) => select.options[select.selectedIndex].value;
 
-export const downloadTextFile = (filename, content) => {
+function downloadTextFile(filename, content) {
     const link = document.createElement('a');
     link.download = `${filename}.txt`;
     link.href = `data:text/plain;charset=utf-8,%EF%BB%BF${encodeURIComponent(content)}`;
     link.click();
-};
+}
 
-export const handleSubmitIfFormValid = (form, submitHandler) => {
+function handleSubmitIfFormValid(form, submitHandler) {
     const isValid = form.checkValidity();
     if (isValid) {
         submitHandler();
     }
-};
+}
 
-export function debounce(callback, time) {
+function debounce(callback, time) {
     let timeout;
     return function () {
         const delayedCallback = () => callback.apply(this, arguments);
@@ -30,18 +30,18 @@ export function debounce(callback, time) {
     };
 }
 
-export const updateTranslatesCount = (value) => {
+function updateTranslatesCount(value) {
     const translatesCountContainer = document.querySelector('.form__add-single-word .translates__count');
     translatesCountContainer.textContent = value;
-};
+}
 
-export const resetForm = (form) => {
+function resetForm(form) {
     form.classList.remove('validated');
     form.reset();
     resetFeedbacks(form);
-};
+}
 
-export const submitAfterDialogConfirm = (content, onSubmit) => {
+function submitAfterDialogConfirm(content, onSubmit) {
     const {
         header = '',
         body = '',
@@ -60,26 +60,45 @@ export const submitAfterDialogConfirm = (content, onSubmit) => {
         onSubmit();
         dialog.close();
     });
-};
+}
 
-export const readFileAsync = (file) => {
+function readFileAsync(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
         reader.onerror = reject;
         reader.readAsText(file);
     });
-};
+}
 
-export const fetchTextFile = async (url) => {
+async function fetchTextFile(url) {
     const response = await fetch(url);
     return await response.text();
-};
+}
 
-export const parseFileName = (filename) => {
+function parseFileName(filename) {
     const dotIndex = filename.lastIndexOf('.');
     return {
         rawName: filename.substring(0, dotIndex),
         extension: filename.substring(dotIndex + 1, filename.length)
     };
+}
+
+function getCSSRootVariable(variableName) {
+    const root = document.querySelector(':root');
+    const rootStyles = getComputedStyle(root);
+    return rootStyles.getPropertyValue(`--${variableName}`);
+}
+
+export {
+    downloadTextFile,
+    handleSubmitIfFormValid,
+    debounce,
+    updateTranslatesCount,
+    resetForm,
+    submitAfterDialogConfirm,
+    readFileAsync,
+    fetchTextFile,
+    parseFileName,
+    getCSSRootVariable
 };

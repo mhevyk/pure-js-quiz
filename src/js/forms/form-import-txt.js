@@ -1,5 +1,5 @@
 import TogglerFileInput from '../components/toggler-file-input';
-import Loader from '../popups/loader';
+import { loader } from '../popups/loader';
 import { vocabulary } from '../vocabulary';
 import { createRecordsFromLines, splitToLinesWithText } from './parse-file-data';
 import { ERRORS_FILE_UPLOADING, DIALOG_CONTENT_TEMPLATE_IMPORT } from '../storage';
@@ -33,7 +33,6 @@ const initFormImportTxt = () => {
         const dialogContent = DIALOG_CONTENT_TEMPLATE_IMPORT(group, validRecords.length);
 
         submitAfterDialogConfirm(dialogContent, () => {
-            const loader = new Loader();
             loader.open();
 
             setTimeout(() => {
@@ -53,8 +52,7 @@ const initFormImportTxt = () => {
     };
 
     const formSubmitHandler = (event) => {
-        const form = event.target;
-        handleSubmitIfFormValid(form, loadWordsFromTextFile);
+        handleSubmitIfFormValid(event.target, loadWordsFromTextFile);
     };
 
     const readFilesAsync = async (files) => {

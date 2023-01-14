@@ -1,58 +1,53 @@
 import Popup from './popup';
 
-const dialogContainer = document.querySelector('.dialog');
+function getByRole(container, role) {
+    return container.querySelector(`[data-role="${role}"]`);
+}
 
-export default class Dialog extends Popup {
-    static #instance;
+class Dialog extends Popup {
     static #eventListenersList = [];
-    //dialog custom events
     static #events = {
         open: new CustomEvent('open'),
         close: new CustomEvent('close'),
-        submit: new CustomEvent('submit'),
+        submit: new CustomEvent('submit')
     };
 
     //method to invoke custom event
     static #dispatchCustomEvent(container, customEventName) {
-        if (customEventName in Dialog.#events) {
-            container.dispatchEvent(Dialog.#events[customEventName]);
+        if (!Dialog.#events[customEventName]) {
+            return;
         }
+
+        const customEvent = Dialog.#events[customEventName];
+        container.dispatchEvent(customEvent);
     }
     
-    constructor(container = dialogContainer) {
+    constructor(container) {
         super(container, 'dialog');
-        if (Dialog.#instance) {
-            return Dialog.#instance;
-        }
+
+        const boundGetByRole = getByRole.bind(null, this.container);
 
         this.dialogItems = {
-            buttons: {
-                closeButton: this.container.querySelector('[data-role="close"]'),
-                cancelButton: this.container.querySelector('[data-role="cancel"]'),
-                submitButton: this.container.querySelector('[data-role="submit"]')
-            },
-            headerSection: this.container.querySelector('.dialog__header h2'),
-            bodySection: this.container.querySelector('.dialog__body')
+            closeButton: boundGetByRole('close'),
+            cancelButton: boundGetByRole('cancel'),
+            submitButton: boundGetByRole('submit'),
+            headerSection: boundGetByRole('header'),
+            bodySection: boundGetByRole('body')
         };
 
-        const { closeButton, cancelButton, submitButton } = this.dialogItems.buttons;
+        const { closeButton, cancelButton, submitButton } = this.dialogItems;
 
-        closeButton.addEventListener('click', this.close.bind(this));
-        cancelButton.addEventListener('click', this.close.bind(this));
+        [closeButton, cancelButton, submitButton].forEach(button => button.addEventListener('click', this.close.bind(this)));
         submitButton.addEventListener(
             'click',
             Dialog.#dispatchCustomEvent.bind(this, this.container, 'submit')
         );
-
-        Dialog.#instance = this;
     }
 
     //syntactic sugar to simplify adding event listeners directly to dialog window
     addEventListener(...props) {
-        Dialog.#eventListenersList.push({
-            name: props[0],
-            fn: props[1],
-        });
+        const [name, handler] = props;
+        Dialog.#eventListenersList.push({ name, handler });
         this.container.addEventListener(...props);
     }
 
@@ -60,7 +55,7 @@ export default class Dialog extends Popup {
         this.container.removeEventListener(...props);
     }
 
-    resetEventListeners() {
+    clearEventListeners() {
         Dialog.#eventListenersList.forEach(({ name, fn }) => {
             this.container.removeEventListener(name, fn);
         });
@@ -69,27 +64,19 @@ export default class Dialog extends Popup {
 
     //setters to change innerHTML or textContent of some part of dialog
     header(text) {
-        const { headerSection } = this.dialogItems;
-        headerSection.innerHTML = text;
-        return this;
+        return this.#changeContent('headerSection', text);
     }
 
     body(text) {
-        const { bodySection } = this.dialogItems;
-        bodySection.innerHTML = text;
-        return this;
+        return this.#changeContent('bodySection', text);
     }
 
     submitBtn(text) {
-        const { submitButton } = this.dialogItems.buttons;
-        submitButton.textContent = text;
-        return this;
+        return this.#changeContent('submitButton', text);
     }
 
     cancelBtn(text) {
-        const { cancelButton } = this.dialogItems.buttons;
-        cancelButton.textContent = text;
-        return this;
+        return this.#changeContent('cancelButton', text);
     }
 
     //methods to operate the state of modal
@@ -100,9 +87,16 @@ export default class Dialog extends Popup {
     
     close() {
         Dialog.#dispatchCustomEvent(this.container, 'close');
-        this.resetEventListeners();
+        this.clearEventListeners();
         super.close();
+    }
+
+    #changeContent(sectionName, text) {
+        const section = this.dialogItems[sectionName];
+        section.innerHTML = text;
+        return this;
     }
 }
 
-export const dialog = new Dialog();
+const dialogContainer = document.querySelector('.dialog');
+export const dialog = new Dialog(dialogContainer);

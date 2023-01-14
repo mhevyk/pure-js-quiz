@@ -9,32 +9,32 @@
 }
 
 .form.validated .file-input-label.invalid,
-.form.validated .form__group input:invalid,
-.form.validated .form__group .select:invalid {
+.form.validated .form__item input:invalid,
+.form.validated .form__item .select:invalid {
     border: 1px solid var(--highlight-fail-bg);
 }
 
 .form.validated .file-input-label.invalid+.feedbacks>.invalid,
-.form.validated .form__group input:invalid+.feedbacks>.invalid,
-.form.validated .form__group .select:invalid+.feedbacks>.invalid {
+.form.validated .form__item input:invalid+.feedbacks>.invalid,
+.form.validated .form__item .select:invalid+.feedbacks>.invalid {
     color: var(--highlight-fail-color);
     display: block;
 }
 
 .form.validated .file-input-label.valid,
-.form.validated .form__group input:valid,
-.form.validated .form__group .select:valid {
+.form.validated .form__item input:valid,
+.form.validated .form__item .select:valid {
     border: 1px solid var(--highlight-success-bg);
 }
 
 .form.validated .file-input-label.valid+.feedbacks>.valid,
-.form.validated .form__group input:valid+.feedbacks>.valid,
-.form.validated .form__group .select:valid+.feedbacks>.valid {
+.form.validated .form__item input:valid+.feedbacks>.valid,
+.form.validated .form__item .select:valid+.feedbacks>.valid {
     color: var(--highlight-success-color);
     display: block;
 }
 
-.form.validated .form__group .label.row .feedbacks {
+.form.validated .form__item .form__label.row .feedbacks {
     grid-column: 1 / 3;
     grid-row: 2;
 }

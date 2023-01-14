@@ -13,6 +13,7 @@
 }
 
 .app__header .header__title {
+    margin: 0 5vw;
     font-size: min(8vw, 40px);
 }
 
