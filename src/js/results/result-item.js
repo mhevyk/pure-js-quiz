@@ -4,7 +4,7 @@ let resultItemId = 0;
 
 function countRightAndWrongAnswers(questions) {
     const questionsCount = questions.length;
-    const rightAnswersCount = questions.reduce((result, question) => result + question.isAnswerRight, 0);
+    const rightAnswersCount = questions.reduce((result, question) => result + (question.userAnswer === question.correctAnswer), 0);
     const wrongAnswersCount = questionsCount - rightAnswersCount;
     return [rightAnswersCount, wrongAnswersCount];
 }
@@ -43,7 +43,7 @@ function appendResultItem(item) {
     const resultContainer = document.querySelector('.result__container');
     const resultItem = createResultItem(item, resultItemId);
     resultItemId++;
-    resultContainer.prepend(resultItem);
+    resultContainer.append(resultItem);
 }
 
-export { createResultItem, appendResultItem };
+export { countRightAndWrongAnswers, createResultItem, appendResultItem };

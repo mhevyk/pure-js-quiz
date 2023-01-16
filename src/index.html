@@ -130,11 +130,11 @@
             </div>
             <div class="pages__container vocabulary__pages">
                 <div class="page" data-page="vocabulary" data-title="Словник">
-                    <div class="table table__vocabulary">
+                    <div class="table table__vocabulary" role="table">
                         <div class="table__header table__record">
                             <div class="table__item table__item-index">№</div>
                             <div class="table__item">Слово</div>
-                            <div class="table__item table__vocabulary-translates">Переклад(и)</div>
+                            <div class="table__item">Переклад(и)</div>
                         </div>
                         <div class="table__content"></div>
                     </div>
@@ -415,7 +415,51 @@
                     <div class="result__container"></div>
                 </div>
                 <div class="page" data-page="results-detailed-info" data-title="Деталі опитування">
-                    Детальна інформація
+                    <div class="navigation-list__container detailed-info__textual">
+                        <div class="navigation-list__item">
+                            <p class="navigation-list__name">
+                                <i class="fa-solid fa-puzzle-piece"></i>
+                                <span>Режим</span>
+                            </p>
+                            <p class="navigation-list__value">Введення слова/перекладу</p>
+                        </div>
+                        <div class="navigation-list__item">
+                            <p class="navigation-list__name">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>Розділи</span>
+                            </p>
+                            <p class="navigation-list__value">Тварини</p>
+                        </div>
+                        <div class="navigation-list__item">
+                            <p class="navigation-list__name">
+                                <i class="fa-solid fa-clipboard-question"></i>
+                                <span>Кількість питань</span>
+                            </p>
+                            <p class="navigation-list__value">20</p>
+                        </div>
+                        <div class="navigation-list__item">
+                            <p class="navigation-list__name">
+                                <i class="fa-solid fa-gear"></i>
+                                <span>Налаштування</span>
+                            </p>
+                            <p class="navigation-list__value">Слово або переклад</p>
+                        </div>
+                    </div>
+                    <h2>Правильні/неправильні відповіді</h2>
+                    <div id="results-detailed-info__chart"></div>
+                    <div class="table table__questions" role="table">
+                        <div class="table__record table__header">
+                            <div class="table__item">
+                                Питання
+                            </div>
+                            <div class="table__item table__item-index">
+                                <i class="fa-solid fa-circle-dot"></i>
+                            </div>
+                            <div class="table__item">Ваша відповідь</div>
+                            <div class="table__item">Правильна відповідь</div>
+                        </div>
+                        <div class="table__content" data-content="questions"></div>
+                    </div>
                 </div>
             </div>
             <div class="pages__container options__pages">

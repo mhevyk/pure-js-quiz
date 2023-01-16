@@ -1,0 +1,18 @@
+.table__questions .table__record {
+    grid-template-columns: 1fr 70px;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.table__questions .table__header .table__item:not(:last-child) {
+    border-bottom: 1px solid var(--white-color);
+}
+
+.table__questions .fa-solid {
+    font-size: 1.2rem;
+}
+
+.table__questions .table__item:nth-child(3),
+.table__questions .table__item:nth-child(4) {
+    grid-column: 1 / 3;
+    border-top: 1px solid var(--strip-color);
+}

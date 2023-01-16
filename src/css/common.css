@@ -25,9 +25,9 @@
     --strip-color: rgba(0, 0, 0, 0.06);
 
     --highlight-success-color: rgb(0, 128, 0);
-    --highlight-fail-color: rgb(255, 0, 0);
-    --highlight-success-bg: rgb(0, 128, 0, 0.5);
-    --highlight-fail-bg: rgb(255, 0, 0, 0.5);
+    --highlight-fail-color: rgb(255, 49, 49);
+    --highlight-success-bg: #50C878;
+    --highlight-fail-bg: rgb(255, 49, 29, 0.5);
 
     --record-padding-x: 7px;
     --record-value-padding-left: 25px;
@@ -55,15 +55,15 @@
     pointer-events: none;
 }
 
+:focus-visible {
+    outline: none;
+}
+
 body {
     scroll-behavior: smooth;
     background-image: var(--background-image);
     background-color: var(--primary-color);
     font-family: var(--font-primary);
-}
-
-button:focus-visible {
-    outline: none;
 }
 
 input::placeholder,

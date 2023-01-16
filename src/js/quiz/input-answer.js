@@ -56,9 +56,8 @@ const initQuizInputAnswer = () => {
         }
     });
 
-    const checkAnswer = (question) => {
-        const userAnswer = answerInput.value.trim();
-        if (!userAnswer) {
+    const checkAnswer = (userAnswer, question) => {
+        if (!userAnswer.trim()) {
             return;
         }
 
@@ -73,7 +72,8 @@ const initQuizInputAnswer = () => {
             prapareToGameOver();
         }
 
-        checkAnswer(question);
+        const userAnswer = answerInput.value;
+        checkAnswer(userAnswer, question);
 
         question = quiz.nextQuestion();
         if (question) {

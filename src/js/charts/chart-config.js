@@ -1,12 +1,21 @@
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Chart } from 'chart.js';
+import { getCSSRootVariable } from '../utils';
 
-export const genericChartOnlyDoughnut = (data, chartColors) => ({
+Chart.defaults.color = getCSSRootVariable('secondary-color');
+
+const backgroundColors = [
+    getCSSRootVariable('highlight-success-bg'),
+    getCSSRootVariable('highlight-fail-bg')
+];
+
+export const genericChartOnlyDoughnut = (data) => ({
     type: 'doughnut',
     data: {
         datasets: [{
             data,
             borderWidth: 0,
-            backgroundColor: chartColors
+            backgroundColor: backgroundColors
         }]
     },
     options: {
@@ -20,18 +29,19 @@ export const genericChartOnlyDoughnut = (data, chartColors) => ({
                 top: -10,
                 bottom: -10
             }
-        }
+        },
+        offset: 2
     }
 });
 
-export const genericChartDoughtnutWithDatalabels = (data, labels, chartColors) => ({
+export const genericChartDoughtnutWithDatalabels = (data, labels) => ({
     type: 'doughnut',
     plugins: [ChartDataLabels],
     data: {
         datasets: [{
             data,
             borderWidth: 0,
-            backgroundColor: chartColors,
+            backgroundColor: backgroundColors,
         }],
         labels
     },
@@ -43,18 +53,21 @@ export const genericChartDoughtnutWithDatalabels = (data, labels, chartColors) =
             datalabels: {
                 labels: {
                     value: {
-                        color: 'white'
+                        color: getCSSRootVariable('white-color')
                     }
-                },
-                // formatter: (value) => {
-                //     return `${value}%`;
-                // }
+                }
             },
             legend: {
                 display: true,
-                align: 'start',
-                position: 'bottom'
-            }
+                align: 'center',
+                position: 'bottom',
+                labels: {
+                    padding: 20
+                }
+            },
         },
-    }
+        responsive: true,
+        // maintainAspectRatio: false,
+        offset: 5
+    },
 });
