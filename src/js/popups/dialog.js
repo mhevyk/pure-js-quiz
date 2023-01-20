@@ -97,6 +97,15 @@ class Dialog extends Popup {
         section.innerHTML = text;
         return this;
     }
+
+    hideCancelButtonTillDialogClose(onClose) {
+        const button = this.dialogItems['cancelButton'];
+        button.classList.add('hidden');
+        this.container.addEventListener('close', () => {
+            onClose?.();
+            setTimeout(() => button.classList.remove('hidden'));
+        });
+    }
 }
 
 const dialogContainer = document.querySelector('.dialog');

@@ -37,8 +37,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(sourceFolder, 'templates'),
-                    to: path.resolve(publicFolder, 'templates')
+                    from: path.resolve(sourceFolder, 'import-templates'),
+                    to: path.resolve(publicFolder, 'import-templates')
                 },
             ],
         }),

@@ -110,6 +110,16 @@ export const DIALOG_CONTENT_EXIT_APP = {
     cancelBtn: 'Скасувати'
 };
 
+export const DIALOG_CONTENT_EXIT_QUIZ = {
+    header: 'Закінчення опитування',
+    body: `
+        Справді примусово завершити опитування?
+        <small>Буде вирахуваний результат опитування</small>
+    `,
+    submitBtn: 'Так',
+    cancelBtn: 'Скасувати'
+};
+
 export const DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD = (word, translates, group) => ({
     header: 'Додавання слова',
     submitBtn: 'Додати',
@@ -152,16 +162,27 @@ export const DIALOG_CONTENT_TEMPLATE_DELETE_ONE = (word) => ({
     body: `<span class='text-primary'>Слово:</span> ${word}`,
 });
 
-export const DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH = (rightAnswersCount, questionsCount) => {
-    const isResultGood = rightAnswersCount > (questionsCount / 2);
-    const resultFeedback = `<span class="text-${isResultGood ? 'success' : 'fail'}">${isResultGood ? 'вдало' : 'невдало'}</span>`;
+export const DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH = (correctAnswersCount, questionsCount) => {
+    const halfQuestions = (questionsCount / 2);
+    const isResultGood = correctAnswersCount > halfQuestions;
+
+    let shortResultDescription;
+    if (correctAnswersCount === questionsCount) {
+        shortResultDescription = 'відмінно';
+    } else if (correctAnswersCount >= halfQuestions) {
+        shortResultDescription = 'вдало';
+    } else {
+        shortResultDescription = 'невдало';
+    }
+
+    const resultFeedback = `<span class="text-${isResultGood ? 'success' : 'fail'}">${shortResultDescription}</span>`;
 
     return {
         header: 'Результат тестування',
         body: `
-            <p>Тестування завершено ${resultFeedback},
-            результат: <span class='text-primary'>${rightAnswersCount}/${questionsCount}</span>!
-            <p><small class='link' data-page-button="results">Переглянути результат тестування</small></p>
+            Тестування завершено ${resultFeedback},
+            результат: <span class='text-primary'>${correctAnswersCount}/${questionsCount}</span>!
+            <small class='link' data-page-button="results">Переглянути результат тестування</small>
         `,
         submitBtn: 'Добре',
     };

@@ -1,15 +1,12 @@
 import { vocabulary } from './vocabulary';
-import { updateUserInterface, updateSelectsWithWords } from './update-user-interface';
+import { updateUserInterface, updateSelectsWithWords } from './render-interface';
 import { initQuiz } from './quiz';
 import { initOptionInputs } from './options';
 import { initFormComponents } from './forms';
+import initResults from './results';
 
 async function initApp() {
-    const { initExitButton } = await import('./exit');
-    const { initTemplates } = await import('./templates');
-    const { initFooterYearRange } = await import('./app-existance-date-range');
     const { initComponents } = await import('./components');
-    const { initCharts } = await import('./charts');
 
     vocabulary.load();
     vocabulary.print();
@@ -17,16 +14,11 @@ async function initApp() {
     updateSelectsWithWords();
 
     initFormComponents();
-
-    initExitButton();
-    initFooterYearRange();
     initComponents();
-    initTemplates();
-
     initQuiz();
     initOptionInputs();
 
-    initCharts();
+    initResults();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

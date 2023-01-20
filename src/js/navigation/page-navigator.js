@@ -1,6 +1,12 @@
 import Stack from './stack';
 import { dialog } from '../popups/dialog';
 
+export const backButton = document.querySelector('.app__header .arrow__back');
+
+export const config = {
+    canGoBack: true
+};
+
 class PageNavigator {
     constructor(startPage) {
         this.pageStack = new Stack(startPage);
@@ -15,8 +21,7 @@ class PageNavigator {
         };
         document.addEventListener('click', navigateHandler);
 
-        this.backButton = document.querySelector('.app__header .arrow__back');
-        this.backButton.addEventListener('click', this.goToPreviousPage);
+        backButton.addEventListener('click', this.goToPreviousPage);
     }
 
     setPageTitle = (title) => {
@@ -26,9 +31,9 @@ class PageNavigator {
 
     showBackButton = (page) => {
         if (page !== 'main') {
-            this.backButton.classList.add('open');
+            backButton.classList.add('open');
         } else {
-            this.backButton.classList.remove('open');
+            backButton.classList.remove('open');
         }
 
         if (this.pageStack.top() !== page) {
@@ -54,6 +59,10 @@ class PageNavigator {
     };
 
     goToPreviousPage = () => {
+        if (!config.canGoBack) {
+            return;
+        }
+
         this.pageStack.pop();
         if (!this.pageStack.isEmpty()) {
             this.goToPage(this.pageStack.top());

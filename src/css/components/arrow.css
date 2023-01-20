@@ -6,6 +6,10 @@
     border: none;
 }
 
+.arrow:disabled {
+    color: var(--button-disabled-color);
+}
+
 .arrow:hover {
     cursor: pointer;
     opacity: 0.7;
@@ -38,30 +42,30 @@
 @media (min-width: 570px) {
     .arrow__up {
         color: var(--white-color);
-        right: 10px; 
+        right: 10px;
     }
 }
 
 @media (min-width: 767px) {
     .arrow__up {
-        right: 15px; 
+        right: 15px;
     }
 }
 
 @media (min-width: 1100px) {
     .arrow__up {
-        right: 7vw; 
+        right: 7vw;
     }
 }
 
 @media (min-width: 1250px) {
     .arrow__up {
-        right: 15vw; 
+        right: 15vw;
     }
 }
 
 @media (min-width: 1300px) {
     .arrow__up {
-        right: 20vw; 
+        right: 20vw;
     }
 }

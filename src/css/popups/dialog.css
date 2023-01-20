@@ -6,6 +6,11 @@
     visibility: visible;
 }
 
+.dialog-container.open .dialog {
+    transform: scale(1);
+    opacity: 1;
+}
+
 @media (min-width: 570px) {
     .dialog-container {
         width: auto;
@@ -34,9 +39,8 @@
     }
 }
 
-.dialog.open {
-    transform: scale(1);
-    opacity: 1;
+.dialog small {
+    display: inline-block;
 }
 
 .dialog .dialog__header {
@@ -61,7 +65,6 @@
 }
 
 .dialog .dialog__body {
-    text-align: justify;
     word-wrap: break-word;
     line-height: 25px;
     flex-grow: 1;

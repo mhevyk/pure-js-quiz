@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('../../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+/* ~ The ~ locates a file relative to our project's node_modules directory. */
+@import url('~@fortawesome/fontawesome-free/css/fontawesome.min.css');
+@import url('~@fortawesome/fontawesome-free/css/solid.min.css');
 
 :root {
-    --main-container-margin-y: 20px;
+    --app-margin-y: 20px;
     --background-image: url(../assets/diagmonds.png);
     --select-caret-down-image: url("data:image/svg+xml;utf8,<svg fill='black' height='34' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
 
@@ -29,11 +31,10 @@
     --highlight-success-bg: #50C878;
     --highlight-fail-bg: rgb(255, 49, 29, 0.5);
 
-    --record-padding-x: 7px;
+    --record-padding-y: 7px;
     --record-value-padding-left: 25px;
-
-    --dialog-overlay-opacity: 0.55;
-    --dialog-overlay-bg: rgba(0, 0, 0, var(--dialog-overlay-opacity));
+    ;
+    --dialog-overlay-bg: rgba(0, 0, 0, 0.55);
     --dialog-animation-duration: 400ms;
     --dialog-animation-scale-start: 0.65;
 }
@@ -94,6 +95,10 @@ small {
     line-height: 17px;
     padding: 10px 0 5px;
     color: var(--secondary-light-color);
+}
+
+.hidden {
+    display: none;
 }
 
 .text-primary {

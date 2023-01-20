@@ -8,13 +8,13 @@
     border: 1px solid transparent;
 }
 
-.button + .button {
+.button+.button {
     margin-left: 0;
     margin-top: 5px;
 }
 
 @media (min-width: 350px) {
-    .button + .button {
+    .button+.button {
         margin-left: 10px;
         margin-top: 0;
     }
@@ -23,12 +23,6 @@
 .button:hover {
     cursor: pointer;
     background-color: transparent;
-}
-
-.button:disabled {
-    background-color: var(--button-disabled-color);
-    border: 1px dashed var(--secondary-light-color);
-    color: var(--secondary-light-color);
 }
 
 .button__container {

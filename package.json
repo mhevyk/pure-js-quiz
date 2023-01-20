@@ -7,7 +7,6 @@
     "eslint": "eslint",
     "deploy": "gh-pages -d public",
     "build": "webpack --mode=production",
-    "dev": "webpack --mode=development",
     "watch": "webpack --watch --mode=development"
   },
   "repository": {

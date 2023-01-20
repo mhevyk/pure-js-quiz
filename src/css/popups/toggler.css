@@ -1,11 +1,3 @@
-.toggler {
-    display: block;
-}
-
-.toggler.hidden {
-    display: none;
-}
-
 .toggler:hover {
     cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { createPercentageChart } from '../charts/chart-answers-percentage';
+import { createPercentageChart } from './charts/chart-answers-percentage';
 
 let resultItemId = 0;
 

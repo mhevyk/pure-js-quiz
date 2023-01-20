@@ -1,11 +1,5 @@
-import { updateVocabularyRange } from './components/range-input';
-
 const defaultOptions = {
-    range: {
-        value: null,
-        max: null
-    },
-    mixQuestionType: true,
+    questionGuessType: true,
     showGroups: true
 };
 
@@ -26,9 +20,6 @@ function initOptionInputs() {
         switch(input.type) {
             case 'checkbox':
                 input.checked = optionValue;
-                break;
-            case 'range':
-                updateVocabularyRange(optionValue.max, optionValue.value);
                 break;
         }
     });

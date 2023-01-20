@@ -2,7 +2,7 @@
     visibility: visible;
 }
 
-.loader.open {
+.loader-container.open .loader {
     opacity: 1;
 }
 

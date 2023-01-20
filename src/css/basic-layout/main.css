@@ -6,8 +6,8 @@
     display: flex;
     flex-direction: column;
     max-width: 95%;
-    min-height: calc(100vh - 3 * var(--main-container-margin-y));
-    margin: var(--main-container-margin-y) auto;
+    min-height: calc(100vh - 3 * var(--app-margin-y));
+    margin: var(--app-margin-y) auto;
     background-color: var(--white-color);
     border-radius: 15px;
     box-shadow: 0 0 3px 1px var(--primary-opposite-color);

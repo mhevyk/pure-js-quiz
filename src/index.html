@@ -78,7 +78,7 @@
                             <span class="label__text"></span>
                             <div class="row">
                                 <input type="range" id="quiz-input-answer-words-count" class="range-input" min="1"
-                                    data-range="vocabulary" data-option="range">
+                                    data-range="vocabulary">
                                 <output class="range-output">0</output>
                             </div>
                         </div>
@@ -88,8 +88,9 @@
                                 <small>Вас попросять ввести переклад по слову або відтворити слово по перекладу</small>
                             </span>
                             <div class="checkbox__pill">
-                                <input type="checkbox" id="mix-question-type" data-option="mixQuestionType" checked>
-                                <label for="mix-question-type"></label>
+                                <input id="option-question-guess-type" type="checkbox" data-option="questionGuessType"
+                                    checked>
+                                <label for="option-question-guess-type"></label>
                             </div>
                         </div>
                         <div class="form__submit-group button__container">
@@ -106,7 +107,7 @@
                             Додайте слова до словника, щоб почати їх вивчення!
                         </div>
                         <form class="form form__quiz-input-answer" autocomplete="off" novalidate>
-                            <p class="question__text" data-question-text>Питання:</p>
+                            <p class="question__text" data-question>Питання:</p>
                             <progress class="progress" value="1"></progress>
                             <div class="form__item">
                                 <label class="form__label">
@@ -117,7 +118,7 @@
                                         </small>
                                     </span>
                                     <input type="text" class="text-input" name="answer" placeholder="Відповідь"
-                                        maxlength="40" autocapitalize="off">
+                                        maxlength="40" autocapitalize="off" data-answer>
                                 </label>
                                 <div class="group-button__container">
                                     <button id="quiz-input-answer-next" type="submit"
@@ -501,7 +502,7 @@
             <div class="dialog__section dialog__header">
                 <h2 class="title" data-role="header">Повідомлення з цієї сторінки</h2>
                 <button class="dialog__cross-button" data-role="close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <i class="fa-solid fa-times"></i>
                 </button>
             </div>
             <div class="dialog__section dialog__body" data-role="body"></div>

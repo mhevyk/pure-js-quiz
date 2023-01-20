@@ -57,7 +57,7 @@ function submitAfterDialogConfirm(content, onSubmit) {
 
     dialog.open();
     dialog.addEventListener('submit', () => {
-        onSubmit();
+        onSubmit?.();
         dialog.close();
     });
 }
@@ -90,6 +90,10 @@ function getCSSRootVariable(variableName) {
     return rootStyles.getPropertyValue(`--${variableName}`);
 }
 
+function getRandomArrayItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 export {
     downloadTextFile,
     handleSubmitIfFormValid,
@@ -100,5 +104,6 @@ export {
     readFileAsync,
     fetchTextFile,
     parseFileName,
-    getCSSRootVariable
+    getCSSRootVariable,
+    getRandomArrayItem
 };
