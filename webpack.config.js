@@ -7,8 +7,8 @@ const publicFolder = path.resolve(__dirname, 'public');
 
 module.exports = {
     entry: [
+        path.resolve(sourceFolder, 'css', 'index.css'),
         path.resolve(sourceFolder, 'js', 'index.js'),
-        path.resolve(sourceFolder, 'css', 'index.css')
     ],
     output: {
         path: publicFolder,

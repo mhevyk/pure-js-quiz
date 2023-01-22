@@ -3,55 +3,7 @@ export const formAddOneTranslates = {
     count: 1
 };
 
-// export const quizNames = {
-//     inputAnswer: 1
-// };
-
-export const completedQuizesCount = {
-    inputAnswer: 0,
-};
-
-export const quizResultList = [
-    {
-        name: 'Опитування 1',
-        mode: 'mode1',
-        questions: [
-            { name: 'Введіть переклад слова cat', userAnswer: 'кіт', correctAnswer: 'кіт' },
-            { name: 'Введіть переклад слова dog', userAnswer: 'собака', correctAnswer: 'пес' },
-            { name: 'Відтворіть слово по перекладах свиня', userAnswer: 'pig', correctAnswer: 'pig' },
-            { name: 'Питання 4', userAnswer: 'моя відповідь 4', correctAnswer: 'моя відповідь 4' }
-        ],
-        options: {
-            wordOrTranslate: false
-        }
-    },
-    {
-        name: 'Опитування 2',
-        mode: 'mode1',
-        questions: [
-            { name: 'Питання 1', userAnswer: 'моя відповідь', correctAnswer: 'моя відповідь' },
-            { name: 'Питання 2', userAnswer: 'моя відповідь 2', correctAnswer: 'правильна відповідь 2' }
-        ],
-        options: {
-            wordOrTranslate: true
-        }
-    },
-    {
-        name: 'Опитування 3',
-        mode: 'mode1',
-        questions: [
-            { name: 'Питання 1', userAnswer: 'моя відповідь 1', correctAnswer: 'правильна відповідь 1' },
-            { name: 'Питання 2', userAnswer: 'моя відповідь 2', correctAnswer: 'правильна відповідь 2' },
-            { name: 'Питання 3', userAnswer: 'моя відповідь 3', correctAnswer: 'правильна відповідь 3' },
-            { name: 'Питання 4', userAnswer: 'моя відповідь 4', correctAnswer: 'моя відповідь 4' },
-            { name: 'Питання 5', userAnswer: 'моя відповідь 3', correctAnswer: 'правильна відповідь 5' },
-            { name: 'Питання 6', userAnswer: 'моя відповідь 4', correctAnswer: 'моя відповідь 4' }
-        ],
-        options: {
-            wordOrTranslate: false
-        }
-    },
-];
+export const quizResultList = [];
 
 // property for progress fill in firefox browser
 export const PROGRESS_BAR_VALUE = '--value';
@@ -169,7 +121,7 @@ export const DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH = (correctAnswersCount, questio
     let shortResultDescription;
     if (correctAnswersCount === questionsCount) {
         shortResultDescription = 'відмінно';
-    } else if (correctAnswersCount >= halfQuestions) {
+    } else if (isResultGood) {
         shortResultDescription = 'вдало';
     } else {
         shortResultDescription = 'невдало';
