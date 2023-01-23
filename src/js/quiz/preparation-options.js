@@ -1,9 +1,9 @@
 import { updateVocabularyRange } from '../components/range-input';
 import { getValueFromSelect } from '../utils';
 import { vocabulary } from '../vocabulary';
+import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
 
-const form = document.querySelector('.form__quiz-input-answer-options');
-const groupSelect = form.groups;
+const groupSelect = FORM_QUIZ_INPUT_ANSWER_OPTIONS.groups;
 
 function groupChangeHandler() {
     const group = getValueFromSelect(groupSelect);

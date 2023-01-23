@@ -7,9 +7,9 @@ import {
     setInvalidFeedback,
     FEEDBACKS_ADD_GROUP
 } from '../feedback';
+import { FORM_GROUP_ADD } from '../form';
 
-const form = document.querySelector('.form__add-group');
-const groupInput = form.group;
+const groupInput = FORM_GROUP_ADD.group;
 
 function validateHandler() {
     const group = groupInput.value.trim();
@@ -30,7 +30,7 @@ function addGroup() {
     submitAfterDialogConfirm(DIALOG_CONTENT_TEMPLATE_ADD_GROUP(group), () => {
         vocabulary.addGroup(group);
         vocabulary.save();
-        resetForm(form);
+        resetForm(FORM_GROUP_ADD);
         updateUserInterface();
     });
 }
@@ -40,8 +40,8 @@ function formSubmitHandler(event) {
 }
 
 function initAddGroupForm() {
-    form.addEventListener('input', debounce(validateHandler, 100));
-    form.addEventListener('submit', formSubmitHandler);
+    FORM_GROUP_ADD.addEventListener('input', debounce(validateHandler, 100));
+    FORM_GROUP_ADD.addEventListener('submit', formSubmitHandler);
 }
 
 export { initAddGroupForm };

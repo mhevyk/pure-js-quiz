@@ -2,6 +2,7 @@ import { vocabulary } from '../../vocabulary';
 import { submitAfterDialogConfirm, handleSubmitIfFormValid } from '../../utils';
 import { DIALOG_CONTENT_CLEAR_VOCABULARY } from '../../storage';
 import { updateUserInterface } from '../../render-interface';
+import { FORM_VOCABULARY_CLEAR } from '../form';
 
 function clearVocabulary() {
     if (!vocabulary.isEmpty()) {
@@ -19,8 +20,7 @@ function formSubmitHandler(event) {
 }
 
 function initVocabularyClear() {
-    const form = document.querySelector('.form__vocabulary-clear');
-    form.addEventListener('submit', formSubmitHandler);
+    FORM_VOCABULARY_CLEAR.addEventListener('submit', formSubmitHandler);
 }
 
 export { initVocabularyClear };

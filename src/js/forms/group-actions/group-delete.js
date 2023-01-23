@@ -7,19 +7,18 @@ import {
     resetForm,
     handleSubmitIfFormValid
 } from '../../utils';
-
-const form = document.querySelector('.form__delete-group');
+import { FORM_GROUP_DELETE } from '../form';
 
 function deleteGroup(group) {
     vocabulary.removeGroup(group);
     vocabulary.print();
     vocabulary.save();
-    resetForm(form);
+    resetForm(FORM_GROUP_DELETE);
     updateUserInterface();
 }
 
 function confirmDeleteGroup() {
-    const group = getValueFromSelect(form.groups);
+    const group = getValueFromSelect(FORM_GROUP_DELETE.groups);
     const dialogContent = DIALOG_CONTENT_TEMPLATE_DELETE_GROUP(group);
 
     submitAfterDialogConfirm(dialogContent, () => deleteGroup(group));
@@ -30,7 +29,7 @@ function formSubmitHandler(event) {
 }
 
 function initFormDeleteGroup() {
-    form.addEventListener('submit', formSubmitHandler);
+    FORM_GROUP_DELETE.addEventListener('submit', formSubmitHandler);
 }
 
 export { initFormDeleteGroup };

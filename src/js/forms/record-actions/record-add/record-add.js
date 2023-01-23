@@ -10,13 +10,12 @@ import {
     handleSubmitIfFormValid,
     debounce
 } from '../../../utils';
-
-const form = document.querySelector('.form__add-single-word');
+import { FORM_RECORD_ADD } from '../../form';
 
 function addRecord() {
-    const wordInput = form.word;
-    const translateInputs = form.querySelectorAll('[name="translate"]');
-    const groupSelect = form.groups;
+    const wordInput = FORM_RECORD_ADD.word;
+    const translateInputs = FORM_RECORD_ADD.querySelectorAll('[name="translate"]');
+    const groupSelect = FORM_RECORD_ADD.groups;
 
     const word = wordInput.value.trim();
     const translates = Array.from(translateInputs, translateInput => translateInput.value.trim());
@@ -28,14 +27,14 @@ function addRecord() {
         vocabulary.addOne({word, translates, group});
         vocabulary.print();
         vocabulary.save();
-        resetForm(form);
+        resetForm(FORM_RECORD_ADD);
         updateUserInterface();
     });
 }
 
 function textInputsHandler(event) {
     if (event.target.type === 'text') {
-        validateFormAddInputs(form);
+        validateFormAddInputs(FORM_RECORD_ADD);
     }
 }
 
@@ -44,9 +43,9 @@ function submitHandler(event) {
 }
 
 function initFormAddSingleWord() {
-    form.addEventListener('input', debounce(textInputsHandler, 100));
-    form.addEventListener('submit', submitHandler);  
-    form.addEventListener('reset', resetHandler);
+    FORM_RECORD_ADD.addEventListener('input', debounce(textInputsHandler, 100));
+    FORM_RECORD_ADD.addEventListener('submit', submitHandler);  
+    FORM_RECORD_ADD.addEventListener('reset', resetHandler);
 }
 
 export { initFormAddSingleWord };

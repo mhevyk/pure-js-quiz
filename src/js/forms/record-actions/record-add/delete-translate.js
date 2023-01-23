@@ -1,22 +1,23 @@
 import { validateFormAddInputs } from './compare-inputs';
 import { submitAfterDialogConfirm, updateTranslatesCount } from '../../../utils';
-import { DIALOG_CONTENT_DELETE_TRANSLATE, formAddOneTranslates } from '../../../storage';
+import { DIALOG_CONTENT_DELETE_TRANSLATE } from '../../../storage';
+import { FORM_RECORD_ADD } from '../../form';
+import { translates } from './translate-id';
 
-const form = document.querySelector('.form__add-single-word');
 const additionalTranslatesContainer = document.querySelector('.translates__container');
 
 function deleteTranslate(deleteIndex) {
-    const translateContainerToDelete = form.querySelector(`[data-delete-id='${deleteIndex}']`);
+    const translateContainerToDelete = FORM_RECORD_ADD.querySelector(`[data-delete-id='${deleteIndex}']`);
     translateContainerToDelete.remove();
 
-    formAddOneTranslates.count--;
-    updateTranslatesCount(formAddOneTranslates.count);
+    translates.count--;
+    updateTranslatesCount(translates.count);
 }
 
 function showDeleteConfirm(event) {
     submitAfterDialogConfirm(DIALOG_CONTENT_DELETE_TRANSLATE, () => {
         deleteTranslate(event.target.dataset.deleteId);
-        validateFormAddInputs(form);
+        validateFormAddInputs(FORM_RECORD_ADD);
     });
 }
 

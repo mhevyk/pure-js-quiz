@@ -13,12 +13,11 @@ import {
     parseFileName,
     readFileAsync
 } from '../../utils';
+import { FORM_FILE_IMPORT } from '../form';
 
 const initFormImportTxt = () => {
-    const form = document.querySelector('.form__import-txt');
-
-    const fileInput = form.fileInput;
-    const fileInputLabel = form.querySelector('.file-input-label');
+    const fileInput = FORM_FILE_IMPORT.fileInput;
+    const fileInputLabel = FORM_FILE_IMPORT.querySelector('.file-input-label');
     const fileInputWrapper = new TogglerFileInput(fileInput, fileInputLabel);
 
     const validRecords = [];
@@ -29,7 +28,7 @@ const initFormImportTxt = () => {
     };
 
     const loadWordsFromTextFile = async () => {
-        const group = getValueFromSelect(form.groups);
+        const group = getValueFromSelect(FORM_FILE_IMPORT.groups);
         const dialogContent = DIALOG_CONTENT_TEMPLATE_IMPORT(group, validRecords.length);
 
         submitAfterDialogConfirm(dialogContent, () => {
@@ -44,7 +43,7 @@ const initFormImportTxt = () => {
                         vocabulary.save();
                         loader.close();
                     });
-                resetForm(form);
+                resetForm(FORM_FILE_IMPORT);
                 resetFileInput();
                 updateUserInterface();
             }, 500);
@@ -57,7 +56,7 @@ const initFormImportTxt = () => {
 
     const readFilesAsync = async (files) => {
         let validFilesCount = 0;
-        const separator = getValueFromSelect(form.separators);
+        const separator = getValueFromSelect(FORM_FILE_IMPORT.separators);
         for (const file of files) {
             try {
                 const {extension} = parseFileName(file.name);
@@ -104,10 +103,10 @@ const initFormImportTxt = () => {
             .finally(() => fileInputWrapper.toggler.show());
     });
 
-    const resetButton = form.querySelector('#import-txt-file-reset');
+    const resetButton = FORM_FILE_IMPORT.querySelector('#import-txt-file-reset');
     resetButton.addEventListener('click', () => fileInputWrapper.resetConfirm(resetFileInput));
 
-    form.addEventListener('submit', formSubmitHandler);
+    FORM_FILE_IMPORT.addEventListener('submit', formSubmitHandler);
 };
 
 export { initFormImportTxt };

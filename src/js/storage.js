@@ -1,8 +1,3 @@
-export const formAddOneTranslates = {
-    id: 1,
-    count: 1
-};
-
 export const quizResultList = [];
 
 // property for progress fill in firefox browser

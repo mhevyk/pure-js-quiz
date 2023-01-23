@@ -1,10 +1,10 @@
-import { formAddOneTranslates } from '../../../storage';
 import { updateTranslatesCount } from '../../../utils';
+import { translates } from './translate-id';
 
 const translatesContainer = document.querySelector('.additional__translates-container');
 
 function addTranslate() {
-    const newId = formAddOneTranslates.id + 1;
+    const newId = translates.id + 1;
     const translateHTML = `
         <label class='form__label row' data-delete-id="${newId}">
             <div class='input-delete__container'>
@@ -17,12 +17,12 @@ function addTranslate() {
             </small>
         </label>
     `;
-    formAddOneTranslates.id++;
-    formAddOneTranslates.count++;
+    translates.id++;
+    translates.count++;
 
     translatesContainer.insertAdjacentHTML('beforeend', translateHTML);
     translatesContainer.lastElementChild.focus();
-    updateTranslatesCount(formAddOneTranslates.count);
+    updateTranslatesCount(translates.count);
 }
 
 function initAddTranslate() {

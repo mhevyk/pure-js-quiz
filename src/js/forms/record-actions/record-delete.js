@@ -2,10 +2,12 @@ import { updateSelectsWithWords, updateUserInterface } from '../../render-interf
 import { getValueFromSelect, submitAfterDialogConfirm, handleSubmitIfFormValid, resetForm } from '../../utils';
 import { DIALOG_CONTENT_TEMPLATE_DELETE_ONE } from '../../storage';
 import { vocabulary } from '../../vocabulary';
+import { FORM_RECORD_DELETE } from '../form';
 
-const form = document.querySelector('.form__delete-one');
-const groupSelect = form.group;
-const wordSelect = form.word;
+const {
+    group: groupSelect,
+    word: wordSelect
+} = FORM_RECORD_DELETE;
 
 function filterWords() {
     const group = getValueFromSelect(groupSelect);
@@ -16,7 +18,7 @@ function deleteRecordByWord(word) {
     vocabulary.delete(word);
     vocabulary.print();
     vocabulary.save();
-    resetForm(form);
+    resetForm(FORM_RECORD_DELETE);
     filterWords();
     updateUserInterface();
 }
@@ -32,7 +34,7 @@ function formSubmitHandler(event) {
 
 export function initFormDeleteOne() {
     groupSelect.addEventListener('change', filterWords);
-    form.addEventListener('submit', formSubmitHandler);
+    FORM_RECORD_DELETE.addEventListener('submit', formSubmitHandler);
 }
 
 export { filterWords };

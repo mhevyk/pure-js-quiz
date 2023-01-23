@@ -3,10 +3,10 @@ import {
     downloadTextFile,
     fetchTextFile
 } from '../../../utils';
+import { FORM_FILE_IMPORT } from '../../form';
 
 const replaceTemplateSeparator = (text) => {
-    const form = document.querySelector('.form__import-txt');
-    const separator = getValueFromSelect(form.separators);
+    const separator = getValueFromSelect(FORM_FILE_IMPORT.separators);
     return {
         separator,
         text: text.replaceAll('&', separator)

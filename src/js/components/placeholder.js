@@ -1,20 +1,19 @@
 import { vocabularyContainer } from '../vocabulary';
+import { FORM_QUIZ_INPUT_ANSWER } from '../forms/form';
 
 const placeholders = [
     //quiz-input-answer placeholder
     {
         show: () => {
-            const form = document.querySelector('.form__quiz-input-answer');
-            form.classList.remove('open');
+            FORM_QUIZ_INPUT_ANSWER.classList.remove('open');
 
-            const placeholder = form.parentElement.querySelector('.placeholder');
+            const placeholder = FORM_QUIZ_INPUT_ANSWER.parentElement.querySelector('.placeholder');
             placeholder.classList.remove('hide');
         },
         hide: () => {
-            const form = document.querySelector('.form__quiz-input-answer');
-            form.classList.add('open');
+            FORM_QUIZ_INPUT_ANSWER.classList.add('open');
 
-            const placeholder = form.parentElement.querySelector('.placeholder');
+            const placeholder = FORM_QUIZ_INPUT_ANSWER.parentElement.querySelector('.placeholder');
             placeholder.classList.add('hide');
         }
     },
