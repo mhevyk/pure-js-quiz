@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/mhevyk/pure-js-quiz.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["quiz", "vocabulary", "words"],
+  "author": "Maksym Hevyk",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mhevyk/pure-js-quiz/issues"
