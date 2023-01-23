@@ -1,7 +1,7 @@
 import QuizInputAnswer from './quiz-input-answer';
+import { modeTypes } from './quiz';
 import { vocabulary } from '../vocabulary';
 import { getValueFromSelect } from '../utils';
-import { options } from '../options';
 
 const form = document.querySelector('.form__quiz-input-answer');
 const quizStartButton = document.querySelector('#quiz-input-answer-start');
@@ -17,6 +17,7 @@ function initQuiz() {
     
     const group = getValueFromSelect(groupSelect);
     const quizOptions = {
+        mode: modeTypes.inputAnswer,
         group,
         form,
         questionsCount

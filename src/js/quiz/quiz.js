@@ -33,9 +33,9 @@ function disableGoBackConfirm() {
     backButton.removeEventListener('click', confirmQuizExit);
 }
 
-function exitQuiz() {
+function exitQuiz(onlyPop = false) {
     disableGoBackConfirm();
-    pageNavigator.goToPreviousPage();
+    pageNavigator.goToPreviousPage(onlyPop);
 }
 
 function confirmQuizExit() {
@@ -44,8 +44,20 @@ function confirmQuizExit() {
     });
 }
 
+export const modeTypes = {
+    inputAnswer: 'Введення слова/перекладу'
+};
+
 export default class Quiz {
-    constructor({ group, questionsCount, form }) {
+    #mode;
+    #group;
+    static #quizId = 0;
+
+    constructor({ mode = modeTypes.inputAnswer, group, questionsCount, form }) {
+        Quiz.#quizId++;
+
+        this.#group = group;
+        this.#mode = mode;
         this.form = form;
         this.submitButton = form.querySelector('[type=submit]');
 
@@ -67,6 +79,18 @@ export default class Quiz {
         enableGoBackConfirm();
     }
 
+    getName() {
+        return `Опитування ${Quiz.#quizId}`;
+    }
+
+    getMode = () => {
+        return this.#mode;
+    };
+
+    getGroup = () => {
+        return this.#group;
+    };
+
     nextQuestion() {
         const { value: record, done: isQuizFinished } = this.questions.next();
         if (isQuizFinished) {
@@ -84,10 +108,10 @@ export default class Quiz {
     }
 
     showResult() {
-        dialog.hideCancelButtonTillDialogClose(exitQuiz);
+        dialog.hideCancelButtonTillDialogClose(disableGoBackConfirm);
         this.form.onsubmit = null;
 
         const dialogContent = DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH(this.correctAnswersCount, this.questionsCount);
-        submitAfterDialogConfirm(dialogContent, null);
+        submitAfterDialogConfirm(dialogContent, exitQuiz);
     }
 }

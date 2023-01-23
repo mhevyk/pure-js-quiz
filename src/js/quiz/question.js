@@ -6,11 +6,11 @@ export default class Question {
 
     static variants = {
         'quess-word': (word, translates) => ({
-            text: `Відтворіть слово по перекладах <b>${translates.join(', ')}</b>:`,
+            innerHTML: `Відтворіть слово по перекладах <span class="text-accent">${translates.join(', ')}</span>:`,
             answers: [word]
         }),
         'guess-translate': (word, translates) => ({
-            text: `Введіть один з перекладів слова <b>${word}</b>:`,
+            innerHTML: `Введіть один з перекладів слова <span class="text-accent">${word}</span>:`,
             answers: translates
         })
     };
@@ -20,18 +20,26 @@ export default class Question {
         const types = Object.keys(Question.variants);
 
         const variant = types.includes(type) ? type : getRandomArrayItem(types);
-        const variantTemplate = Question.variants[variant];
+        const templateVariant = Question.variants[variant];
         
-        const { text, answers } = variantTemplate(word, translates);
-        this.#text = text;
+        const { innerHTML, answers } = templateVariant(word, translates);
+        this.#text = innerHTML;
         this.#answers = answers;
     }
 
-    getText() {
+    getTextWithFormat = () => {
         return this.#text;
     }
 
-    checkAnswer(answer) {
+    getText = () => {
+        return this.getTextWithFormat().replace(/(<b>)|(<\/b>)/g, '');
+    };
+
+    checkAnswer = (answer) => {
         return this.#answers.includes(answer);
     }
+
+    getAnswers = () => {
+        return this.#answers.join(', ');
+    };
 }

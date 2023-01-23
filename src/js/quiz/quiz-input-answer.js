@@ -1,7 +1,11 @@
 import ProgressQuiz from './progress-quiz';
+import DetailedInfoCollector from './detailed-info-collector';
 import { resetInput } from '../utils';
+import { addQuizResultItemToStorage } from '../results/result-item';
 
 export default class QuizInputAnswer extends ProgressQuiz {
+    #collector;
+
     constructor(options) {
         super(options);
 
@@ -13,16 +17,19 @@ export default class QuizInputAnswer extends ProgressQuiz {
         resetInput(this.userAnswerInput);
         setTimeout(() => this.userAnswerInput.focus());
         this.#showQuestionTextToUser();
+
+        this.#collector = new DetailedInfoCollector(this);
     }
 
     nextQuestion() {
         const answerFromUser = this.userAnswerInput.value;
-        // const isAnswerCorrect = this.#checkAnswer(answerFromUser, this.previousQuestion);
         const isAnswerCorrect = this.previousQuestion.checkAnswer(answerFromUser);
 
         if (isAnswerCorrect) {
             this.correctAnswersCount++;
         }
+        
+        this.#collector.saveQuestionDetails(this.previousQuestion, answerFromUser);
 
         const question = super.nextQuestion();
         this.previousQuestion = question;
@@ -34,7 +41,14 @@ export default class QuizInputAnswer extends ProgressQuiz {
         }
     }
 
+    showResult() {
+        super.showResult();
+        const quizDetails = this.#collector.getQuizDetails();
+        console.log(quizDetails)
+        addQuizResultItemToStorage(quizDetails);
+    }
+
     #showQuestionTextToUser() {
-        this.questionContainer.innerHTML = this.previousQuestion.getText();
+        this.questionContainer.innerHTML = this.previousQuestion.getTextWithFormat();
     }
 }
