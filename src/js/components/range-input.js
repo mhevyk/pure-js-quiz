@@ -1,4 +1,5 @@
 import { vocabulary } from '../vocabulary';
+import { getRandomInteger } from '../utils';
 
 /* all ranges */
 function inputChangeHandler(event) {
@@ -22,7 +23,7 @@ const quizInputAnswerRange = document.querySelector('[data-range=vocabulary]');
 function updateVocabularyRange(recordsCount, value) {
     const output = quizInputAnswerRange.nextElementSibling;
     const max = recordsCount || vocabulary.recordsCount;
-    const rangeValue = value || Math.ceil(max / 5);
+    const rangeValue = value || getRandomInteger(max / 3, 1);
 
     quizInputAnswerRange.max = max;
     quizInputAnswerRange.value = rangeValue;

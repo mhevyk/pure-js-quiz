@@ -6,7 +6,9 @@ const tableRecordTemplate = ({ name, userAnswer, correctAnswer, isAnswerCorrect 
     return `
         <div class="table__record">
             <div class="table__item">
-                ${name}
+                <span>
+                    ${name}
+                </span>
             </div>
             <div class="table__item table__item-index">
                 <i class="fa-solid ${isAnswerCorrect ? 'fa-circle-check text-success' : 'fa-times-circle text-fail'}"></i>

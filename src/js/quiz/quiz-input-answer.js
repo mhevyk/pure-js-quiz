@@ -48,6 +48,6 @@ export default class QuizInputAnswer extends ProgressQuiz {
     }
 
     #showQuestionTextToUser() {
-        this.questionContainer.innerHTML = this.previousQuestion.getTextWithFormat();
+        this.questionContainer.innerHTML = this.previousQuestion.getText();
     }
 }

@@ -3,6 +3,7 @@ import { submitAfterDialogConfirm, shuffle } from '../utils';
 import { vocabulary } from '../vocabulary';
 import { dialog } from '../popups/dialog';
 import { options } from '../options';
+import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
 
 import {
     pageNavigator,
@@ -61,7 +62,6 @@ export default class Quiz {
 
     constructor({ mode = modeTypes.inputAnswer, group, questionsCount, form }) {
         Quiz.#quizId++;
-
         this.#group = group;
         this.#mode = mode;
         this.form = form;
@@ -79,7 +79,7 @@ export default class Quiz {
         this.answeredQuestionsCount = 0;
 
         this.options = {
-            questionGuessType: options.questionGuessType ? 'guess-translate' : ''
+            questionGuessType: options.questionGuessType ? '' : 'guess-translate'
         };
 
         enableGoBackConfirm();
@@ -87,6 +87,10 @@ export default class Quiz {
 
     getName() {
         return `Опитування ${Quiz.#quizId}`;
+    }
+
+    #getNextName() {
+        return `Опитування ${Quiz.#quizId + 1}`;
     }
 
     getMode = () => {
@@ -114,6 +118,8 @@ export default class Quiz {
     }
 
     showResult() {
+        FORM_QUIZ_INPUT_ANSWER_OPTIONS.resultName.value = this.#getNextName();
+
         dialog.hideCancelButtonTillDialogClose(disableGoBackConfirm);
         this.form.onsubmit = null;
 

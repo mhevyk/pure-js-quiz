@@ -7,9 +7,9 @@ export default class DetailedInfoCollector {
     }
 
     saveQuestionDetails(question, answerFromUser) {
-        const { getTextWithFormat, getAnswers, checkAnswer } = question;
+        const { getText, getAnswers, checkAnswer } = question;
         const questionDetails = {
-            name: getTextWithFormat(),
+            name: getText(),
             userAnswer: answerFromUser || '(не введено)',
             correctAnswer: getAnswers(),
             isAnswerCorrect: checkAnswer(answerFromUser)

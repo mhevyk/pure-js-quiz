@@ -90,8 +90,12 @@ function getCSSRootVariable(variableName) {
     return rootStyles.getPropertyValue(`--${variableName}`);
 }
 
+function getRandomInteger(max, min = 0) {
+    return Math.floor(Math.random() * max) + min;
+}
+
 function getRandomArrayItem(array) {
-    return array[Math.floor(Math.random() * array.length)];
+    return array[getRandomInteger(array.length)];
 }
 
 export {
@@ -105,5 +109,6 @@ export {
     fetchTextFile,
     parseFileName,
     getCSSRootVariable,
+    getRandomInteger,
     getRandomArrayItem
 };

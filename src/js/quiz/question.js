@@ -6,11 +6,11 @@ export default class Question {
 
     static variants = {
         'quess-word': (word, translates) => ({
-            innerHTML: `Відтворіть слово по перекладах <span class="text-accent">${translates.join(', ')}</span>:`,
+            innerHTML: `Відтворіть слово по перекладах <b class="text-accent">${translates.join(', ')}</b>:`,
             answers: [word]
         }),
         'guess-translate': (word, translates) => ({
-            innerHTML: `Введіть один з перекладів слова <span class="text-accent">${word}</span>:`,
+            innerHTML: `Введіть один з перекладів слова <b class="text-accent">${word}</b>:`,
             answers: translates
         })
     };
@@ -27,12 +27,8 @@ export default class Question {
         this.#answers = answers;
     }
 
-    getTextWithFormat = () => {
-        return this.#text;
-    };
-
     getText = () => {
-        return this.getTextWithFormat().replace(/(<b>)|(<\/b>)/g, '');
+        return this.#text;
     };
 
     checkAnswer = (answer) => {
