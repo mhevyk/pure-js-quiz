@@ -1,6 +1,6 @@
 import { quizResultList } from '../../storage';
 
-const detailsPage = document.querySelector('[data-quiz-details]');
+const detailsPage = document.querySelector('[data-quiz-details-questions]');
 
 const tableRecordTemplate = ({ name, userAnswer, correctAnswer, isAnswerCorrect }) => {
     return `

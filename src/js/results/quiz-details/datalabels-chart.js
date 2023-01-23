@@ -2,8 +2,7 @@ import { quizResultList } from '../../storage';
 import { createPercentageChart } from '../charts/chart-answers-percentage';
 import { countRightAndWrongAnswers } from '../result-item';
 
-const detailsPage = document.querySelector('[data-quiz-details]');
-const canvas = detailsPage.querySelector('#quiz-details__chart');
+const canvas = document.querySelector('#quiz-details__chart');
 
 function printDataLabelsChart(detailsId) {
     const { questions } = quizResultList[detailsId];

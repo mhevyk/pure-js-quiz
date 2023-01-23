@@ -23,7 +23,7 @@
                 <i class="fa-solid fa-circle-arrow-left"></i>
             </button>
             <h1 class="header__title">Перевірка слів</h1>
-            <h3 class="header__subtitle">найкраща програма для якісного вивчення слів</h3>
+            <h4 class="header__subtitle">найкраща програма для якісного вивчення слів</h4>
         </header>
         <main class="app__main">
             <div class="page page__main open" data-page="main" data-title="Перевірка слів">
@@ -423,9 +423,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="page" data-page="quiz-details" data-title="Деталі опитування" data-quiz-details>
-                    <article class="quiz-details__short">
-                        <h2 class="quiz-details__title">Коротка інформація</h2>
+                <div class="page navigation-list__container" data-page="quiz-details" data-title="Деталі опитування"
+                    data-quiz-details>
+                    <h3 class="navigation-list__group">Деталі опитування</h3>
+                    <div class="navigation-list__item">
+                        <p class="navigation-list__name">Коротка інформація</p>
+                        <button class="button button__secondary" data-page-button="quiz-details-short">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="navigation-list__item">
+                        <p class="navigation-list__name">Розподіл відповідей</p>
+                        <button class="button button__secondary" data-page-button="quiz-details-chart">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="navigation-list__item">
+                        <p class="navigation-list__name">Питання</p>
+                        <button class="button button__secondary" data-page-button="quiz-details-questions">
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="page" data-page="quiz-details-short" data-title="Деталі" data-quiz-details-short>
+                    <div class="quiz-details__short">
                         <dl class="navigation-list__container">
                             <div class="navigation-list__item">
                                 <dt class="navigation-list__name">
@@ -449,40 +470,29 @@
                                 <dd data-content="questions-count">20</dd>
                             </div>
                         </dl>
-                    </article>
-                    <article>
-                        <h2 class="quiz-details__title">Розподіл відповідей</h2>
-                        <div id="quiz-details__chart"></div>
-                    </article>
-                    <article>
-                        <h2 class="quiz-details__title">Питання</h2>
-                        <div class="table table__questions" role="table">
-                            <div class="table__record table__header">
-                                <div class="table__item">
-                                    Текст питання
-                                </div>
-                                <div class="table__item table__item-index">
-                                    <i class="fa-solid fa-circle-dot"></i>
-                                </div>
-                                <div class="table__item">Ваша відповідь</div>
-                                <div class="table__item">Правильна відповідь</div>
+                    </div>
+                </div>
+                <div class="page" data-page="quiz-details-chart" data-title="Відповіді">
+                    <div id="quiz-details__chart"></div>
+                </div>
+                <div class="page" data-page="quiz-details-questions" data-title="Питання" data-quiz-details-questions>
+                    <div class="table table__questions" role="table">
+                        <div class="table__record table__header">
+                            <div class="table__item">
+                                Текст питання
                             </div>
-                            <div class="table__content" data-content="questions"></div>
+                            <div class="table__item table__item-index">
+                                <i class="fa-solid fa-circle-dot"></i>
+                            </div>
+                            <div class="table__item">Ваша відповідь</div>
+                            <div class="table__item">Правильна відповідь</div>
                         </div>
-                    </article>
+                        <div class="table__content" data-content="questions"></div>
+                    </div>
                 </div>
             </div>
             <div class="pages__container options__pages">
-                <div class="page navigation-list__container" data-page="options" data-title="Налаштування">
-                    <h3 class="navigation-list__group">Словник</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Відображення словника</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-options">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="page" data-page="vocabulary-options" data-title="Словник">
+                <div class="page" data-page="options" data-title="Налаштування">
                     <div class="form__item checkbox__container">
                         <dl class="label__text">
                             <dt>Показувати розділи</dt>
