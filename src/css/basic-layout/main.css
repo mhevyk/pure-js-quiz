@@ -43,3 +43,15 @@
         max-width: 50%;
     }
 }
+
+@media (min-height: 820px) {
+    .app {
+        min-height: calc(90vh - 3 * var(--app-margin-y));
+    }
+}
+
+@media (min-height: 1024px) {
+    .app {
+        min-height: calc(75vh - 3 * var(--app-margin-y));
+    }
+}
