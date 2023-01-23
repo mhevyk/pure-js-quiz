@@ -1,0 +1,6 @@
+@media (min-width: 767px) {
+    #quiz-details__chart {
+        max-width: 60%;
+        margin: auto;
+    }
+}

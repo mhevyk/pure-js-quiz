@@ -1,0 +1,14 @@
+[data-quiz-details] article {
+    margin-bottom: 20px;
+}
+
+.quiz-details__title {
+    text-transform: uppercase;
+    padding: 5px 0 10px 25px;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid var(--secondary-color);
+    border-left: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-size: min(5vw, 23px);
+    border-bottom-left-radius: 5px;
+}

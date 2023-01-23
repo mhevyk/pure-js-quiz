@@ -28,12 +28,12 @@
 
     --highlight-success-color: rgb(0, 128, 0);
     --highlight-fail-color: rgb(255, 49, 49);
-    --highlight-success-bg: #50C878;
+    --highlight-success-bg: rgb(80, 200, 120);
     --highlight-fail-bg: rgb(255, 49, 29, 0.5);
 
     --record-padding-y: 7px;
     --record-value-padding-left: 25px;
-    ;
+    
     --dialog-overlay-bg: rgba(0, 0, 0, 0.55);
     --dialog-animation-duration: 400ms;
     --dialog-animation-scale-start: 0.65;
@@ -111,6 +111,14 @@ small {
 
 .text-fail {
     color: var(--highlight-fail-color);
+}
+
+.text-muted {
+    color: var(--secondary-light-color);
+}
+
+.text-accent {
+    color: var(--primary-opposite-color);
 }
 
 .fixed-center {

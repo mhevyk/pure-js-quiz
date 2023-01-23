@@ -1,23 +1,23 @@
-.result__item {
+.result-list .result__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 7px 7px 7px 15px;
 }
 
-.result__item:not(:last-child) {
+.result-list .result__item:not(:last-child) {
     border-bottom: 1px solid var(--button-disabled-color);
 }
 
-.item__short-description {
+.result-list .item__short-description {
     color: var(--primary-color);
 }
 
-.item__short-description small {
+.result-list .item__short-description small {
     padding: 5px 0 8px;
 }
 
-.item__chart-container {
+.result-list .item__chart-container {
     width: 25px;
     height: 25px;
 }

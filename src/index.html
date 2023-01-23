@@ -63,7 +63,7 @@
                             <label class="form__label">
                                 <span class="label__text">Розділ, з якого брати слова</span>
                                 <select name="groups" class="select" data-content="groups"
-                                    data-default-option-text="Будь-який" required>
+                                    data-default-option-text="Всі розділи" required>
                                     <option value="">Виберіть опцію</option>
                                 </select>
                                 <small class="feedbacks">
@@ -83,10 +83,14 @@
                             </div>
                         </div>
                         <div class="form__item checkbox__container">
-                            <span class="label__text">
-                                Слово або переклад
-                                <small>Вас попросять ввести переклад по слову або відтворити слово по перекладу</small>
-                            </span>
+                            <dl class="label__text">
+                                <dt>Слово або переклад</dt>
+                                <dd>
+                                    <small>
+                                        Вас попросять ввести переклад по слову або відтворити слово по перекладу
+                                    </small>
+                                </dd>
+                            </dl>
                             <div class="checkbox__pill">
                                 <input id="option-question-guess-type" type="checkbox" data-option="questionGuessType"
                                     checked>
@@ -290,7 +294,7 @@
                                 Текстовий файл зі словами
                                 <small>
                                     Текстовий файл обов'язково повинен відповідати
-                                    <span class="page-open-button link link__light"
+                                    <span class="link text-accent"
                                         data-page-button="vocabulary-group-import-template">шаблону</span>
                                 </small>
                             </span>
@@ -413,54 +417,59 @@
             </div>
             <div class="pages__container results__pages">
                 <div class="page" data-page="results" data-title="Результати">
-                    <div class="result__container"></div>
+                    <div class="result-list" data-quiz-result-list>
+                        <div class="placeholder quiz__placeholder">
+                            Завершіть тестування, щоб переглянути його результат!
+                        </div>
+                    </div>
                 </div>
-                <div class="page" data-page="results-detailed-info" data-title="Деталі опитування">
-                    <div class="navigation-list__container detailed-info__textual">
-                        <div class="navigation-list__item">
-                            <p class="navigation-list__name">
-                                <i class="fa-solid fa-puzzle-piece"></i>
-                                <span>Режим</span>
-                            </p>
-                            <p class="navigation-list__value">Введення слова/перекладу</p>
-                        </div>
-                        <div class="navigation-list__item">
-                            <p class="navigation-list__name">
-                                <i class="fa-solid fa-layer-group"></i>
-                                <span>Розділи</span>
-                            </p>
-                            <p class="navigation-list__value">Тварини</p>
-                        </div>
-                        <div class="navigation-list__item">
-                            <p class="navigation-list__name">
-                                <i class="fa-solid fa-clipboard-question"></i>
-                                <span>Кількість питань</span>
-                            </p>
-                            <p class="navigation-list__value">20</p>
-                        </div>
-                        <div class="navigation-list__item">
-                            <p class="navigation-list__name">
-                                <i class="fa-solid fa-gear"></i>
-                                <span>Налаштування</span>
-                            </p>
-                            <p class="navigation-list__value">Слово або переклад</p>
-                        </div>
-                    </div>
-                    <h2>Правильні/неправильні відповіді</h2>
-                    <div id="results-detailed-info__chart"></div>
-                    <div class="table table__questions" role="table">
-                        <div class="table__record table__header">
-                            <div class="table__item">
-                                Питання
+                <div class="page" data-page="quiz-details" data-title="Деталі опитування" data-quiz-details>
+                    <article class="quiz-details__short">
+                        <h2 class="quiz-details__title">Коротка інформація</h2>
+                        <dl class="navigation-list__container">
+                            <div class="navigation-list__item">
+                                <dt class="navigation-list__name">
+                                    <i class="fa-solid fa-puzzle-piece"></i>
+                                    <span class="navigation-list__key">Режим</span>
+                                </dt>
+                                <dd data-content="mode">Введення слова/перекладу</dd>
                             </div>
-                            <div class="table__item table__item-index">
-                                <i class="fa-solid fa-circle-dot"></i>
+                            <div class="navigation-list__item">
+                                <dt class="navigation-list__name">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                    <span class="navigation-list__key">Розділ</span>
+                                </dt>
+                                <dd data-content="group">Тварини</dd>
                             </div>
-                            <div class="table__item">Ваша відповідь</div>
-                            <div class="table__item">Правильна відповідь</div>
+                            <div class="navigation-list__item">
+                                <dt class="navigation-list__name">
+                                    <i class="fa-solid fa-clipboard-question"></i>
+                                    <span class="navigation-list__key">Кількість питань</span>
+                                </dt>
+                                <dd data-content="questions-count">20</dd>
+                            </div>
+                        </dl>
+                    </article>
+                    <article>
+                        <h2 class="quiz-details__title">Розподіл відповідей</h2>
+                        <div id="quiz-details__chart"></div>
+                    </article>
+                    <article>
+                        <h2 class="quiz-details__title">Питання</h2>
+                        <div class="table table__questions" role="table">
+                            <div class="table__record table__header">
+                                <div class="table__item">
+                                    Текст питання
+                                </div>
+                                <div class="table__item table__item-index">
+                                    <i class="fa-solid fa-circle-dot"></i>
+                                </div>
+                                <div class="table__item">Ваша відповідь</div>
+                                <div class="table__item">Правильна відповідь</div>
+                            </div>
+                            <div class="table__content" data-content="questions"></div>
                         </div>
-                        <div class="table__content" data-content="questions"></div>
-                    </div>
+                    </article>
                 </div>
             </div>
             <div class="pages__container options__pages">
@@ -475,12 +484,14 @@
                 </div>
                 <div class="page" data-page="vocabulary-options" data-title="Словник">
                     <div class="form__item checkbox__container">
-                        <span class="label__text">
-                            Показувати розділи
-                            <small>
-                                Слова у словнику будуть погруповані по розділах
-                            </small>
-                        </span>
+                        <dl class="label__text">
+                            <dt>Показувати розділи</dt>
+                            <dd>
+                                <small>
+                                    Слова у словнику будуть погруповані по розділах
+                                </small>
+                            </dd>
+                        </dl>
                         <div class="checkbox__pill">
                             <input type="checkbox" id="show-groups" data-option="showGroups" checked>
                             <label for="show-groups"></label>

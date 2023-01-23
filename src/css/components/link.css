@@ -4,7 +4,7 @@
     text-decoration: none;
 }
 
-.link__light {
+.link.text-accent {
     color: var(--primary-opposite-color);
 }
 

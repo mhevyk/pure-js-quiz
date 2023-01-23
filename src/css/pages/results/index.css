@@ -1,3 +1,2 @@
-@import url(results.css);
-@import url(detailed-description.css);
-@import url(questions-table.css);
+@import url(result-list.css);
+@import url(quiz-details/index.css);
