@@ -127,14 +127,14 @@ export const DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH = (correctAnswersCount, questio
         shortResultDescription = 'невдало';
     }
 
-    const resultFeedback = `<span class="text-${isResultGood ? 'success' : 'fail'}">${shortResultDescription}</span>`;
+    const resultFeedback = `<span class='text-${isResultGood ? 'success' : 'fail'}'>${shortResultDescription}</span>`;
 
     return {
         header: 'Результат тестування',
         body: `
             Тестування завершено ${resultFeedback},
             результат: <span class='text-primary'>${correctAnswersCount}/${questionsCount}</span>!
-            <small class='link' data-page-button="results">Переглянути результат тестування</small>
+            <small class='link' data-page-button='results'>Переглянути результат тестування</small>
         `,
         submitBtn: 'Добре',
     };

@@ -5,11 +5,11 @@ import { getCSSRootVariable } from '../../utils';
 Chart.defaults.color = getCSSRootVariable('secondary-color');
 
 const backgroundColors = [
-    getCSSRootVariable('highlight-success-bg'),
-    getCSSRootVariable('highlight-fail-bg')
+    getCSSRootVariable('highlight-success-bg') || 'green',
+    getCSSRootVariable('highlight-fail-bg') || 'red'
 ];
 
-export const genericChartOnlyDoughnut = (data) => ({
+export const createDoughnutChartConfig = (data) => ({
     type: 'doughnut',
     data: {
         datasets: [{
@@ -34,7 +34,7 @@ export const genericChartOnlyDoughnut = (data) => ({
     }
 });
 
-export const genericChartDoughtnutWithDatalabels = (data, labels) => ({
+export const createDatalabelsDoughnutChartConfig = (data, labels) => ({
     type: 'doughnut',
     plugins: [ChartDataLabels],
     data: {
@@ -64,10 +64,9 @@ export const genericChartDoughtnutWithDatalabels = (data, labels) => ({
                 labels: {
                     padding: 20
                 }
-            },
+            }
         },
         responsive: true,
-        // maintainAspectRatio: false,
         offset: 5
     },
 });

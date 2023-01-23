@@ -85,7 +85,7 @@ function parseFileName(filename) {
 }
 
 function getCSSRootVariable(variableName) {
-    const root = document.querySelector(':root');
+    const root = document.querySelector(':root') || document.documentElement;
     const rootStyles = getComputedStyle(root);
     return rootStyles.getPropertyValue(`--${variableName}`);
 }

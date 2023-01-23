@@ -64,6 +64,7 @@ class PageNavigator {
         }
 
         this.pageStack.pop();
+
         if (!this.pageStack.isEmpty()) {
             this.goToPage(this.pageStack.top());
         }

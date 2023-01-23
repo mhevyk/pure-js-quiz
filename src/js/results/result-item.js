@@ -1,10 +1,11 @@
 import { createPercentageChart } from './charts/chart-answers-percentage';
+import { quizResultList } from '../storage';
 
 let resultItemId = 0;
 
 function countRightAndWrongAnswers(questions) {
     const questionsCount = questions.length;
-    const rightAnswersCount = questions.reduce((result, question) => result + (question.userAnswer === question.correctAnswer), 0);
+    const rightAnswersCount = questions.reduce((result, question) => result + question.isAnswerCorrect, 0);
     const wrongAnswersCount = questionsCount - rightAnswersCount;
     return [rightAnswersCount, wrongAnswersCount];
 }
@@ -24,9 +25,9 @@ function createResultItem(resultInfo, index) {
         <div class="item__short-description">
             <span class="item__name">${name}</span>
             <small
-                class="link link__light page-open-button"
-                data-page-button="results-detailed-info"
-                data-detailed-info-index="${index}"
+                class="link text-accent"
+                data-page-button="quiz-details"
+                data-details-id="${index}"
             >
                 Детальніше...
             </small>
@@ -40,10 +41,23 @@ function createResultItem(resultInfo, index) {
 }
 
 function appendResultItem(item) {
-    const resultContainer = document.querySelector('.result__container');
+    const resultContainer = document.querySelector('[data-quiz-result-list]');
+    const placeholder = resultContainer.querySelector('.placeholder');
+    placeholder?.remove();
+    
     const resultItem = createResultItem(item, resultItemId);
     resultItemId++;
     resultContainer.append(resultItem);
 }
 
-export { countRightAndWrongAnswers, createResultItem, appendResultItem };
+function addQuizResultItemToStorage(item) {
+    quizResultList.push(item);
+    appendResultItem(item);
+}
+
+export {
+    countRightAndWrongAnswers,
+    createResultItem,
+    appendResultItem,
+    addQuizResultItemToStorage
+};
