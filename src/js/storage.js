@@ -3,6 +3,10 @@ export const quizResultList = [];
 // property for progress fill in firefox browser
 export const PROGRESS_BAR_VALUE = '--value';
 
+export const modeTypes = {
+    inputAnswer: 'Введення слова/перекладу'
+};
+
 export const FILE_UPLOAD_SUCCESS_TEMPLATE = (fileName, uploadedRecordsCount) => (`
     <small class='uploaded__file success'>
         <i class='icon fa-solid fa-circle-check'></i>

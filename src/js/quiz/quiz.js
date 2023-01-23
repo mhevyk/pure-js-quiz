@@ -1,59 +1,21 @@
 import Question from './question';
-import { submitAfterDialogConfirm, shuffle } from '../utils';
-import { vocabulary } from '../vocabulary';
+import { submitAfterDialogConfirm } from '../utils';
 import { dialog } from '../popups/dialog';
 import { options } from '../options';
 import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
+import { DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH, modeTypes } from '../storage';
+import questionGenerator from './question-generator';
 
 import {
-    pageNavigator,
-    backButton,
-    config as navigateConfig
-} from '../navigation/page-navigator';
-
-import {
-    DIALOG_CONTENT_EXIT_QUIZ,
-    DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH
-} from '../storage';
+    enableGoBackConfirm,
+    disableGoBackConfirm,
+    exitQuiz
+} from './exit-quiz';
 
 import {
     convertSecondaryButtonToPrimary,
     convertPrimaryButtonToSecondary
 } from '../components/button';
-
-function* questionGenerator(group, questionsCount) {
-    const groupContent = vocabulary.getGroupContent(group);
-    const shuffledQuestions = shuffle(groupContent);
-
-    for (let i = 0; i < questionsCount; i++) {
-        yield shuffledQuestions[i];
-    }
-}
-
-function enableGoBackConfirm() {
-    navigateConfig.canGoBack = false;
-    backButton.addEventListener('click', confirmQuizExit);
-}
-
-function disableGoBackConfirm() {
-    navigateConfig.canGoBack = true;
-    backButton.removeEventListener('click', confirmQuizExit);
-}
-
-function exitQuiz(onlyPop = false) {
-    disableGoBackConfirm();
-    pageNavigator.goToPreviousPage(onlyPop);
-}
-
-function confirmQuizExit() {
-    submitAfterDialogConfirm(DIALOG_CONTENT_EXIT_QUIZ, () => {
-        exitQuiz();
-    });
-}
-
-export const modeTypes = {
-    inputAnswer: 'Введення слова/перекладу'
-};
 
 export default class Quiz {
     #mode;

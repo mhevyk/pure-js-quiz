@@ -1,5 +1,5 @@
 import QuizInputAnswer from './quiz-input-answer';
-import { modeTypes } from './quiz';
+import { modeTypes } from '../storage';
 import { vocabulary } from '../vocabulary';
 import { getValueFromSelect } from '../utils';
 import { FORM_QUIZ_INPUT_ANSWER } from '../forms/form';
