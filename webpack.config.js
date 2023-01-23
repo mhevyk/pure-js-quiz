@@ -6,13 +6,15 @@ const sourceFolder = path.resolve(__dirname, 'src');
 const publicFolder = path.resolve(__dirname, 'public');
 
 module.exports = {
-    entry: [
-        path.resolve(sourceFolder, 'css', 'index.css'),
-        path.resolve(sourceFolder, 'js', 'index.js'),
-    ],
+    entry: {
+        styles: path.resolve(sourceFolder, 'css', 'index.css'),
+        main: path.resolve(sourceFolder, 'js', 'index.js'),
+    },
     output: {
         path: publicFolder,
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
+        asyncChunks: true,
+        chunkFilename: '[name].chunk.bundle.js',
         clean: true
     },
     module: {
@@ -41,6 +43,6 @@ module.exports = {
                     to: path.resolve(publicFolder, 'import-templates')
                 },
             ],
-        }),
+        })
     ],
 };

@@ -44,7 +44,6 @@ export default class QuizInputAnswer extends ProgressQuiz {
     showResult() {
         super.showResult();
         const quizDetails = this.#collector.getQuizDetails();
-        console.log(quizDetails)
         addQuizResultItemToStorage(quizDetails);
     }
 

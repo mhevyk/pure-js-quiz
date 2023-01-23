@@ -1,7 +1,7 @@
-async function initResults() {
-    const { initCharts } = await import('./charts');
+import { initCharts } from './charts';
 
+function initResults() {
     initCharts();
 }
 
-export default initResults;
+export { initResults };

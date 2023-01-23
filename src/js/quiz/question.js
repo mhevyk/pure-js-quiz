@@ -29,7 +29,7 @@ export default class Question {
 
     getTextWithFormat = () => {
         return this.#text;
-    }
+    };
 
     getText = () => {
         return this.getTextWithFormat().replace(/(<b>)|(<\/b>)/g, '');
@@ -37,7 +37,7 @@ export default class Question {
 
     checkAnswer = (answer) => {
         return this.#answers.includes(answer);
-    }
+    };
 
     getAnswers = () => {
         return this.#answers.join(', ');

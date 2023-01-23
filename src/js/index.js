@@ -2,11 +2,11 @@ import { vocabulary } from './vocabulary';
 import { updateUserInterface, updateSelectsWithWords } from './render-interface';
 import { initQuiz } from './quiz';
 import { initOptionInputs } from './options';
-import { initFormComponents } from './forms';
-import initResults from './results';
 
 async function initApp() {
+    const { initFormComponents } = await import('./forms');
     const { initComponents } = await import('./components');
+    const { initResults } = await import('./results');
 
     vocabulary.load();
     vocabulary.print();
@@ -14,10 +14,10 @@ async function initApp() {
     updateSelectsWithWords();
 
     initFormComponents();
-    initComponents();
     initQuiz();
     initOptionInputs();
 
+    initComponents();
     initResults();
 }
 
