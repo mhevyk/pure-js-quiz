@@ -1,18 +1,24 @@
+import Question from './question';
+import { submitAfterDialogConfirm, shuffle } from '../utils';
 import { vocabulary } from '../vocabulary';
 import { dialog } from '../popups/dialog';
+import { options } from '../options';
+
 import {
     pageNavigator,
     backButton,
     config as navigateConfig
 } from '../navigation/page-navigator';
-import { submitAfterDialogConfirm, shuffle } from '../utils';
+
 import {
     DIALOG_CONTENT_EXIT_QUIZ,
     DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH
 } from '../storage';
-import { setQuizPrimary, setQuizSecondary } from '../components/button';
-import Question from './question';
-import { options } from '../options';
+
+import {
+    convertSecondaryButtonToPrimary,
+    convertPrimaryButtonToSecondary
+} from '../components/button';
 
 function* questionGenerator(group, questionsCount) {
     const groupContent = vocabulary.getGroupContent(group);
@@ -62,9 +68,9 @@ export default class Quiz {
         this.submitButton = form.querySelector('[type=submit]');
 
         if (questionsCount === 1) {
-            setQuizPrimary(this.submitButton);
+            convertSecondaryButtonToPrimary(this.submitButton);
         } else {
-            setQuizSecondary(this.submitButton);
+            convertPrimaryButtonToSecondary(this.submitButton);
         }
 
         this.questionsCount = questionsCount;
@@ -99,7 +105,7 @@ export default class Quiz {
 
         //transform submit button to inform user, that he is answering last question
         if (this.answeredQuestionsCount === this.questionsCount - 1) {
-            setQuizPrimary(this.submitButton);
+            convertSecondaryButtonToPrimary(this.submitButton);
         }
 
         this.answeredQuestionsCount++;

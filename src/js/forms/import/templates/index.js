@@ -1,9 +1,8 @@
 import { downloadTextTemplate } from './text';
 
-const initTemplates = () => {
+function initTemplates() {
     const downloadButton = document.querySelector('#download-txt-template');
-    
     downloadButton.addEventListener('click', downloadTextTemplate);
-};
+}
 
-export { initTemplates };
+export default initTemplates;

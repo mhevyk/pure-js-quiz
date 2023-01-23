@@ -1,14 +1,14 @@
 import { initScrollTopArrow } from './arrow';
 import { initAllRangeInputs } from './range-input';
-import { initCheckboxes, initShowGroupsCheckbox } from './checkbox-pill';
+import { initSwitchers, initShowGroupsSwitcher } from './switch';
 import { initExitButton } from './exit';
 import { initFooterYearRange } from './app-existance-date-range';
 
 function initComponents() {
     initScrollTopArrow();
     initAllRangeInputs();
-    initCheckboxes();
-    initShowGroupsCheckbox();
+    initSwitchers();
+    initShowGroupsSwitcher();
     initExitButton();
     initFooterYearRange();
 }

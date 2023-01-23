@@ -1,7 +1,7 @@
 import { vocabulary } from '../vocabulary';
 
 /* all ranges */
-function inputChangeHandler (event) {
+function inputChangeHandler(event) {
     const rangeInput = event.target;
     const rangeOutput = rangeInput.nextElementSibling;
     rangeOutput.textContent = rangeInput.value;

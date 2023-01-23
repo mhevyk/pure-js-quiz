@@ -3,6 +3,20 @@ export const quizResultList = [];
 // property for progress fill in firefox browser
 export const PROGRESS_BAR_VALUE = '--value';
 
+export const FILE_UPLOAD_SUCCESS_TEMPLATE = (fileName, uploadedRecordsCount) => (`
+    <small class='uploaded__file success'>
+        <i class='icon fa-solid fa-circle-check'></i>
+        Слова з файлу <b>${fileName}</b> готові до додавання у розділ! (Кількість слів: <b>${uploadedRecordsCount}</b>)
+    </small>
+`);
+
+export const FILE_UPLOAD_FAILURE_TEMPLATE = (fileName, error) => (`
+    <small class="uploaded__file fail">
+        <i class="icon fa-solid fa-times-circle"></i>
+        Файл <b>${fileName}</b> не був завантажений через помилку: ${error}
+    </small>
+`);
+
 export const ERRORS_FILE_UPLOADING = {
     TEMPLATE_LOAD: 'Завантаження шаблону! Видаліть рядки із символами "***"!',
     NO_SEPARATOR_IN_ROW: (separator, row) => `Немає роздільника '${separator}' в рядку ${row}`,

@@ -1,5 +1,6 @@
 
 import Chart from 'chart.js/auto';
+
 import {
     createDatalabelsDoughnutChartConfig,
     createDoughnutChartConfig

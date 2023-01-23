@@ -1,13 +1,14 @@
 import { resetFeedbacks } from '../../feedback';
 import { DIALOG_CONTENT_RESET_TRANSLATES } from '../../../storage';
+import { FORM_RECORD_ADD } from '../../form';
+import { translates } from './translate-id';
+
 import {
     submitAfterDialogConfirm,
     resetInput,
     removeContainerChildren,
     updateTranslatesCount
 } from '../../../utils';
-import { FORM_RECORD_ADD } from '../../form';
-import { translates } from './translate-id';
 
 const resetTranslatesButton = document.querySelector('#add-translate-reset');
 const translatesContainer = document.querySelector('.additional__translates-container');

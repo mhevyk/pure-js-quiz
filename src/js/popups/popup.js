@@ -13,7 +13,6 @@ export default class Popup {
         body.classList.add(`${this.type}-overlay-open`);
   
         if (!this.isOpen()) {
-            //this.container.parentElement.classList.add('open');
             this.container.classList.add('open');
         }
     }
@@ -23,7 +22,6 @@ export default class Popup {
         body.classList.remove(`${this.type}-overlay-open`);
   
         if (this.isOpen()) {
-            //this.container.parentElement.classList.remove('open');
             this.container.classList.remove('open');
         }
     }

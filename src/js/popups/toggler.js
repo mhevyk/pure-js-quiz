@@ -1,9 +1,14 @@
+const animationConfig = {
+    duration: 300,
+    initialHeight: 0
+};
+
 export default class Toggler {
     constructor(container) {
         this.container = container;
         this.title = this.container.querySelector('.title');
         this.content = this.container.querySelector('.content');
-        this.content.style.height = 0;
+        this.content.style.height = animationConfig.initialHeight;
     }
 
     hide() {
@@ -30,10 +35,10 @@ export default class Toggler {
         }
 
         this.container.classList.add('open');
-        const heightToSlide = this.#calculateHeightToSlide() + 'px';
+        const heightToSlide = `${this.#calculateHeightToSlide()}px`;
         this.content.style.height = heightToSlide;
         this.content.animate([
-            { height: 0 },
+            { height: animationConfig.initialHeight },
             { height: heightToSlide }
         ], {
             duration: this.#calculateDuration()
@@ -42,30 +47,28 @@ export default class Toggler {
 
     slideUp() {
         this.container.classList.remove('open');
-        this.content.style.height = 0;
+        this.content.style.height = animationConfig.initialHeight;
         this.content.animate([
-            { height: this.#calculateHeightToSlide() + 'px' },
-            { height: 0 },
+            { height: `${this.#calculateHeightToSlide()}px` },
+            { height: animationConfig.initialHeight },
         ], {
             duration: this.#calculateDuration()
         });
     }
 
     #calculateHeightToSlide() {
-        const defaultHeight = 0;
         const children = this.content.children;
         const count = children.length;
         if (!count) {
-            return defaultHeight;
+            return animationConfig.initialHeight;
         }
         const firstSize = children[0].offsetHeight;
         return firstSize * count;
     }
 
     #calculateDuration() {
-        const defaultDuration = 300;
         const heightToSlide = this.#calculateHeightToSlide();
         const speedUpCoefitient = heightToSlide / (this.content.children.length + 1);
-        return defaultDuration + speedUpCoefitient;
+        return animationConfig.duration + speedUpCoefitient;
     }
 }

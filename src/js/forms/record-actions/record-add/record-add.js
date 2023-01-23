@@ -3,6 +3,8 @@ import { validateFormAddInputs } from './compare-inputs';
 import { resetTranslates as resetHandler } from './reset-translates';
 import { updateUserInterface } from '../../../render-interface';
 import { DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD } from '../../../storage';
+import { FORM_RECORD_ADD } from '../../form';
+
 import { 
     getValueFromSelect,
     submitAfterDialogConfirm,
@@ -10,7 +12,6 @@ import {
     handleSubmitIfFormValid,
     debounce
 } from '../../../utils';
-import { FORM_RECORD_ADD } from '../../form';
 
 function addRecord() {
     const wordInput = FORM_RECORD_ADD.word;

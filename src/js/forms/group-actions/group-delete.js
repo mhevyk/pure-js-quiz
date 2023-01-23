@@ -1,13 +1,14 @@
 import { vocabulary } from '../../vocabulary';
 import { updateUserInterface } from '../../render-interface';
 import { DIALOG_CONTENT_TEMPLATE_DELETE_GROUP } from '../../storage';
+import { FORM_GROUP_DELETE } from '../form';
+
 import {
     getValueFromSelect,
     submitAfterDialogConfirm,
     resetForm,
     handleSubmitIfFormValid
 } from '../../utils';
-import { FORM_GROUP_DELETE } from '../form';
 
 function deleteGroup(group) {
     vocabulary.removeGroup(group);
@@ -20,7 +21,6 @@ function deleteGroup(group) {
 function confirmDeleteGroup() {
     const group = getValueFromSelect(FORM_GROUP_DELETE.groups);
     const dialogContent = DIALOG_CONTENT_TEMPLATE_DELETE_GROUP(group);
-
     submitAfterDialogConfirm(dialogContent, () => deleteGroup(group));
 }
 

@@ -1,18 +1,12 @@
 function initFooterYearRange() {
-    const yearContainerList = document.querySelectorAll('[data-app-existance-date-range]');
+    const yearContainer = document.querySelector('[data-app-existance-period]');
+    const developmentStartYear = 2019;
     const currentYear = new Date().getFullYear();
-    const yearOfDevelopmentStart = 2019;
-
-    const yearRange = [yearOfDevelopmentStart, currentYear];
     
-    yearContainerList.forEach(container => {
-        const dateTags = yearRange.map(year => (
-            `<time datetime='${year}'>
-                ${year}
-            </time>`
-        ));
-        container.innerHTML = dateTags.join('-');
-    });
+    const dateTags = [developmentStartYear, currentYear].map(
+        year => `<time datetime="${year}">${year}</time>`
+    );
+    yearContainer.innerHTML = dateTags.join('-');
 }
 
 export { initFooterYearRange };

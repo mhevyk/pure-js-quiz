@@ -1,28 +1,28 @@
 import { vocabulary } from '../vocabulary';
 import { options, saveOptions } from '../options';
 
-function checkboxChangeHandler(event) {
+function changeHandler(event) {
     const { checked, dataset } = event.target;
     const { option } = dataset;
     options[option] = checked;
     saveOptions();
 }
 
-function showGroupsCheckboxChangeHandler() {
+function showGroupsChangeHandler() {
     vocabulary.print();
 }
 
-function initShowGroupsCheckbox() {
+function initShowGroupsSwitcher() {
     const checkbox = document.querySelector('#show-groups');
-    checkbox.addEventListener('change', showGroupsCheckboxChangeHandler);
+    checkbox.addEventListener('change', showGroupsChangeHandler);
 }
 
-function initCheckboxes() {
+function initSwitchers() {
     const checkboxes = document.querySelectorAll('input[type=checkbox]');
-    checkboxes.forEach(checkbox => checkbox.addEventListener('change', checkboxChangeHandler));
+    checkboxes.forEach(checkbox => checkbox.addEventListener('change', changeHandler));
 }
 
 export {
-    initCheckboxes,
-    initShowGroupsCheckbox
+    initSwitchers,
+    initShowGroupsSwitcher
 };

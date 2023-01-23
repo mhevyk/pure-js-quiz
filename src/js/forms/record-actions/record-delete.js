@@ -1,8 +1,14 @@
 import { updateSelectsWithWords, updateUserInterface } from '../../render-interface';
-import { getValueFromSelect, submitAfterDialogConfirm, handleSubmitIfFormValid, resetForm } from '../../utils';
 import { DIALOG_CONTENT_TEMPLATE_DELETE_ONE } from '../../storage';
 import { vocabulary } from '../../vocabulary';
 import { FORM_RECORD_DELETE } from '../form';
+
+import {
+    getValueFromSelect,
+    submitAfterDialogConfirm,
+    handleSubmitIfFormValid,
+    resetForm
+} from '../../utils';
 
 const {
     group: groupSelect,

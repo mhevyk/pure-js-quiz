@@ -1,5 +1,9 @@
 import FileInput from './file-input';
 import Toggler from '../popups/toggler';
+import {
+    FILE_UPLOAD_SUCCESS_TEMPLATE,
+    FILE_UPLOAD_FAILURE_TEMPLATE
+} from '../storage';
 
 export default class TogglerFileInput extends FileInput {
     constructor(input, label) {
@@ -13,21 +17,13 @@ export default class TogglerFileInput extends FileInput {
         countContainer.textContent = prevFilesCount + 1;
     }
 
-    appendValidFile (file, count) {
-        this.uploadedFilesContainer.innerHTML += `
-            <small class='uploaded__file success'>
-                <i class='icon fa-solid fa-file'></i>
-                Слова з файлу <b>${file.name}</b> готові до додавання у розділ! (Кількість слів: <b>${count}</b>)
-            </small>`;
+    appendValidFile ({ name }, count) {
+        this.uploadedFilesContainer.innerHTML += FILE_UPLOAD_SUCCESS_TEMPLATE(name, count);
         this.incrementFilesCount();
     }
 
-    appendInvalidFile(file, error) {
-        this.uploadedFilesContainer.innerHTML += `
-            <small class='uploaded__file fail'>
-                <i class='icon fa fa-times' aria-hidden='true'></i>
-                Файл <b>${file.name}</b> не був завантажений через помилку: ${error}
-            </small>`;
+    appendInvalidFile({ name }, error) {
+        this.uploadedFilesContainer.innerHTML += FILE_UPLOAD_FAILURE_TEMPLATE(name, error);
         this.incrementFilesCount();
     }
 

@@ -5,7 +5,7 @@ function changeButtonStyle(button, {text, replaceClasses}) {
     button.classList.replace(replaceClasses.from, replaceClasses.to);
 }
 
-function setQuizSecondary(submitButton) {
+function convertPrimaryButtonToSecondary(submitButton) {
     changeButtonStyle(submitButton, {
         text: 'Наступне питання',
         replaceClasses: {
@@ -15,7 +15,7 @@ function setQuizSecondary(submitButton) {
     });
 }
 
-function setQuizPrimary(submitButton) {
+function convertSecondaryButtonToPrimary(submitButton) {
     changeButtonStyle(submitButton, {
         text: 'Завершити спробу',
         replaceClasses: {
@@ -25,4 +25,7 @@ function setQuizPrimary(submitButton) {
     });
 }
 
-export { setQuizPrimary, setQuizSecondary };
+export {
+    convertSecondaryButtonToPrimary,
+    convertPrimaryButtonToSecondary
+};

@@ -1,13 +1,20 @@
 import { vocabulary } from '../../vocabulary';
-import { submitAfterDialogConfirm, handleSubmitIfFormValid, resetForm, debounce } from '../../utils';
 import { updateUserInterface } from '../../render-interface';
 import { DIALOG_CONTENT_TEMPLATE_ADD_GROUP } from '../../storage';
+import { FORM_GROUP_ADD } from '../form';
+
 import {
     setValidFeedback,
     setInvalidFeedback,
     FEEDBACKS_ADD_GROUP
 } from '../feedback';
-import { FORM_GROUP_ADD } from '../form';
+
+import {
+    submitAfterDialogConfirm,
+    handleSubmitIfFormValid,
+    resetForm,
+    debounce
+} from '../../utils';
 
 const groupInput = FORM_GROUP_ADD.group;
 
@@ -24,19 +31,21 @@ function validateHandler() {
     }
 }
 
-function addGroup() {
-    const group = groupInput.value.trim();
+function addGroup(group) {
+    vocabulary.addGroup(group);
+    vocabulary.save();
+    resetForm(FORM_GROUP_ADD);
+    updateUserInterface();
+}
 
-    submitAfterDialogConfirm(DIALOG_CONTENT_TEMPLATE_ADD_GROUP(group), () => {
-        vocabulary.addGroup(group);
-        vocabulary.save();
-        resetForm(FORM_GROUP_ADD);
-        updateUserInterface();
-    });
+function confirmAddGroup() {
+    const group = groupInput.value.trim();
+    const dialogContent = DIALOG_CONTENT_TEMPLATE_ADD_GROUP(group);
+    submitAfterDialogConfirm(dialogContent, () => addGroup(group));
 }
 
 function formSubmitHandler(event) {
-    handleSubmitIfFormValid(event.target, addGroup);
+    handleSubmitIfFormValid(event.target, confirmAddGroup);
 }
 
 function initAddGroupForm() {
