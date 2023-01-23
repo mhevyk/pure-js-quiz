@@ -8,8 +8,12 @@ export const config = {
 };
 
 class PageNavigator {
+    #pageStack;
+    #pagesToSkipWhenGoingBack;
+
     constructor(startPage) {
-        this.pageStack = new Stack(startPage);
+        this.#pageStack = new Stack(startPage);
+        this.#pagesToSkipWhenGoingBack = ['quiz-input-answer'];
 
         const navigateHandler = (event) => {
             const navigationButton = event.target.closest('[data-page-button]');
@@ -36,8 +40,8 @@ class PageNavigator {
             backButton.classList.remove('open');
         }
 
-        if (this.pageStack.top() !== page) {
-            this.pageStack.push(page);
+        if (this.#pageStack.top() !== page) {
+            this.#pageStack.push(page);
         }
     };
 
@@ -63,10 +67,15 @@ class PageNavigator {
             return;
         }
 
-        this.pageStack.pop();
+        const pages = this.#pageStack;
+        pages.pop();
 
-        if (!this.pageStack.isEmpty()) {
-            this.goToPage(this.pageStack.top());
+        if (this.#pagesToSkipWhenGoingBack.includes(pages.top())) {
+            pages.pop();
+        }
+
+        if (!pages.isEmpty()) {
+            this.goToPage(pages.top());
         }
     };
 }
