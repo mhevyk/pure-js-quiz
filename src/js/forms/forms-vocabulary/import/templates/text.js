@@ -1,9 +1,9 @@
-import { FORM_FILE_IMPORT } from '../../form';
+import { FORM_FILE_IMPORT } from '../../../form';
 import {
     getValueFromSelect,
     downloadTextFile,
     fetchTextFile
-} from '../../../utils';
+} from '../../../../utils';
 
 const replaceTemplateSeparator = (text) => {
     const separator = getValueFromSelect(FORM_FILE_IMPORT.separators);

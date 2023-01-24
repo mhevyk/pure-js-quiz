@@ -2,7 +2,7 @@ import {
     setInvalidFeedback,
     setValidFeedback,
     FEEDBACKS_COMPARE_INPUTS_ADD_ONE
-} from '../../feedback';
+} from '../../../feedback';
 
 function countInputValuesOccurence(inputsArray) {
     const inputValuesList = inputsArray.map(input => input.value);

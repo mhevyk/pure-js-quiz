@@ -1,20 +1,17 @@
-import TogglerFileInput from '../../components/toggler-file-input';
-import { loader } from '../../popups/loader';
-import { vocabulary } from '../../vocabulary';
-import { FEEDBACKS_FILE_UPLOADING } from '../feedback';
-import { updateUserInterface } from '../../render-interface';
-import { FORM_FILE_IMPORT } from '../form';
-
+import TogglerFileInput from '../../../components/toggler-file-input';
+import { loader } from '../../../popups/loader';
+import { vocabulary } from '../../../vocabulary';
+import { FEEDBACKS_FILE_UPLOADING } from '../../feedback';
+import { updateUserInterface } from '../../../render-interface';
+import { FORM_FILE_IMPORT } from '../../form';
 import {
     createRecordsFromLines,
     splitToLinesWithText
 } from './parse-file-data';
-
 import {
     ERRORS_FILE_UPLOADING,
     DIALOG_CONTENT_TEMPLATE_IMPORT
-} from '../../storage';
-
+} from '../../../storage';
 import {
     getValueFromSelect,
     submitAfterDialogConfirm,
@@ -22,7 +19,7 @@ import {
     handleSubmitIfFormValid,
     parseFileName,
     readFileAsync
-} from '../../utils';
+} from '../../../utils';
 
 const initFormImportTxt = () => {
     const fileInput = FORM_FILE_IMPORT.fileInput;

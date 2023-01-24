@@ -1,19 +1,19 @@
 import { vocabularyContainer } from '../vocabulary';
-import { FORM_QUIZ_INPUT_ANSWER } from '../forms/form';
+import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
 
 const placeholders = [
     //quiz-input-answer placeholder
     {
         show: () => {
-            FORM_QUIZ_INPUT_ANSWER.classList.remove('open');
+            FORM_QUIZ_INPUT_ANSWER_OPTIONS.classList.add('hidden');
 
-            const placeholder = FORM_QUIZ_INPUT_ANSWER.parentElement.querySelector('.placeholder');
+            const placeholder = FORM_QUIZ_INPUT_ANSWER_OPTIONS.parentElement.querySelector('.placeholder');
             placeholder.classList.remove('hide');
         },
         hide: () => {
-            FORM_QUIZ_INPUT_ANSWER.classList.add('open');
+            FORM_QUIZ_INPUT_ANSWER_OPTIONS.classList.remove('hidden');
 
-            const placeholder = FORM_QUIZ_INPUT_ANSWER.parentElement.querySelector('.placeholder');
+            const placeholder = FORM_QUIZ_INPUT_ANSWER_OPTIONS.parentElement.querySelector('.placeholder');
             placeholder.classList.add('hide');
         }
     },

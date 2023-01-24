@@ -15,7 +15,7 @@ function addPreventDefaultHandler(form) {
     form.addEventListener('submit', event => event.preventDefault());
 }
 
-function initForms() {
+function initFormsValidation() {
     const forms = document.querySelectorAll('.form');
     forms.forEach(form => {
         const { colorValidate } = form.dataset;
@@ -26,4 +26,4 @@ function initForms() {
     });
 }
 
-export { initForms };
+export { initFormsValidation };

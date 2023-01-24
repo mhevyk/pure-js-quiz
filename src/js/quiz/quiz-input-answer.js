@@ -3,6 +3,7 @@ import DetailedInfoCollector from './detailed-info-collector';
 import Quiz from './quiz';
 import { resetInput } from '../utils';
 import { addQuizResultItemToStorage } from '../results/result-item';
+import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
 
 export default class QuizInputAnswer extends ProgressQuiz {
     #collector;
@@ -47,6 +48,7 @@ export default class QuizInputAnswer extends ProgressQuiz {
         const quizDetails = this.#collector.getQuizDetails();
         addQuizResultItemToStorage(quizDetails);
         Quiz.quizId++;
+        FORM_QUIZ_INPUT_ANSWER_OPTIONS.resultName.value = this.getName();
     }
 
     #showQuestionTextToUser() {

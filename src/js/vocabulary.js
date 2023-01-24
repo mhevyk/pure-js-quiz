@@ -59,9 +59,11 @@ class Vocabulary {
     };
 
     getGroupContent = (group = '') => {
-        return this.hasGroup(group)
-            ? this.data.filter(record => record.group === group)
-            : this.data;
+        if (group === '') {
+            return this.data;
+        }
+        
+        return this.data.filter(record => record.group === group);
     };
 
     addGroup = (group) => {

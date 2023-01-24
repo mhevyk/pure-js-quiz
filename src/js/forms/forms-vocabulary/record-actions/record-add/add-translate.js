@@ -1,4 +1,4 @@
-import { updateTranslatesCount } from '../../../utils';
+import { updateTranslatesCount } from '../../../../utils';
 import { translates } from './translate-id';
 
 const translatesContainer = document.querySelector('.additional__translates-container');

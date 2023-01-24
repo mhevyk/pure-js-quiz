@@ -1,10 +1,9 @@
 import { vocabulary } from './vocabulary';
 import { updateUserInterface, updateSelectsWithWords } from './render-interface';
-import { initQuiz } from './quiz';
 import { initOptionInputs } from './options';
 
 async function initApp() {
-    const { initFormComponents } = await import('./forms');
+    const { initForms } = await import('./forms');
     const { initComponents } = await import('./components');
     const { initResults } = await import('./results');
 
@@ -13,8 +12,7 @@ async function initApp() {
     updateUserInterface();
     updateSelectsWithWords();
 
-    initFormComponents();
-    initQuiz();
+    initForms();
     initOptionInputs();
 
     initComponents();

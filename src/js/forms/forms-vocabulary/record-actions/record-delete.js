@@ -1,14 +1,13 @@
-import { updateSelectsWithWords, updateUserInterface } from '../../render-interface';
-import { DIALOG_CONTENT_TEMPLATE_DELETE_ONE } from '../../storage';
-import { vocabulary } from '../../vocabulary';
-import { FORM_RECORD_DELETE } from '../form';
-
+import { updateSelectsWithWords, updateUserInterface } from '../../../render-interface';
+import { DIALOG_CONTENT_TEMPLATE_DELETE_ONE } from '../../../storage';
+import { vocabulary } from '../../../vocabulary';
+import { FORM_RECORD_DELETE } from '../../form';
 import {
     getValueFromSelect,
     submitAfterDialogConfirm,
     handleSubmitIfFormValid,
     resetForm
-} from '../../utils';
+} from '../../../utils';
 
 const {
     group: groupSelect,

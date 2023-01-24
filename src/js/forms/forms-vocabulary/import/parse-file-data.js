@@ -1,5 +1,5 @@
-import { filterUnique } from '../../utils';
-import { ERRORS_FILE_UPLOADING } from '../../storage';
+import { filterUnique } from '../../../utils';
+import { ERRORS_FILE_UPLOADING } from '../../../storage';
 
 function splitToLinesWithText(fileContent) {
     const fileContentWithoutCarriageReturn = fileContent.replace(/\r/g, '');

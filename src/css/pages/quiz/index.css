@@ -1,11 +1,3 @@
-.form__quiz-input-answer {
-    display: none;
-}
-
-.form__quiz-input-answer.open {
-    display: block;
-}
-
 .question__text-container {
     padding: 2px 0;
 }

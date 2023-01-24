@@ -32,7 +32,7 @@
                     <button class="nav__item" data-page-button="vocabulary">Словник</button>
                     <button class="nav__item" data-page-button="results">Результати</button>
                     <button class="nav__item" data-page-button="options">Налаштування</button>
-                    <button class="nav__item" data-exit>Вихід</button>
+                    <button class="nav__item" data-page-button="about">Про програму</button>
                 </nav>
             </div>
             <div class="pages__container quiz__pages">
@@ -55,7 +55,10 @@
                 </div>
                 <div class="page" data-page="prepare-quiz-input-answer" data-title="Параметри"
                     data-subtitle="налаштуйте тестування під свої потреби">
-                    <form class="form form__quiz-input-answer-options" autocomplete="off" novalidate>
+                    <div class="placeholder quiz__placeholder">
+                        Додайте слова до словника, щоб почати їх вивчення!
+                    </div>
+                    <form class="form form__quiz-input-answer-options" autocomplete="off" novalidate data-color-validate>
                         <div class="form__item">
                             <label class="form__label">
                                 <span class="label__text">
@@ -72,12 +75,12 @@
                             <label class="form__label">
                                 <span class="label__text">Розділ, з якого брати слова</span>
                                 <select name="groups" class="select" data-content="groups"
-                                    data-default-option-text="Всі розділи" required>
+                                    data-default-option-text="Всі розділи">
                                     <option value="">Виберіть опцію</option>
                                 </select>
                                 <small class="feedbacks">
                                     <span class="feedback valid">Розділ вибрано!</span>
-                                    <span class="feedback invalid">Виберіть розділ зі списку!</span>
+                                    <span class="feedback invalid">Вибраний розділ не містить жодного слова!</span>
                                 </small>
                             </label>
                         </div>
@@ -104,8 +107,7 @@
                             </div>
                         </div>
                         <div class="form__submit-group button__container">
-                            <button id="quiz-input-answer-start" type="submit" class="button button__primary"
-                                data-page-button="quiz-input-answer">
+                            <button id="quiz-input-answer-start" type="submit" class="button button__primary">
                                 Почати тестування
                             </button>
                         </div>
@@ -114,9 +116,6 @@
                 <div class="page" data-page="quiz-input-answer" data-title="Тестування"
                     data-subtitle="введення слова/перекладу">
                     <div class="game-container">
-                        <div class="placeholder quiz__placeholder">
-                            Додайте слова до словника, щоб почати їх вивчення!
-                        </div>
                         <form class="form form__quiz-input-answer" autocomplete="off" novalidate>
                             <p class="question__text" data-question>Питання:</p>
                             <progress class="progress" value="1"></progress>
@@ -556,6 +555,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="page" data-page="about" data-title="Про програму">
+                Інформація про нас
             </div>
         </main>
         <footer class="app__footer">

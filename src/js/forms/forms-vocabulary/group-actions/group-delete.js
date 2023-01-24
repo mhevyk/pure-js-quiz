@@ -1,14 +1,13 @@
-import { vocabulary } from '../../vocabulary';
-import { updateUserInterface } from '../../render-interface';
-import { DIALOG_CONTENT_TEMPLATE_DELETE_GROUP } from '../../storage';
-import { FORM_GROUP_DELETE } from '../form';
-
+import { vocabulary } from '../../../vocabulary';
+import { updateUserInterface } from '../../../render-interface';
+import { DIALOG_CONTENT_TEMPLATE_DELETE_GROUP } from '../../../storage';
+import { FORM_GROUP_DELETE } from '../../form';
 import {
     getValueFromSelect,
     submitAfterDialogConfirm,
     resetForm,
     handleSubmitIfFormValid
-} from '../../utils';
+} from '../../../utils';
 
 function deleteGroup(group) {
     vocabulary.removeGroup(group);

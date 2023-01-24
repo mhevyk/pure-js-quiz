@@ -1,6 +1,6 @@
 import { vocabulary } from './vocabulary';
 import { updateVocabularyRange } from './components/range-input';
-import { filterWords } from './forms/record-actions/record-delete';
+import { filterWords } from './forms/forms-vocabulary/record-actions/record-delete';
 import { saveOptions } from './options';
 
 function createOptions(array, {isFirstOptionDisabled, defaultOptionText}) {

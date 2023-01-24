@@ -2,7 +2,6 @@ import Question from './question';
 import { submitAfterDialogConfirm } from '../utils';
 import { dialog } from '../popups/dialog';
 import { options } from '../options';
-import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
 import { DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH, modeTypes } from '../storage';
 import questionGenerator from './question-generator';
 
@@ -75,8 +74,6 @@ export default class Quiz {
     }
 
     showResult() {
-        FORM_QUIZ_INPUT_ANSWER_OPTIONS.resultName.value = this.getName();
-
         dialog.hideCancelButtonTillDialogClose(disableGoBackConfirm);
         this.form.onsubmit = null;
 

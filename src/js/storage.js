@@ -68,13 +68,6 @@ export const DIALOG_CONTENT_CLEAR_VOCABULARY = {
     body: 'Справді очистити словник?',
 };
 
-export const DIALOG_CONTENT_EXIT_APP = {
-    header: 'Вихід з програми',
-    body: 'Справді вийти із програми?',
-    submitBtn: 'Так',
-    cancelBtn: 'Скасувати'
-};
-
 export const DIALOG_CONTENT_EXIT_QUIZ = {
     header: 'Закінчення опитування',
     body: `

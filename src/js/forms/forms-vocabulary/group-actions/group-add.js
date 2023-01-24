@@ -1,20 +1,18 @@
-import { vocabulary } from '../../vocabulary';
-import { updateUserInterface } from '../../render-interface';
-import { DIALOG_CONTENT_TEMPLATE_ADD_GROUP } from '../../storage';
-import { FORM_GROUP_ADD } from '../form';
-
+import { vocabulary } from '../../../vocabulary';
+import { updateUserInterface } from '../../../render-interface';
+import { DIALOG_CONTENT_TEMPLATE_ADD_GROUP } from '../../../storage';
+import { FORM_GROUP_ADD } from '../../form';
 import {
     setValidFeedback,
     setInvalidFeedback,
     FEEDBACKS_ADD_GROUP
-} from '../feedback';
-
+} from '../../feedback';
 import {
     submitAfterDialogConfirm,
     handleSubmitIfFormValid,
     resetForm,
     debounce
-} from '../../utils';
+} from '../../../utils';
 
 const groupInput = FORM_GROUP_ADD.group;
 

@@ -9,26 +9,26 @@
 }
 
 .form.validated .file-input-label.invalid,
-.form.validated .form__item input:invalid,
+.form.validated .form__item .text-input:invalid,
 .form.validated .form__item .select:invalid {
     border: 1px solid var(--highlight-fail-bg);
 }
 
 .form.validated .file-input-label.invalid+.feedbacks>.invalid,
-.form.validated .form__item input:invalid+.feedbacks>.invalid,
+.form.validated .form__item .text-input:invalid+.feedbacks>.invalid,
 .form.validated .form__item .select:invalid+.feedbacks>.invalid {
     color: var(--highlight-fail-color);
     display: block;
 }
 
 .form.validated .file-input-label.valid,
-.form.validated .form__item input:valid,
+.form.validated .form__item .text-input:valid,
 .form.validated .form__item .select:valid {
     border: 1px solid var(--highlight-success-bg);
 }
 
 .form.validated .file-input-label.valid+.feedbacks>.valid,
-.form.validated .form__item input:valid+.feedbacks>.valid,
+.form.validated .form__item .text-input:valid+.feedbacks>.valid,
 .form.validated .form__item .select:valid+.feedbacks>.valid {
     color: var(--highlight-success-color);
     display: block;

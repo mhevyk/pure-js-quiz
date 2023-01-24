@@ -1,16 +1,11 @@
-import { initForms } from './form';
-import initGroupActionForms from './group-actions';
-import initRecordActionForms from './record-actions';
-import initVocabularyActionForms from './vocabulary-actions';
-import initFileImport from './import';
+import { initFormsValidation } from './form';
+import initQuizForms from './forms-quiz';
+import initVocabularyForms from './forms-vocabulary';
 
-function initFormComponents() {
-    initForms();
-    initRecordActionForms();
-    initVocabularyActionForms();
-    initFileImport();
-    initGroupActionForms();
+function initForms() {
+    initFormsValidation();
+    initQuizForms();
+    initVocabularyForms();
 }
 
-export { initFormComponents };
-
+export { initForms };

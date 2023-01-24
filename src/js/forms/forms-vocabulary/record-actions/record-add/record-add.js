@@ -1,17 +1,16 @@
-import { vocabulary } from '../../../vocabulary';
+import { vocabulary } from '../../../../vocabulary';
 import { validateFormAddInputs } from './compare-inputs';
 import { resetTranslates as resetHandler } from './reset-translates';
-import { updateUserInterface } from '../../../render-interface';
-import { DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD } from '../../../storage';
-import { FORM_RECORD_ADD } from '../../form';
-
+import { updateUserInterface } from '../../../../render-interface';
+import { DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD } from '../../../../storage';
+import { FORM_RECORD_ADD } from '../../../form';
 import { 
     getValueFromSelect,
     submitAfterDialogConfirm,
     resetForm,
     handleSubmitIfFormValid,
     debounce
-} from '../../../utils';
+} from '../../../../utils';
 
 function addRecord() {
     const wordInput = FORM_RECORD_ADD.word;

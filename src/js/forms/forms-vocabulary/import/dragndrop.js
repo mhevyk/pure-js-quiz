@@ -1,4 +1,4 @@
-import { debounce } from '../../utils';
+import { debounce } from '../../../utils';
 
 const draggableEvents = ['dragenter', 'dragover'];
 const droppableEvents = ['dragleave', 'drop'];
