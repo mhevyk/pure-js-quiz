@@ -20,10 +20,9 @@ import {
 export default class Quiz {
     #mode;
     #group;
-    static #quizId = 0;
+    static quizId = 1;
 
     constructor({ mode = modeTypes.inputAnswer, group, questionsCount, form }) {
-        Quiz.#quizId++;
         this.#group = group;
         this.#mode = mode;
         this.form = form;
@@ -48,11 +47,7 @@ export default class Quiz {
     }
 
     getName() {
-        return `Опитування ${Quiz.#quizId}`;
-    }
-
-    #getNextName() {
-        return `Опитування ${Quiz.#quizId + 1}`;
+        return `Опитування ${Quiz.quizId}`;
     }
 
     getMode = () => {
@@ -80,7 +75,7 @@ export default class Quiz {
     }
 
     showResult() {
-        FORM_QUIZ_INPUT_ANSWER_OPTIONS.resultName.value = this.#getNextName();
+        FORM_QUIZ_INPUT_ANSWER_OPTIONS.resultName.value = this.getName();
 
         dialog.hideCancelButtonTillDialogClose(disableGoBackConfirm);
         this.form.onsubmit = null;

@@ -1,5 +1,6 @@
 import Stack from './stack';
 import { dialog } from '../popups/dialog';
+import { scrollToTop } from '../utils';
 
 export const backButton = document.querySelector('.app__header .arrow__back');
 
@@ -29,8 +30,14 @@ class PageNavigator {
     }
 
     setPageTitle = (title) => {
-        const titleContainer = document.querySelector('.app__header .header__title');
+        const titleContainer = document.querySelector('[data-main-title]');
         titleContainer.textContent = title;
+    };
+
+    setPageSubtitle = (subtitle) => {
+        const defaultSubtitle = 'найкраща програма для якісного вивчення слів';
+        const titleContainer = document.querySelector('[data-main-subtitle]');
+        titleContainer.textContent = subtitle || defaultSubtitle;
     };
 
     showBackButton = (page) => {
@@ -51,6 +58,7 @@ class PageNavigator {
             if (page.dataset.page === newPage) {
                 page.classList.add('open');
                 this.setPageTitle(page.dataset.title);
+                this.setPageSubtitle(page.dataset.subtitle);
             } else {
                 page.classList.remove('open');
             }
@@ -58,6 +66,7 @@ class PageNavigator {
     };
 
     goToPage = (page) => {
+        scrollToTop();
         this.showBackButton(page);
         this.showOnlyPage(page);
     };

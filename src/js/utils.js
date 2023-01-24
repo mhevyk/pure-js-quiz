@@ -1,11 +1,59 @@
 import { dialog } from './popups/dialog';
 import { resetFeedbacks } from './forms/feedback';
 
-export const filterUnique = (array) => [...new Set(array)];
-export const shuffle = (array) => [...array].sort(() => 0.5 - Math.random());
-export const resetInput = (input) => input.value = null;
-export const removeContainerChildren = (container) => container.innerHTML = '';
-export const getValueFromSelect = (select) => select.options[select.selectedIndex].value;
+function filterUnique(array) {
+    return [...new Set(array)];
+}
+
+function shuffle(array) {
+    return [...array].sort(() => 0.5 - Math.random());
+}
+
+function resetInput(input) {
+    input.value = null;
+}
+
+function removeContainerChildren(container) {
+    container.innerHTML = '';
+}
+
+function getValueFromSelect(select) {
+    return select.options[select.selectedIndex].value;
+}
+
+function scrollToTop(options = {}) {
+    window.scrollTo({ top: 0, ...options });
+}
+
+function getRandomInteger(max, min = 0) {
+    return Math.floor(Math.random() * max) + min;
+}
+
+function getRandomArrayItem(array) {
+    return array[getRandomInteger(array.length)];
+}
+
+function updateTranslatesCount(value) {
+    const translatesCountContainer = document.querySelector('.form__add-single-word .translates__count');
+    translatesCountContainer.textContent = value;
+}
+
+async function fetchTextFile(url) {
+    const response = await fetch(url);
+    return await response.text();
+}
+
+function getCSSRootVariable(variableName) {
+    const root = document.querySelector(':root') || document.documentElement;
+    const rootStyles = getComputedStyle(root);
+    return rootStyles.getPropertyValue(`--${variableName}`);
+}
+
+function resetForm(form) {
+    form.classList.remove('validated');
+    form.reset();
+    resetFeedbacks(form);
+}
 
 function downloadTextFile(filename, content) {
     const link = document.createElement('a');
@@ -30,15 +78,21 @@ function debounce(callback, time) {
     };
 }
 
-function updateTranslatesCount(value) {
-    const translatesCountContainer = document.querySelector('.form__add-single-word .translates__count');
-    translatesCountContainer.textContent = value;
+function readFileAsync(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsText(file);
+    });
 }
 
-function resetForm(form) {
-    form.classList.remove('validated');
-    form.reset();
-    resetFeedbacks(form);
+function parseFileName(filename) {
+    const dotPosition = filename.lastIndexOf('.');
+    return {
+        rawName: filename.substring(0, dotPosition),
+        extension: filename.substring(dotPosition + 1, filename.length)
+    };
 }
 
 function submitAfterDialogConfirm(content, onSubmit) {
@@ -62,43 +116,13 @@ function submitAfterDialogConfirm(content, onSubmit) {
     });
 }
 
-function readFileAsync(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsText(file);
-    });
-}
-
-async function fetchTextFile(url) {
-    const response = await fetch(url);
-    return await response.text();
-}
-
-function parseFileName(filename) {
-    const dotIndex = filename.lastIndexOf('.');
-    return {
-        rawName: filename.substring(0, dotIndex),
-        extension: filename.substring(dotIndex + 1, filename.length)
-    };
-}
-
-function getCSSRootVariable(variableName) {
-    const root = document.querySelector(':root') || document.documentElement;
-    const rootStyles = getComputedStyle(root);
-    return rootStyles.getPropertyValue(`--${variableName}`);
-}
-
-function getRandomInteger(max, min = 0) {
-    return Math.floor(Math.random() * max) + min;
-}
-
-function getRandomArrayItem(array) {
-    return array[getRandomInteger(array.length)];
-}
-
 export {
+    filterUnique,
+    shuffle,
+    resetInput,
+    scrollToTop,
+    removeContainerChildren,
+    getValueFromSelect,
     downloadTextFile,
     handleSubmitIfFormValid,
     debounce,

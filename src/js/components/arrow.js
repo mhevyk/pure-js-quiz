@@ -1,9 +1,9 @@
-import { debounce } from '../utils';
+import { debounce, scrollToTop } from '../utils';
 
 const scrollUpArrow = document.querySelector('[data-arrow-up]');
 
 function arrowUpClickHandler() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop({ behavior: 'smooth' });
 }
 
 function scrollHandler() {

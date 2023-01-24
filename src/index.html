@@ -22,13 +22,13 @@
             <button class="arrow arrow__back">
                 <i class="fa-solid fa-circle-arrow-left"></i>
             </button>
-            <h1 class="header__title">Перевірка слів</h1>
-            <h4 class="header__subtitle">найкраща програма для якісного вивчення слів</h4>
+            <h1 class="header__title" data-main-title>Перевірка слів</h1>
+            <h4 class="header__subtitle" data-main-subtitle>найкраща програма для якісного вивчення слів</h4>
         </header>
         <main class="app__main">
             <div class="page page__main open" data-page="main" data-title="Перевірка слів">
                 <nav class="nav main__nav">
-                    <button class="nav__item" data-page-button="quiz">Тестування</button>
+                    <button class="nav__item" data-page-button="quiz-types">Тестування</button>
                     <button class="nav__item" data-page-button="vocabulary">Словник</button>
                     <button class="nav__item" data-page-button="results">Результати</button>
                     <button class="nav__item" data-page-button="options">Налаштування</button>
@@ -36,21 +36,30 @@
                 </nav>
             </div>
             <div class="pages__container quiz__pages">
-                <div class="page navigation-list__container" data-page="quiz" data-title="Режими">
-                    <h3 class="navigation-list__group">Режими тестування</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Введення слова/перекладу</p>
-                        <button class="button button__secondary" data-page-button="prepare-quiz-input-answer">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
+                <div class="page" data-page="quiz-types" data-title="Види"
+                    data-subtitle="оберіть один з видів тестування">
+                    <div class="navigation-list__container">
+                        <section class="navigation-list__group">
+                            <h3 class="group__title">Види тестування</h3>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Введення слова/перекладу</dt>
+                                    <dd class="text-small">У цьому режимі потрібно вводити відповіді на запитання</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="prepare-quiz-input-answer">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </section>
                     </div>
                 </div>
-                <div class="page" data-page="prepare-quiz-input-answer" data-title="Підготовка">
+                <div class="page" data-page="prepare-quiz-input-answer" data-title="Параметри"
+                    data-subtitle="налаштуйте тестування під свої потреби">
                     <form class="form form__quiz-input-answer-options" autocomplete="off" novalidate>
                         <div class="form__item">
                             <label class="form__label">
                                 <span class="label__text">
-                                    Назва опитування
+                                    Назва тестування
                                     <span class="info-icon"
                                         data-description="Незмінне ім'я, за яким можна буде дізнатися результат тестування у відповідній вкладці">
                                         <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -85,11 +94,8 @@
                         <div class="form__item checkbox__container">
                             <dl class="label__text">
                                 <dt>Слово або переклад</dt>
-                                <dd>
-                                    <small>
-                                        Вас попросять ввести переклад по слову або відтворити слово по перекладу
-                                    </small>
-                                </dd>
+                                <dd class="text-small">Вас попросять ввести переклад по слову або відтворити слово по
+                                    перекладу</dd>
                             </dl>
                             <div class="switch">
                                 <input id="option-question-guess-type" type="checkbox" data-option="questionGuessType"
@@ -105,7 +111,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="page" data-page="quiz-input-answer" data-title="Гра">
+                <div class="page" data-page="quiz-input-answer" data-title="Тестування"
+                    data-subtitle="введення слова/перекладу">
                     <div class="game-container">
                         <div class="placeholder quiz__placeholder">
                             Додайте слова до словника, щоб почати їх вивчення!
@@ -149,46 +156,72 @@
                         </button>
                     </div>
                 </div>
-                <div class="page navigation-list__container" data-page="vocabulary-actions" data-title="Редагування">
-                    <h3 class="navigation-list__group">Слова: додавання</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Через форму</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-add">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">З текстового файлу</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-group-import-txt">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <h3 class="navigation-list__group">Слова: видалення</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">По одному</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-delete-one">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <h3 class="navigation-list__group">Розділи</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Додати розділ</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-group-add">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Видалити розділ</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-group-delete">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <h3 class="navigation-list__group">Словник</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Очистити</p>
-                        <button class="button button__secondary" data-page-button="vocabulary-clear">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
+                <div class="page" data-page="vocabulary-actions" data-title="Дії"
+                    data-subtitle="виберіть одну з можливих дій зі словником">
+                    <div class="navigation-list__container">
+                        <section class="navigation-list__group">
+                            <h3 class="group__title">Слова</h3>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Додавання</dt>
+                                    <dd class="text-small">Введіть слово, його переклади та розділ</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-add">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Імпорт</dt>
+                                    <dd class="text-small">Додайте багато слів у розділ з текстового файлу</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-group-import-txt">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Видалення</dt>
+                                    <dd class="text-small">Виберіть слово зі списку та видаліть його</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-delete-one">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </section>
+                        <section class="navigation-list__group">
+                            <h3 class="group__title">Розділи</h3>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Додавання</dt>
+                                    <dd class="text-small">Додайте розділи та наповніть їх словами згодом</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-group-add">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Видалення</dt>
+                                    <dd class="text-small">Виберіть розділ зі списку та видаліть його</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-group-delete">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </section>
+                        <section class="navigation-list__group">
+                            <h3 class="group__title">Словник</h3>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Очищення</dt>
+                                    <dd class="text-small">Видаліть всі слова та розділи</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="vocabulary-clear">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </section>
                     </div>
                 </div>
                 <div class="page" data-page="vocabulary-add" data-title="Додавання">
@@ -423,26 +456,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="page navigation-list__container" data-page="quiz-details" data-title="Деталі опитування"
-                    data-quiz-details>
-                    <h3 class="navigation-list__group">Деталі опитування</h3>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Коротка інформація</p>
-                        <button class="button button__secondary" data-page-button="quiz-details-short">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Розподіл відповідей</p>
-                        <button class="button button__secondary" data-page-button="quiz-details-chart">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="navigation-list__item">
-                        <p class="navigation-list__name">Питання</p>
-                        <button class="button button__secondary" data-page-button="quiz-details-questions">
-                            <i class="fa fa-arrow-right"></i>
-                        </button>
+                <div class="page" data-page="quiz-details" data-title="Деталі опитування" data-quiz-details>
+                    <div class="navigation-list__container">
+                        <section class="navigation-list__group">
+                            <h3 class="group__title">Деталі опитування</h3>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Коротка інформація</dt>
+                                    <dd class="text-small">Перегляньте загальну інформацію про опитування</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="quiz-details-short">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Розподіл відповідей</dt>
+                                    <dd class="text-small">Перегляньте графік, який показує кількість правильних та
+                                        неправильних
+                                        відповідей</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="quiz-details-chart">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="navigation-list__item">
+                                <dl class="navigation-list__name">
+                                    <dt>Питання</dt>
+                                    <dd class="text-small">Порівняйте свої відповіді на питання із правильними</dd>
+                                </dl>
+                                <button class="button button__secondary" data-page-button="quiz-details-questions">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </section>
                     </div>
                 </div>
                 <div class="page" data-page="quiz-details-short" data-title="Деталі" data-quiz-details-short>
@@ -472,8 +519,13 @@
                         </dl>
                     </div>
                 </div>
-                <div class="page" data-page="quiz-details-chart" data-title="Відповіді">
-                    <div id="quiz-details__chart"></div>
+                <div class="page" data-page="quiz-details-chart" data-title="Відповіді" data-quiz-details-chart>
+                    <figure>
+                        <figcaption>
+                            Розподіл відповідей
+                        </figcaption>
+                        <div data-chart></div>
+                    </figure>
                 </div>
                 <div class="page" data-page="quiz-details-questions" data-title="Питання" data-quiz-details-questions>
                     <div class="table table__questions" role="table">
@@ -496,11 +548,7 @@
                     <div class="form__item checkbox__container">
                         <dl class="label__text">
                             <dt>Показувати розділи</dt>
-                            <dd>
-                                <small>
-                                    Слова у словнику будуть погруповані по розділах
-                                </small>
-                            </dd>
+                            <dd class="text-small">Слова у словнику будуть погруповані по розділах</dd>
                         </dl>
                         <div class="switch">
                             <input type="checkbox" id="show-groups" data-option="showGroups" checked>

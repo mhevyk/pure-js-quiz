@@ -1,5 +1,6 @@
 import ProgressQuiz from './progress-quiz';
 import DetailedInfoCollector from './detailed-info-collector';
+import Quiz from './quiz';
 import { resetInput } from '../utils';
 import { addQuizResultItemToStorage } from '../results/result-item';
 
@@ -45,6 +46,7 @@ export default class QuizInputAnswer extends ProgressQuiz {
         super.showResult();
         const quizDetails = this.#collector.getQuizDetails();
         addQuizResultItemToStorage(quizDetails);
+        Quiz.quizId++;
     }
 
     #showQuestionTextToUser() {

@@ -79,7 +79,7 @@ export const DIALOG_CONTENT_EXIT_QUIZ = {
     header: 'Закінчення опитування',
     body: `
         Справді примусово завершити опитування?
-        <small>Буде вирахуваний результат опитування</small>
+        <small>Результат опитування не буде збережено</small>
     `,
     submitBtn: 'Так',
     cancelBtn: 'Скасувати'

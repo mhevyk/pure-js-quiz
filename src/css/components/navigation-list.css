@@ -1,4 +1,4 @@
-.navigation-list__container .navigation-list__group {
+.navigation-list__container .navigation-list__group .group__title {
     background-color: var(--button-disabled-color);
     font-weight: bold;
     text-transform: uppercase;
@@ -11,11 +11,24 @@
     display: flex;
     justify-content: space-between;
     gap: 1px;
-    border-bottom: 1px solid var(--button-disabled-color);
     margin-top: 3px;
 }
 
-.navigation-list__container .navigation-list__group,
+.navigation-list__container,
+.navigation-list__container .navigation-list__item:not(:last-child) {
+    border-bottom: 1px solid var(--primary-light-color);
+}
+
+.navigation-list__container .group__title,
 .navigation-list__container .navigation-list__name {
     padding: 8px 0 8px 25px;
+}
+
+.navigation-list__container dl+.button {
+    margin-top: 8px;
+    margin-left: 15px;
+}
+
+.navigation-list__container .button {
+    align-self: start;
 }

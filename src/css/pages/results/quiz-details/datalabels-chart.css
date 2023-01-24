@@ -1,5 +1,12 @@
+[data-quiz-details-chart] figcaption {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
 @media (min-width: 767px) {
-    #quiz-details__chart {
+    [data-quiz-details-chart] figure [data-chart] {
         max-width: 60%;
         margin: auto;
     }
