@@ -117,5 +117,3 @@ pine > груша
 <p align="right">
 <a href='#quiz-game'>Back To The Top</a>
 </p>
-
----
