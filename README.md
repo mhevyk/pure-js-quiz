@@ -1,19 +1,20 @@
 # Quiz-game
 
+### Table of Contents
+
+- [Demo](#demo)
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [How To Use](#how-to-use)
+
+---
+
 ## Demo
 
 Here is a working live demo: https://mhevyk.github.io/pure-js-quiz/
 
 ![Project Image](src/assets/docs/preview.jpg)
-
----
-
-### Table of Contents
-
-- [Description](#description)
-- [Features](#features)
-- [Installation](#installation)
-- [How To Use](#how-to-use)
 
 ---
 
