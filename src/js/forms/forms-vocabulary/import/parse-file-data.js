@@ -8,10 +8,10 @@ function splitToLinesWithText(fileContent) {
     return nonEmptyLines;
 }
 
-function executeTranslatesFromString(text) {
-    const separatedTranslates = text.split(',');
-    const trimmedTranslates = separatedTranslates.map(translate => translate.trim());
-    return trimmedTranslates.filter(Boolean);
+function executetranslationsFromString(text) {
+    const separatedtranslations = text.split(',');
+    const trimmedtranslations = separatedtranslations.map(translation => translation.trim());
+    return trimmedtranslations.filter(Boolean);
 }
 
 function createRecordsFromLines(lines, separator = ':') {
@@ -21,29 +21,29 @@ function createRecordsFromLines(lines, separator = ':') {
             if (!line.includes(separator)) {
                 reject(ERRORS_FILE_UPLOADING.NO_SEPARATOR_IN_ROW(separator, row));
             }
-            const [wordText, translatesText] = line.split(separator);
+            const [wordText, translationsText] = line.split(separator);
 
             const word = wordText.trim().replaceAll(',', '');
             if (!word) {
                 reject(ERRORS_FILE_UPLOADING.NO_WORD_IN_ROW(row));
             }
 
-            const trimmedTranslatesText = translatesText.trim();
-            if (!trimmedTranslatesText) {
-                reject(ERRORS_FILE_UPLOADING.NO_TRANSLATES_IN_ROW(row));
+            const trimmedtranslationsText = translationsText.trim();
+            if (!trimmedtranslationsText) {
+                reject(ERRORS_FILE_UPLOADING.NO_translationS_IN_ROW(row));
             }
 
-            const translates = executeTranslatesFromString(trimmedTranslatesText);
+            const translations = executetranslationsFromString(trimmedtranslationsText);
 
-            if (translates.includes(word)) {
-                reject(ERRORS_FILE_UPLOADING.WORD_AND_TRANSLATE_ARE_SAME(row));
+            if (translations.includes(word)) {
+                reject(ERRORS_FILE_UPLOADING.WORD_AND_translation_ARE_SAME(row));
             }
 
-            if (filterUnique(translates).length !== translates.length) {
-                reject(ERRORS_FILE_UPLOADING.TRANSLATES_ARE_SAME(row));
+            if (filterUnique(translations).length !== translations.length) {
+                reject(ERRORS_FILE_UPLOADING.translationS_ARE_SAME(row));
             }
 
-            return { word, translates };
+            return { word, translations };
         });
         resolve(records);
     });

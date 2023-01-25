@@ -33,8 +33,8 @@ function validateInput(input, occurence) {
 
 function validateFormAddInputs(form) {
     const wordInput = form.word;
-    const translateInputs = form.querySelectorAll('[name="translate"]');
-    const allInputs = [wordInput, ...translateInputs];
+    const translationInputs = form.querySelectorAll('[name="translation"]');
+    const allInputs = [wordInput, ...translationInputs];
 
     const valueOccurence = countInputValuesOccurence(allInputs);
     allInputs.forEach(input => validateInput(input, valueOccurence[input.value]));

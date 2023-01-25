@@ -1,0 +1,8 @@
+.form .form__item .form__label.row [name='translation'] {
+    order: -1;
+}
+
+.form.validated .form__item .form__label.row [name='translation'] {
+    grid-row: 1;
+    grid-column: 1;
+}

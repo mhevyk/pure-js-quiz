@@ -39,7 +39,7 @@ export default class Quiz {
         this.answeredQuestionsCount = 0;
 
         this.options = {
-            questionGuessType: options.questionGuessType ? '' : 'guess-translate'
+            questionGuessType: options.questionGuessType ? '' : 'guess-translation'
         };
 
         enableGoBackConfirm();

@@ -1,11 +1,11 @@
 import { initFormAddSingleWord } from './record-add';
-import { initAddTranslate } from './add-translate';
-import { initDeleteTranslate } from './delete-translate';
+import { initAddtranslation } from './add-translation';
+import { initDeletetranslation } from './delete-translation';
 
 function initRecordAddForm() {
     initFormAddSingleWord();
-    initAddTranslate();
-    initDeleteTranslate();
+    initAddtranslation();
+    initDeletetranslation();
 }
 
 export default initRecordAddForm;

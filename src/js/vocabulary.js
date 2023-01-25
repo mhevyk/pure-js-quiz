@@ -24,15 +24,15 @@ class Vocabulary {
         return this.data.findIndex(record => record.word === word);
     };
 
-    addOne = ({word, translates, group}) => {
+    addOne = ({word, translations, group}) => {
         const wordIndex = this.indexOf(word);
 
         if (wordIndex !== -1) {
-            this.#addTranslatesByWordIndex(wordIndex, translates);
+            this.#addtranslationsByWordIndex(wordIndex, translations);
             return;
         }
 
-        this.data.push({word, translates, group});
+        this.data.push({word, translations, group});
         this.addGroup(group);
     };
 
@@ -82,10 +82,10 @@ class Vocabulary {
         return false;
     };
 
-    addTranslates = (word, translates) => {
+    addtranslations = (word, translations) => {
         const wordIndex = this.indexOf(word);
         if (wordIndex !== -1) {
-            this.#addTranslatesByWordIndex(wordIndex, translates);
+            this.#addtranslationsByWordIndex(wordIndex, translations);
         }
     };
 
@@ -135,11 +135,11 @@ class Vocabulary {
         localStorage.removeItem('vocabularyAppData');
     };
 
-    #addTranslatesByWordIndex = (wordIndex, translates) => {
-        translates = Array.isArray(translates) ? translates : [translates];
-        this.data[wordIndex].translates.push(...translates);
-        this.data[wordIndex].translates =
-            filterUnique(this.data[wordIndex].translates);
+    #addtranslationsByWordIndex = (wordIndex, translations) => {
+        translations = Array.isArray(translations) ? translations : [translations];
+        this.data[wordIndex].translations.push(...translations);
+        this.data[wordIndex].translations =
+            filterUnique(this.data[wordIndex].translations);
     };
 
     #printGroup = (group) => {
@@ -157,7 +157,7 @@ class Vocabulary {
             <div class="table__record${position % 2 ? ' strip' : ''}">
                 <div class='table__item table__item-index'>${index}</div>
                 <div class='table__item'>${record.word}</div>
-                <div class='table__item'>${record.translates.join(', ')}</div>
+                <div class='table__item'>${record.translations.join(', ')}</div>
             </div>
         `;
     };

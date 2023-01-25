@@ -33,9 +33,9 @@ function getRandomArrayItem(array) {
     return array[getRandomInteger(array.length)];
 }
 
-function updateTranslatesCount(value) {
-    const translatesCountContainer = document.querySelector('.form__add-single-word .translates__count');
-    translatesCountContainer.textContent = value;
+function updatetranslationsCount(value) {
+    const translationsCountContainer = document.querySelector('.form__add-single-word .translations__count');
+    translationsCountContainer.textContent = value;
 }
 
 async function fetchTextFile(url) {
@@ -126,7 +126,7 @@ export {
     downloadTextFile,
     handleSubmitIfFormValid,
     debounce,
-    updateTranslatesCount,
+    updatetranslationsCount,
     resetForm,
     submitAfterDialogConfirm,
     readFileAsync,

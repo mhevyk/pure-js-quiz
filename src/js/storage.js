@@ -25,9 +25,9 @@ export const ERRORS_FILE_UPLOADING = {
     TEMPLATE_LOAD: 'Завантаження шаблону! Видаліть рядки із символами "***"!',
     NO_SEPARATOR_IN_ROW: (separator, row) => `Немає роздільника '${separator}' в рядку ${row}`,
     NO_WORD_IN_ROW: (row) => `Відсутнє слово в рядку ${row}!`,
-    NO_TRANSLATES_IN_ROW: (row) => `Відсутні переклади в рядку ${row}`,
-    WORD_AND_TRANSLATE_ARE_SAME: (row) => `Слово та один з перекладів співпадають в рядку ${row}`,
-    TRANSLATES_ARE_SAME: (row) => `Переклади співпадають в рядку ${row}`,
+    NO_translationS_IN_ROW: (row) => `Відсутні переклади в рядку ${row}`,
+    WORD_AND_translation_ARE_SAME: (row) => `Слово та один з перекладів співпадають в рядку ${row}`,
+    translationS_ARE_SAME: (row) => `Переклади співпадають в рядку ${row}`,
     WRONG_FILE_EXTENSION: 'Файл не має розширення <b>.txt</b>!',
     EMPTY_FILE: 'Вміст файлу порожній!'
 };
@@ -37,7 +37,7 @@ export const CSS_CLASSES = {
     buttonSecondary: 'button__secondary'
 };
 
-export const DIALOG_CONTENT_DELETE_TRANSLATE = {
+export const DIALOG_CONTENT_DELETE_translation = {
     header: 'Видалення перекладу',
     submitBtn: 'Так',
     body: 'Справді видалити переклад?',
@@ -51,7 +51,7 @@ export const DIALOG_CONTENT_RESET_FILE_INPUT = {
     cancelBtn: 'Скасувати'
 };
 
-export const DIALOG_CONTENT_RESET_TRANSLATES = {
+export const DIALOG_CONTENT_RESET_translationS = {
     header: 'Скидання перекладів',
     submitBtn: 'Так',
     body: `
@@ -78,13 +78,13 @@ export const DIALOG_CONTENT_EXIT_QUIZ = {
     cancelBtn: 'Скасувати'
 };
 
-export const DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD = (word, translates, group) => ({
+export const DIALOG_CONTENT_TEMPLATE_ADD_SINGLE_WORD = (word, translations, group) => ({
     header: 'Додавання слова',
     submitBtn: 'Додати',
     cancelBtn: 'Скасувати',
     body: `
         <p><span class='text-primary'>Слово:</span> ${word}</p>
-        <p><span class='text-primary'>Переклади:</span> ${translates.join(', ')}</p>
+        <p><span class='text-primary'>Переклади:</span> ${translations.join(', ')}</p>
         <p><span class='text-primary'>Розділ:</span> ${group}</p>
     `,
 });

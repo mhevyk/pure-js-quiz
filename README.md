@@ -45,7 +45,7 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 
 - **User-friendly interface**. A lot of tooltips and descriptions are provided to improve user experience.
 - **Self-studying**. All words and some settings store locally and do not remove on page reloading.
-- **Multiple translates**. Each word can have one or more translates.
+- **Multiple translations**. Each word can have one or more translations.
 - **Words import**. It is possible to add multiple records to some group by selecting or dragging text file.
 - **Generating results**. Results of each quiz prints on separate page using charts and tables.
 
@@ -83,26 +83,26 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 
 Records should follow these rules:
 - word must be unique
-- word can`t contain comma symbol
-- translate can`t contain comma symbol
-- word and translate of single record should not be equal
-- translates of single record should not be equal
+- word can`t contain a comma symbol
+- translation can`t contain a comma symbol
+- word and translation of a single record should not be equal
+- translations of a single record should not be equal
 
-If word appears multiple times, it`s translates will be added to existing record's translates
+If a word appears multiple times, it`s translations will be added to existing record's translations
 
 ### Import records
 
 We can add multiple records using text file. To import file correctly follow these steps:
 1. Select the group to which you want to add new words. If group doesn`t exist, create it.
-2. Select symbol, which separates word and translates in your file. App supports separators `:`, `>` and `=`.
-3. Import text file, which has content, that corresponds following syntax:
+2. Select symbol, which separates word and translations in your file. App supports separators `:`, `>` and `=`.
+3. Import text file, which has a content, that corresponds the following syntax:
 ```
-word1 <separator> translate1, translate2, ...
-word2 <separator> translate1
+word1 <separator> translation1, translation2, ...
+word2 <separator> translation1
 ```
 
-Text file content should also correspond [adding record rules](#adding-record). Spaces between word, separator and translates doesn't matter.
-We use a `<separator>` to separate word from translate and to separate records we need to write them from a new line.
+Text file content should also correspond [adding record rules](#adding-record). Spaces between word, separator and translations doesn't matter.
+We use a `<separator>` to separate word from translation and to separate records we need to write them from a new line.
 
 Example of correct text file content with separator `>`:
 ```

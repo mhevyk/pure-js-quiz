@@ -5,24 +5,24 @@ export default class Question {
     #answers;
 
     static variants = {
-        'quess-word': (word, translates) => ({
-            innerHTML: `Відтворіть слово по перекладах <b class="text-accent">${translates.join(', ')}</b>:`,
+        'quess-word': (word, translations) => ({
+            innerHTML: `Відтворіть слово по перекладах <b class="text-accent">${translations.join(', ')}</b>:`,
             answers: [word]
         }),
-        'guess-translate': (word, translates) => ({
+        'guess-translation': (word, translations) => ({
             innerHTML: `Введіть один з перекладів слова <b class="text-accent">${word}</b>:`,
-            answers: translates
+            answers: translations
         })
     };
 
     constructor(type, record = {}) {
-        const { word, translates } = record;
+        const { word, translations } = record;
         const types = Object.keys(Question.variants);
 
         const variant = types.includes(type) ? type : getRandomArrayItem(types);
         const templateVariant = Question.variants[variant];
         
-        const { innerHTML, answers } = templateVariant(word, translates);
+        const { innerHTML, answers } = templateVariant(word, translations);
         this.#text = innerHTML;
         this.#answers = answers;
     }

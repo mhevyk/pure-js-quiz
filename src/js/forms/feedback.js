@@ -24,7 +24,7 @@ export const FEEDBACKS_FORM_DELETE_ONE = {
     GROUP_INDEX_OUT_OF_RANGE: (rangeLimit, typedIndex) => `У словнику тільки <b>${rangeLimit}</b> розділів, а введено розділ <b>${typedIndex}</b>!`,
     WORD_INDEX_OUT_OF_GROUP_RANGE: (groupIndex, rangeLimit, typedIndex) => `У розділі <b>${groupIndex}</b> тільки <b>${rangeLimit}</b> слів, а введено слово під номером <b>${typedIndex}</b>!`,
     WORD_INDEX_OUT_OF_RANGE: (rangeLimit, typedIndex) => `У словнику тільки <b>${rangeLimit}</b> слів, а введено слово під номером <b>${typedIndex}</b>!`,
-    WORD_FOUND: ({word, translates}) => `Знайдено слово <b>${word}</b> з перекладами <b>${translates.join(', ')}</b>!`,
+    WORD_FOUND: ({word, translations}) => `Знайдено слово <b>${word}</b> з перекладами <b>${translations.join(', ')}</b>!`,
     WORD_NOT_FOUND: 'Такого слова немає у словнику!'
 };
 
