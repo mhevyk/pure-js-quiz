@@ -34,9 +34,9 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 - [fontawesome](https://fontawesome.com/)
 - [chart.js](https://www.chartjs.org/docs/latest/)
 
-<div class='text-right'>
-    <a href='#quiz-game' class="right">Back To The Top</a>
-</div>
+<p align="right">
+<a href='#quiz-game'>Back To The Top</a>
+</p>
 
 ---
 
@@ -48,9 +48,9 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 - **Words import**. It is possible to add multiple records to some group by selecting or dragging text file.
 - **Generating results**. Results of each quiz prints on separate page using charts and tables.
 
-<div class='text-right'>
-    <a href='#quiz-game' class="right">Back To The Top</a>
-</div>
+<p align="right">
+<a href='#quiz-game'>Back To The Top</a>
+</p>
 
 ---
 
@@ -70,9 +70,9 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
    ```
 4. Run file `public/index.html` using web browser
 
-<div class='text-right'>
-    <a href='#quiz-game' class="right">Back To The Top</a>
-</div>
+<p align="right">
+<a href='#quiz-game'>Back To The Top</a>
+</p>
 
 ---
 
@@ -92,7 +92,7 @@ If word appears multiple times, it`s translates will be added to existing record
 ### Import records
 
 We can add multiple records using text file. To import file correctly follow these steps:
-1. Select group, where append all records from file. If it doesn`t exist, create it.
+1. Select the group to which you want to add new words. If group doesn`t exist, create it.
 2. Select symbol, which separates word and translates in your file. App supports separators `:`, `>` and `=`.
 3. Import text file, which has content, that corresponds following syntax:
 ```
@@ -101,7 +101,7 @@ word2 <separator> translate1
 ```
 
 Text file content should also correspond [adding record rules](#adding-record). Spaces between word, separator and translates doesn't matter.
-We use a `<separator>` to separate word from translate and to separate records we need to write them from new line.
+We use a `<separator>` to separate word from translate and to separate records we need to write them from a new line.
 
 Example of correct text file content with separator `>`:
 ```
@@ -114,12 +114,8 @@ pine > груша
 
 5. Submit form to add records to your vocabulary.
 
-<div class='text-right'>
-    <a href='#quiz-game' class="right">Back To The Top</a>
-</div>
+<p align="right">
+<a href='#quiz-game'>Back To The Top</a>
+</p>
 
 ---
-
-<style>
-.text-right { text-align: right; }
-</style>
