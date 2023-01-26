@@ -4,11 +4,9 @@ const resultContainer = document.querySelector('[data-quiz-result-list]');
 
 function fillInDetailedInfoPage(event) {
     const detailsId = Number(event.target.dataset?.detailsId);
-    if (isNaN(detailsId)) {
-        return;
+    if (!isNaN(detailsId)) {
+        showQuizDetails(detailsId);
     }
-
-    showQuizDetails(detailsId);  
 }
 
 function initCharts() {

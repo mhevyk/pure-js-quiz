@@ -28,8 +28,7 @@ class Vocabulary {
         const wordIndex = this.indexOf(word);
 
         if (wordIndex !== -1) {
-            this.#addtranslationsByWordIndex(wordIndex, translations);
-            return;
+            return this.#addtranslationsByWordIndex(wordIndex, translations);
         }
 
         this.data.push({word, translations, group});

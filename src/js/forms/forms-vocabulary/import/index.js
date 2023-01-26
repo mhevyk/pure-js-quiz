@@ -1,5 +1,5 @@
 import initTemplates from './templates';
-import { initFormImportTxt } from './form-import-txt';
+import { initFormImportTxt } from './import-text-file';
 import { initDragndrop } from './dragndrop';
 
 function initFileImport() {

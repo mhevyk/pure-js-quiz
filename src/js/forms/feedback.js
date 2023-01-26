@@ -13,7 +13,7 @@ export const FEEDBACKS_ADD_GROUP = {
 
 export const FEEDBACKS_FILE_UPLOADING = {
     LOAD_CANCELED: 'Завантаження файлів відмінено!',
-    SUCCESSFULL_LOAD: (validFilesCount, generalFilesCount) => `Успішно завантажено ${validFilesCount} з ${generalFilesCount} файлів! Перегляньте деталі у випадаючому списку нижче!`,
+    SUCCESSFULL_LOAD: 'Файли були завантажені! Перегляньте деталі у випадаючому списку нижче!',
     TEMPLATE_MISMATCH_ERROR: 'Жоден із завантажених файлів не відповідає <span class="link" data-page-button="vocabulary-group-import-template">шаблону</span>!'
 };
 

@@ -10,7 +10,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "ignorePatterns": ["bundle.js", "public/*"],
+    "ignorePatterns": ["public/*"],
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "space-infix-ops": ["error", {

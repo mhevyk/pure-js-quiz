@@ -75,8 +75,16 @@
 
 .dialog .dialog__footer {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
     padding: 5px 15px;
+}
+
+@media (min-width: 350px) {
+    .dialog .dialog__footer {
+        flex-direction: row;
+        justify-content: end;
+        padding: 5px 15px;
+    }
 }
 
 .dialog .dialog__cross-button {

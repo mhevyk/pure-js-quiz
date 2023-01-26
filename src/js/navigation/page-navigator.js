@@ -21,6 +21,7 @@ class PageNavigator {
             if (!navigationButton) {
                 return;
             }
+            
             dialog.isOpen() && dialog.close();
             this.goToPage(navigationButton.dataset.pageButton);
         };
