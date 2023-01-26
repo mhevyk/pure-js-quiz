@@ -7,8 +7,8 @@ import questionGenerator from './question-generator';
 
 import {
     enableGoBackConfirm,
-    disableGoBackConfirm,
-    exitQuiz
+    exitQuiz,
+    createCloseHandler
 } from './exit-quiz';
 
 import {
@@ -39,7 +39,8 @@ export default class Quiz {
         this.answeredQuestionsCount = 0;
 
         this.options = {
-            questionGuessType: options.questionGuessType ? '' : 'guess-translation'
+            questionGuessType: options.questionGuessType ? '' : 'guess-translation',
+            isAnswerInstantlyChecked: options.isAnswerInstantlyChecked
         };
 
         enableGoBackConfirm();
@@ -74,10 +75,15 @@ export default class Quiz {
     }
 
     showResult() {
-        dialog.hideCancelButtonTillDialogClose(disableGoBackConfirm);
+        const closeHandler = createCloseHandler();
+        dialog.addEventListener('close', closeHandler);
+
         this.form.onsubmit = null;
 
         const dialogContent = DIALOG_CONTENT_TEMPLATE_QUIZ_FINISH(this.correctAnswersCount, this.questionsCount);
-        submitAfterDialogConfirm(dialogContent, exitQuiz);
+        submitAfterDialogConfirm(dialogContent, () => {
+            exitQuiz();
+            dialog.removeEventListener('close', closeHandler);
+        });
     }
 }

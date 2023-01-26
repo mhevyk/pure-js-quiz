@@ -4,6 +4,7 @@ import Quiz from './quiz';
 import { resetInput } from '../utils';
 import { addQuizResultItemToStorage } from '../results/result-item';
 import { FORM_QUIZ_INPUT_ANSWER_OPTIONS } from '../forms/form';
+import { highlight, clearHighlight } from './highlight-answer-input';
 
 export default class QuizInputAnswer extends ProgressQuiz {
     #collector;
@@ -29,6 +30,11 @@ export default class QuizInputAnswer extends ProgressQuiz {
 
         if (isAnswerCorrect) {
             this.correctAnswersCount++;
+        }
+
+        if (this.options.isAnswerInstantlyChecked) {
+            clearHighlight(this.userAnswerInput);
+            highlight(this.userAnswerInput, isAnswerCorrect);
         }
         
         this.#collector.saveQuestionDetails(this.previousQuestion, answerFromUser);

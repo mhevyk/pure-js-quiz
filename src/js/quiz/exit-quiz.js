@@ -1,5 +1,6 @@
 import { submitAfterDialogConfirm } from '../utils';
 import { DIALOG_CONTENT_EXIT_QUIZ } from '../storage';
+import { dialog } from '../popups/dialog';
 
 import {
     pageNavigator,
@@ -28,8 +29,17 @@ function confirmQuizExit() {
     });
 }
 
+function createCloseHandler() {
+    const cancelButton = dialog.dialogItems.cancelButton;
+    cancelButton.classList.add('hidden');
+    return () => {
+        exitQuiz();
+        setTimeout(() => cancelButton.classList.remove('hidden'));
+    };
+}
+
 export {
     enableGoBackConfirm,
-    disableGoBackConfirm,
-    exitQuiz
+    exitQuiz,
+    createCloseHandler
 };

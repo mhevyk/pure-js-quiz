@@ -1,6 +1,7 @@
 const defaultOptions = {
     questionGuessType: true,
-    showGroups: true
+    showGroups: true,
+    isAnswerInstantlyChecked: false
 };
 
 function initOptions() {

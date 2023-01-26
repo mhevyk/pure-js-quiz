@@ -6,14 +6,14 @@ const translationsContainer = document.querySelector('.additional__translations-
 function addtranslation() {
     const newId = translations.id + 1;
     const translationHTML = `
-        <label class='form__label row' data-delete-id="${newId}">
-            <div class='input-delete__container'>
-                <i class='input-delete fa fa-trash' aria-hidden='true' data-delete-id='${newId}'></i>
-            </div>
-            <input type='text' class='text-input' name='translation' placeholder='Переклад' maxlength='40' required>
-            <small class='feedbacks'>
-                <span class='feedback valid'>Переклад введено правильно!</span>
-                <span class='feedback invalid' data-default-feedback='Введіть переклад!'>Введіть переклад!</span>
+        <label class="form__label row" data-delete-id="${newId}">
+            <span class="control-icon">
+                <i class="input-delete fa-solid fa-trash"></i>
+            </span>
+            <input type="text" class="text-input" name="translation" placeholder="Переклад" maxlength="40" required>
+            <small class="feedbacks">
+                <span class="feedback valid">Переклад введено правильно!</span>
+                <span class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</span>
             </small>
         </label>
     `;

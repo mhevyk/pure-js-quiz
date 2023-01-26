@@ -51,7 +51,13 @@
     grid-template-rows: 1fr 1fr;
 }
 
-.form.validated .form__item .form__label.row .input-delete__container {
+.form__item .control-icon {
+    min-width: 50px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.form.validated .row .control-icon {
     grid-row: 1;
     grid-column: 2;
     align-self: center;
@@ -65,10 +71,6 @@
 
 .form__item .group__button-container {
     margin-top: 20px;
-}
-
-.form__item .input-delete__container {
-    padding: 0 15px;
 }
 
 .form__item .input-delete {

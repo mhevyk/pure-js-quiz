@@ -11,3 +11,35 @@
 .question__text b {
     color: var(--primary-opposite-color);
 }
+
+[data-answer-check] {
+    width: 0;
+    font-size: 20px;
+    text-align: center;
+    transition: width 500ms;
+}
+
+.answer-correct [data-answer-check],
+.answer-wrong [data-answer-check] {
+    width: 50px;
+}
+
+[data-answer-check] .fa-solid {
+    display: none;
+}
+
+.answer-correct .text-input[data-answer]:focus {
+    border: 1px solid var(--highlight-success-color);
+}
+
+.answer-correct [data-answer-check] .text-success {
+    display: block;
+}
+
+.answer-wrong .text-input[data-answer]:focus {
+    border: 1px solid var(--highlight-fail-color);
+}
+
+.answer-wrong [data-answer-check] .text-fail {
+    display: block;
+}
