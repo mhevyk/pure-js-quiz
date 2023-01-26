@@ -14,16 +14,18 @@ function deleteTranslation(deleteIndex) {
     updatetranslationsCount(translations.count);
 }
 
-function showDeleteConfirm(event) {
+function showDeleteConfirm(translateToDelete) {
     submitAfterDialogConfirm(DIALOG_CONTENT_DELETE_translation, () => {
-        deleteTranslation(event.target.dataset.deleteId);
+        deleteTranslation(translateToDelete.dataset.deleteId);
         validateFormAddInputs(FORM_RECORD_ADD);
     });
 }
 
 function deleteTranslationHandler(event) {
-    if (event.target.classList.contains('input-delete')) {
-        showDeleteConfirm(event);
+    const clickedElement = event.target;
+    if (clickedElement.classList.contains('input-delete')) {
+        const translateToDelete = clickedElement.closest('[data-delete-id]');
+        showDeleteConfirm(translateToDelete);
     }
 }
 
