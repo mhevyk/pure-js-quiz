@@ -4,7 +4,6 @@
 
 - [Demo](#demo)
 - [Description](#description)
-- [Features](#features)
 - [Installation](#installation)
 - [How To Use](#how-to-use)
 
@@ -12,7 +11,7 @@
 
 ## Demo
 
-Here is a working live demo: https://mhevyk.github.io/pure-js-quiz/
+Here is a working live demo: <a href="https://mhevyk.github.io/pure-js-quiz/" target="_blank">https://mhevyk.github.io/pure-js-quiz/
 
 ![Project Image](src/assets/docs/preview.jpg)
 
@@ -32,22 +31,8 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 
 #### Additional libraries
 
-- [fontawesome](https://fontawesome.com/)
-- [chart.js](https://www.chartjs.org/docs/latest/)
-
-<p align="right">
-<a href='#quiz-game'>Back To The Top</a>
-</p>
-
----
-
-## Features
-
-- **User-friendly interface**. A lot of tooltips and descriptions are provided to improve user experience.
-- **Self-studying**. All words and some settings store locally and do not remove on page reloading.
-- **Multiple translations**. Each word can have one or more translations.
-- **Words import**. It is possible to add multiple records to some group by selecting or dragging text file.
-- **Generating results**. Results of each quiz prints on separate page using charts and tables.
+- <a href="https://fontawesome.com/" target="_blank">fontawesome</a>
+- <a href="https://www.chartjs.org/docs/latest/" target="_blank">chart.js</a>
 
 <p align="right">
 <a href='#quiz-game'>Back To The Top</a>
@@ -76,8 +61,6 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 </p>
 
 ---
-
-## How To Use
 
 ### Adding record
 
