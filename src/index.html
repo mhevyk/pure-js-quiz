@@ -8,9 +8,6 @@
 </head>
 
 <body>
-    <button class="arrow arrow__up" data-arrow-up>
-        <i class="fa-solid fa-circle-arrow-up"></i>
-    </button>
     <div class="overlay"></div>
     <div class="fixed-center loader-container">
         <div class="loader">
@@ -18,6 +15,9 @@
         </div>
     </div>
     <div class="app">
+        <button class="arrow arrow__up" data-arrow-up>
+            <i class="fa-solid fa-circle-arrow-up"></i>
+        </button>
         <header class="app__header">
             <button class="arrow arrow__back">
                 <i class="fa-solid fa-circle-arrow-left"></i>
@@ -559,8 +559,8 @@
                             <dd class="text-small">При опитуванні ви одразу ж дізнаєтесь, чи правильно відповіли на питання</dd>
                         </dl>
                         <div class="switch">
-                            <input type="checkbox" id="show-groups" data-option="isAnswerInstantlyChecked">
-                            <label for="show-groups"></label>
+                            <input type="checkbox" id="answer-instant-check" data-option="isAnswerInstantlyChecked">
+                            <label for="answer-instant-check"></label>
                         </div>
                     </div>
                     <div class="form__item checkbox__container">
