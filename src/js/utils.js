@@ -21,8 +21,9 @@ function getValueFromSelect(select) {
     return select.options[select.selectedIndex].value;
 }
 
-function scrollToTop(options = {}) {
-    window.scrollTo({ top: 0, ...options });
+function scrollPage(direction = 'top', options = {}) {
+    const finalScroll = direction === 'top' ? 0 : document.body.scrollHeight;
+    window.scrollTo({ top: finalScroll, ...options });
 }
 
 function getRandomInteger(max, min = 0) {
@@ -120,7 +121,7 @@ export {
     filterUnique,
     shuffle,
     resetInput,
-    scrollToTop,
+    scrollPage,
     removeContainerChildren,
     getValueFromSelect,
     downloadTextFile,

@@ -1,6 +1,6 @@
 import Stack from './stack';
 import { dialog } from '../popups/dialog';
-import { scrollToTop } from '../utils';
+import { scrollPage } from '../utils';
 import { backArrows } from '../components/arrow';
 
 const backButton = backArrows[0];
@@ -62,7 +62,7 @@ class PageNavigator {
     };
 
     goToPage = (page) => {
-        scrollToTop();
+        scrollPage('top');
         this.showBackButton(page);
         this.showOnlyPage(page);
 
