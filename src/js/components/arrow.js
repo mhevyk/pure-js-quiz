@@ -1,23 +1,37 @@
-import { debounce, scrollToTop } from '../utils';
+import { scrollToTop } from '../utils';
+import { pageNavigator } from '../navigation/page-navigator';
 
-const scrollUpArrow = document.querySelector('[data-arrow-up]');
+const arrowsPanel = document.querySelector('.nav__panel');
+export const backArrows = document.querySelectorAll('[data-arrow-back]');
 
 function arrowUpClickHandler() {
     scrollToTop({ behavior: 'smooth' });
 }
 
+function arrowBackClickHandler() {
+    pageNavigator.goToPreviousPage();
+}
+
 function scrollHandler() {
     const currentScroll = window.scrollY;
     if (currentScroll >= 300) {
-        scrollUpArrow.classList.add('open');
+        arrowsPanel.classList.remove('hidden');
     } else {
-        scrollUpArrow.classList.remove('open');
+        arrowsPanel.classList.add('hidden');
     }
 }
 
-function initScrollTopArrow() {
-    scrollUpArrow.addEventListener('click', arrowUpClickHandler);
-    document.addEventListener('scroll', debounce(scrollHandler, 120));
+function initBackArrows() {
+    backArrows.forEach(arrow => {
+        arrow.addEventListener('click', arrowBackClickHandler);
+    });
 }
 
-export { initScrollTopArrow };
+function initArrows() {
+    const scrollUpArrow = document.querySelector('[data-arrow-up]');
+    scrollUpArrow.addEventListener('click', arrowUpClickHandler);
+    document.addEventListener('scroll', scrollHandler);
+    initBackArrows();
+}
+
+export { initArrows };

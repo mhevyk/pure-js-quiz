@@ -1,8 +1,9 @@
 import Stack from './stack';
 import { dialog } from '../popups/dialog';
 import { scrollToTop } from '../utils';
+import { backArrows } from '../components/arrow';
 
-export const backButton = document.querySelector('.app__header .arrow__back');
+const backButton = backArrows[0];
 
 export const config = {
     canGoBack: true
@@ -26,8 +27,6 @@ class PageNavigator {
             this.goToPage(navigationButton.dataset.pageButton);
         };
         document.addEventListener('click', navigateHandler);
-
-        backButton.addEventListener('click', this.goToPreviousPage);
     }
 
     setPageTitle = (title) => {
@@ -46,10 +45,6 @@ class PageNavigator {
             backButton.classList.add('open');
         } else {
             backButton.classList.remove('open');
-        }
-
-        if (this.#pageStack.top() !== page) {
-            this.#pageStack.push(page);
         }
     };
 
@@ -70,6 +65,10 @@ class PageNavigator {
         scrollToTop();
         this.showBackButton(page);
         this.showOnlyPage(page);
+
+        if (this.#pageStack.top() !== page) {
+            this.#pageStack.push(page);
+        }
     };
 
     goToPreviousPage = () => {

@@ -1,10 +1,10 @@
-import { initScrollTopArrow } from './arrow';
+import { initArrows } from './arrow';
 import { initAllRangeInputs } from './range-input';
 import { initSwitchers, initShowGroupsSwitcher } from './switch';
 import { initFooterYearRange } from './app-existance-date-range';
 
 function initComponents() {
-    initScrollTopArrow();
+    initArrows();
     initAllRangeInputs();
     initSwitchers();
     initShowGroupsSwitcher();

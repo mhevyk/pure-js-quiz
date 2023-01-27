@@ -4,9 +4,11 @@ import { dialog } from '../popups/dialog';
 
 import {
     pageNavigator,
-    backButton,
     config as navigateConfig
 } from '../navigation/page-navigator';
+import { backArrows } from '../components/arrow';
+
+const backButton = backArrows[0];
 
 function enableGoBackConfirm() {
     navigateConfig.canGoBack = false;
