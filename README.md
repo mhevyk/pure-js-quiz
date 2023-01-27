@@ -11,7 +11,7 @@
 
 ## Demo
 
-Here is a working live demo: <a href="https://mhevyk.github.io/pure-js-quiz/" target="_blank">https://mhevyk.github.io/pure-js-quiz/
+Here is a working live demo: <a href="https://mhevyk.github.io/pure-js-quiz/">https://mhevyk.github.io/pure-js-quiz/
 
 ![Project Image](src/assets/docs/preview.jpg)
 
@@ -31,8 +31,8 @@ Quiz-game is a simple app for studying foreign languages. It allows us to fill i
 
 #### Additional libraries
 
-- <a href="https://fontawesome.com/" target="_blank">fontawesome</a>
-- <a href="https://www.chartjs.org/docs/latest/" target="_blank">chart.js</a>
+- <a href="https://fontawesome.com/">fontawesome</a>
+- <a href="https://www.chartjs.org/docs/latest/">chart.js</a>
 
 <p align="right">
 <a href='#quiz-game'>Back To The Top</a>
