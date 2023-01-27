@@ -1,11 +1,15 @@
-import { scrollToTop } from '../utils';
+import { scrollPage } from '../utils';
 import { pageNavigator } from '../navigation/page-navigator';
 
 const arrowsPanel = document.querySelector('.nav__panel');
 export const backArrows = document.querySelectorAll('[data-arrow-back]');
 
 function arrowUpClickHandler() {
-    scrollToTop({ behavior: 'smooth' });
+    scrollPage('top', { behavior: 'smooth' });
+}
+
+function arrowDownClickHandler() {
+    scrollPage('bottom', { behavior: 'smooth' });
 }
 
 function arrowBackClickHandler() {
@@ -29,7 +33,10 @@ function initBackArrows() {
 
 function initArrows() {
     const scrollUpArrow = document.querySelector('[data-arrow-up]');
+    const downArrow = document.querySelector('[data-arrow-down]');
+    
     scrollUpArrow.addEventListener('click', arrowUpClickHandler);
+    downArrow.addEventListener('click', arrowDownClickHandler);
     document.addEventListener('scroll', scrollHandler);
     initBackArrows();
 }
