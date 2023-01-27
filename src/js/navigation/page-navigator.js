@@ -42,9 +42,9 @@ class PageNavigator {
 
     showBackButton = (page) => {
         if (page !== 'main') {
-            backButton.classList.add('open');
+            backButton.classList.remove('hidden');
         } else {
-            backButton.classList.remove('open');
+            backButton.classList.add('hidden');
         }
     };
 

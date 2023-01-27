@@ -16,7 +16,7 @@
     </div>
     <div class="app">
         <header class="app__header">
-            <button class="arrow arrow__back" data-arrow-back>
+            <button class="arrow arrow__back hidden" data-arrow-back>
                 <i class="fa-solid fa-circle-arrow-left"></i>
             </button>
             <h1 class="header__title" data-main-title>Перевірка слів</h1>
@@ -25,7 +25,7 @@
         <main class="app__main">
             <nav class="nav nav__panel hidden">
                 <div class="panel__section">
-                    <button class="arrow arrow__back open" data-arrow-back>
+                    <button class="arrow arrow__back" data-arrow-back>
                         <i class="fa-solid fa-circle-arrow-left"></i>
                     </button>
                 </div>
@@ -107,9 +107,11 @@
                         </div>
                         <div class="form__item checkbox__container">
                             <dl class="label__text">
-                                <dt>Слово або переклад</dt>
-                                <dd class="text-small">Вас попросять ввести переклад по слову або відтворити слово по
-                                    перекладу</dd>
+                                <dt>Різні види запитань</dt>
+                                <dd class="text-small">
+                                    Програма випадковим чином попросить ввести <i>переклад за словом</i> (або <i>слово
+                                        за перекладами</i> якщо опція обрана)
+                                </dd>
                             </dl>
                             <div class="switch">
                                 <input id="option-question-guess-type" type="checkbox" data-option="questionGuessType"
@@ -140,8 +142,9 @@
                                     </span>
                                 </label>
                                 <div class="row">
-                                    <input type="text" id="quiz-input-answer-answer-input" class="text-input" name="answer"
-                                    placeholder="Відповідь" maxlength="40" autocapitalize="off" data-answer>
+                                    <input type="text" id="quiz-input-answer-answer-input" class="text-input"
+                                        name="answer" placeholder="Відповідь" maxlength="40" autocapitalize="off"
+                                        data-answer>
                                     <span data-answer-check>
                                         <i class="fa-solid fa-check text-success"></i>
                                         <i class="fa-solid fa-times text-fail"></i>
@@ -267,8 +270,8 @@
                             </label>
                             <div class="additional__translations-container"></div>
                             <div class="group-button__container">
-                                <button id="add-translation" type="button"
-                                    class="button button__secondary">Новий переклад</button>
+                                <button id="add-translation" type="button" class="button button__secondary">Новий
+                                    переклад</button>
                                 <button id="add-translation-reset" type="button"
                                     class="button button__dark">Скинути</button>
                             </div>
@@ -565,7 +568,12 @@
                     <div class="form__item checkbox__container">
                         <dl class="label__text">
                             <dt>Миттєва перевірка</dt>
-                            <dd class="text-small">При опитуванні ви одразу ж дізнаєтесь, чи правильно відповіли на питання</dd>
+                            <dd class="text-small">
+                                При
+                                <span class="link text-accent" data-page-button="quiz-types">тестуванні</span>
+                                ви одразу ж дізнаєтесь, чи правильно відповіли на
+                                питання
+                            </dd>
                         </dl>
                         <div class="switch">
                             <input type="checkbox" id="answer-instant-check" data-option="isAnswerInstantlyChecked">
@@ -575,7 +583,11 @@
                     <div class="form__item checkbox__container">
                         <dl class="label__text">
                             <dt>Показувати розділи</dt>
-                            <dd class="text-small">Слова у словнику будуть погруповані по розділах</dd>
+                            <dd class="text-small">
+                                Слова у
+                                <span class="link text-accent" data-page-button="vocabulary">словнику</span>
+                                будуть візуально погруповані по розділах
+                            </dd>
                         </dl>
                         <div class="switch">
                             <input type="checkbox" id="show-groups" data-option="showGroups" checked>

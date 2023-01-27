@@ -8,13 +8,13 @@ const placeholders = [
             FORM_QUIZ_INPUT_ANSWER_OPTIONS.classList.add('hidden');
 
             const placeholder = FORM_QUIZ_INPUT_ANSWER_OPTIONS.parentElement.querySelector('.placeholder');
-            placeholder.classList.remove('hide');
+            placeholder.classList.remove('hidden');
         },
         hide: () => {
             FORM_QUIZ_INPUT_ANSWER_OPTIONS.classList.remove('hidden');
 
             const placeholder = FORM_QUIZ_INPUT_ANSWER_OPTIONS.parentElement.querySelector('.placeholder');
-            placeholder.classList.add('hide');
+            placeholder.classList.add('hidden');
         }
     },
     //vocabulary placeholder

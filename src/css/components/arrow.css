@@ -12,10 +12,5 @@
 }
 
 .arrow__back {
-    display: none;
     opacity: 1;
-}
-
-.arrow__back.open {
-    display: block;
 }
