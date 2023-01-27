@@ -1,0 +1,18 @@
+.nav__panel button {
+    color: var(--white-color);
+}
+
+.nav__panel:not(.hidden) {
+    opacity: 0.55;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: -2px;
+    padding: 8px;
+    background-color: var(--dark-color);
+    border-bottom: 1px solid var(--secondary-hover-color);
+}
+
+.nav__panel .arrow__back {
+    position: relative;
+}

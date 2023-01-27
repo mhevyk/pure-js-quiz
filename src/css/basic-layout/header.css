@@ -3,11 +3,19 @@
     background-color: var(--button-disabled-color);
     color: var(--secondary-color);
     padding: 30px 20px 35px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     position: relative;
 }
 
-.app__header .header__title,
 .app__header .arrow__back {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+.app__header .header__title {
     text-transform: uppercase;
     letter-spacing: 2px;
 }

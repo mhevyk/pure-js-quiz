@@ -15,17 +15,26 @@
         </div>
     </div>
     <div class="app">
-        <button class="arrow arrow__up" data-arrow-up>
-            <i class="fa-solid fa-circle-arrow-up"></i>
-        </button>
         <header class="app__header">
-            <button class="arrow arrow__back">
+            <button class="arrow arrow__back" data-arrow-back>
                 <i class="fa-solid fa-circle-arrow-left"></i>
             </button>
             <h1 class="header__title" data-main-title>Перевірка слів</h1>
             <h4 class="header__subtitle" data-main-subtitle>найкраща програма для якісного вивчення слів</h4>
         </header>
         <main class="app__main">
+            <nav class="nav nav__panel hidden">
+                <div class="panel__section">
+                    <button class="arrow arrow__back open" data-arrow-back>
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                    </button>
+                </div>
+                <div class="panel__section">
+                    <button class="arrow arrow__up" data-arrow-up>
+                        <i class="fa-solid fa-circle-arrow-up"></i>
+                    </button>
+                </div>
+            </nav>
             <div class="page page__main open" data-page="main" data-title="Перевірка слів">
                 <nav class="nav main__nav">
                     <button class="nav__item" data-page-button="quiz-types">Тестування</button>

@@ -18,12 +18,12 @@
     --secondary-color: rgb(72, 104, 121);
     --secondary-color-rgb: 16, 105, 154;
     --secondary-hover-color: rgba(var(--secondary-color-rgb), 0.5);
-    --secondary-bg-color: rgba(var(--secondary-color-rgb), 0.1);
+    --secondary-bg-color: rgb(231, 240, 245);
     --primary-light-color: silver;
     --secondary-light-color: gray;
     --white-color: white;
 
-    --button-disabled-color: rgba(0, 0, 0, 0.13);
+    --button-disabled-color: rgb(222, 222, 222);
     --strip-color: rgba(0, 0, 0, 0.06);
 
     --highlight-success-color: rgb(0, 128, 0);
