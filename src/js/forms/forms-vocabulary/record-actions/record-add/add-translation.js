@@ -10,7 +10,7 @@ function addtranslation() {
             <span class="control-icon">
                 <i class="input-delete fa-solid fa-trash"></i>
             </span>
-            <input type="text" class="text-input" name="translation" placeholder="Переклад" maxlength="40" required>
+            <input type="text" class="text-input" name="translation" placeholder="Переклад" maxlength="40" autocapitalize="off" required>
             <small class="feedbacks">
                 <span class="feedback valid">Переклад введено правильно!</span>
                 <span class="feedback invalid" data-default-feedback="Введіть переклад!">Введіть переклад!</span>
